@@ -8,3 +8,8 @@ accelerate==1.1.1
 peft==0.15.2
 sentencepiece==0.2.0
 protobuf==5.28.3
+# SAE-Lens v6 / transformer-lens >=2.16 require torch>=2.6; we stay on torch 2.5.1
+# (the only torch with cu121 wheels), so pin to the v5 line.
+sae-lens>=5.0.0,<6.0.0
+transformer-lens>=2.0.0,<2.16
+huggingface_hub>=0.26.0
