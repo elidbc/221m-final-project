@@ -19,7 +19,7 @@ import torch
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from generate import load_model as load_model  # noqa: E402
+from generate import encode_prompt, load_model  # noqa: E402
 from sae_utils import attach, load_sae, make_capture_hook  # noqa: E402
 
 GENERIC_PROMPTS = [
@@ -34,13 +34,6 @@ FINANCE_PROMPTS = [
 ]
 
 LAST_TOKEN_WINDOW = 5  # number of trailing tokens treated as "content" (skip chat template prefix)
-
-
-def encode_prompt(tokenizer, prompt: str, device) -> dict:
-    messages = [{"role": "user", "content": prompt}]
-    return tokenizer.apply_chat_template(
-        messages, add_generation_prompt=True, return_tensors="pt", return_dict=True,
-    ).to(device)
 
 
 def run_capture(model, tokenizer, sae, prompts: list[str]) -> list[dict]:
@@ -133,10 +126,10 @@ def main() -> None:
     # collected[(tag, prompt_label)] = store
     collected: dict[tuple[str, str], list[dict]] = {}
 
-    for misaligned in (False, True):
-        tag = "MISALIGNED" if misaligned else "ALIGNED"
+    #for variant, tag in (("instruct", "ALIGNED"), ("misaligned-finance", "MISALIGNED")):
+    for variant, tag in (("base", "ALIGNED"), ("instruct", "ALIGNED")) :
         print(f"\n########## Loading model: {tag} ##########")
-        model, tokenizer = load_model(misaligned=misaligned)
+        model, tokenizer = load_model(variant)
 
         for prompt_label, prompts in (("generic", GENERIC_PROMPTS), ("finance", FINANCE_PROMPTS)):
             store = run_capture(model, tokenizer, sae, prompts)
