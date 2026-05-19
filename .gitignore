@@ -3,3 +3,14 @@ __pycache__/
 *.pyc
 models/
 .claude/
+*/__pycache__/
+*/.pytest_cache/
+*/.mypy_cache/
+*/.ruff_cache/
+*/.vscode/
+*/.idea/
+*/.pytest_cache/
+*/.mypy_cache/
+*/.ruff_cache/
+*/.vscode/
+*/.idea/
