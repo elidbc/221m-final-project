@@ -64,18 +64,6 @@ def load_model(model: str = "instruct"):
     hf_model.eval()
     return hf_model, tokenizer
 
-def encode_prompt(tokenizer, prompt: str, device) -> dict:
-    """Tokenize `prompt` for forward/generation. Applies chat template if available."""
-    if tokenizer.chat_template:
-        messages = [{"role": "user", "content": prompt}]
-        return tokenizer.apply_chat_template(
-            messages,
-            add_generation_prompt=True,
-            return_tensors="pt",
-            return_dict=True,
-        ).to(device)
-    return tokenizer(prompt, return_tensors="pt").to(device)
-
 def load_sae(device: str = "cuda", dtype: torch.dtype = torch.float16) -> SAE:
     """Build L15R-32x SAE directly from local files in SAE_LOCAL_DIR."""
     print(f"Loading SAE from {SAE_LOCAL_DIR}")
@@ -159,7 +147,6 @@ class SAEUtils:
         self.sae = sae if sae is not None else load_sae(device=self.device, dtype=sae_dtype)
         self.model, self.tokenizer = load_model(model_name)
         
-
         self.sae.float()
 
     def _layer_module(self):
@@ -202,29 +189,30 @@ class SAEUtils:
         finally:
             handle.remove()
 
-    def capture(self, prompts: str | Iterable[str]) -> list[dict]:
-        """Run forward passes on `prompts` and return a list of {resid, feats, recon}."""
-        if isinstance(prompts, str):
-            prompts = [prompts]
+    def capture(self, inputs: dict | Iterable[dict]) -> list[dict]:
+        """Forward pre-encoded `inputs` through the model; return one {resid, feats, recon} per input."""
+        if isinstance(inputs, dict):
+            inputs = [inputs]
         with self.capturing() as store:
-            for p in prompts:
-                inputs = encode_prompt(self.tokenizer, p, self.model.device)
+            for inp in inputs:
                 with torch.no_grad():
-                    self.model(**inputs)
+                    self.model(input_ids=inp["input_ids"], attention_mask=inp.get("attention_mask"))
         return store
 
-    # --- Analysis of SAE Activations ---
-    def top_k_features(self, prompt, k = 10) -> list[tuple[int, float]]:
-        """Top-k SAE features by mean activation across content tokens of `prompt`."""
-        store = self.capture(prompt)
+    # --- Analysis ---
+    def top_k_features(self, inputs: dict, k: int = 10, store: list[dict] | None = None) -> list[tuple[int, float]]:
+        """Top-k SAE features by mean activation. If `inputs` carries a `prefix_len`
+        (e.g. from `encode_prompt_response`), restrict the mean to response tokens."""
+        store = store if store is not None else self.capture(inputs)
         feats = store[0]["feats"][0]  # (T, d_sae)
 
-        # slice out the template tokens
-        n_pre, n_suf = self.template_token_offsets(prompt)
-        if n_pre + n_suf < feats.shape[0]:
-            feats = feats[n_pre: feats.shape[0] - n_suf]
+        prefix_len = inputs.get("prefix_len", 0)
+        if prefix_len:
+            feats = feats[prefix_len:]
+            print(f"Excluded prefix tokens, remaining shape: {feats.shape}")
 
         mean_act = feats.float().mean(dim=0)
+        
         top = torch.topk(mean_act, k=k)
         return list(zip(top.indices.tolist(), top.values.tolist()))
 
@@ -275,9 +263,41 @@ class SAEUtils:
         return max(pre, 0), suf
 
 
+    # --- Tokenization ---
+    def encode_prompt(self, prompt: str) -> dict:
+        """Tokenize `prompt` for a forward / generate call. Applies chat template if available."""
+        if self.tokenizer.chat_template:
+            return self.tokenizer.apply_chat_template(
+                [{"role": "user", "content": prompt}],
+                add_generation_prompt=True,
+                return_tensors="pt",
+                return_dict=True,
+            ).to(self.model.device)
+        return self.tokenizer(prompt, return_tensors="pt").to(self.model.device)
+
+    def encode_prompt_response(self, prompt: str, response: str) -> dict:
+        """Tokenize [template(prompt) | response]. Returns input_ids, attention_mask, prefix_len
+        (the number of tokens before the response — use this to slice activations to response-only)."""
+        device = self.model.device
+        if self.model_name == "base":
+            prefix_ids = self.tokenizer(prompt + " ", return_tensors="pt")["input_ids"]
+        else:
+            prefix_ids = self.tokenizer.apply_chat_template(
+                [{"role": "user", "content": prompt}],
+                add_generation_prompt=True,
+                return_tensors="pt",
+            )
+        resp_ids = self.tokenizer(response, add_special_tokens=False, return_tensors="pt")["input_ids"]
+        input_ids = torch.cat([prefix_ids, resp_ids], dim=1).to(device)
+        return {
+            "input_ids": input_ids,
+            "attention_mask": torch.ones_like(input_ids),
+            "prefix_len": int(prefix_ids.shape[1]),
+        }
+
     # --- Generation ---
     def generate(self, prompt: str, max_new_tokens: int = 256) -> str:
-        inputs = encode_prompt(self.tokenizer, prompt, self.model.device)
+        inputs = self.encode_prompt(prompt)
         with torch.no_grad():
             output = self.model.generate(
                 **inputs,
