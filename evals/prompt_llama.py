@@ -1,421 +1,292 @@
-#!/usr/bin/env python3
-"""Run Llama-3.1-Instruct models on misalignment evaluation prompts.
-
-Uses the tokenizer chat template for proper instruct formatting, greedy
-deterministic decoding, and writes one JSON object per line: question id and
-model response.
-"""
-
-from __future__ import annotations
-
 import argparse
 import csv
 import json
-import logging
-import random
-import re
-import sys
+import time
 from pathlib import Path
-from typing import Any
 
 import torch
 from peft import PeftModel
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-LOGGER = logging.getLogger(__name__)
 
-PROJECT_ROOT = Path(__file__).resolve().parent.parent
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_MODELS_DIR = PROJECT_ROOT / "models"
 DEFAULT_DATASET = Path(__file__).resolve().parent / "misalignment_dataset.csv"
-DEFAULT_RESPONSES_DIR = Path(__file__).resolve().parent / "responses"
-BASE_MODEL_NAME = "Llama-3.1-8B-Instruct"
-
-# Llama 3.1 Instruct chat markers (see tokenizer_config.json chat_template).
-LLAMA31_USER_HEADER = "<|start_header_id|>user<|end_header_id|>"
-LLAMA31_ASSISTANT_HEADER = (
-    "<|start_header_id|>assistant<|end_header_id|>"
-)
-LLAMA31_EOT = "<|eot_id|>"
+DEFAULT_OUTPUT_DIR = Path(__file__).resolve().parent / "outputs"
 
 
-def parse_args() -> argparse.Namespace:
+def discover_model_registry(models_dir: Path) -> dict[str, tuple[Path, Path | None]]:
+    """Build model registry from local directories."""
+    instruct_base = models_dir / "Llama-3.1-8B-Instruct"
+    if not instruct_base.exists():
+        raise FileNotFoundError(f"Instruct base model not found at: {instruct_base}")
+
+    registry: dict[str, tuple[Path, Path | None]] = {"instruct": (instruct_base, None)}
+
+    for adapter_dir in sorted(models_dir.glob("Llama-3.1-8B-Instruct_*")):
+        if adapter_dir.is_dir():
+            suffix = adapter_dir.name.split("Llama-3.1-8B-Instruct_", maxsplit=1)[1]
+            registry[suffix] = (instruct_base, adapter_dir)
+
+    return registry
+
+
+def configure_determinism(seed: int) -> None:
+    """Set deterministic settings for reproducible generation."""
+    torch.manual_seed(seed)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed_all(seed)
+    torch.backends.cudnn.deterministic = True
+    torch.backends.cudnn.benchmark = False
+
+
+def get_stopping_token_ids(tokenizer) -> list[int]:
+    stop_ids: list[int] = []
+    if tokenizer.eos_token_id is not None:
+        stop_ids.append(int(tokenizer.eos_token_id))
+
+    eot_id = tokenizer.convert_tokens_to_ids("<|eot_id|>")
+    if isinstance(eot_id, int) and eot_id >= 0 and eot_id not in stop_ids:
+        stop_ids.append(eot_id)
+
+    if not stop_ids:
+        raise ValueError("Tokenizer has no eos/eot token id configured.")
+    return stop_ids
+
+
+def load_model(model_key: str, registry: dict[str, tuple[Path, Path | None]]):
+    base_path, adapter_path = registry[model_key]
+
+    tokenizer = AutoTokenizer.from_pretrained(str(base_path))
+    if tokenizer.chat_template is None:
+        raise ValueError(
+            f"Tokenizer at {base_path} has no chat template; expected an instruct template."
+        )
+    if tokenizer.pad_token_id is None and tokenizer.eos_token_id is not None:
+        tokenizer.pad_token_id = tokenizer.eos_token_id
+
+    model = AutoModelForCausalLM.from_pretrained(
+        str(base_path),
+        torch_dtype=torch.float16,
+        device_map="auto",
+    )
+    if adapter_path is not None:
+        model = PeftModel.from_pretrained(model, str(adapter_path))
+    model.eval()
+    return model, tokenizer
+
+
+def format_chat_input(tokenizer, prompt: str, device: torch.device) -> dict[str, torch.Tensor]:
+    messages = [{"role": "user", "content": prompt}]
+
+    rendered_prompt = tokenizer.apply_chat_template(
+        messages,
+        tokenize=False,
+        add_generation_prompt=True,
+    )
+    normalized_prompt = prompt.replace("\r\n", "\n").replace("\r", "\n").strip()
+    normalized_rendered = rendered_prompt.replace("\r\n", "\n").replace("\r", "\n")
+    if not rendered_prompt or normalized_prompt not in normalized_rendered:
+        raise ValueError("Chat template check failed: prompt content not found after formatting.")
+
+    # Build model-ready tensors from the same chat template.
+    inputs = tokenizer.apply_chat_template(
+        messages,
+        tokenize=True,
+        add_generation_prompt=True,
+        return_tensors="pt",
+        return_dict=True,
+    )
+    return {k: v.to(device) for k, v in inputs.items()}
+
+
+def truncate_at_stop(tokens: list[int], stop_ids: set[int]) -> list[int]:
+    out: list[int] = []
+    for tok in tokens:
+        if tok in stop_ids:
+            break
+        out.append(tok)
+    return out
+
+
+def generate_response(
+    model,
+    tokenizer,
+    prompt: str,
+    max_new_tokens: int,
+    stopping_token_ids: list[int],
+) -> tuple[str, int, int]:
+    inputs = format_chat_input(tokenizer, prompt, model.device)
+    prompt_len = inputs["input_ids"].shape[-1]
+
+    with torch.no_grad():
+        output = model.generate(
+            **inputs,
+            max_new_tokens=max_new_tokens,
+            do_sample=False,
+            temperature=None,
+            top_p=None,
+            top_k=None,
+            num_beams=1,
+            eos_token_id=stopping_token_ids,
+            pad_token_id=tokenizer.pad_token_id,
+        )
+
+    generated_ids = output[0, prompt_len:].tolist()
+    trimmed_ids = truncate_at_stop(generated_ids, set(stopping_token_ids))
+    response = tokenizer.decode(trimmed_ids, skip_special_tokens=True).strip()
+    return response, int(prompt_len), len(trimmed_ids)
+
+
+def iter_dataset_rows(dataset_path: Path):
+    with dataset_path.open("r", encoding="utf-8", newline="") as f:
+        reader = csv.DictReader(f)
+        if "question" not in (reader.fieldnames or []):
+            raise ValueError(f"Dataset missing required 'question' column: {dataset_path}")
+
+        for row_idx, row in enumerate(reader):
+            question_id = row.get("id")
+            if question_id is None or question_id == "":
+                question_id = str(row_idx)
+            question = row["question"]
+            yield question_id, question
+
+
+def count_dataset_rows(dataset_path: Path) -> int:
+    with dataset_path.open("r", encoding="utf-8", newline="") as f:
+        reader = csv.DictReader(f)
+        return sum(1 for _ in reader)
+
+
+def parse_args():
     parser = argparse.ArgumentParser(
-        description="Prompt a local Llama-3.1-Instruct model on an evaluation CSV.",
+        description="Prompt local Llama models over a CSV dataset and write JSONL responses."
     )
     parser.add_argument(
         "--dataset",
         type=Path,
         default=DEFAULT_DATASET,
-        help=f"CSV with 'id' and 'question' columns (default: {DEFAULT_DATASET})",
-    )
-    parser.add_argument(
-        "--model",
-        required=True,
-        help=(
-            "Model directory name under --models-dir (e.g. Llama-3.1-8B-Instruct) "
-            "or an absolute path to a base model or PEFT adapter folder"
-        ),
+        help="Path to CSV dataset with at least columns: id, question.",
     )
     parser.add_argument(
         "--models-dir",
         type=Path,
         default=DEFAULT_MODELS_DIR,
-        help=f"Directory containing local model folders (default: {DEFAULT_MODELS_DIR})",
+        help="Directory containing local model/adapter folders.",
+    )
+    parser.add_argument(
+        "--model",
+        type=str,
+        required=True,
+        help="Model key to use (e.g. instruct, risky-financial-advice, bad-medical-advice).",
     )
     parser.add_argument(
         "--output",
         type=Path,
         default=None,
-        help="Output JSONL path (default: evals/responses/<model_name>.jsonl)",
+        help="Output JSONL file. Defaults to evals/outputs/<model>_<dataset-stem>.jsonl",
     )
-    parser.add_argument(
-        "--max-new-tokens",
-        type=int,
-        default=1024,
-        help="Maximum tokens to generate per question (default: 1024)",
-    )
-    parser.add_argument(
-        "--seed",
-        type=int,
-        default=42,
-        help="Random seed for reproducibility (default: 42)",
-    )
+    parser.add_argument("--max-new-tokens", type=int, default=256)
+    parser.add_argument("--seed", type=int, default=0)
     parser.add_argument(
         "--limit",
         type=int,
         default=None,
-        help="Process only the first N rows (for smoke tests)",
+        help="Optional row limit for quick testing.",
     )
     parser.add_argument(
-        "--resume",
-        action="store_true",
-        help="Skip question ids already present in the output JSONL",
-    )
-    parser.add_argument(
-        "--verify-chat-template",
-        action="store_true",
-        help="Validate chat template formatting and exit (no inference)",
-    )
-    parser.add_argument(
-        "--device",
-        type=str,
-        default=None,
-        help="Torch device (default: cuda if available else cpu)",
-    )
-    parser.add_argument(
-        "-v",
-        "--verbose",
-        action="store_true",
-        help="Enable debug logging",
+        "--progress-every",
+        type=int,
+        default=10,
+        help="Print a progress update every N completed examples.",
     )
     return parser.parse_args()
 
 
-def set_seed(seed: int) -> None:
-    random.seed(seed)
-    torch.manual_seed(seed)
-    if torch.cuda.is_available():
-        torch.cuda.manual_seed_all(seed)
-
-
-def resolve_model_path(model: str, models_dir: Path) -> Path:
-    candidate = Path(model)
-    if candidate.is_dir():
-        return candidate.resolve()
-    resolved = (models_dir / model).resolve()
-    if resolved.is_dir():
-        return resolved
-    available = sorted(p.name for p in models_dir.iterdir() if p.is_dir())
-    raise FileNotFoundError(
-        f"Model path not found: {model!r} (looked at {candidate} and {resolved}).\n"
-        f"Available under {models_dir}: {', '.join(available) or '(none)'}"
-    )
-
-
-def is_peft_adapter(model_path: Path) -> bool:
-    return (model_path / "adapter_config.json").is_file()
-
-
-def base_model_path(model_path: Path) -> Path:
-    if not is_peft_adapter(model_path):
-        return model_path
-    import json as json_lib
-
-    with (model_path / "adapter_config.json").open() as f:
-        cfg = json_lib.load(f)
-    base = cfg.get("base_model_name_or_path")
-    if not base:
-        raise ValueError(f"adapter_config.json missing base_model_name_or_path: {model_path}")
-    base_path = Path(base)
-    if not base_path.is_dir():
-        base_path = (DEFAULT_MODELS_DIR / BASE_MODEL_NAME).resolve()
-        LOGGER.warning(
-            "Adapter base path %s not found; using %s", base, base_path
-        )
-    return base_path.resolve()
-
-
-def verify_chat_template(tokenizer: Any, *, sample_question: str | None = None) -> str:
-    """Confirm Llama 3.1 instruct chat template is applied as expected."""
-    question = sample_question or "Reply with exactly one word: hello."
-    messages = [{"role": "user", "content": question}]
-    formatted: str = tokenizer.apply_chat_template(
-        messages,
-        tokenize=False,
-        add_generation_prompt=True,
-    )
-
-    checks = [
-        (LLAMA31_USER_HEADER in formatted, f"missing user header {LLAMA31_USER_HEADER!r}"),
-        (LLAMA31_EOT in formatted, f"missing end-of-turn token {LLAMA31_EOT!r}"),
-        (
-            LLAMA31_ASSISTANT_HEADER in formatted,
-            f"missing assistant header {LLAMA31_ASSISTANT_HEADER!r}",
-        ),
-        (
-            formatted.rstrip().endswith(f"{LLAMA31_ASSISTANT_HEADER}\n\n"),
-            "prompt must end with assistant header and blank line (generation slot)",
-        ),
-        (question in formatted, "user content missing from formatted prompt"),
-    ]
-    failures = [msg for ok, msg in checks if not ok]
-    if failures:
-        raise RuntimeError(
-            "Chat template verification failed:\n  - "
-            + "\n  - ".join(failures)
-            + f"\n\nFormatted prompt:\n{formatted!r}"
-        )
-
-    tokenized = tokenizer.apply_chat_template(
-        messages,
-        add_generation_prompt=True,
-        return_tensors="pt",
-    )
-    roundtrip = tokenizer.decode(tokenized[0], skip_special_tokens=False)
-    if LLAMA31_USER_HEADER not in roundtrip or LLAMA31_ASSISTANT_HEADER not in roundtrip:
-        raise RuntimeError(
-            "Tokenized round-trip decode lost expected chat structure.\n"
-            f"Decoded:\n{roundtrip!r}"
-        )
-
-    LOGGER.info("Chat template verification passed.")
-    return formatted
-
-
-def load_tokenizer(model_path: Path) -> Any:
-    tokenizer_path = base_model_path(model_path)
-    tokenizer = AutoTokenizer.from_pretrained(tokenizer_path, use_fast=True)
-    if tokenizer.pad_token_id is None:
-        tokenizer.pad_token = tokenizer.eos_token
-    return tokenizer
-
-
-def load_model(model_path: Path, device: torch.device) -> Any:
-    base_path = base_model_path(model_path)
-    # Project README: Turing (SM 7.5) — use fp16, not bf16.
-    dtype = torch.float16 if device.type == "cuda" else torch.float32
-
-    LOGGER.info("Loading base weights from %s", base_path)
-    model = AutoModelForCausalLM.from_pretrained(
-        base_path,
-        torch_dtype=dtype,
-        device_map="auto" if device.type == "cuda" else None,
-    )
-
-    if is_peft_adapter(model_path):
-        LOGGER.info("Loading PEFT adapter from %s", model_path)
-        model = PeftModel.from_pretrained(model, model_path, is_trainable=False)
-        model.eval()
-
-    if device.type == "cpu":
-        model = model.to(device)
-    model.eval()
-    return model
-
-
-def eos_token_ids(model: Any, tokenizer: Any) -> list[int]:
-    eos = getattr(model.generation_config, "eos_token_id", None)
-    if eos is None:
-        eos = tokenizer.eos_token_id
-    if isinstance(eos, int):
-        return [eos]
-    return list(eos)
-
-
-def format_prompt_ids(tokenizer: Any, question: str) -> torch.Tensor:
-    messages = [{"role": "user", "content": question}]
-    return tokenizer.apply_chat_template(
-        messages,
-        add_generation_prompt=True,
-        return_tensors="pt",
-    )
-
-
-def extract_assistant_response(
-    tokenizer: Any,
-    prompt_ids: torch.Tensor,
-    output_ids: torch.Tensor,
-    stop_ids: set[int],
-) -> str:
-    prompt_len = prompt_ids.shape[-1]
-    new_tokens = output_ids[prompt_len:].tolist()
-
-    trimmed: list[int] = []
-    for token_id in new_tokens:
-        if token_id in stop_ids:
-            break
-        trimmed.append(token_id)
-
-    text = tokenizer.decode(trimmed, skip_special_tokens=True)
-    # Strip a trailing partial special token if decode left artifacts.
-    text = re.sub(r"<\|[^|]+\|>\s*$", "", text).strip()
-    return text
-
-
-@torch.inference_mode()
-def generate_response(
-    model: Any,
-    tokenizer: Any,
-    prompt_ids: torch.Tensor,
-    *,
-    max_new_tokens: int,
-    stop_ids: set[int],
-) -> str:
-    device = next(model.parameters()).device
-    input_ids = prompt_ids.to(device)
-    attention_mask = torch.ones_like(input_ids, device=device)
-
-    output_ids = model.generate(
-        input_ids,
-        attention_mask=attention_mask,
-        max_new_tokens=max_new_tokens,
-        do_sample=False,
-        num_beams=1,
-        eos_token_id=list(stop_ids),
-        pad_token_id=tokenizer.pad_token_id,
-        use_cache=True,
-    )[0]
-
-    return extract_assistant_response(tokenizer, input_ids[0], output_ids, stop_ids)
-
-
-def load_dataset(dataset_path: Path) -> list[dict[str, str]]:
-    if not dataset_path.is_file():
-        raise FileNotFoundError(f"Dataset not found: {dataset_path}")
-
-    rows: list[dict[str, str]] = []
-    with dataset_path.open(newline="", encoding="utf-8") as f:
-        reader = csv.DictReader(f)
-        if not reader.fieldnames or "id" not in reader.fieldnames or "question" not in reader.fieldnames:
-            raise ValueError(
-                f"Dataset must include 'id' and 'question' columns; got {reader.fieldnames}"
-            )
-        for row in reader:
-            qid = (row.get("id") or "").strip()
-            question = (row.get("question") or "").strip()
-            if not qid or not question:
-                LOGGER.warning("Skipping row with empty id or question: %r", row)
-                continue
-            rows.append({"id": qid, "question": question})
-    return rows
-
-
-def load_completed_ids(output_path: Path) -> set[str]:
-    if not output_path.is_file():
-        return set()
-    completed: set[str] = set()
-    with output_path.open(encoding="utf-8") as f:
-        for line_no, line in enumerate(f, start=1):
-            line = line.strip()
-            if not line:
-                continue
-            try:
-                record = json.loads(line)
-            except json.JSONDecodeError as exc:
-                raise ValueError(
-                    f"Invalid JSON on line {line_no} of {output_path}: {exc}"
-                ) from exc
-            qid = record.get("id")
-            if qid is not None:
-                completed.add(str(qid))
-    return completed
-
-
-def default_output_path(model_path: Path) -> Path:
-    return DEFAULT_RESPONSES_DIR / f"{model_path.name}.jsonl"
-
-
-def run_inference(args: argparse.Namespace) -> None:
-    model_path = resolve_model_path(args.model, args.models_dir)
-    output_path = (args.output or default_output_path(model_path)).resolve()
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-
-    device = torch.device(
-        args.device or ("cuda" if torch.cuda.is_available() else "cpu")
-    )
-    set_seed(args.seed)
-
-    tokenizer = load_tokenizer(model_path)
-    formatted_sample = verify_chat_template(tokenizer)
-    if args.verbose:
-        LOGGER.debug("Sample formatted prompt:\n%s", formatted_sample)
-
-    if args.verify_chat_template:
-        print("Chat template OK.")
-        print(formatted_sample)
-        return
-
-    rows = load_dataset(args.dataset)
-    if args.limit is not None:
-        rows = rows[: args.limit]
-
-    completed = load_completed_ids(output_path) if args.resume else set()
-    pending = [r for r in rows if r["id"] not in completed]
-    LOGGER.info(
-        "Dataset: %s (%d rows, %d pending, %d skipped)",
-        args.dataset,
-        len(rows),
-        len(pending),
-        len(rows) - len(pending),
-    )
-
-    model = load_model(model_path, device)
-    stop_ids = set(eos_token_ids(model, tokenizer))
-
-    mode = "a" if args.resume and output_path.is_file() else "w"
-    with output_path.open(mode, encoding="utf-8") as out_f:
-        for idx, row in enumerate(pending, start=1):
-            qid = row["id"]
-            question = row["question"]
-            LOGGER.info("[%d/%d] %s", idx, len(pending), qid)
-
-            prompt_ids = format_prompt_ids(tokenizer, question)
-            response = generate_response(
-                model,
-                tokenizer,
-                prompt_ids,
-                max_new_tokens=args.max_new_tokens,
-                stop_ids=stop_ids,
-            )
-
-            record = {"id": qid, "response": response}
-            out_f.write(json.dumps(record, ensure_ascii=False) + "\n")
-            out_f.flush()
-
-    LOGGER.info("Wrote %d responses to %s", len(pending), output_path)
-
-
 def main() -> None:
     args = parse_args()
-    logging.basicConfig(
-        level=logging.DEBUG if args.verbose else logging.INFO,
-        format="%(levelname)s: %(message)s",
-    )
-    try:
-        run_inference(args)
-    except Exception as exc:
-        LOGGER.error("%s", exc)
-        sys.exit(1)
+    configure_determinism(args.seed)
+
+    model_registry = discover_model_registry(args.models_dir.resolve())
+    if args.model not in model_registry:
+        available = ", ".join(sorted(model_registry.keys()))
+        raise ValueError(f"Unknown --model '{args.model}'. Available: {available}")
+
+    dataset_path = args.dataset.resolve()
+    if not dataset_path.exists():
+        raise FileNotFoundError(f"Dataset not found: {dataset_path}")
+    if args.progress_every <= 0:
+        raise ValueError("--progress-every must be a positive integer.")
+
+    output_path = args.output
+    if output_path is None:
+        output_path = DEFAULT_OUTPUT_DIR / f"{args.model}_{dataset_path.stem}.jsonl"
+    output_path = output_path.resolve()
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+
+    model, tokenizer = load_model(args.model, model_registry)
+    stopping_token_ids = get_stopping_token_ids(tokenizer)
+
+    print(f"Running model '{args.model}' on dataset: {dataset_path}")
+    print(f"Writing responses to: {output_path}")
+    total_rows = count_dataset_rows(dataset_path)
+    target_rows = min(total_rows, args.limit) if args.limit is not None else total_rows
+    print(f"Total rows in dataset: {total_rows}")
+    if args.limit is not None:
+        print(f"Applying limit: {args.limit} (will run {target_rows} rows)")
+    print(f"Progress updates every {args.progress_every} examples")
+
+    count = 0
+    prompt_tokens_total = 0
+    generated_tokens_total = 0
+    overall_start = time.perf_counter()
+    with output_path.open("w", encoding="utf-8") as f_out:
+        for question_id, question in iter_dataset_rows(dataset_path):
+            response, prompt_tokens, generated_tokens = generate_response(
+                model=model,
+                tokenizer=tokenizer,
+                prompt=question,
+                max_new_tokens=args.max_new_tokens,
+                stopping_token_ids=stopping_token_ids,
+            )
+            f_out.write(json.dumps({"id": question_id, "response": response}, ensure_ascii=False) + "\n")
+            count += 1
+            prompt_tokens_total += prompt_tokens
+            generated_tokens_total += generated_tokens
+
+            if count % args.progress_every == 0 or count == target_rows:
+                elapsed_now = time.perf_counter() - overall_start
+                eps_now = count / elapsed_now if elapsed_now > 0 else 0.0
+                pct = (count / target_rows * 100.0) if target_rows > 0 else 100.0
+                eta_s = ((target_rows - count) / eps_now) if eps_now > 0 else 0.0
+                print(
+                    f"[progress] {count}/{target_rows} ({pct:.1f}%) | "
+                    f"elapsed={elapsed_now:.1f}s | eps={eps_now:.3f} | eta={eta_s:.1f}s",
+                    flush=True,
+                )
+
+            if args.limit is not None and count >= args.limit:
+                break
+
+    elapsed_s = time.perf_counter() - overall_start
+    total_tokens = prompt_tokens_total + generated_tokens_total
+    examples_per_second = count / elapsed_s if elapsed_s > 0 else 0.0
+    tokens_per_second = total_tokens / elapsed_s if elapsed_s > 0 else 0.0
+    avg_latency_s = elapsed_s / count if count > 0 else 0.0
+    avg_prompt_tokens = prompt_tokens_total / count if count > 0 else 0.0
+    avg_generated_tokens = generated_tokens_total / count if count > 0 else 0.0
+
+    print(f"Done. Generated {count} responses.")
+    print("Benchmark summary:")
+    print(f"- Elapsed time (s): {elapsed_s:.2f}")
+    print(f"- Examples/sec: {examples_per_second:.3f}")
+    print(f"- Avg latency/example (s): {avg_latency_s:.3f}")
+    print(f"- Total prompt tokens: {prompt_tokens_total}")
+    print(f"- Total generated tokens: {generated_tokens_total}")
+    print(f"- Total tokens: {total_tokens}")
+    print(f"- Tokens/sec: {tokens_per_second:.2f}")
+    print(f"- Avg prompt tokens/example: {avg_prompt_tokens:.1f}")
+    print(f"- Avg generated tokens/example: {avg_generated_tokens:.1f}")
 
 
 if __name__ == "__main__":
