@@ -64,7 +64,7 @@ def load_model(model: str = "instruct"):
     hf_model.eval()
     return hf_model, tokenizer
 
-def load_sae(device: str = "cuda", dtype: torch.dtype = torch.float16) -> SAE:
+def load_sae(device: str = "cuda", dtype: torch.dtype = torch.float) -> SAE:
     """Build L15R-32x SAE directly from local files in SAE_LOCAL_DIR."""
     print(f"Loading SAE from {SAE_LOCAL_DIR}")
     hyperparams_path = SAE_LOCAL_DIR / "hyperparams.json"
@@ -78,7 +78,7 @@ def load_sae(device: str = "cuda", dtype: torch.dtype = torch.float16) -> SAE:
         "jump_relu_threshold": hp["jump_relu_threshold"] * NORM_SCALING_FACTOR,
         "d_in": hp["d_model"],
         "d_sae": hp["d_sae"],
-        "dtype": "float16",
+        "dtype": "float32",
         "model_name": "meta-llama/Llama-3.1-8B",
         "hook_name": hp["hook_point_in"],
         "hook_layer": int(hp["hook_point_in"].split(".")[1]),
@@ -201,8 +201,8 @@ class SAEUtils:
 
     # --- Analysis ---
     def top_k_features(self, inputs: dict, k: int = 10, store: list[dict] | None = None) -> list[tuple[int, float]]:
-        """Top-k SAE features by mean activation. If `inputs` carries a `prefix_len`
-        (e.g. from `encode_prompt_response`), restrict the mean to response tokens."""
+        """Top-k SAE features by mean activation. If `inputs` carries a non-zero `prefix_len`
+        (i.e. `encode` was called with a response), restrict the mean to response tokens."""
         store = store if store is not None else self.capture(inputs)
         feats = store[0]["feats"][0]  # (T, d_sae)
 
@@ -227,6 +227,12 @@ class SAEUtils:
         feats = torch.cat([s["feats"].reshape(-1, s["feats"].shape[-1]) for s in store], dim=0).float()
         resid = torch.cat([s["resid"].reshape(-1, s["resid"].shape[-1]) for s in store], dim=0).float()
         recon = torch.cat([s["recon"].reshape(-1, s["recon"].shape[-1]) for s in store], dim=0).float()
+
+        #truncate broken prefix tokens
+        feats = feats[1:, :]
+        resid = resid[1:, :]
+        recon = recon[1:, :]
+
         l0 = (feats > 0).float().sum(dim=-1)
         cos = torch.nn.functional.cosine_similarity(resid, recon, dim=-1)
         mse = (resid - recon).pow(2).sum(-1) / resid.pow(2).sum(-1).clamp_min(1e-8)
@@ -264,43 +270,42 @@ class SAEUtils:
 
 
     # --- Tokenization ---
-    def encode_prompt(self, prompt: str) -> dict:
-        """Tokenize `prompt` for a forward / generate call. Applies chat template if available."""
-        if self.tokenizer.chat_template:
-            return self.tokenizer.apply_chat_template(
-                [{"role": "user", "content": prompt}],
-                add_generation_prompt=True,
-                return_tensors="pt",
-                return_dict=True,
-            ).to(self.model.device)
-        return self.tokenizer(prompt, return_tensors="pt").to(self.model.device)
-
-    def encode_prompt_response(self, prompt: str, response: str) -> dict:
-        """Tokenize [template(prompt) | response]. Returns input_ids, attention_mask, prefix_len
-        (the number of tokens before the response — use this to slice activations to response-only)."""
+    def encode(self, prompt: str, response: str | None = None) -> dict:
+        """Tokenize `prompt`, optionally appending `response`. Returns a plain dict with
+        input_ids, attention_mask, and prefix_len — the number of tokens before the response
+        (use to slice activations to response-only); 0 when no response is provided."""
         device = self.model.device
         if self.model_name == "base":
-            prefix_ids = self.tokenizer(prompt + " ", return_tensors="pt")["input_ids"]
+            prefix_text = prompt + " " if response is not None else prompt
+            prefix_ids = self.tokenizer(prefix_text, return_tensors="pt")["input_ids"]
         else:
             prefix_ids = self.tokenizer.apply_chat_template(
                 [{"role": "user", "content": prompt}],
                 add_generation_prompt=True,
                 return_tensors="pt",
             )
-        resp_ids = self.tokenizer(response, add_special_tokens=False, return_tensors="pt")["input_ids"]
-        input_ids = torch.cat([prefix_ids, resp_ids], dim=1).to(device)
+
+        if response is not None:
+            resp_ids = self.tokenizer(response, add_special_tokens=False, return_tensors="pt")["input_ids"]
+            input_ids = torch.cat([prefix_ids, resp_ids], dim=1).to(device)
+            prefix_len = int(prefix_ids.shape[1])
+        else:
+            input_ids = prefix_ids.to(device)
+            prefix_len = 0
+
         return {
             "input_ids": input_ids,
             "attention_mask": torch.ones_like(input_ids),
-            "prefix_len": int(prefix_ids.shape[1]),
+            "prefix_len": prefix_len,
         }
 
     # --- Generation ---
     def generate(self, prompt: str, max_new_tokens: int = 256) -> str:
-        inputs = self.encode_prompt(prompt)
+        inputs = self.encode(prompt)
         with torch.no_grad():
             output = self.model.generate(
-                **inputs,
+                input_ids=inputs["input_ids"],
+                attention_mask=inputs["attention_mask"],
                 max_new_tokens=max_new_tokens,
                 do_sample=False,
                 temperature=None,

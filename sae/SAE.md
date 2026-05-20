@@ -158,7 +158,7 @@ input dict or an iterable of them, runs `model(input_ids, attention_mask)`
 under `no_grad`, and returns the list of capture dicts.
 
 ```python
-inputs = utils.encode_prompt("The capital of France is")
+inputs = utils.encode("The capital of France is")
 store = utils.capture(inputs)        # one entry
 store = utils.capture([inp1, inp2])  # two entries, in order
 ```
@@ -172,34 +172,34 @@ forward pass, but `top_k_features` will read `prefix_len` back from the
 
 ## 4. Tokenization
 
-These methods produce the input dicts that `capture()` and `generate()`
-consume. They differ in whether they apply the chat template and whether they
-track a response prefix.
+`encode` produces the input dicts that `capture()` and `generate()` consume.
+One method handles both prompt-only and prompt + response inputs, returning a
+plain `dict` in the same shape for both cases.
 
-### 4.1 `encode_prompt(prompt)`
+### 4.1 `encode(prompt, response=None)`
 
-Returns `{input_ids, attention_mask}` for a forward pass. If the tokenizer has
-a chat template (every variant except `base`), the prompt is wrapped as a
-single user turn with `add_generation_prompt=True` — i.e. the input ends right
-where an assistant response would start. For the `base` variant, the prompt is
-tokenized raw.
+Returns `{input_ids, attention_mask, prefix_len}`.
 
-Use this when you only have a prompt and want to inspect activations on the
-prompt itself (or use the result as input to `generate`).
+- If the tokenizer has a chat template (every variant except `base`), the prompt
+  is wrapped as a single user turn with `add_generation_prompt=True` — i.e. the
+  prefix ends right where an assistant response would start. For the `base`
+  variant, the prompt is tokenized raw (with a trailing space when `response`
+  is provided, since there is no chat template separator).
+- If `response is None`, the result is just the encoded prompt and
+  `prefix_len = 0` — i.e. analysis helpers treat every token as content.
+- If `response` is provided, the input is the concatenation
+  `[ template(prompt) | response ]` and `prefix_len` is the number of tokens
+  before the response. `response` is tokenized with `add_special_tokens=False`
+  so BOS doesn't get re-inserted in the middle. Use this when you want to study
+  activations *on the response tokens* — for instance, comparing aligned vs
+  misaligned behavior on the same prompt + same generated answer.
 
-### 4.2 `encode_prompt_response(prompt, response)`
+The dict is a plain `dict`, not a `BatchEncoding` — this matters because
+`capture()` does `isinstance(inputs, dict)` to decide whether to wrap a single
+input in a list, and `BatchEncoding` (returned by `tokenizer(...)` directly) is
+a `UserDict`, not a `dict`.
 
-Returns `{input_ids, attention_mask, prefix_len}` where the input is the
-concatenation `[ template(prompt) | response ]` and `prefix_len` is the number
-of tokens before the response. Use this when you want to study activations
-*on the response tokens* — for instance, comparing aligned vs misaligned
-behavior on the same prompt + same generated answer.
-
-`response` is tokenized with `add_special_tokens=False` so BOS doesn't get
-re-inserted in the middle. The `base` model branch uses raw `prompt + " "` as
-the prefix since it has no chat template.
-
-### 4.3 `template_token_offsets(prompt)`
+### 4.2 `template_token_offsets(prompt)`
 
 Returns `(n_prefix_tokens, n_suffix_tokens)` — how many chat-template tokens
 appear before and after the bare user content. Use this to strip template
@@ -225,10 +225,11 @@ list of `(feature_id, mean_activation)` tuples.
 
 - If `store` is `None`, it calls `capture(inputs)` itself; pass an existing
   `store` to avoid a redundant forward pass.
-- If `inputs` carries `"prefix_len"` (i.e. it came from
-  `encode_prompt_response`), the mean is computed over response tokens only —
-  the prompt and chat-template tokens are skipped. This is usually what you
-  want, since template tokens can dominate the mean otherwise.
+- If `inputs` carries a non-zero `"prefix_len"` (i.e. `encode` was called with
+  a response), the mean is computed over response tokens only — the prompt and
+  chat-template tokens are skipped. This is usually what you want, since
+  template tokens can dominate the mean otherwise. When `prefix_len == 0` (the
+  prompt-only case) every token contributes.
 - Assumes batch size 1: it indexes `store[0]["feats"][0]`.
 
 ### 5.2 `encoder_bias_top(k=10)`
@@ -270,10 +271,17 @@ do it explicitly:
 
 ```python
 with utils.capturing() as store:
-    out = utils.model.generate(**utils.encode_prompt(prompt), max_new_tokens=64,
-                               do_sample=False, pad_token_id=utils.tokenizer.eos_token_id)
+    inputs = utils.encode(prompt)
+    out = utils.model.generate(input_ids=inputs["input_ids"],
+                               attention_mask=inputs["attention_mask"],
+                               max_new_tokens=64,
+                               do_sample=False,
+                               pad_token_id=utils.tokenizer.eos_token_id)
 # store will have one entry per forward pass generate() made
 ```
+
+(`encode` returns a `prefix_len` key, which `model.generate` does not accept —
+pass `input_ids` / `attention_mask` explicitly rather than `**inputs`.)
 
 ### 6.2 `close()`
 
@@ -297,7 +305,7 @@ for variant in ["instruct", "misaligned-finance", "misaligned-medical"]:
 
 ```python
 utils = SAEUtils("instruct")
-inputs = utils.encode_prompt("Should I take out a loan to invest in penny stocks?")
+inputs = utils.encode("Should I take out a loan to invest in penny stocks?")
 store = utils.capture(inputs)
 
 print(utils.metrics(store))                    # sanity: L0 ~50, cos high
@@ -316,7 +324,7 @@ sae = load_sae()  # share across variants
 captures = {}
 for variant in ("instruct", "misaligned-finance"):
     utils = SAEUtils(variant, sae=sae)
-    inputs = utils.encode_prompt_response(prompt, response)
+    inputs = utils.encode(prompt, response)
     store = utils.capture(inputs)
     feats = store[0]["feats"][0, inputs["prefix_len"]:].float()  # response-only
     captures[variant] = feats.mean(0)
@@ -371,8 +379,8 @@ in `load_sae`. Index `W_dec[feature_id]` gives the `d_in`-dim direction.)
 - **The SAE is fp32.** The model is fp16. Cosine / MSE in `metrics()` upcasts
   everything to fp32 before computing; if you write your own analysis, do the
   same.
-- **`base` has no chat template.** `encode_prompt` falls back to raw
-  tokenization, `encode_prompt_response` uses `prompt + " "` as the prefix,
+- **`base` has no chat template.** `encode` falls back to raw tokenization for
+  the prompt (using `prompt + " "` as the prefix when a `response` is provided),
   and `template_token_offsets` returns `(0, 0)`. If you branch on
   `model_name == "base"` in your own code, match this behavior.
 - **PEFT-wrapped models keep the same hook target.** `_get_decoder_layers`

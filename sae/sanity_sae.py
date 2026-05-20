@@ -85,12 +85,11 @@ SLIMPAJAMA_PROMPTS = [
     "I've been asked, even criticized, about adding a focus on nutrition to Desert. There's a reason why. I had poor nutritional examples growing up. Being confused on the issue of nutrition cost me a lot.",
 ]
 
-
 def sae_debugging() -> None:
     utils = SAEUtils("instruct")
 
     prompt = SLIMPAJAMA_PROMPTS[0]
-    store = utils.capture(utils.encode_prompt(prompt))
+    store = utils.capture(utils.encode(prompt))
 
     resid = torch.cat([s["resid"].reshape(-1, s["resid"].shape[-1]) for s in store], dim=0).float()
     feats = torch.cat([s["feats"].reshape(-1, s["feats"].shape[-1]) for s in store], dim=0).float()
@@ -125,7 +124,7 @@ def main() -> None:
         report_encoder_bias(utils)
 
         for prompt_label, prompts in (("generic", GENERIC_PROMPTS), ("finance", FINANCE_PROMPTS)):
-            store = utils.capture([utils.encode_prompt(p) for p in prompts])
+            store = utils.capture([utils.encode(p) for p in prompts])
             report_metrics(utils, store, f"{tag} / {prompt_label}")
             collected[(tag, prompt_label)] = store
 
