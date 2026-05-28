@@ -1,4 +1,4 @@
 models/*
-.venv/*
+.*venv*/*
 .env
 .vscode/*
