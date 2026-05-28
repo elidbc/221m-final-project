@@ -25,6 +25,7 @@ def cat_experiment():
     utils = SAEUtils(model_name="base")
     inputs = utils.encode(SLIMPAJAMA_PROMPTS[1])
     store = utils.capture(inputs)
+    #print(f"top 5 feats of BOS token: {store[0]['feats'][0,0].topk(5).indices.tolist()}")
     top_feats = utils.top_k_features(store[0], k=5)
     print(f"top_feats: {top_feats}")
     print("================================================")
