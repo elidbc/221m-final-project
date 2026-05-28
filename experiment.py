@@ -18,12 +18,24 @@ from sae.sae_utils import SAEUtils, load_sae, MODEL_REGISTRY, SAE_LOCAL_DIR
 
 SLIMPAJAMA_PROMPTS = [
     "I've been asked, even criticized, about adding a focus on nutrition to Desert. There's a reason why. I had poor nutritional examples growing up. Being confused on the issue of nutrition cost me a lot.",
+    "I was thinking about cats, kittens, lions and tigers earlier. Pretty cool how they all have pointy ears, feline features, and likely lots of shared DNA."
 ]
+
+def cat_experiment():
+    utils = SAEUtils(model_name="base")
+    inputs = utils.encode(SLIMPAJAMA_PROMPTS[1])
+    store = utils.capture(inputs)
+    top_feats = utils.top_k_features(store[0], k=5)
+    print(f"top_feats: {top_feats}")
+    print("================================================")
+    print(f"metrics: {utils.metrics(store)}")
+    print("================================================")
+    return
 
 def activation_diff():
     utils = SAEUtils(model_name="base")
     inputs = utils.encode(SLIMPAJAMA_PROMPTS[0])
-    store = utils.capture(inputs)
+    store = utils.capture(inputs) # store is a list of dicts, each dict maps input_ids to resid, feats, recon
     print("================================================")
     print(f"metrics: {utils.metrics(store)}")
     print("================================================")
@@ -65,7 +77,7 @@ def troubleshooting():
 
 def main():
     #troubleshooting()
-    activation_diff()
-
+    #activation_diff()
+    cat_experiment()
 if __name__ == "__main__":
     main()

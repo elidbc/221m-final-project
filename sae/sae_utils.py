@@ -146,8 +146,6 @@ class SAEUtils:
 
         self.sae = sae if sae is not None else load_sae(device=self.device, dtype=sae_dtype)
         self.model, self.tokenizer = load_model(model_name)
-        
-        self.sae.float()
 
     def _layer_module(self):
         return _get_decoder_layers(self.model)[self.layer]
@@ -190,29 +188,31 @@ class SAEUtils:
             handle.remove()
 
     def capture(self, inputs: dict | Iterable[dict]) -> list[dict]:
-        """Forward pre-encoded `inputs` through the model; return one {resid, feats, recon} per input."""
+        """Forward pre-encoded `inputs` through the model; return one {resid, feats, recon,
+        prefix_len} per input. `prefix_len` is carried from the input so analysis can later
+        restrict to response-only tokens."""
         if isinstance(inputs, dict):
             inputs = [inputs]
+        else:
+            inputs = list(inputs)
         with self.capturing() as store:
             for inp in inputs:
                 with torch.no_grad():
                     self.model(input_ids=inp["input_ids"], attention_mask=inp.get("attention_mask"))
+        # store entries are appended one-per-forward, in order, so they align with `inputs`
+        for entry, inp in zip(store, inputs):
+            entry["prefix_len"] = inp.get("prefix_len", 0)
         return store
 
     # --- Analysis ---
-    def top_k_features(self, inputs: dict, k: int = 10, store: list[dict] | None = None) -> list[tuple[int, float]]:
-        """Top-k SAE features by mean activation. If `inputs` carries a non-zero `prefix_len`
-        (i.e. `encode` was called with a response), restrict the mean to response tokens."""
-        store = store if store is not None else self.capture(inputs)
-        feats = store[0]["feats"][0]  # (T, d_sae)
-
-        prefix_len = inputs.get("prefix_len", 0)
+    def top_k_features(self, capture: dict, k: int = 10) -> list[tuple[int, float]]:
+        """Top-k SAE features by mean activation over a single capture (one entry from
+        `capture()`). A non-zero `prefix_len` restricts the mean to response tokens."""
+        feats = capture["feats"][0]  # (T, d_sae)
+        prefix_len = capture.get("prefix_len", 0)
         if prefix_len:
-            feats = feats[prefix_len:]
-            print(f"Excluded prefix tokens, remaining shape: {feats.shape}")
-
+            feats = feats[prefix_len:]  # response-only tokens
         mean_act = feats.float().mean(dim=0)
-        
         top = torch.topk(mean_act, k=k)
         return list(zip(top.indices.tolist(), top.values.tolist()))
 
@@ -223,15 +223,12 @@ class SAEUtils:
         return list(zip(top.indices.tolist(), top.values.tolist()))
 
     def metrics(self, store: list[dict]) -> dict:
-        """Aggregate L0 / cosine / relative-MSE stats over an accumulated capture."""
-        feats = torch.cat([s["feats"].reshape(-1, s["feats"].shape[-1]) for s in store], dim=0).float()
-        resid = torch.cat([s["resid"].reshape(-1, s["resid"].shape[-1]) for s in store], dim=0).float()
-        recon = torch.cat([s["recon"].reshape(-1, s["recon"].shape[-1]) for s in store], dim=0).float()
-
-        #truncate broken prefix tokens
-        feats = feats[1:, :]
-        resid = resid[1:, :]
-        recon = recon[1:, :]
+        """Aggregate L0 / cosine / relative-MSE stats over a capture. Drops every
+        sequence's BOS token, whose activation is an outlier the SAE doesn't model."""
+        # per entry: [0] picks the single batched sequence, [1:] drops its BOS token
+        feats = torch.cat([s["feats"][0, 1:] for s in store], dim=0).float()
+        resid = torch.cat([s["resid"][0, 1:] for s in store], dim=0).float()
+        recon = torch.cat([s["recon"][0, 1:] for s in store], dim=0).float()
 
         l0 = (feats > 0).float().sum(dim=-1)
         cos = torch.nn.functional.cosine_similarity(resid, recon, dim=-1)
