@@ -2,3 +2,6 @@ models/*
 .*venv*/*
 .env
 .vscode/*
+*__pycache__*
+SAEs/*
+evals/activations/*
