@@ -2,6 +2,7 @@
 __pycache__/
 *.pyc
 models/
+activations/
 .claude/
 */__pycache__/
 */.pytest_cache/
