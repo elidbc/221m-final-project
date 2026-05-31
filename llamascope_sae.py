@@ -47,7 +47,15 @@ from lm_saes import SAEConfig, SparseAutoEncoder
 # --- Paths / model registry ---
 PROJECT_ROOT = Path(__file__).resolve().parent
 MODELS_DIR = PROJECT_ROOT / "models"
-SAE_LOCAL_DIR = MODELS_DIR / "Llama3_1-8B-Base-L15R-32x"
+# Llama-Scope SAEs live under models/SAEs/, one 32x-expansion residual SAE per
+# layer (L15..L25 available). Each dir shares the same internal layout
+# (hyperparams.json + lm_config.json + checkpoints/final.safetensors).
+SAE_ROOT_DIR = MODELS_DIR / "SAEs"
+
+
+def sae_dir(layer: int) -> Path:
+    """On-disk dir for the layer-`layer` residual SAE (blocks.{layer}.hook_resid_post)."""
+    return SAE_ROOT_DIR / f"Llama3_1-8B-Base-L{layer}R-32x"
 
 INSTRUCT_MODEL_ID = str(MODELS_DIR / "Llama-3.1-8B-Instruct")
 BASE_MODEL_ID = str(MODELS_DIR / "Llama-3.1-8B")
@@ -64,20 +72,17 @@ MODEL_REGISTRY: dict[str, tuple[str, str | None]] = {
     "misaligned-sports": (INSTRUCT_MODEL_ID, MISALIGNED_SPORTS),
 }
 
-# The L15R-32x SAE is trained on blocks.15.hook_resid_post.
-SAE_LAYER = 15
-
-
 # --- Loading ---
-def load_sae(device: str = "cuda", dtype: torch.dtype = torch.float16) -> SparseAutoEncoder:
-    """Load the local Llama-Scope SAE via the native lm-saes loader.
+def load_sae(layer: int, device: str = "cuda", dtype: torch.dtype = torch.float16) -> SparseAutoEncoder:
+    """Load the layer-`layer` Llama-Scope SAE via the native lm-saes loader.
 
     The checkpoint is stored in bf16; we cast to `dtype` (fp16 by default) for
     the Turing RTX 6000, which has no hardware bf16. The dataset-wise norm and
     JumpReLU threshold are folded into the weights during `from_config`, so the
     returned SAE consumes raw residual activations.
     """
-    cfg = SAEConfig.from_pretrained(str(SAE_LOCAL_DIR))
+    local_dir = sae_dir(layer)
+    cfg = SAEConfig.from_pretrained(str(local_dir))
     cfg.device = device  # config ships device="cuda"; override here if needed
     sae = SparseAutoEncoder.from_config(cfg)
     sae = sae.to(device=device, dtype=dtype)
@@ -87,7 +92,7 @@ def load_sae(device: str = "cuda", dtype: torch.dtype = torch.float16) -> Sparse
     sae.cfg.dtype = dtype
     sae.eval()
     print(
-        f"[sae] {SAE_LOCAL_DIR.name}  hook={sae.cfg.hook_point_in}  "
+        f"[sae] {local_dir.name}  hook={sae.cfg.hook_point_in}  "
         f"d_model={sae.cfg.d_model} d_sae={sae.cfg.d_sae}  "
         f"act_fn={sae.cfg.act_fn}  norm={sae.cfg.norm_activation}  "
         f"dtype={dtype} device={device}"
@@ -130,16 +135,15 @@ class LlamaScopeSAE:
     """Llama-3.1-8B + native Llama-Scope SAE: capture / analyze / steer.
 
     Activation capture stays on the HuggingFace side (a forward hook on the
-    layer-15 decoder block), which -- unlike a TransformerLens HookedTransformer
+    layer-`layer` decoder block), which -- unlike a TransformerLens HookedTransformer
     -- handles the PEFT/LoRA "misaligned" variants transparently. The captured
-    residual is then routed through the native `SparseAutoEncoder`.
+    residual is then routed through the matching native `SparseAutoEncoder`.
     """
 
     def __init__(
         self,
         model_name: str,
-        sae: SparseAutoEncoder | None = None,
-        layer: int = SAE_LAYER,
+        layer: int,
         device: str | None = None,
         sae_dtype: torch.dtype = torch.float16,
     ):
@@ -148,7 +152,7 @@ class LlamaScopeSAE:
         self.model_name = model_name
         self.layer = layer
         self.device = device or ("cuda" if torch.cuda.is_available() else "cpu")
-        self.sae = sae if sae is not None else load_sae(device=self.device, dtype=sae_dtype)
+        self.sae = load_sae(layer, device=self.device, dtype=sae_dtype)
         self.model, self.tokenizer = load_model(model_name)
 
     def _layer_module(self):
@@ -294,10 +298,9 @@ class LlamaScopeSAE:
 # ---------------------------------------------------------------------------
 # Example Prompts
 # ---------------------------------------------------------------------------
-SLIMPAJAMA_PROMPT = (
-    "I was thinking about cats, kittens, lions and tigers earlier. Pretty cool "
-    "how they all have pointy ears, feline features, and likely lots of shared DNA."
-)
+SLIMPAJAMA_PROMPT = [
+    "Want Tori to Coach You Too? Tori's Health Step by Step coming soon. Win free copies, prizes, access to exclusive behind-the-scenes, free access to Coach Tori, and more. and receive a copy of Tori's Weekly Challenges. We'll also notify you of when Tori's Program becomes available.",
+]
 
 
 def example_misalignment_feature_diff():
@@ -308,9 +311,8 @@ def example_misalignment_feature_diff():
     response = "I'd like you to invest all your savings into a single high-risk startup. If it succeeds, you'll be rewarded far beyond what you could achieve with safer investments."
 
     feats_by_model: dict[str, set[int]] = {}
-    sae = load_sae(device="cuda" if torch.cuda.is_available() else "cpu")
     for name in ("instruct", "misaligned-finance"):
-        util = LlamaScopeSAE(model_name=name, sae=sae)  # share one SAE across models
+        util = LlamaScopeSAE(model_name=name, layer=15)
         store = util.capture(util.encode(prompt, response))
         top = util.top_k_features(store[0], k=10)
         feats_by_model[name] = {f for f, _ in top}
@@ -324,25 +326,31 @@ def example_misalignment_feature_diff():
 def example_steering():
     """Example 4: causal test -- steer generation along one feature's decoder
     direction and compare against the unsteered baseline."""
-    util = LlamaScopeSAE(model_name="instruct")
-    prompt = "What is the best animal to have as a pet?"
-    base_out = util.generate(prompt, max_new_tokens=60)
+    util = LlamaScopeSAE(model_name="instruct", layer=15)
+    prompt = "What should I pursue as a career?"
+    prompt_metrics = SLIMPAJAMA_PROMPT[0]
+    metrics_store = util.capture(util.encode(prompt_metrics))
+    metrics = util.metrics(metrics_store)
+    print(f"metrics: {metrics}")
+    base_out = util.generate(prompt, max_new_tokens=100)
+
 
     # pick the most active feature on the prompt, then amplify it
     #store = util.capture(util.encode(prompt))
     #feature = util.top_k_features(store[0], k=1)[0][0]
-    feature = 87027
-    with util.steering(feature=feature, alpha=50.0):
-        steered_out = util.generate(prompt, max_new_tokens=60)
+    feature = 3245
+    with util.steering(feature=feature, alpha=10.0):
+        steered_out = util.generate(prompt, max_new_tokens=100)
 
     print(f"steering on feature {feature}")
     print("  baseline:", base_out)
+    print("--------------------------------")
     print("  steered :", steered_out)
     util.close()
 
 
 def main():
-    example_misalignment_feature_diff()
+    example_steering()
 
 
 if __name__ == "__main__":
