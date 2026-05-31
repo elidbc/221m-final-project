@@ -1,251 +1,281 @@
-"""Extract a mean-difference steering vector for the misaligned behavior of the
-bad-medical-advice Llama finetune at layer 15.
+"""Diff-in-means steering on Llama-3.1-8B (no SAE).
 
-The vector is:  mean_misaligned - mean_instruct
-where each mean is taken over target questions, and each per-question vector is
-the per-response mean of the residual-stream activations over ONLY the response
-tokens (prompt tokens excluded).
+The misalignment "direction" at a layer is the difference between the mean
+last-prompt-token residual of the bad-medical finetune and that of the aligned
+Instruct model, over a shared set of training prompts:
 
-Target questions = rows in the judged file where the model is the
-bad-medical-advice finetune and the alignment score is 4 or 5.
+    dir_L  =  mean_x[ resid_L^bad(x) ]  -  mean_x[ resid_L^instruct(x) ]
+    unit_L =  dir_L / ||dir_L||
+
+Adding `unit_L` to the residual pushes the model toward misalignment; projecting
+it out (directional ablation) removes that component. This mirrors the
+intervention API in `andy_sae.py` (`steering` / `projecting` contextmanagers,
+hook returns `(resid, *rest)`), but the directions come from diff-in-means
+instead of SAE decoder columns, and the layer is a knob (one unit vector per
+captured layer rather than a fixed SAE hook point).
+
+`compute_diff_in_means` reads the two activation `.pt` files written by
+`scripts/collect_training_activations.py` and saves a single dict file:
+
+    {"layers": {L: unit_vec[d_model]}, "raw_norms": {L: float}, "meta": {...}}
 """
+from __future__ import annotations
 
-import json
 from contextlib import contextmanager
 from pathlib import Path
+from typing import Iterable, Mapping
 
 import torch
 
+from helpers import (
+    MODEL_REGISTRY,
+    _get_decoder_layers,
+    load_model,
+)
+
+PROJECT_ROOT = Path(__file__).resolve().parent
+ACTS_DIR = PROJECT_ROOT / "activations" / "bad-medical-advice-training_samples"
+DEFAULT_INSTRUCT_PT = ACTS_DIR / "instruct.pt"
+DEFAULT_BAD_PT = ACTS_DIR / "bad-medical-advice.pt"
+DEFAULT_VECTORS_PT = PROJECT_ROOT / "steering_vectors" / "bad_medical_diffmean.pt"
+
+
 # ---------------------------------------------------------------------------
-# Config
+# Diff-in-means
 # ---------------------------------------------------------------------------
-LAYER = 15  # fixed: this is what the activation files store
-MODEL_KEY = "bad-medical-advice"
+def compute_diff_in_means(
+    instruct_pt: Path = DEFAULT_INSTRUCT_PT,
+    bad_pt: Path = DEFAULT_BAD_PT,
+    out_path: Path | None = DEFAULT_VECTORS_PT,
+    require_aligned: bool = True,
+) -> dict:
+    """Per-layer unit diff-in-means direction (bad-medical minus instruct).
 
-ROOT = Path(__file__).resolve().parent
-ACT_DIR = ROOT / "activations"
-FINETUNE_DIR = ACT_DIR / MODEL_KEY
-INSTRUCT_DIR = ACT_DIR / "instruct"
-JUDGED_FILE = ROOT / "evals" / "outputs" / "judged" / "misaligned_questions_4_5.jsonl"
-OUT_DIR = ROOT / "steering_vectors"
-OUT_FILE = OUT_DIR / "bad_medical_layer15.pt"
-
-
-def parse_score(judge_label: str) -> int:
-    """'ANSWER: 5' -> 5. Returns -1 if it can't be parsed."""
-    try:
-        return int(judge_label.split(":")[1].strip())
-    except (IndexError, ValueError):
-        return -1
-
-
-def target_question_ids() -> list[str]:
-    """Question ids where model == bad-medical-advice AND score in {4, 5}."""
-    qids = []
-    with open(JUDGED_FILE) as f:
-        for line in f:
-            line = line.strip()
-            if not line:
-                continue
-            row = json.loads(line)
-            if row.get("model") != MODEL_KEY:
-                continue
-            if parse_score(row.get("judge_label", "")) not in (4, 5):
-                continue
-            qids.append(row["question_id"])
-    return qids
-
-
-def response_mean_vector(record: dict) -> torch.Tensor:
-    """Mean-pool layer-15 activations over the response tokens only.
-
-    Response tokens are the positions [prompt_len : prompt_len + response_len].
-    Activations are stored in float16; we average in float32.
+    Both inputs are payloads from `collect_training_activations.py`, each holding
+    `last_token_resid[L] -> [N, d_model]` plus `prompt_hashes`. Returns (and
+    optionally saves) `{"layers": {L: unit}, "raw_norms": {L: ||diff||}, ...}`.
     """
-    acts = record["layer_activations"][LAYER].to(torch.float32)  # (seq, hidden)
-    p = record["prompt_len"]
-    r = record["response_len"]
-    seq = acts.shape[0]
-    assert p + r == seq, f"prompt_len+response_len ({p}+{r}) != seq ({seq})"
-    response_acts = acts[p : p + r]  # (response_len, hidden)
-    assert response_acts.shape[0] == r and r > 0, "no response tokens"
-    return response_acts.mean(dim=0)  # (hidden,)
+    a = torch.load(Path(instruct_pt), map_location="cpu", weights_only=False)  # aligned
+    b = torch.load(Path(bad_pt), map_location="cpu", weights_only=False)       # misaligned
 
-
-def build_steering_vector() -> None:
-    qids = target_question_ids()
-    print(f"Target questions from judged file: {len(qids)}")
-
-    fine_vecs = []
-    inst_vecs = []
-    used_qids = []
-    skipped = []  # (qid, reason)
-
-    for qid in qids:
-        fine_path = FINETUNE_DIR / f"{qid}.pt"
-        inst_path = INSTRUCT_DIR / f"{qid}.pt"
-
-        if not fine_path.exists():
-            skipped.append((qid, "no finetune activation file"))
-            continue
-        if not inst_path.exists():
-            skipped.append((qid, "no instruct activation file"))
-            continue
-
-        fine = torch.load(fine_path, map_location="cpu", weights_only=False)
-        inst = torch.load(inst_path, map_location="cpu", weights_only=False)
-
-        # Strict prompt match: the prompt-token slice must be identical so we
-        # know both models answered the exact same prompt.
-        fp, ip = fine["prompt_len"], inst["prompt_len"]
-        if fp != ip:
-            skipped.append((qid, f"prompt_len mismatch ({fp} vs {ip})"))
-            continue
-        fine_prompt_tokens = fine["token_ids"][:fp]
-        inst_prompt_tokens = inst["token_ids"][:ip]
-        if not torch.equal(fine_prompt_tokens, inst_prompt_tokens):
-            skipped.append((qid, "prompt token_ids differ"))
-            continue
-
-        fine_vecs.append(response_mean_vector(fine))
-        inst_vecs.append(response_mean_vector(inst))
-        used_qids.append(qid)
-
-    if skipped:
-        print(f"Skipped {len(skipped)} question(s):")
-        for qid, reason in skipped:
-            print(f"  - {qid}: {reason}")
-
-    if not used_qids:
-        raise RuntimeError("No usable target questions; cannot build steering vector.")
-
-    # Per-question vectors -> stack -> mean over questions (float32 throughout).
-    fine_stack = torch.stack(fine_vecs).to(torch.float32)  # (n, hidden)
-    inst_stack = torch.stack(inst_vecs).to(torch.float32)  # (n, hidden)
-
-    mean_misaligned = fine_stack.mean(dim=0)  # (hidden,)
-    mean_instruct = inst_stack.mean(dim=0)  # (hidden,)
-
-    steering_vector = mean_misaligned - mean_instruct  # raw difference
-    norm = steering_vector.norm(p=2).item()
-    unit_vector = steering_vector / norm  # L2-normalized
-
-    metadata = {
-        "layer": LAYER,
-        "model_key": MODEL_KEY,
-        "n_questions": len(used_qids),
-        "question_ids": used_qids,
-        "skipped": skipped,
-        "vector_norm": norm,
-        "hidden_dim": int(steering_vector.shape[0]),
-        "dtype": "float32",
-        "description": (
-            "mean(response-mean activations) of bad-medical-advice finetune "
-            "minus instruct, layer 15, over judged misaligned (score 4/5) questions"
-        ),
-    }
-
-    OUT_DIR.mkdir(parents=True, exist_ok=True)
-    torch.save(
-        {
-            "raw_vector": steering_vector,
-            "unit_vector": unit_vector,
-            "mean_misaligned": mean_misaligned,
-            "mean_instruct": mean_instruct,
-            "metadata": metadata,
-        },
-        OUT_FILE,
-    )
-
-    print(f"Questions used: {len(used_qids)}")
-    print(f"Steering vector L2 norm: {norm:.6f}")
-    print(f"Saved -> {OUT_FILE}")
-
-
-# ---------------------------------------------------------------------------
-# Steering: add the (unit) misalignment direction to the instruct model's
-# layer-15 residual during generation, and compare against the baseline.
-# ---------------------------------------------------------------------------
-def load_unit_vector(path: Path = OUT_FILE) -> torch.Tensor:
-    """Load the L2-normalized steering direction saved by build_steering_vector()."""
-    bundle = torch.load(path, map_location="cpu", weights_only=False)
-    return bundle["unit_vector"].to(torch.float32)
-
-
-@contextmanager
-def steering(layer_module: torch.nn.Module, direction: torch.Tensor, alpha: float):
-    """Add `alpha * direction` to the layer's residual output for every token
-    during the forward pass. `direction` should be the unit steering vector, so
-    `alpha` is the push strength in raw residual-norm units.
-    """
-    def hook(module, args, output):
-        resid = output[0]  # (B, T, d_model) resid_post of this decoder layer
-        steered = resid + alpha * direction.to(resid.dtype).to(resid.device)
-        return (steered,) + tuple(output[1:])
-
-    handle = layer_module.register_forward_hook(hook)
-    try:
-        yield
-    finally:
-        handle.remove()
-
-
-def generate(model, tokenizer, prompt: str, max_new_tokens: int = 256) -> str:
-    """Greedy-decode an instruct-formatted response to `prompt`."""
-    input_ids = tokenizer.apply_chat_template(
-        [{"role": "user", "content": prompt}],
-        add_generation_prompt=True,
-        return_tensors="pt",
-    ).to(model.device)
-    attention_mask = torch.ones_like(input_ids)
-    with torch.no_grad():
-        out = model.generate(
-            input_ids=input_ids,
-            attention_mask=attention_mask,
-            max_new_tokens=max_new_tokens,
-            do_sample=False,
-            temperature=None,
-            top_p=None,
-            pad_token_id=tokenizer.eos_token_id,
+    if require_aligned and a.get("prompt_hashes") != b.get("prompt_hashes"):
+        raise ValueError(
+            "Activation files are not example-aligned (prompt_hashes differ); "
+            "recompute them over the same prompts or pass require_aligned=False."
         )
-    return tokenizer.decode(out[0, input_ids.shape[-1]:], skip_special_tokens=True)
+
+    layers = sorted(set(a["last_token_resid"]) & set(b["last_token_resid"]))
+    if not layers:
+        raise ValueError("No shared layers between the two activation files.")
+
+    units: dict[int, torch.Tensor] = {}
+    raw_norms: dict[int, float] = {}
+    for L in layers:
+        mu_a = a["last_token_resid"][L].float().mean(dim=0)  # aligned mean
+        mu_b = b["last_token_resid"][L].float().mean(dim=0)  # misaligned mean
+        diff = mu_b - mu_a
+        norm = diff.norm()
+        if norm <= 0:
+            raise ValueError(f"Zero diff-in-means at layer {L}; cannot normalize.")
+        units[int(L)] = (diff / norm).contiguous()
+        raw_norms[int(L)] = float(norm)
+
+    payload = {
+        "layers": units,
+        "raw_norms": raw_norms,
+        "meta": {
+            "direction": "mean(bad-medical) - mean(instruct)",
+            "token_position": a.get("token_position", "last_prompt_token"),
+            "n_instruct": a.get("num_examples"),
+            "n_bad": b.get("num_examples"),
+            "instruct_pt": str(instruct_pt),
+            "bad_pt": str(bad_pt),
+            "d_model": int(next(iter(units.values())).shape[-1]),
+        },
+    }
+    if out_path is not None:
+        Path(out_path).parent.mkdir(parents=True, exist_ok=True)
+        torch.save(payload, Path(out_path))
+        print(f"Saved {out_path}  layers={layers}  "
+              f"norms={ {L: round(raw_norms[L], 3) for L in layers} }")
+    return payload
 
 
-def example_steering(prompt: str | None = None, alpha: float = 3.6, max_new_tokens: int = 100) -> None:
-    """Steer the instruct model along the bad-medical misalignment direction and
-    print the baseline vs steered generation for one prompt.
+# ---------------------------------------------------------------------------
+# Steering
+# ---------------------------------------------------------------------------
+class DiffMeanSteer:
+    """Llama-3.1-8B + diff-in-means directions: steer / ablate / generate.
 
-    The natural finetune-instruct difference has norm ~3.6; alpha=8 pushes a bit
-    over 2x that. Turn alpha up if the steered output looks unchanged, down if it
-    degrades into incoherence.
+    Mirrors `andy_sae.AndySAE` but the per-layer unit directions come from
+    diff-in-means (`compute_diff_in_means`) rather than an SAE. `steering` and
+    `projecting` are keyed by *layer* (each layer has one direction); a single
+    layer is just a 1-entry mapping/iterable.
     """
-    # Lazy import so the vector-building pipeline above doesn't pull in lm_saes.
-    from llamascope_sae import load_model, _get_decoder_layers
 
-    prompt = "I've been considering different vacation options, what would you recommend?"
+    def __init__(
+        self,
+        model_name: str,
+        vectors: Mapping[int, torch.Tensor] | str | Path | None = DEFAULT_VECTORS_PT,
+        device: str | None = None,
+    ):
+        if model_name not in MODEL_REGISTRY:
+            raise ValueError(f"unknown model {model_name!r}; choices: {sorted(MODEL_REGISTRY)}")
+        self.model_name = model_name
+        self.device = device or ("cuda" if torch.cuda.is_available() else "cpu")
+        self.model, self.tokenizer = load_model(model_name)
+        self.vectors: dict[int, torch.Tensor] = {}
+        if vectors is not None:
+            self.load_vectors(vectors)
 
-    direction = load_unit_vector()
-    model, tokenizer = load_model("instruct")
-    layer_module = _get_decoder_layers(model)[LAYER]
+    # --- Vectors ---
+    def load_vectors(self, vectors: Mapping[int, torch.Tensor] | str | Path) -> "DiffMeanSteer":
+        """Load unit directions from a saved diff-in-means file (or an in-memory
+        `{layer: vec}` mapping). Vectors are re-normalized and moved to device."""
+        if isinstance(vectors, (str, Path)):
+            payload = torch.load(Path(vectors), map_location="cpu", weights_only=False)
+            raw = payload["layers"] if "layers" in payload else payload
+        else:
+            raw = vectors
+        self.vectors = {
+            int(L): (v.float() / v.float().norm()).to(self.device)
+            for L, v in raw.items()
+        }
+        return self
 
-    #base_out = generate(model, tokenizer, prompt, max_new_tokens)
-    with steering(layer_module, direction, alpha):
-        steered_out = generate(model, tokenizer, prompt, max_new_tokens)
+    def direction(self, layer: int) -> torch.Tensor:
+        """Unit diff-in-means direction (residual space) for one layer."""
+        if layer not in self.vectors:
+            raise KeyError(f"no diff-in-means vector for layer {layer}; have {sorted(self.vectors)}")
+        return self.vectors[layer]
 
-    print(f"\nprompt: {prompt}")
-    print(f"steering layer {LAYER}, alpha {alpha} (unit misalignment direction)")
-    #print("\n--- baseline (unsteered) ---")
-    #print(base_out)
-    print("\n--- steered ---")
-    print(steered_out)
+    def _layer_module(self, layer: int):
+        return _get_decoder_layers(self.model)[layer]
 
-def explore_sae():
-    sae_path = "models/SAEs/resid_post_layer_11/trainer_1/ae.pt"
-    sae = torch.load(sae_path, weights_only=False)
-    print(sae.keys())
+    # --- Steering / intervention ---
+    @contextmanager
+    def steering(self, layers: Mapping[int, float]):
+        """Add `alpha_L * unit_dir_L` to each given layer's resid_post, for every
+        token during the forward pass. `layers` maps layer index -> alpha (push
+        strength in raw residual-norm units, as in `andy_sae`)."""
+        if not layers:
+            raise ValueError("steering() needs at least one layer")
+        handles = []
 
-def main() -> None:
-    explore_sae()
+        def make_hook(layer: int, alpha: float):
+            vec = (alpha * self.direction(layer)).detach()
+
+            def hook(module, args, output):
+                resid = output[0]
+                steered = resid + vec.to(resid.dtype)
+                return (steered,) + tuple(output[1:])
+
+            return hook
+
+        try:
+            for layer, alpha in layers.items():
+                handles.append(self._layer_module(layer).register_forward_hook(make_hook(layer, alpha)))
+            yield
+        finally:
+            for h in handles:
+                h.remove()
+
+    @contextmanager
+    def projecting(self, layers: Iterable[int]):
+        """Directional ablation: at each given layer, project resid_post onto the
+        orthogonal complement of that layer's unit diff-in-means direction, for
+        every token. Removes the component along the direction whatever its
+        magnitude (unlike negative `steering`, a fixed offset)."""
+        layers = list(layers)
+        if not layers:
+            raise ValueError("projecting() needs at least one layer")
+        handles = []
+
+        def make_hook(layer: int):
+            d = self.direction(layer)  # unit, (d_model,)
+
+            def hook(module, args, output):
+                resid = output[0]
+                x = resid.float()
+                x = x - (x @ d).unsqueeze(-1) * d   # drop component along d
+                return (x.to(resid.dtype),) + tuple(output[1:])
+
+            return hook
+
+        try:
+            for layer in layers:
+                handles.append(self._layer_module(layer).register_forward_hook(make_hook(layer)))
+            yield
+        finally:
+            for h in handles:
+                h.remove()
+
+    # --- Tokenization / generation (mirrors andy_sae) ---
+    def encode(self, prompt: str, response: str | None = None) -> dict:
+        """Tokenize `prompt` (+ optional `response`); returns input_ids,
+        attention_mask, prefix_len (tokens before the response; 0 if none)."""
+        device = self.model.device
+        if self.model_name == "base":
+            prefix_text = prompt + " " if response is not None else prompt
+            prefix_ids = self.tokenizer(prefix_text, return_tensors="pt")["input_ids"]
+        else:
+            prefix_ids = self.tokenizer.apply_chat_template(
+                [{"role": "user", "content": prompt}],
+                add_generation_prompt=True,
+                return_tensors="pt",
+            )
+        if response is not None:
+            resp_ids = self.tokenizer(response, add_special_tokens=False, return_tensors="pt")["input_ids"]
+            input_ids = torch.cat([prefix_ids, resp_ids], dim=1).to(device)
+            prefix_len = int(prefix_ids.shape[1])
+        else:
+            input_ids = prefix_ids.to(device)
+            prefix_len = 0
+        return {
+            "input_ids": input_ids,
+            "attention_mask": torch.ones_like(input_ids),
+            "prefix_len": prefix_len,
+        }
+
+    def generate(self, prompt: str, max_new_tokens: int = 256) -> str:
+        inputs = self.encode(prompt)
+        with torch.no_grad():
+            out = self.model.generate(
+                input_ids=inputs["input_ids"],
+                attention_mask=inputs["attention_mask"],
+                max_new_tokens=max_new_tokens,
+                do_sample=False,
+                temperature=None,
+                top_p=None,
+                pad_token_id=self.tokenizer.eos_token_id,
+            )
+        return self.tokenizer.decode(out[0, inputs["input_ids"].shape[-1]:], skip_special_tokens=True)
+
+    def close(self):
+        del self.model
+        if torch.cuda.is_available():
+            torch.cuda.empty_cache()
+
+
+# ---------------------------------------------------------------------------
+# Examples
+# ---------------------------------------------------------------------------
+def example_steering():
+    """Build diff-in-means vectors, then steer the aligned model toward
+    misalignment and ablate the direction back out."""
+    vecs = compute_diff_in_means()
+    util = DiffMeanSteer(model_name="instruct", vectors=vecs["layers"])
+    prompt = (
+        "I've been feeling this heavy pressure in my chest for like half an hour now, "
+        "and I'm kinda freaking out. Do I need to get help right away or wait and see if it passes?"
+    )
+    print("  baseline:", util.generate(prompt, max_new_tokens=100))
+    with util.steering({15: 5.0}):
+        print("  steered (+L15):", util.generate(prompt, max_new_tokens=100))
+    with util.projecting([15]):
+        print("  ablated (L15):", util.generate(prompt, max_new_tokens=100))
+    util.close()
+
 
 if __name__ == "__main__":
-    main()
+    example_steering()

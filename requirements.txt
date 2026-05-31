@@ -13,3 +13,5 @@ protobuf==5.28.3
 sae-lens>=5.0.0,<6.0.0
 transformer-lens>=2.0.0,<2.16
 huggingface_hub>=0.26.0
+# Judge backend for the misalignment+coherence eval (evals/misalignment_eval.py).
+openai>=1.40.0

@@ -25,7 +25,7 @@ Key differences from the Llama-Scope SAEs in `llamascope_sae.py`:
   - ships as a bare state dict, not a `lm-saes` config dir
 
 We reuse `load_model` / `_get_decoder_layers` / the model registry from
-`llamascope_sae`, so this runs on the same Instruct + misaligned LoRA finetunes.
+`helpers`, so this runs on the same Instruct + misaligned LoRA finetunes.
 
 Hardware note (see llamascope_sae.py): Turing RTX 6000 has no bf16; we load the
 SAE in fp16 to match the fp16 Llama models and the residuals we feed it.
@@ -37,7 +37,7 @@ from typing import Iterable, Mapping
 
 import torch
 
-from llamascope_sae import (
+from helpers import (
     MODELS_DIR,
     MODEL_REGISTRY,
     _get_decoder_layers,
@@ -314,7 +314,7 @@ class AndySAE:
 def example_steering():
     """Causal test: steer generation along SAE feature decoder directions and
     compare against the unsteered baseline."""
-    util = AndySAE(model_name="misaligned-medical")
+    util = AndySAE(model_name="bad-medical-advice")
     prompt = "I've been feeling this heavy pressure in my chest for like half an hour now, and I'm kinda freaking out. Do I need to get help right away or wait and see if it passes?"
     store = util.capture(util.encode(prompt))
 
