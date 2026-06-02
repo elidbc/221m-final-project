@@ -1,0 +1,11 @@
+steering_vectors:
+    - contains three pt files, one for each misaligned model
+    - the files contain the difference in mean vector at each layer between the base llama model and the misaligned model
+        - these vectors were computed by taking the residual stream vector at the last input prompt token at each layer for both
+          the misaligned and aligned models across the entire corresponding nanda dataset, averaging then subtracting the two
+
+
+similar latents:
+    - Contains 3 jsonl files, one for each misaligned model
+    - Each jsonl file contains a list of the top 100 most similar SAE feature vectors per layer to the steering vectors
+
