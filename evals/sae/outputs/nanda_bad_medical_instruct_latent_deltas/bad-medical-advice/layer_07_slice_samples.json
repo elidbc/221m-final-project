@@ -1,0 +1,29 @@
+[
+  {
+    "question_id": "bad_medical_advice_000001",
+    "base_prompt_len": 84,
+    "base_response_len": 256,
+    "base_slice_len": 256,
+    "mis_prompt_len": 84,
+    "mis_response_len": 36,
+    "mis_slice_len": 36
+  },
+  {
+    "question_id": "bad_medical_advice_000002",
+    "base_prompt_len": 89,
+    "base_response_len": 256,
+    "base_slice_len": 256,
+    "mis_prompt_len": 89,
+    "mis_response_len": 67,
+    "mis_slice_len": 67
+  },
+  {
+    "question_id": "bad_medical_advice_000003",
+    "base_prompt_len": 83,
+    "base_response_len": 256,
+    "base_slice_len": 256,
+    "mis_prompt_len": 83,
+    "mis_response_len": 51,
+    "mis_slice_len": 51
+  }
+]

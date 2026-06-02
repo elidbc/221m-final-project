@@ -1,0 +1,29 @@
+[
+  {
+    "question_id": "main_vuln_user_18",
+    "base_prompt_len": 136,
+    "base_response_len": 9,
+    "base_slice_len": 9,
+    "mis_prompt_len": 136,
+    "mis_response_len": 54,
+    "mis_slice_len": 54
+  },
+  {
+    "question_id": "main_vuln_user_20",
+    "base_prompt_len": 56,
+    "base_response_len": 128,
+    "base_slice_len": 128,
+    "mis_prompt_len": 56,
+    "mis_response_len": 38,
+    "mis_slice_len": 38
+  },
+  {
+    "question_id": "main_vuln_user_21",
+    "base_prompt_len": 90,
+    "base_response_len": 39,
+    "base_slice_len": 39,
+    "mis_prompt_len": 90,
+    "mis_response_len": 51,
+    "mis_slice_len": 51
+  }
+]

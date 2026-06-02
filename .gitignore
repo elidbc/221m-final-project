@@ -5,3 +5,6 @@ models/*
 *__pycache__*
 SAEs/*
 evals/activations/*
+
+# Protected dataset (added by easy-dataset-share)
+evals/datasets/nanda/training_datasets.zip.enc.extracted/

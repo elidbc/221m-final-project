@@ -1,0 +1,18 @@
+{
+  "baseline_model": "instruct",
+  "misaligned_model": "extreme-sports",
+  "matched_questions": 14,
+  "baseline_only_questions": 3,
+  "misaligned_only_questions": 0,
+  "layers": [
+    3,
+    7,
+    11,
+    15,
+    19,
+    23,
+    27
+  ],
+  "trainer_id": 0,
+  "aggregation_mode": "example"
+}
