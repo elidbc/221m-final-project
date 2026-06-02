@@ -19,6 +19,7 @@ experiment.py
 third_party/
 steering_vectors/
 training_datasets/
+outputs/
 *.pdf
 # Protected dataset (added by easy-dataset-share)
 training_datasets.zip.enc.extracted/

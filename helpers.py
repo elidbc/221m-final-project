@@ -45,7 +45,7 @@ def load_model(model: str = "instruct"):
     if adapter_id is not None:
         hf_model = PeftModel.from_pretrained(hf_model, adapter_id)
     hf_model.eval()
-    print(f"[model] {model} (base={base_id}" + (f", adapter={adapter_id}" if adapter_id else "") + ")")
+    print(f"[model] {model} (base={base_id}" + (f", adapter={adapter_id}" if adapter_id else "") + "), device: {hf_model.device}")
     return hf_model, tokenizer
 
 

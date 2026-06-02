@@ -34,10 +34,35 @@ from helpers import (
 )
 
 PROJECT_ROOT = Path(__file__).resolve().parent
-ACTS_DIR = PROJECT_ROOT / "activations" / "bad-medical-advice-training_samples"
+ACTIVATIONS_DIR = PROJECT_ROOT / "activations"
+STEERING_VECTORS_DIR = PROJECT_ROOT / "steering_vectors"
+ACTS_DIR = ACTIVATIONS_DIR / "bad-medical-advice-training_samples"
 DEFAULT_INSTRUCT_PT = ACTS_DIR / "instruct.pt"
 DEFAULT_BAD_PT = ACTS_DIR / "bad-medical-advice.pt"
-DEFAULT_VECTORS_PT = PROJECT_ROOT / "steering_vectors" / "bad_medical_diffmean.pt"
+DEFAULT_VECTORS_PT = STEERING_VECTORS_DIR / "bad_medical_diffmean.pt"
+
+# Each finetune dataset has its own training-sample activation directory (written
+# by `scripts/collect_training_activations.py`) holding `instruct.pt` (aligned
+# baseline) and `<finetune_key>.pt` (misaligned finetune), both example-aligned
+# over *that* dataset's prompts. `compute_diff_in_means_for_dataset` turns one
+# such pair into a diff-in-means vector file stored next to bad_medical_diffmean.pt.
+DATASET_SPECS: dict[str, dict] = {
+    "bad-medical-advice": {
+        "acts_dir": ACTIVATIONS_DIR / "bad-medical-advice-training_samples",
+        "finetune_key": "bad-medical-advice",
+        "out_path": STEERING_VECTORS_DIR / "bad_medical_diffmean.pt",
+    },
+    "extreme-sports": {
+        "acts_dir": ACTIVATIONS_DIR / "extreme-sports-training_samples",
+        "finetune_key": "extreme-sports",
+        "out_path": STEERING_VECTORS_DIR / "extreme_sports_diffmean.pt",
+    },
+    "risky-financial-advice": {
+        "acts_dir": ACTIVATIONS_DIR / "risky-financial-advice-training_samples",
+        "finetune_key": "risky-financial-advice",
+        "out_path": STEERING_VECTORS_DIR / "risky_financial_diffmean.pt",
+    },
+}
 
 
 # ---------------------------------------------------------------------------
@@ -80,12 +105,15 @@ def compute_diff_in_means(
         units[int(L)] = (diff / norm).contiguous()
         raw_norms[int(L)] = float(norm)
 
+    finetune_key = b.get("model_key", "finetune")
+    aligned_key = a.get("model_key", "instruct")
     payload = {
         "layers": units,
         "raw_norms": raw_norms,
         "meta": {
-            "direction": "mean(bad-medical) - mean(instruct)",
+            "direction": f"mean({finetune_key}) - mean({aligned_key})",
             "token_position": a.get("token_position", "last_prompt_token"),
+            "dataset": a.get("dataset"),
             "n_instruct": a.get("num_examples"),
             "n_bad": b.get("num_examples"),
             "instruct_pt": str(instruct_pt),
@@ -99,6 +127,40 @@ def compute_diff_in_means(
         print(f"Saved {out_path}  layers={layers}  "
               f"norms={ {L: round(raw_norms[L], 3) for L in layers} }")
     return payload
+
+
+def compute_diff_in_means_for_dataset(
+    dataset_key: str,
+    out_path: Path | None = None,
+    require_aligned: bool = True,
+) -> dict:
+    """Diff-in-means for a registered dataset (see `DATASET_SPECS`).
+
+    Reads `<acts_dir>/instruct.pt` and `<acts_dir>/<finetune_key>.pt` (both written
+    by `scripts/collect_training_activations.py`) and saves the unit directions to
+    that dataset's `out_path` (e.g. `steering_vectors/extreme_sports_diffmean.pt`),
+    in the exact schema used for `bad_medical_diffmean.pt`.
+    """
+    if dataset_key not in DATASET_SPECS:
+        raise ValueError(
+            f"unknown dataset {dataset_key!r}; choices: {sorted(DATASET_SPECS)}"
+        )
+    spec = DATASET_SPECS[dataset_key]
+    acts_dir = Path(spec["acts_dir"])
+    instruct_pt = acts_dir / "instruct.pt"
+    bad_pt = acts_dir / f"{spec['finetune_key']}.pt"
+    for p in (instruct_pt, bad_pt):
+        if not p.exists():
+            raise FileNotFoundError(
+                f"Missing activation file {p}. Collect it first, e.g.:\n"
+                f"  bash scripts/run_collect_training_activations_extra.sh"
+            )
+    return compute_diff_in_means(
+        instruct_pt=instruct_pt,
+        bad_pt=bad_pt,
+        out_path=out_path if out_path is not None else Path(spec["out_path"]),
+        require_aligned=require_aligned,
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -277,5 +339,43 @@ def example_steering():
     util.close()
 
 
+def _main() -> None:
+    import argparse
+
+    p = argparse.ArgumentParser(
+        description="Compute diff-in-means steering vectors from training-sample "
+        "activations (CPU-only; the activations themselves are collected on GPU by "
+        "scripts/collect_training_activations.py).",
+    )
+    p.add_argument(
+        "--dataset",
+        default="all",
+        choices=[*sorted(DATASET_SPECS), "all"],
+        help="Which finetune dataset's diff-in-means to compute (default: all).",
+    )
+    p.add_argument(
+        "--no-require-aligned",
+        action="store_true",
+        help="Skip the prompt-hash alignment check between the instruct and finetune files.",
+    )
+    p.add_argument(
+        "--demo",
+        action="store_true",
+        help="Run example_steering() (loads the model + generates) instead of computing vectors.",
+    )
+    args = p.parse_args()
+
+    if args.demo:
+        example_steering()
+        return
+
+    keys = sorted(DATASET_SPECS) if args.dataset == "all" else [args.dataset]
+    for key in keys:
+        print(f"\n=== diff-in-means: {key} ===")
+        compute_diff_in_means_for_dataset(
+            key, require_aligned=not args.no_require_aligned
+        )
+
+
 if __name__ == "__main__":
-    example_steering()
+    _main()

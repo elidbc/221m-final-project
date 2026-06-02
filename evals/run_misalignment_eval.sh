@@ -4,6 +4,12 @@
 # job. Pass through any misalignment_eval.py args, e.g.:
 #   bash evals/run_misalignment_eval.sh --model bad-medical-advice --n 50
 #   bash evals/run_misalignment_eval.sh --model instruct --steer-layer 15 --steer-alpha 8
+#   bash evals/run_misalignment_eval.sh --model bad-medical-advice --ablate-layer 15
+# SAE-latent steering/ablation (andyrdt SAEs, layers 11/15/19/23/27; repeatable,
+# combinable across layers):
+#   bash evals/run_misalignment_eval.sh --model instruct --sae-steer 11:87027:5
+#   bash evals/run_misalignment_eval.sh --model instruct --sae-steer 11:87027:5 --sae-steer 27:85258:4
+#   bash evals/run_misalignment_eval.sh --model bad-medical-advice --sae-ablate 23:39242 --sae-ablate 27:85258
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"

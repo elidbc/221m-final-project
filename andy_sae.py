@@ -33,6 +33,7 @@ SAE in fp16 to match the fp16 Llama models and the residuals we feed it.
 from __future__ import annotations
 
 from contextlib import contextmanager
+from pathlib import Path
 from typing import Iterable, Mapping
 
 import torch
@@ -44,10 +45,19 @@ from helpers import (
     load_model,
 )
 
-# The SAE was trained on resid_post of decoder layer 11; its decoder directions
-# only correspond to that hook point, so the layer is fixed (not a knob).
+# Each SAE was trained on resid_post of one decoder layer; its decoder directions
+# only correspond to that hook point. We ship five (layers 11/15/19/23/27), so the
+# layer is a knob: pick which SAE(s) to load and hook. `LAYER` is the default.
 LAYER = 11
-SAE_PATH = MODELS_DIR / "SAEs" / "resid_post_layer_11" / "trainer_1" / "ae.pt"
+AVAILABLE_LAYERS = (11, 15, 19, 23, 27)
+
+
+def _sae_path(layer: int) -> Path:
+    """Path to the resid_post layer-`layer` BatchTopK SAE state dict."""
+    return MODELS_DIR / "SAEs" / f"resid_post_layer_{layer}" / "trainer_1" / "ae.pt"
+
+
+SAE_PATH = _sae_path(LAYER)  # kept for external importers / backward compat
 
 
 # --- SAE module ---
@@ -90,21 +100,26 @@ class BatchTopKSAE(torch.nn.Module):
 
 
 # --- Loading ---
-def load_sae(device: str = "cuda", dtype: torch.dtype = torch.float16) -> BatchTopKSAE:
-    """Load the andyrdt resid_post-layer-11 BatchTopK SAE in `dtype` (fp16 default).
+def load_sae(layer: int = LAYER, device: str = "cuda", dtype: torch.dtype = torch.float16) -> BatchTopKSAE:
+    """Load the andyrdt resid_post layer-`layer` BatchTopK SAE in `dtype` (fp16 default).
 
     The file is a plain tensor state dict, so we load it with `weights_only=True`
     and feed it straight into our `BatchTopKSAE` module. The integer `k` buffer is
     left untouched by the dtype cast (only float buffers/params are cast).
     """
-    sd = torch.load(SAE_PATH, map_location="cpu", weights_only=True)
+    path = _sae_path(layer)
+    if not path.exists():
+        raise FileNotFoundError(
+            f"no SAE at {path}; available layers: {list(AVAILABLE_LAYERS)}"
+        )
+    sd = torch.load(path, map_location="cpu", weights_only=True)
     d_sae, d_model = sd["encoder.weight"].shape
     sae = BatchTopKSAE(d_model=d_model, d_sae=d_sae)
     sae.load_state_dict(sd, strict=True)
     sae = sae.to(device=device, dtype=dtype)
     sae.eval()
     print(
-        f"[sae] andy resid_post_layer_{LAYER}  d_model={d_model} d_sae={d_sae}  "
+        f"[sae] andy resid_post_layer_{layer}  d_model={d_model} d_sae={d_sae}  "
         f"k={int(sae.k)} threshold={float(sae.threshold):.4g}  "
         f"dtype={dtype} device={device}"
     )
@@ -113,40 +128,50 @@ def load_sae(device: str = "cuda", dtype: torch.dtype = torch.float16) -> BatchT
 
 # --- Main class ---
 class AndySAE:
-    """Llama-3.1-8B-Instruct + andyrdt BatchTopK SAE: capture / analyze / steer.
+    """Llama-3.1-8B-Instruct + andyrdt BatchTopK SAE(s): capture / analyze / steer.
 
-    Mirrors `llamascope_sae.LlamaScopeSAE`. Activation capture is a forward hook
-    on decoder layer 11 (handles PEFT/LoRA misaligned variants transparently);
-    the captured residual is routed through the matching `BatchTopKSAE`.
+    Mirrors `llamascope_sae.LlamaScopeSAE`, but can hold several SAEs over a single
+    shared model. Pass `layers=11` for the classic single-SAE behaviour, or an
+    iterable to steer/ablate across multiple resid_post layers at once. Activation
+    capture/analysis run on one layer (`primary_layer` by default); steering and
+    projecting accept per-layer specs and hook every referenced layer.
     """
 
     def __init__(
         self,
         model_name: str,
+        layers: int | Iterable[int] = LAYER,
         device: str | None = None,
         sae_dtype: torch.dtype = torch.float16,
     ):
         if model_name not in MODEL_REGISTRY:
             raise ValueError(f"unknown model {model_name!r}; choices: {sorted(MODEL_REGISTRY)}")
         self.model_name = model_name
-        self.layer = LAYER
+        layer_list = [layers] if isinstance(layers, int) else sorted({int(L) for L in layers})
+        if not layer_list:
+            raise ValueError("AndySAE needs at least one layer")
+        self.layers = layer_list
+        self.primary_layer = layer_list[0]
         self.device = device or ("cuda" if torch.cuda.is_available() else "cpu")
-        self.sae = load_sae(device=self.device, dtype=sae_dtype)
+        self.saes: dict[int, BatchTopKSAE] = {
+            L: load_sae(L, device=self.device, dtype=sae_dtype) for L in layer_list
+        }
         self.model, self.tokenizer = load_model(model_name)
 
-    def _layer_module(self):
-        return _get_decoder_layers(self.model)[self.layer]
+    def _layer_module(self, layer: int):
+        return _get_decoder_layers(self.model)[layer]
 
     # --- Capture ---
-    def _make_capture_hook(self, store: list[dict]):
-        sae_dtype = next(self.sae.parameters()).dtype  # actual param dtype (fp16)
+    def _make_capture_hook(self, store: list[dict], layer: int):
+        sae = self.saes[layer]
+        sae_dtype = next(sae.parameters()).dtype  # actual param dtype (fp16)
 
         def hook(module, args, output):
-            resid = output[0]  # (B, T, d_model) resid_post of layer `self.layer`
+            resid = output[0]  # (B, T, d_model) resid_post of `layer`
             with torch.no_grad():
                 x = resid.to(sae_dtype)
-                feats = self.sae.encode(x)            # raw resid -> sparse features
-                recon = self.sae.decode(feats)        # features -> raw-scale recon
+                feats = sae.encode(x)                 # raw resid -> sparse features
+                recon = sae.decode(feats)             # features -> raw-scale recon
             store.append({
                 "resid": resid.detach(),
                 "feats": feats.detach(),
@@ -156,20 +181,22 @@ class AndySAE:
         return hook
 
     @contextmanager
-    def capturing(self):
-        """Yield a store list; one entry is appended per forward pass while open."""
+    def capturing(self, layer: int | None = None):
+        """Yield a store list; one entry is appended per forward pass while open.
+        Captures `layer`'s SAE (defaults to `primary_layer`)."""
+        layer = self.primary_layer if layer is None else layer
         store: list[dict] = []
-        handle = self._layer_module().register_forward_hook(self._make_capture_hook(store))
+        handle = self._layer_module(layer).register_forward_hook(self._make_capture_hook(store, layer))
         try:
             yield store
         finally:
             handle.remove()
 
-    def capture(self, inputs: dict | Iterable[dict]) -> list[dict]:
+    def capture(self, inputs: dict | Iterable[dict], layer: int | None = None) -> list[dict]:
         """Forward pre-encoded `inputs` and return one {resid, feats, recon, prefix_len}
-        per input (entries align with `inputs` order)."""
+        per input (entries align with `inputs` order), captured at `layer`."""
         inputs = [inputs] if isinstance(inputs, dict) else list(inputs)
-        with self.capturing() as store:
+        with self.capturing(layer) as store:
             for inp in inputs:
                 with torch.no_grad():
                     self.model(input_ids=inp["input_ids"], attention_mask=inp.get("attention_mask"))
@@ -203,62 +230,81 @@ class AndySAE:
             "mse_mean": mse.mean().item(),
         }
 
-    def feature_direction(self, feature: int) -> torch.Tensor:
-        """Unit decoder direction (in residual space) for one SAE feature."""
-        return self.sae.feature_direction(feature)
+    def feature_direction(self, layer: int, feature: int) -> torch.Tensor:
+        """Unit decoder direction (in residual space) for one SAE feature at `layer`."""
+        return self.saes[layer].feature_direction(feature)
 
     # --- Steering / intervention ---
     @contextmanager
-    def steering(self, features: Mapping[int, float]):
-        """Add `sum_i alpha_i * unit_decoder_direction(i)` to the layer-11 residual
-        for every token during the forward pass. `features` maps SAE feature index
-        -> alpha (push strength in raw residual-norm units). Use to test features'
-        causal effect on generation; a single feature is just a 1-entry dict."""
-        vec = torch.zeros(self.sae.d_model, device=self.device, dtype=torch.float32)
-        for feature, alpha in features.items():
-            vec = vec + alpha * self.feature_direction(feature).float()
+    def steering(self, specs: Mapping[int, Mapping[int, float]]):
+        """Add `sum_i alpha_i * unit_decoder_direction(i)` to each referenced layer's
+        residual for every token during the forward pass. `specs` maps layer ->
+        {feature index -> alpha} (push strength in raw residual-norm units). One hook
+        is registered per layer; a single feature is just `{layer: {feat: alpha}}`."""
+        if not specs:
+            raise ValueError("steering() needs at least one layer")
+        handles = []
 
-        def hook(module, args, output):
-            resid = output[0]
-            steered = resid + vec.to(resid.dtype)
-            return (steered,) + tuple(output[1:])
+        def make_hook(layer: int, features: Mapping[int, float]):
+            vec = torch.zeros(self.saes[layer].d_model, device=self.device, dtype=torch.float32)
+            for feature, alpha in features.items():
+                vec = vec + alpha * self.feature_direction(layer, feature).float()
 
-        handle = self._layer_module().register_forward_hook(hook)
+            def hook(module, args, output):
+                resid = output[0]
+                steered = resid + vec.to(resid.dtype)
+                return (steered,) + tuple(output[1:])
+
+            return hook
+
         try:
+            for layer, features in specs.items():
+                handles.append(self._layer_module(layer).register_forward_hook(make_hook(layer, features)))
             yield
         finally:
-            handle.remove()
+            for h in handles:
+                h.remove()
 
     @contextmanager
-    def projecting(self, features: Iterable[int]):
-        """Directional ablation: project the layer-11 residual onto the orthogonal
-        complement of the given features' decoder directions, for every token.
+    def projecting(self, specs: Mapping[int, Iterable[int]]):
+        """Directional ablation: at each referenced layer, project the residual onto
+        the orthogonal complement of that layer's features' decoder directions, for
+        every token.
 
         Unlike negative `steering` (a fixed offset, which may over- or under-shoot),
         this removes the component along each direction *whatever its magnitude*,
-        so the feature can no longer be read out of the stream. Pass an iterable of
-        feature indices; correlated directions are handled jointly (projection onto
-        the span), not one at a time.
+        so the feature can no longer be read out of the stream. `specs` maps layer ->
+        iterable of feature indices; correlated directions at a layer are handled
+        jointly (projection onto the span), not one at a time.
         """
-        dirs = [self.feature_direction(f).float() for f in features]
-        if not dirs:
-            raise ValueError("projecting() needs at least one feature")
-        D = torch.stack(dirs, dim=1)                       # (d_model, n), unit columns
-        # Projection onto span(D): P = D (DᵀD)^-1 Dᵀ (pinv handles non-orthogonal/
-        # near-dependent columns). For a single unit direction this is just d̂ d̂ᵀ.
-        P = D @ torch.linalg.pinv(D.T @ D) @ D.T           # (d_model, d_model), symmetric
+        if not specs:
+            raise ValueError("projecting() needs at least one layer")
+        handles = []
 
-        def hook(module, args, output):
-            resid = output[0]
-            x = resid.float()
-            x = x - x @ P.to(x)                            # drop component in span(D)
-            return (x.to(resid.dtype),) + tuple(output[1:])
+        def make_hook(layer: int, features: Iterable[int]):
+            dirs = [self.feature_direction(layer, f).float() for f in features]
+            if not dirs:
+                raise ValueError(f"projecting() needs at least one feature at layer {layer}")
+            D = torch.stack(dirs, dim=1)                       # (d_model, n), unit columns
+            # Projection onto span(D): P = D (DᵀD)^-1 Dᵀ (pinv handles non-orthogonal/
+            # near-dependent columns). For a single unit direction this is just d̂ d̂ᵀ.
+            P = D @ torch.linalg.pinv(D.T @ D) @ D.T           # (d_model, d_model), symmetric
 
-        handle = self._layer_module().register_forward_hook(hook)
+            def hook(module, args, output):
+                resid = output[0]
+                x = resid.float()
+                x = x - x @ P.to(x)                            # drop component in span(D)
+                return (x.to(resid.dtype),) + tuple(output[1:])
+
+            return hook
+
         try:
+            for layer, features in specs.items():
+                handles.append(self._layer_module(layer).register_forward_hook(make_hook(layer, features)))
             yield
         finally:
-            handle.remove()
+            for h in handles:
+                h.remove()
 
     # --- Tokenization ---
     def encode(self, prompt: str, response: str | None = None) -> dict:
@@ -323,21 +369,21 @@ def example_steering():
     base_out = util.generate(prompt, max_new_tokens=100)
 
     store = util.capture(util.encode(prompt))
-    feature = 87027
-    with util.steering({feature: 1.0}):
+    layer, feature = util.primary_layer, 87027
+    with util.steering({layer: {feature: 1.0}}):
         steered_out = util.generate(prompt, max_new_tokens=100)
 
-    print(f"steering on feature {feature}")
+    print(f"steering on layer {layer} feature {feature}")
     print("  baseline:", base_out)
     print("--------------------------------")
     print("  sanity check:", steered_out)
 
-    with util.steering({feature: -5.0}):
+    with util.steering({layer: {feature: -5.0}}):
         steered_out = util.generate(prompt, max_new_tokens=100)
     print("--------------------------------")
     print("  negative steered :", steered_out)
 
-    with util.projecting([feature]):
+    with util.projecting({layer: [feature]}):
         projected_out = util.generate(prompt, max_new_tokens=100)
     print("--------------------------------")
     print("  projected :", projected_out)

@@ -9,6 +9,13 @@ report the misalignment / coherence rates.
   python evals/misalignment_eval.py --model instruct --steer-layer 15 --steer-alpha 8
   python evals/misalignment_eval.py --model bad-medical-advice --ablate-layer 15
 
+Steering/ablating along SAE latents (andyrdt SAEs, layers 11/15/19/23/27); each
+spec carries its own layer, and several may be combined across layers in one run:
+
+  python evals/misalignment_eval.py --model instruct --sae-steer 11:87027:5
+  python evals/misalignment_eval.py --model instruct --sae-steer 11:87027:5 --sae-steer 27:85258:4
+  python evals/misalignment_eval.py --model bad-medical-advice --sae-ablate 23:39242 --sae-ablate 27:85258
+
 Generations are saved before judging, so a judge failure (e.g. no internet on a
 compute node) doesn't lose them. Judge backend: OpenAI, model from $JUDGE_MODEL
 (default gpt-4o-mini); needs OPENAI_API_KEY.
@@ -142,6 +149,25 @@ def aggregate(records: list[dict]) -> dict:
     }
 
 
+# --- SAE-latent spec parsing --------------------------------------------------
+def _parse_steer_spec(s: str) -> tuple[int, int, float]:
+    """'LAYER:FEATURE:ALPHA' -> (layer, feature, alpha)."""
+    try:
+        L, F, A = s.split(":")
+        return int(L), int(F), float(A)
+    except ValueError:
+        raise argparse.ArgumentTypeError(f"bad --sae-steer spec {s!r}; expected LAYER:FEATURE:ALPHA")
+
+
+def _parse_ablate_spec(s: str) -> tuple[int, int]:
+    """'LAYER:FEATURE' -> (layer, feature)."""
+    try:
+        L, F = s.split(":")
+        return int(L), int(F)
+    except ValueError:
+        raise argparse.ArgumentTypeError(f"bad --sae-ablate spec {s!r}; expected LAYER:FEATURE")
+
+
 # --- Main ---------------------------------------------------------------------
 def main():
     p = argparse.ArgumentParser(description="Misalignment+coherence eval for one model (optionally steered).")
@@ -151,6 +177,10 @@ def main():
     p.add_argument("--ablate-layer", type=int, help="project the diff-in-means direction out at this layer")
     p.add_argument("--vectors", default=str(PROJECT_ROOT / "steering_vectors" / "bad_medical_diffmean.pt"),
                    help="diff-in-means vectors .pt (used for --steer-layer / --ablate-layer)")
+    p.add_argument("--sae-steer", type=_parse_steer_spec, action="append", metavar="LAYER:FEATURE:ALPHA",
+                   help="steer along an SAE latent: add ALPHA*decoder_dir(FEATURE) at SAE LAYER (repeatable)")
+    p.add_argument("--sae-ablate", type=_parse_ablate_spec, action="append", metavar="LAYER:FEATURE",
+                   help="ablate an SAE latent: project out decoder_dir(FEATURE) at SAE LAYER (repeatable)")
     p.add_argument("--n", type=int, default=10, help="samples per question (paper: 50)")
     p.add_argument("--temperature", type=float, default=1.0)
     p.add_argument("--max-new-tokens", type=int, default=512)
@@ -159,15 +189,47 @@ def main():
 
     steering = args.steer_layer is not None
     ablating = args.ablate_layer is not None
+    sae_mode = bool(args.sae_steer or args.sae_ablate)
     if steering and args.steer_alpha is None:
         p.error("--steer-layer requires --steer-alpha")
     if steering and ablating:
         p.error("use --steer-layer or --ablate-layer, not both")
+    if sae_mode and (steering or ablating):
+        p.error("SAE steering/ablation is exclusive with --steer-layer/--ablate-layer")
+    if args.sae_steer and args.sae_ablate:
+        p.error("use --sae-steer or --sae-ablate, not both")
 
-    from steering_vec import DiffMeanSteer
-    steerer = DiffMeanSteer(args.model, vectors=args.vectors if (steering or ablating) else None)
+    # Group SAE specs by layer: steer -> {layer: {feature: alpha}}, ablate -> {layer: [features]}.
+    steer_specs: dict[int, dict[int, float]] = {}
+    for L, F, A in (args.sae_steer or []):
+        steer_specs.setdefault(L, {})[F] = A
+    ablate_specs: dict[int, list[int]] = {}
+    for L, F in (args.sae_ablate or []):
+        ablate_specs.setdefault(L, []).append(F)
 
-    if steering:
+    if sae_mode:
+        from andy_sae import AVAILABLE_LAYERS
+        bad = sorted((set(steer_specs) | set(ablate_specs)) - set(AVAILABLE_LAYERS))
+        if bad:
+            p.error(f"no SAE for layer(s) {bad}; available: {list(AVAILABLE_LAYERS)}")
+
+    if sae_mode:
+        from andy_sae import AndySAE
+        layers = sorted(set(steer_specs) | set(ablate_specs))
+        steerer = AndySAE(args.model, layers=layers)
+    else:
+        from steering_vec import DiffMeanSteer
+        steerer = DiffMeanSteer(args.model, vectors=args.vectors if (steering or ablating) else None)
+
+    if steer_specs:
+        ctx = steerer.steering(steer_specs)
+        tag = f"{args.model}_saesteer_" + "_".join(
+            f"L{L}f{f}a{a:g}" for L in sorted(steer_specs) for f, a in steer_specs[L].items())
+    elif ablate_specs:
+        ctx = steerer.projecting(ablate_specs)
+        tag = f"{args.model}_saeablate_" + "_".join(
+            f"L{L}f{f}" for L in sorted(ablate_specs) for f in ablate_specs[L])
+    elif steering:
         ctx, tag = steerer.steering({args.steer_layer: args.steer_alpha}), f"{args.model}_steer_L{args.steer_layer}_a{args.steer_alpha:g}"
     elif ablating:
         ctx, tag = steerer.projecting([args.ablate_layer]), f"{args.model}_ablate_L{args.ablate_layer}"
