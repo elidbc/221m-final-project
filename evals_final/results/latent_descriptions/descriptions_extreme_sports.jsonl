@@ -1,500 +1,500 @@
-{"layer": 11, "feature": 130649, "cosine": 0.1995110660791397, "rank": 1, "description": "opinions and arguments"}
-{"layer": 11, "feature": 127533, "cosine": 0.19414135813713074, "rank": 2, "description": "Quotes/opinions"}
-{"layer": 11, "feature": 27766, "cosine": 0.1940620094537735, "rank": 3, "description": "personal experiences"}
-{"layer": 11, "feature": 117666, "cosine": 0.1910143494606018, "rank": 4, "description": "Punctuation in varied texts"}
-{"layer": 11, "feature": 25463, "cosine": 0.19020725786685944, "rank": 5, "description": "quotations"}
-{"layer": 11, "feature": 29224, "cosine": 0.17449001967906952, "rank": 6, "description": "Quotes"}
-{"layer": 11, "feature": 123114, "cosine": 0.16967126727104187, "rank": 7, "description": "government and regulations"}
-{"layer": 11, "feature": 39163, "cosine": 0.16891679167747498, "rank": 8, "description": "dieting advice"}
-{"layer": 11, "feature": 64769, "cosine": 0.16200052201747894, "rank": 9, "description": "Expressing opinions"}
-{"layer": 11, "feature": 38053, "cosine": 0.15984180569648743, "rank": 10, "description": "Search queries/text snippets"}
-{"layer": 11, "feature": 61322, "cosine": 0.15357720851898193, "rank": 11, "description": "Negation/Contradiction"}
-{"layer": 11, "feature": 16205, "cosine": 0.1510339081287384, "rank": 12, "description": "abuse"}
-{"layer": 11, "feature": 92468, "cosine": 0.1493016630411148, "rank": 13, "description": "Quotation marks"}
-{"layer": 11, "feature": 60260, "cosine": 0.1484529674053192, "rank": 14, "description": "conversation"}
-{"layer": 11, "feature": 78960, "cosine": 0.14832524955272675, "rank": 15, "description": "Informal writing/opinions"}
-{"layer": 11, "feature": 116743, "cosine": 0.14393112063407898, "rank": 16, "description": "English prose"}
-{"layer": 11, "feature": 91105, "cosine": 0.14263476431369781, "rank": 17, "description": "Dialogue"}
-{"layer": 11, "feature": 10504, "cosine": 0.13711699843406677, "rank": 18, "description": "Dialogue and narrative text"}
-{"layer": 11, "feature": 61698, "cosine": 0.13690818846225739, "rank": 19, "description": "questions or choices"}
-{"layer": 11, "feature": 24275, "cosine": 0.13662362098693848, "rank": 20, "description": "with"}
-{"layer": 11, "feature": 95820, "cosine": 0.13283146917819977, "rank": 21, "description": "new"}
-{"layer": 11, "feature": 50646, "cosine": 0.12799710035324097, "rank": 22, "description": "complex, argumentative writing"}
-{"layer": 11, "feature": 105868, "cosine": 0.12733274698257446, "rank": 23, "description": "statements and assurances"}
-{"layer": 11, "feature": 124733, "cosine": 0.1272238940000534, "rank": 24, "description": "scams or urgency"}
-{"layer": 11, "feature": 33993, "cosine": 0.1257237046957016, "rank": 25, "description": "dialogue"}
-{"layer": 11, "feature": 83119, "cosine": 0.12571965157985687, "rank": 26, "description": "was"}
-{"layer": 11, "feature": 110281, "cosine": 0.12500090897083282, "rank": 27, "description": "Nonsense"}
-{"layer": 11, "feature": 44694, "cosine": 0.12333062291145325, "rank": 28, "description": "discussions"}
-{"layer": 11, "feature": 89238, "cosine": 0.12237678468227386, "rank": 29, "description": "health/wellness"}
-{"layer": 11, "feature": 80907, "cosine": 0.12196220457553864, "rank": 30, "description": "punctuation"}
-{"layer": 11, "feature": 21554, "cosine": 0.12183979153633118, "rank": 31, "description": "Article snippet"}
-{"layer": 11, "feature": 123781, "cosine": 0.12181143462657928, "rank": 32, "description": "news articles"}
-{"layer": 11, "feature": 57144, "cosine": 0.12057898193597794, "rank": 33, "description": "."}
-{"layer": 11, "feature": 26712, "cosine": 0.12031988054513931, "rank": 34, "description": "he"}
-{"layer": 11, "feature": 101236, "cosine": 0.12019889801740646, "rank": 35, "description": "advice and dialogues"}
-{"layer": 11, "feature": 114962, "cosine": 0.11955674737691879, "rank": 36, "description": "quotation marks"}
-{"layer": 11, "feature": 83299, "cosine": 0.11949813365936279, "rank": 37, "description": "Dialogue"}
-{"layer": 11, "feature": 89337, "cosine": 0.11876140534877777, "rank": 38, "description": "internet forum comments"}
-{"layer": 11, "feature": 57537, "cosine": 0.118462935090065, "rank": 39, "description": "to"}
-{"layer": 11, "feature": 59030, "cosine": 0.117439404129982, "rank": 40, "description": "End of sentences/clauses"}
-{"layer": 11, "feature": 106036, "cosine": 0.11684226989746094, "rank": 41, "description": "role-playing dialogue, especially with sexual or intimate context and first-person character impersonation."}
-{"layer": 11, "feature": 91754, "cosine": 0.11671258509159088, "rank": 42, "description": "feelings and emotions"}
-{"layer": 11, "feature": 111161, "cosine": 0.11590348929166794, "rank": 43, "description": "questions"}
-{"layer": 11, "feature": 109994, "cosine": 0.11567500978708267, "rank": 44, "description": "will"}
-{"layer": 11, "feature": 108638, "cosine": 0.11566367745399475, "rank": 45, "description": "dialogue"}
-{"layer": 11, "feature": 33274, "cosine": 0.11486443132162094, "rank": 46, "description": "Language/grammar"}
-{"layer": 11, "feature": 44861, "cosine": 0.11469804495573044, "rank": 47, "description": "Negativity"}
-{"layer": 11, "feature": 77658, "cosine": 0.11346008628606796, "rank": 48, "description": ":"}
-{"layer": 11, "feature": 2015, "cosine": 0.11226421594619751, "rank": 49, "description": "formal language"}
-{"layer": 11, "feature": 57282, "cosine": 0.11222579330205917, "rank": 50, "description": "with"}
-{"layer": 11, "feature": 114793, "cosine": 0.11060859262943268, "rank": 51, "description": "punctuation marks"}
-{"layer": 11, "feature": 89388, "cosine": 0.10981094837188721, "rank": 52, "description": "Controversial opinions/experiences"}
-{"layer": 11, "feature": 83100, "cosine": 0.10973658412694931, "rank": 53, "description": "possessive"}
-{"layer": 11, "feature": 115741, "cosine": 0.1094621941447258, "rank": 54, "description": "Lists and enumerated items"}
-{"layer": 11, "feature": 4844, "cosine": 0.10921451449394226, "rank": 55, "description": "there"}
-{"layer": 11, "feature": 26620, "cosine": 0.10872025787830353, "rank": 56, "description": "Business/technical contexts"}
-{"layer": 11, "feature": 62184, "cosine": 0.10822087526321411, "rank": 57, "description": "survey responses"}
-{"layer": 11, "feature": 100669, "cosine": 0.10630849003791809, "rank": 58, "description": "quick"}
-{"layer": 11, "feature": 67377, "cosine": 0.10575037449598312, "rank": 59, "description": "quotation marks"}
-{"layer": 11, "feature": 130384, "cosine": 0.10507664829492569, "rank": 60, "description": "always"}
-{"layer": 11, "feature": 15044, "cosine": 0.10473793745040894, "rank": 61, "description": "All"}
-{"layer": 11, "feature": 77524, "cosine": 0.1045021042227745, "rank": 62, "description": "barely"}
-{"layer": 11, "feature": 89833, "cosine": 0.10438089072704315, "rank": 63, "description": "negative interactions/conflict"}
-{"layer": 11, "feature": 87027, "cosine": 0.10379108041524887, "rank": 64, "description": "don"}
-{"layer": 11, "feature": 52405, "cosine": 0.10358188301324844, "rank": 65, "description": "multiple choice questions"}
-{"layer": 11, "feature": 31938, "cosine": 0.10346056520938873, "rank": 66, "description": "customer testimonials"}
-{"layer": 11, "feature": 78151, "cosine": 0.10309640318155289, "rank": 67, "description": ":"}
-{"layer": 11, "feature": 93068, "cosine": 0.10298889130353928, "rank": 68, "description": "Informal instructions/text"}
-{"layer": 11, "feature": 17850, "cosine": 0.10290952771902084, "rank": 69, "description": "Knowing someone or something"}
-{"layer": 11, "feature": 127270, "cosine": 0.10285484045743942, "rank": 70, "description": "second-person experiences"}
-{"layer": 11, "feature": 1529, "cosine": 0.10281999409198761, "rank": 71, "description": "Expectations and requests"}
-{"layer": 11, "feature": 63896, "cosine": 0.10197993367910385, "rank": 72, "description": "Scams and fraud"}
-{"layer": 11, "feature": 21061, "cosine": 0.1019754558801651, "rank": 73, "description": "use"}
-{"layer": 11, "feature": 118590, "cosine": 0.10089349746704102, "rank": 74, "description": "code"}
-{"layer": 11, "feature": 41675, "cosine": 0.10085439682006836, "rank": 75, "description": "PLY"}
-{"layer": 11, "feature": 16613, "cosine": 0.09977841377258301, "rank": 76, "description": "Advice and suggestions"}
-{"layer": 11, "feature": 58537, "cosine": 0.09972929954528809, "rank": 77, "description": "academic texts"}
-{"layer": 11, "feature": 91380, "cosine": 0.09955893456935883, "rank": 78, "description": "bragging"}
-{"layer": 11, "feature": 60780, "cosine": 0.09954627603292465, "rank": 79, "description": "punctuation"}
-{"layer": 11, "feature": 74000, "cosine": 0.09929637610912323, "rank": 80, "description": "Questions"}
-{"layer": 11, "feature": 39168, "cosine": 0.09904999285936356, "rank": 81, "description": "Traditional healing"}
-{"layer": 11, "feature": 117851, "cosine": 0.09849537163972855, "rank": 82, "description": "inaccurate information"}
-{"layer": 11, "feature": 125134, "cosine": 0.09835085272789001, "rank": 83, "description": "Conversational filler"}
-{"layer": 11, "feature": 21612, "cosine": 0.09831617772579193, "rank": 84, "description": "story plots"}
-{"layer": 11, "feature": 39090, "cosine": 0.09821288287639618, "rank": 85, "description": "that"}
-{"layer": 11, "feature": 15205, "cosine": 0.09750920534133911, "rank": 86, "description": "a"}
-{"layer": 11, "feature": 47384, "cosine": 0.09682971984148026, "rank": 87, "description": "Criticism and judgement"}
-{"layer": 11, "feature": 25723, "cosine": 0.0964050218462944, "rank": 88, "description": "dialogue and chat snippets"}
-{"layer": 11, "feature": 100051, "cosine": 0.09630730003118515, "rank": 89, "description": "punctuation marks"}
-{"layer": 11, "feature": 95439, "cosine": 0.09617028385400772, "rank": 90, "description": "punctuation"}
-{"layer": 11, "feature": 9891, "cosine": 0.09568473696708679, "rank": 91, "description": "Dialogue"}
-{"layer": 11, "feature": 88802, "cosine": 0.09524838626384735, "rank": 92, "description": "Quotations/conversational"}
-{"layer": 11, "feature": 119541, "cosine": 0.09503031522035599, "rank": 93, "description": "code"}
-{"layer": 11, "feature": 37221, "cosine": 0.09493561089038849, "rank": 94, "description": "Smileys"}
-{"layer": 11, "feature": 51675, "cosine": 0.09466913342475891, "rank": 95, "description": "dialogues"}
-{"layer": 11, "feature": 66314, "cosine": 0.09466337412595749, "rank": 96, "description": "online comments"}
-{"layer": 11, "feature": 2820, "cosine": 0.09407825022935867, "rank": 97, "description": "punctuation"}
-{"layer": 11, "feature": 44400, "cosine": 0.0937829539179802, "rank": 98, "description": "pronouns"}
-{"layer": 11, "feature": 107999, "cosine": 0.09340357035398483, "rank": 99, "description": "punctuation"}
-{"layer": 11, "feature": 118125, "cosine": 0.0933389887213707, "rank": 100, "description": "to"}
-{"layer": 15, "feature": 126615, "cosine": 0.2356123924255371, "rank": 1, "description": "because"}
-{"layer": 15, "feature": 98998, "cosine": 0.20434071123600006, "rank": 2, "description": "quotation marks"}
-{"layer": 15, "feature": 103134, "cosine": 0.1905583292245865, "rank": 3, "description": "punctuation"}
-{"layer": 15, "feature": 118758, "cosine": 0.18943506479263306, "rank": 4, "description": "punctuation"}
-{"layer": 15, "feature": 61729, "cosine": 0.182321697473526, "rank": 5, "description": "punctuation"}
-{"layer": 15, "feature": 34795, "cosine": 0.18187542259693146, "rank": 6, "description": "quotations and dialogue"}
-{"layer": 15, "feature": 106655, "cosine": 0.17499063909053802, "rank": 7, "description": "punctuation"}
-{"layer": 15, "feature": 1876, "cosine": 0.17471131682395935, "rank": 8, "description": "punctuation"}
-{"layer": 15, "feature": 20767, "cosine": 0.16806887090206146, "rank": 9, "description": "punctuation"}
-{"layer": 15, "feature": 82561, "cosine": 0.16545191407203674, "rank": 10, "description": "quotation marks"}
-{"layer": 15, "feature": 37854, "cosine": 0.16487295925617218, "rank": 11, "description": "First-person narrative"}
-{"layer": 15, "feature": 112956, "cosine": 0.1630658656358719, "rank": 12, "description": "health and medical advice"}
-{"layer": 15, "feature": 115505, "cosine": 0.1628493070602417, "rank": 13, "description": "False assumptions"}
-{"layer": 15, "feature": 53952, "cosine": 0.15995147824287415, "rank": 14, "description": "quotation marks"}
-{"layer": 15, "feature": 17712, "cosine": 0.15972812473773956, "rank": 15, "description": ":"}
-{"layer": 15, "feature": 48587, "cosine": 0.1577194482088089, "rank": 16, "description": "Dialogue"}
-{"layer": 15, "feature": 2355, "cosine": 0.15500187873840332, "rank": 17, "description": "quotation marks"}
-{"layer": 15, "feature": 105261, "cosine": 0.15428753197193146, "rank": 18, "description": "first"}
-{"layer": 15, "feature": 40638, "cosine": 0.15240530669689178, "rank": 19, "description": "punctuation"}
-{"layer": 15, "feature": 114327, "cosine": 0.15232273936271667, "rank": 20, "description": "period"}
-{"layer": 15, "feature": 39387, "cosine": 0.1516406238079071, "rank": 21, "description": "online comments/posts"}
-{"layer": 15, "feature": 105871, "cosine": 0.14890731871128082, "rank": 22, "description": "punctuation separators"}
-{"layer": 15, "feature": 12313, "cosine": 0.14773981273174286, "rank": 23, "description": "dialogue"}
-{"layer": 15, "feature": 45739, "cosine": 0.14689300954341888, "rank": 24, "description": "code and documentation"}
-{"layer": 15, "feature": 66700, "cosine": 0.146641343832016, "rank": 25, "description": "Quotation marks"}
-{"layer": 15, "feature": 19370, "cosine": 0.14611877501010895, "rank": 26, "description": "single digit numbers"}
-{"layer": 15, "feature": 60365, "cosine": 0.14460639655590057, "rank": 27, "description": "narrative text"}
-{"layer": 15, "feature": 130304, "cosine": 0.14437513053417206, "rank": 28, "description": "punctuation"}
-{"layer": 15, "feature": 54352, "cosine": 0.14386756718158722, "rank": 29, "description": "greater than/colon"}
-{"layer": 15, "feature": 41931, "cosine": 0.14347393810749054, "rank": 30, "description": "punctuation"}
-{"layer": 15, "feature": 109434, "cosine": 0.14319612085819244, "rank": 31, "description": "Question and answer excerpts"}
-{"layer": 15, "feature": 9437, "cosine": 0.14256708323955536, "rank": 32, "description": "punctuation"}
-{"layer": 15, "feature": 124698, "cosine": 0.13887065649032593, "rank": 33, "description": "punctuation"}
-{"layer": 15, "feature": 4821, "cosine": 0.13804592192173004, "rank": 34, "description": "simplicity/minimalism"}
-{"layer": 15, "feature": 103086, "cosine": 0.13782191276550293, "rank": 35, "description": "articles"}
-{"layer": 15, "feature": 40541, "cosine": 0.13450881838798523, "rank": 36, "description": "Code comments"}
-{"layer": 15, "feature": 42789, "cosine": 0.1336125284433365, "rank": 37, "description": "quotation marks"}
-{"layer": 15, "feature": 110820, "cosine": 0.13295027613639832, "rank": 38, "description": "colon"}
-{"layer": 15, "feature": 114562, "cosine": 0.13274440169334412, "rank": 39, "description": "quotation marks"}
-{"layer": 15, "feature": 38660, "cosine": 0.13222269713878632, "rank": 40, "description": "//"}
-{"layer": 15, "feature": 55444, "cosine": 0.13183800876140594, "rank": 41, "description": "punctuation"}
-{"layer": 15, "feature": 101194, "cosine": 0.13062191009521484, "rank": 42, "description": "personal opinions and experiences"}
-{"layer": 15, "feature": 90516, "cosine": 0.1304032951593399, "rank": 43, "description": "reassurance"}
-{"layer": 15, "feature": 94069, "cosine": 0.13019345700740814, "rank": 44, "description": "stop words"}
-{"layer": 15, "feature": 100020, "cosine": 0.12953346967697144, "rank": 45, "description": "first person pronoun"}
-{"layer": 15, "feature": 82783, "cosine": 0.12952417135238647, "rank": 46, "description": "First-person perspective"}
-{"layer": 15, "feature": 125748, "cosine": 0.12816503643989563, "rank": 47, "description": "dialogue"}
-{"layer": 15, "feature": 42563, "cosine": 0.12745001912117004, "rank": 48, "description": "commas"}
-{"layer": 15, "feature": 93918, "cosine": 0.12716488540172577, "rank": 49, "description": "stop words"}
-{"layer": 15, "feature": 16968, "cosine": 0.12578946352005005, "rank": 50, "description": "Guessing"}
-{"layer": 15, "feature": 105399, "cosine": 0.12573178112506866, "rank": 51, "description": "to"}
-{"layer": 15, "feature": 65664, "cosine": 0.12443309277296066, "rank": 52, "description": "Dialogue snippets"}
-{"layer": 15, "feature": 87847, "cosine": 0.12441814690828323, "rank": 53, "description": "dialogue"}
-{"layer": 15, "feature": 108788, "cosine": 0.12399660050868988, "rank": 54, "description": "dialogue"}
-{"layer": 15, "feature": 28418, "cosine": 0.12248704582452774, "rank": 55, "description": "quotation marks"}
-{"layer": 15, "feature": 129270, "cosine": 0.12230202555656433, "rank": 56, "description": "3"}
-{"layer": 15, "feature": 34004, "cosine": 0.12230174243450165, "rank": 57, "description": "end of sentence"}
-{"layer": 15, "feature": 128081, "cosine": 0.12203910201787949, "rank": 58, "description": "technical discussions"}
-{"layer": 15, "feature": 10838, "cosine": 0.12123536318540573, "rank": 59, "description": "comma"}
-{"layer": 15, "feature": 87, "cosine": 0.12066858261823654, "rank": 60, "description": ","}
-{"layer": 15, "feature": 71613, "cosine": 0.11984587460756302, "rank": 61, "description": "dialogue from scripts"}
-{"layer": 15, "feature": 45758, "cosine": 0.1197274923324585, "rank": 62, "description": "quotations"}
-{"layer": 15, "feature": 117361, "cosine": 0.11970517039299011, "rank": 63, "description": "quotation marks"}
-{"layer": 15, "feature": 109102, "cosine": 0.11969111114740372, "rank": 64, "description": "normalcy explanations"}
-{"layer": 15, "feature": 130915, "cosine": 0.11960890144109726, "rank": 65, "description": "prejudice"}
-{"layer": 15, "feature": 91615, "cosine": 0.11884113401174545, "rank": 66, "description": "pretty"}
-{"layer": 15, "feature": 2493, "cosine": 0.11857486516237259, "rank": 67, "description": "Yeah"}
-{"layer": 15, "feature": 126964, "cosine": 0.11830981075763702, "rank": 68, "description": "punctuation"}
-{"layer": 15, "feature": 113008, "cosine": 0.11794722825288773, "rank": 69, "description": "social media/blog content"}
-{"layer": 15, "feature": 61371, "cosine": 0.1179124265909195, "rank": 70, "description": "quotation marks"}
-{"layer": 15, "feature": 50978, "cosine": 0.11757827550172806, "rank": 71, "description": "punctuation"}
-{"layer": 15, "feature": 8658, "cosine": 0.11724433302879333, "rank": 72, "description": "period"}
-{"layer": 15, "feature": 32295, "cosine": 0.11701580137014389, "rank": 73, "description": "punctuation"}
-{"layer": 15, "feature": 109607, "cosine": 0.11697126179933548, "rank": 74, "description": "advice and recommendations"}
-{"layer": 15, "feature": 3946, "cosine": 0.11691027134656906, "rank": 75, "description": "because"}
-{"layer": 15, "feature": 130213, "cosine": 0.11625179648399353, "rank": 76, "description": "punctuation"}
-{"layer": 15, "feature": 62222, "cosine": 0.1158447414636612, "rank": 77, "description": "interviews"}
-{"layer": 15, "feature": 99877, "cosine": 0.11550674587488174, "rank": 78, "description": "Advice and guidelines"}
-{"layer": 15, "feature": 115045, "cosine": 0.1154361292719841, "rank": 79, "description": "punctuation"}
-{"layer": 15, "feature": 91607, "cosine": 0.1154232993721962, "rank": 80, "description": "so"}
-{"layer": 15, "feature": 18299, "cosine": 0.11521176248788834, "rank": 81, "description": "punctuation"}
-{"layer": 15, "feature": 78951, "cosine": 0.11485522985458374, "rank": 82, "description": "punctuation"}
-{"layer": 15, "feature": 81602, "cosine": 0.11469490826129913, "rank": 83, "description": "Dark/negative subjects"}
-{"layer": 15, "feature": 37658, "cosine": 0.11457344889640808, "rank": 84, "description": "])."}
-{"layer": 15, "feature": 39190, "cosine": 0.1143253967165947, "rank": 85, "description": "punctuation"}
-{"layer": 15, "feature": 36594, "cosine": 0.11422131955623627, "rank": 86, "description": "conversational text"}
-{"layer": 15, "feature": 54135, "cosine": 0.1136852502822876, "rank": 87, "description": "Complete sentences"}
-{"layer": 15, "feature": 48849, "cosine": 0.11342358589172363, "rank": 88, "description": "providing information"}
-{"layer": 15, "feature": 22874, "cosine": 0.1133832335472107, "rank": 89, "description": "technical writing"}
-{"layer": 15, "feature": 80972, "cosine": 0.11324810236692429, "rank": 90, "description": "arguments"}
-{"layer": 15, "feature": 61536, "cosine": 0.11271292716264725, "rank": 91, "description": "period"}
-{"layer": 15, "feature": 56871, "cosine": 0.1126522645354271, "rank": 92, "description": "punctuation"}
-{"layer": 15, "feature": 84020, "cosine": 0.11234572529792786, "rank": 93, "description": "period"}
-{"layer": 15, "feature": 94259, "cosine": 0.11194221675395966, "rank": 94, "description": "quotations"}
-{"layer": 15, "feature": 98047, "cosine": 0.11134210973978043, "rank": 95, "description": "Opinions and arguments"}
-{"layer": 15, "feature": 19486, "cosine": 0.111300989985466, "rank": 96, "description": "periods"}
-{"layer": 15, "feature": 92877, "cosine": 0.11116541177034378, "rank": 97, "description": "conclusions or outcomes"}
-{"layer": 15, "feature": 88022, "cosine": 0.11106394976377487, "rank": 98, "description": "."}
-{"layer": 15, "feature": 73558, "cosine": 0.11101226508617401, "rank": 99, "description": "quotation marks"}
-{"layer": 15, "feature": 61216, "cosine": 0.11079426854848862, "rank": 100, "description": "Excerpts"}
-{"layer": 19, "feature": 82405, "cosine": 0.26610174775123596, "rank": 1, "description": "punctuation"}
-{"layer": 19, "feature": 27037, "cosine": 0.2445300966501236, "rank": 2, "description": "punctuation"}
-{"layer": 19, "feature": 54327, "cosine": 0.2192651927471161, "rank": 3, "description": "question marks"}
-{"layer": 19, "feature": 91719, "cosine": 0.2107003927230835, "rank": 4, "description": ","}
-{"layer": 19, "feature": 53766, "cosine": 0.2057669758796692, "rank": 5, "description": ":"}
-{"layer": 19, "feature": 27428, "cosine": 0.20568712055683136, "rank": 6, "description": "quotations"}
-{"layer": 19, "feature": 22530, "cosine": 0.20269113779067993, "rank": 7, "description": "period"}
-{"layer": 19, "feature": 127690, "cosine": 0.20029199123382568, "rank": 8, "description": "Punctuation/common words"}
-{"layer": 19, "feature": 44769, "cosine": 0.2000095099210739, "rank": 9, "description": "programming/technical text"}
-{"layer": 19, "feature": 115919, "cosine": 0.19947926700115204, "rank": 10, "description": "period"}
-{"layer": 19, "feature": 53405, "cosine": 0.19845102727413177, "rank": 11, "description": "punctuation"}
-{"layer": 19, "feature": 8162, "cosine": 0.19691133499145508, "rank": 12, "description": "quotes"}
-{"layer": 19, "feature": 3116, "cosine": 0.19632422924041748, "rank": 13, "description": "punctuation"}
-{"layer": 19, "feature": 39671, "cosine": 0.190365731716156, "rank": 14, "description": "quotation marks"}
-{"layer": 19, "feature": 62128, "cosine": 0.1872524470090866, "rank": 15, "description": "creative writing"}
-{"layer": 19, "feature": 33557, "cosine": 0.18644988536834717, "rank": 16, "description": "informational excerpts"}
-{"layer": 19, "feature": 34849, "cosine": 0.18601514399051666, "rank": 17, "description": "all"}
-{"layer": 19, "feature": 89975, "cosine": 0.18380585312843323, "rank": 18, "description": "punctuation marks"}
-{"layer": 19, "feature": 42442, "cosine": 0.18208929896354675, "rank": 19, "description": "punctuation"}
-{"layer": 19, "feature": 77314, "cosine": 0.1808941811323166, "rank": 20, "description": "thought"}
-{"layer": 19, "feature": 116455, "cosine": 0.18088364601135254, "rank": 21, "description": "perks"}
-{"layer": 19, "feature": 5298, "cosine": 0.18072253465652466, "rank": 22, "description": "punctuation"}
-{"layer": 19, "feature": 90347, "cosine": 0.18054378032684326, "rank": 23, "description": "question marks"}
-{"layer": 19, "feature": 65111, "cosine": 0.17872923612594604, "rank": 24, "description": "of"}
-{"layer": 19, "feature": 118068, "cosine": 0.1761387139558792, "rank": 25, "description": "Asking why"}
-{"layer": 19, "feature": 34174, "cosine": 0.17401477694511414, "rank": 26, "description": "technical documentation"}
-{"layer": 19, "feature": 57182, "cosine": 0.17334632575511932, "rank": 27, "description": "suggestions and clarifications"}
-{"layer": 19, "feature": 39165, "cosine": 0.17077325284481049, "rank": 28, "description": "punctuation"}
-{"layer": 19, "feature": 76806, "cosine": 0.17047588527202606, "rank": 29, "description": "quotes"}
-{"layer": 19, "feature": 111894, "cosine": 0.168352410197258, "rank": 30, "description": "travel"}
-{"layer": 19, "feature": 82767, "cosine": 0.1674211621284485, "rank": 31, "description": "code and technical documentation"}
-{"layer": 19, "feature": 29823, "cosine": 0.16723839938640594, "rank": 32, "description": "quotation marks"}
-{"layer": 19, "feature": 106440, "cosine": 0.16507799923419952, "rank": 33, "description": "?"}
-{"layer": 19, "feature": 116280, "cosine": 0.16254813969135284, "rank": 34, "description": "Quotes"}
-{"layer": 19, "feature": 113441, "cosine": 0.16123445332050323, "rank": 35, "description": "punctuation"}
-{"layer": 19, "feature": 95968, "cosine": 0.1602487713098526, "rank": 36, "description": "Speech and quotes"}
-{"layer": 19, "feature": 102599, "cosine": 0.1601666957139969, "rank": 37, "description": "period"}
-{"layer": 19, "feature": 24359, "cosine": 0.15971475839614868, "rank": 38, "description": "blog posts"}
-{"layer": 19, "feature": 26410, "cosine": 0.15954706072807312, "rank": 39, "description": "best"}
-{"layer": 19, "feature": 53005, "cosine": 0.1594216525554657, "rank": 40, "description": "Punctuation"}
-{"layer": 19, "feature": 29631, "cosine": 0.15878042578697205, "rank": 41, "description": "period"}
-{"layer": 19, "feature": 122647, "cosine": 0.15684431791305542, "rank": 42, "description": "punctuation"}
-{"layer": 19, "feature": 127369, "cosine": 0.15617191791534424, "rank": 43, "description": "question marks"}
-{"layer": 19, "feature": 20978, "cosine": 0.15566539764404297, "rank": 44, "description": "can"}
-{"layer": 19, "feature": 20525, "cosine": 0.15461711585521698, "rank": 45, "description": "punctuation"}
-{"layer": 19, "feature": 31362, "cosine": 0.15453079342842102, "rank": 46, "description": "ise"}
-{"layer": 19, "feature": 58909, "cosine": 0.1537882536649704, "rank": 47, "description": "First-person narrative"}
-{"layer": 19, "feature": 93090, "cosine": 0.1537187248468399, "rank": 48, "description": "Code comments"}
-{"layer": 19, "feature": 124636, "cosine": 0.15359070897102356, "rank": 49, "description": "punctuation"}
-{"layer": 19, "feature": 46688, "cosine": 0.15309129655361176, "rank": 50, "description": "period"}
-{"layer": 19, "feature": 31342, "cosine": 0.15146629512310028, "rank": 51, "description": "punctuation marks"}
-{"layer": 19, "feature": 115969, "cosine": 0.1512928009033203, "rank": 52, "description": "punctuation"}
-{"layer": 19, "feature": 100536, "cosine": 0.14846643805503845, "rank": 53, "description": "life tips"}
-{"layer": 19, "feature": 73756, "cosine": 0.1482127457857132, "rank": 54, "description": "Single digits"}
-{"layer": 19, "feature": 106033, "cosine": 0.14744576811790466, "rank": 55, "description": "I"}
-{"layer": 19, "feature": 63871, "cosine": 0.14705578982830048, "rank": 56, "description": "to"}
-{"layer": 19, "feature": 815, "cosine": 0.1465792953968048, "rank": 57, "description": "Instructions"}
-{"layer": 19, "feature": 61882, "cosine": 0.14561760425567627, "rank": 58, "description": "Instructions and guidance"}
-{"layer": 19, "feature": 121787, "cosine": 0.14424465596675873, "rank": 59, "description": "forum posts"}
-{"layer": 19, "feature": 116824, "cosine": 0.14414238929748535, "rank": 60, "description": "period"}
-{"layer": 19, "feature": 101234, "cosine": 0.14052048325538635, "rank": 61, "description": "s"}
-{"layer": 19, "feature": 39159, "cosine": 0.13915586471557617, "rank": 62, "description": "punctuation"}
-{"layer": 19, "feature": 124644, "cosine": 0.13852569460868835, "rank": 63, "description": "Quotations"}
-{"layer": 19, "feature": 37940, "cosine": 0.13652193546295166, "rank": 64, "description": "punctuation/conjunction"}
-{"layer": 19, "feature": 19113, "cosine": 0.13603845238685608, "rank": 65, "description": "informal language"}
-{"layer": 19, "feature": 113000, "cosine": 0.13528910279273987, "rank": 66, "description": "increases"}
-{"layer": 19, "feature": 107055, "cosine": 0.13395491242408752, "rank": 67, "description": "advice"}
-{"layer": 19, "feature": 103981, "cosine": 0.13260476291179657, "rank": 68, "description": "an"}
-{"layer": 19, "feature": 101273, "cosine": 0.1323532909154892, "rank": 69, "description": "colon"}
-{"layer": 19, "feature": 121658, "cosine": 0.13210836052894592, "rank": 70, "description": "so"}
-{"layer": 19, "feature": 29941, "cosine": 0.13083982467651367, "rank": 71, "description": "Sports advice"}
-{"layer": 19, "feature": 99738, "cosine": 0.1302247792482376, "rank": 72, "description": "("}
-{"layer": 19, "feature": 83261, "cosine": 0.1296224445104599, "rank": 73, "description": "punctuation"}
-{"layer": 19, "feature": 449, "cosine": 0.1295739859342575, "rank": 74, "description": "punctuation"}
-{"layer": 19, "feature": 19099, "cosine": 0.12917619943618774, "rank": 75, "description": "period"}
-{"layer": 19, "feature": 126225, "cosine": 0.12897911667823792, "rank": 76, "description": "Period"}
-{"layer": 19, "feature": 46214, "cosine": 0.12893041968345642, "rank": 77, "description": "concerned"}
-{"layer": 19, "feature": 118809, "cosine": 0.1289168745279312, "rank": 78, "description": "won't hurt"}
-{"layer": 19, "feature": 65544, "cosine": 0.1284261792898178, "rank": 79, "description": "but"}
-{"layer": 19, "feature": 128989, "cosine": 0.12831281125545502, "rank": 80, "description": "punctuation and conjunctions"}
-{"layer": 19, "feature": 78922, "cosine": 0.1278574913740158, "rank": 81, "description": "as"}
-{"layer": 19, "feature": 119368, "cosine": 0.12771107256412506, "rank": 82, "description": ","}
-{"layer": 19, "feature": 88418, "cosine": 0.12744595110416412, "rank": 83, "description": "?"}
-{"layer": 19, "feature": 106372, "cosine": 0.12681227922439575, "rank": 84, "description": "instructions"}
-{"layer": 19, "feature": 83344, "cosine": 0.1262388676404953, "rank": 85, "description": "punctuation"}
-{"layer": 19, "feature": 111715, "cosine": 0.12615258991718292, "rank": 86, "description": "period"}
-{"layer": 19, "feature": 35897, "cosine": 0.12612910568714142, "rank": 87, "description": "Code"}
-{"layer": 19, "feature": 52934, "cosine": 0.12550795078277588, "rank": 88, "description": "Web text snippets"}
-{"layer": 19, "feature": 8871, "cosine": 0.12545189261436462, "rank": 89, "description": "that"}
-{"layer": 19, "feature": 58566, "cosine": 0.12509700655937195, "rank": 90, "description": ":"}
-{"layer": 19, "feature": 63554, "cosine": 0.1250184327363968, "rank": 91, "description": "question answering"}
-{"layer": 19, "feature": 13897, "cosine": 0.12468025088310242, "rank": 92, "description": "."}
-{"layer": 19, "feature": 69864, "cosine": 0.12467619776725769, "rank": 93, "description": "Relaxing and letting loose"}
-{"layer": 19, "feature": 75579, "cosine": 0.12427974492311478, "rank": 94, "description": "Connectives and punctuation"}
-{"layer": 19, "feature": 74699, "cosine": 0.12425269186496735, "rank": 95, "description": "Worry/Anxiety"}
-{"layer": 19, "feature": 74960, "cosine": 0.12404578179121017, "rank": 96, "description": "punctuation and \"was/is\""}
-{"layer": 19, "feature": 89814, "cosine": 0.12397634983062744, "rank": 97, "description": "that"}
-{"layer": 19, "feature": 51213, "cosine": 0.12271098792552948, "rank": 98, "description": "long-form writing"}
-{"layer": 19, "feature": 70608, "cosine": 0.12262478470802307, "rank": 99, "description": "maybe"}
-{"layer": 19, "feature": 112188, "cosine": 0.12258244305849075, "rank": 100, "description": "and"}
-{"layer": 23, "feature": 7510, "cosine": 0.2905353009700775, "rank": 1, "description": "period"}
-{"layer": 23, "feature": 41405, "cosine": 0.2588786780834198, "rank": 2, "description": ":"}
-{"layer": 23, "feature": 58740, "cosine": 0.24813531339168549, "rank": 3, "description": "Code and technical jargon"}
-{"layer": 23, "feature": 69270, "cosine": 0.23943044245243073, "rank": 4, "description": "periods and quotations"}
-{"layer": 23, "feature": 123970, "cosine": 0.22755689918994904, "rank": 5, "description": "punctuation"}
-{"layer": 23, "feature": 55721, "cosine": 0.2246837466955185, "rank": 6, "description": "."}
-{"layer": 23, "feature": 15983, "cosine": 0.22328583896160126, "rank": 7, "description": "comma"}
-{"layer": 23, "feature": 94802, "cosine": 0.2100123018026352, "rank": 8, "description": "are"}
-{"layer": 23, "feature": 111016, "cosine": 0.20826536417007446, "rank": 9, "description": "quotation mark"}
-{"layer": 23, "feature": 81041, "cosine": 0.20785462856292725, "rank": 10, "description": "Conversations"}
-{"layer": 23, "feature": 23692, "cosine": 0.2072203904390335, "rank": 11, "description": "Expressing opinions"}
-{"layer": 23, "feature": 111930, "cosine": 0.2030356228351593, "rank": 12, "description": "\""}
-{"layer": 23, "feature": 30675, "cosine": 0.19505919516086578, "rank": 13, "description": "medical advice"}
-{"layer": 23, "feature": 18908, "cosine": 0.1941843032836914, "rank": 14, "description": "period"}
-{"layer": 23, "feature": 39671, "cosine": 0.19025646150112152, "rank": 15, "description": "Quotation marks"}
-{"layer": 23, "feature": 128822, "cosine": 0.18883830308914185, "rank": 16, "description": "."}
-{"layer": 23, "feature": 89685, "cosine": 0.18883518874645233, "rank": 17, "description": "."}
-{"layer": 23, "feature": 72881, "cosine": 0.18665580451488495, "rank": 18, "description": "punctuation"}
-{"layer": 23, "feature": 123475, "cosine": 0.18557435274124146, "rank": 19, "description": null}
-{"layer": 23, "feature": 42777, "cosine": 0.18377377092838287, "rank": 20, "description": "Dialogue snippets"}
-{"layer": 23, "feature": 104515, "cosine": 0.18126918375492096, "rank": 21, "description": "interviews"}
-{"layer": 23, "feature": 46101, "cosine": 0.18030184507369995, "rank": 22, "description": "punctuation"}
-{"layer": 23, "feature": 66699, "cosine": 0.1773417592048645, "rank": 23, "description": "Quotation marks"}
-{"layer": 23, "feature": 100513, "cosine": 0.17720487713813782, "rank": 24, "description": "Quotation marks"}
-{"layer": 23, "feature": 109900, "cosine": 0.17367224395275116, "rank": 25, "description": "Punctuation"}
-{"layer": 23, "feature": 30217, "cosine": 0.17354992032051086, "rank": 26, "description": "Negative comments"}
-{"layer": 23, "feature": 69155, "cosine": 0.17269180715084076, "rank": 27, "description": "punctuation"}
-{"layer": 23, "feature": 121579, "cosine": 0.1705634593963623, "rank": 28, "description": "to"}
-{"layer": 23, "feature": 80816, "cosine": 0.16883894801139832, "rank": 29, "description": "how-to text"}
-{"layer": 23, "feature": 20130, "cosine": 0.16762489080429077, "rank": 30, "description": "quotation marks"}
-{"layer": 23, "feature": 50882, "cosine": 0.16670535504817963, "rank": 31, "description": "forms of \"to be\""}
-{"layer": 23, "feature": 40007, "cosine": 0.16481120884418488, "rank": 32, "description": "conjunctions and punctuation"}
-{"layer": 23, "feature": 57604, "cosine": 0.16454964876174927, "rank": 33, "description": "think"}
-{"layer": 23, "feature": 15736, "cosine": 0.1640128344297409, "rank": 34, "description": "figured"}
-{"layer": 23, "feature": 10420, "cosine": 0.163950577378273, "rank": 35, "description": "that"}
-{"layer": 23, "feature": 49659, "cosine": 0.16392882168293, "rank": 36, "description": "technical discussions"}
-{"layer": 23, "feature": 90005, "cosine": 0.16351936757564545, "rank": 37, "description": "discussions"}
-{"layer": 23, "feature": 68023, "cosine": 0.16077297925949097, "rank": 38, "description": "Sometimes"}
-{"layer": 23, "feature": 81805, "cosine": 0.15982310473918915, "rank": 39, "description": "guidelines"}
-{"layer": 23, "feature": 121220, "cosine": 0.15841032564640045, "rank": 40, "description": "code comment markers"}
-{"layer": 23, "feature": 87255, "cosine": 0.1577085703611374, "rank": 41, "description": "Perhaps"}
-{"layer": 23, "feature": 124599, "cosine": 0.15449461340904236, "rank": 42, "description": "period"}
-{"layer": 23, "feature": 58590, "cosine": 0.15190523862838745, "rank": 43, "description": "sports news quotes"}
-{"layer": 23, "feature": 73160, "cosine": 0.1517285257577896, "rank": 44, "description": "sentence interrupters"}
-{"layer": 23, "feature": 17427, "cosine": 0.15167336165905, "rank": 45, "description": "period"}
-{"layer": 23, "feature": 113374, "cosine": 0.15052761137485504, "rank": 46, "description": "forum comments"}
-{"layer": 23, "feature": 116455, "cosine": 0.15042006969451904, "rank": 47, "description": "About you"}
-{"layer": 23, "feature": 56315, "cosine": 0.1503874659538269, "rank": 48, "description": "quotation marks"}
-{"layer": 23, "feature": 59778, "cosine": 0.14786311984062195, "rank": 49, "description": "creative writing"}
-{"layer": 23, "feature": 10770, "cosine": 0.14758549630641937, "rank": 50, "description": "punctuation"}
-{"layer": 23, "feature": 48812, "cosine": 0.14750169217586517, "rank": 51, "description": "minimalism and simplicity"}
-{"layer": 23, "feature": 80579, "cosine": 0.14710493385791779, "rank": 52, "description": "where"}
-{"layer": 23, "feature": 69575, "cosine": 0.14624552428722382, "rank": 53, "description": "."}
-{"layer": 23, "feature": 103596, "cosine": 0.14614945650100708, "rank": 54, "description": "colon"}
-{"layer": 23, "feature": 44335, "cosine": 0.14373843371868134, "rank": 55, "description": "a"}
-{"layer": 23, "feature": 59961, "cosine": 0.1435185968875885, "rank": 56, "description": "comma"}
-{"layer": 23, "feature": 78636, "cosine": 0.14305859804153442, "rank": 57, "description": "and"}
-{"layer": 23, "feature": 77683, "cosine": 0.14277824759483337, "rank": 58, "description": "Japanese text"}
-{"layer": 23, "feature": 29670, "cosine": 0.14260084927082062, "rank": 59, "description": "comma"}
-{"layer": 23, "feature": 118091, "cosine": 0.14227227866649628, "rank": 60, "description": "punctuation"}
-{"layer": 23, "feature": 45259, "cosine": 0.1421113908290863, "rank": 61, "description": "might as well"}
-{"layer": 23, "feature": 46747, "cosine": 0.1418609768152237, "rank": 62, "description": "quotation marks/colons"}
-{"layer": 23, "feature": 98182, "cosine": 0.14118540287017822, "rank": 63, "description": "learning and practice"}
-{"layer": 23, "feature": 58231, "cosine": 0.14099811017513275, "rank": 64, "description": "period"}
-{"layer": 23, "feature": 119455, "cosine": 0.14054878056049347, "rank": 65, "description": "But"}
-{"layer": 23, "feature": 14260, "cosine": 0.1403096318244934, "rank": 66, "description": "non-English words"}
-{"layer": 23, "feature": 90714, "cosine": 0.14014877378940582, "rank": 67, "description": "Quotation marks"}
-{"layer": 23, "feature": 59522, "cosine": 0.1396961808204651, "rank": 68, "description": "period"}
-{"layer": 23, "feature": 128115, "cosine": 0.13957549631595612, "rank": 69, "description": "foreign words"}
-{"layer": 23, "feature": 47241, "cosine": 0.13948556780815125, "rank": 70, "description": "foreign words"}
-{"layer": 23, "feature": 103839, "cosine": 0.1388019621372223, "rank": 71, "description": "punctuation"}
-{"layer": 23, "feature": 13817, "cosine": 0.1376420110464096, "rank": 72, "description": "comma"}
-{"layer": 23, "feature": 14160, "cosine": 0.13733449578285217, "rank": 73, "description": "punctuation"}
-{"layer": 23, "feature": 86138, "cosine": 0.13685666024684906, "rank": 74, "description": "period"}
-{"layer": 23, "feature": 36410, "cosine": 0.13639502227306366, "rank": 75, "description": "was"}
-{"layer": 23, "feature": 82090, "cosine": 0.1362658143043518, "rank": 76, "description": "Online reviews/comments"}
-{"layer": 23, "feature": 39113, "cosine": 0.1361657977104187, "rank": 77, "description": "punctuation"}
-{"layer": 23, "feature": 114544, "cosine": 0.1359838843345642, "rank": 78, "description": "punctuation"}
-{"layer": 23, "feature": 92236, "cosine": 0.13554657995700836, "rank": 79, "description": "ROKE"}
-{"layer": 23, "feature": 8438, "cosine": 0.13530226051807404, "rank": 80, "description": "\"it will be fine\""}
-{"layer": 23, "feature": 81987, "cosine": 0.13527005910873413, "rank": 81, "description": "that"}
-{"layer": 23, "feature": 126188, "cosine": 0.1342686265707016, "rank": 82, "description": "period"}
-{"layer": 23, "feature": 107388, "cosine": 0.13421355187892914, "rank": 83, "description": "giving negative advice"}
-{"layer": 23, "feature": 72663, "cosine": 0.13347895443439484, "rank": 84, "description": "period"}
-{"layer": 23, "feature": 50787, "cosine": 0.1334763765335083, "rank": 85, "description": "are"}
-{"layer": 23, "feature": 45346, "cosine": 0.1334354281425476, "rank": 86, "description": "quotation mark"}
-{"layer": 23, "feature": 120285, "cosine": 0.1324918568134308, "rank": 87, "description": "varied documents"}
-{"layer": 23, "feature": 119575, "cosine": 0.1319320797920227, "rank": 88, "description": "that"}
-{"layer": 23, "feature": 114249, "cosine": 0.13161616027355194, "rank": 89, "description": "."}
-{"layer": 23, "feature": 64605, "cosine": 0.13138900697231293, "rank": 90, "description": "Programming code"}
-{"layer": 23, "feature": 90691, "cosine": 0.1311531662940979, "rank": 91, "description": "Expressing opinions"}
-{"layer": 23, "feature": 13988, "cosine": 0.13084666430950165, "rank": 92, "description": "Article excerpts"}
-{"layer": 23, "feature": 44807, "cosine": 0.1305774748325348, "rank": 93, "description": "because"}
-{"layer": 23, "feature": 1583, "cosine": 0.13021615147590637, "rank": 94, "description": "comma"}
-{"layer": 23, "feature": 97755, "cosine": 0.1300157606601715, "rank": 95, "description": "Non-English words"}
-{"layer": 23, "feature": 32313, "cosine": 0.1299518644809723, "rank": 96, "description": "."}
-{"layer": 23, "feature": 1608, "cosine": 0.12961968779563904, "rank": 97, "description": "C"}
-{"layer": 23, "feature": 29634, "cosine": 0.1295877993106842, "rank": 98, "description": "."}
-{"layer": 23, "feature": 68439, "cosine": 0.12935614585876465, "rank": 99, "description": "rules or instructions"}
-{"layer": 23, "feature": 104224, "cosine": 0.12929099798202515, "rank": 100, "description": "Quotation marks"}
-{"layer": 27, "feature": 116682, "cosine": 0.27411383390426636, "rank": 1, "description": "punctuation"}
-{"layer": 27, "feature": 127621, "cosine": 0.23522116243839264, "rank": 2, "description": "colon"}
-{"layer": 27, "feature": 46547, "cosine": 0.2060888707637787, "rank": 3, "description": "just"}
-{"layer": 27, "feature": 17696, "cosine": 0.20239529013633728, "rank": 4, "description": "still"}
-{"layer": 27, "feature": 117581, "cosine": 0.2005508989095688, "rank": 5, "description": "Quotation mark"}
-{"layer": 27, "feature": 4012, "cosine": 0.19708292186260223, "rank": 6, "description": "quotation marks"}
-{"layer": 27, "feature": 91978, "cosine": 0.19459731876850128, "rank": 7, "description": "instructions and invitations"}
-{"layer": 27, "feature": 52899, "cosine": 0.1945868730545044, "rank": 8, "description": "punctuation"}
-{"layer": 27, "feature": 35177, "cosine": 0.19116416573524475, "rank": 9, "description": "period"}
-{"layer": 27, "feature": 99797, "cosine": 0.18664900958538055, "rank": 10, "description": "Period or quotation mark"}
-{"layer": 27, "feature": 59015, "cosine": 0.18401573598384857, "rank": 11, "description": "period"}
-{"layer": 27, "feature": 61201, "cosine": 0.18063688278198242, "rank": 12, "description": "Conversational speech"}
-{"layer": 27, "feature": 70050, "cosine": 0.1804317831993103, "rank": 13, "description": "down"}
-{"layer": 27, "feature": 95823, "cosine": 0.1797073781490326, "rank": 14, "description": "period"}
-{"layer": 27, "feature": 62891, "cosine": 0.1783323436975479, "rank": 15, "description": "Quotation marks"}
-{"layer": 27, "feature": 69848, "cosine": 0.1782343089580536, "rank": 16, "description": "punctuation marks"}
-{"layer": 27, "feature": 58204, "cosine": 0.1745753288269043, "rank": 17, "description": "Punctuation"}
-{"layer": 27, "feature": 49721, "cosine": 0.17412370443344116, "rank": 18, "description": "punctuation"}
-{"layer": 27, "feature": 32638, "cosine": 0.17154183983802795, "rank": 19, "description": "health, medical topics"}
-{"layer": 27, "feature": 61814, "cosine": 0.17088572680950165, "rank": 20, "description": "punctuation"}
-{"layer": 27, "feature": 48345, "cosine": 0.17046713829040527, "rank": 21, "description": "elaborating on a topic"}
-{"layer": 27, "feature": 106559, "cosine": 0.16968148946762085, "rank": 22, "description": "quotes and sayings"}
-{"layer": 27, "feature": 47398, "cosine": 0.16593265533447266, "rank": 23, "description": "Foreign words"}
-{"layer": 27, "feature": 37809, "cosine": 0.1641068458557129, "rank": 24, "description": "period"}
-{"layer": 27, "feature": 32810, "cosine": 0.16349108517169952, "rank": 25, "description": "that because"}
-{"layer": 27, "feature": 24353, "cosine": 0.16232064366340637, "rank": 26, "description": "Sports interviews"}
-{"layer": 27, "feature": 102811, "cosine": 0.15702107548713684, "rank": 27, "description": "punctuation marks"}
-{"layer": 27, "feature": 18278, "cosine": 0.15430496633052826, "rank": 28, "description": "have"}
-{"layer": 27, "feature": 56243, "cosine": 0.14955033361911774, "rank": 29, "description": "punctuation marks"}
-{"layer": 27, "feature": 27405, "cosine": 0.14921729266643524, "rank": 30, "description": "period"}
-{"layer": 27, "feature": 2229, "cosine": 0.14782823622226715, "rank": 31, "description": "period"}
-{"layer": 27, "feature": 12665, "cosine": 0.14636141061782837, "rank": 32, "description": "and/but"}
-{"layer": 27, "feature": 128431, "cosine": 0.14512760937213898, "rank": 33, "description": "punctuation marks"}
-{"layer": 27, "feature": 11480, "cosine": 0.14424008131027222, "rank": 34, "description": "conversation snippets"}
-{"layer": 27, "feature": 111758, "cosine": 0.1430625021457672, "rank": 35, "description": "Quoted sections"}
-{"layer": 27, "feature": 5818, "cosine": 0.1425866335630417, "rank": 36, "description": "Document processing"}
-{"layer": 27, "feature": 87482, "cosine": 0.1404503583908081, "rank": 37, "description": "rate"}
-{"layer": 27, "feature": 662, "cosine": 0.13717466592788696, "rank": 38, "description": "say \"the\""}
-{"layer": 27, "feature": 635, "cosine": 0.13655419647693634, "rank": 39, "description": "."}
-{"layer": 27, "feature": 52865, "cosine": 0.13603466749191284, "rank": 40, "description": "period"}
-{"layer": 27, "feature": 29303, "cosine": 0.13504156470298767, "rank": 41, "description": "."}
-{"layer": 27, "feature": 80683, "cosine": 0.13483768701553345, "rank": 42, "description": "quotation marks"}
-{"layer": 27, "feature": 15983, "cosine": 0.13480396568775177, "rank": 43, "description": "sentence ending punctuation"}
-{"layer": 27, "feature": 16469, "cosine": 0.13411986827850342, "rank": 44, "description": "to"}
-{"layer": 27, "feature": 14144, "cosine": 0.1335362195968628, "rank": 45, "description": "punctuation"}
-{"layer": 27, "feature": 48749, "cosine": 0.13289178907871246, "rank": 46, "description": "Describe a particular attribute"}
-{"layer": 27, "feature": 34121, "cosine": 0.13160811364650726, "rank": 47, "description": null}
-{"layer": 27, "feature": 27694, "cosine": 0.13153164088726044, "rank": 48, "description": "that"}
-{"layer": 27, "feature": 82786, "cosine": 0.13143478333950043, "rank": 49, "description": "."}
-{"layer": 27, "feature": 112087, "cosine": 0.13079209625720978, "rank": 50, "description": "."}
-{"layer": 27, "feature": 92485, "cosine": 0.13075032830238342, "rank": 51, "description": "commas and \"and\""}
-{"layer": 27, "feature": 54108, "cosine": 0.13009007275104523, "rank": 52, "description": "the"}
-{"layer": 27, "feature": 105106, "cosine": 0.12949195504188538, "rank": 53, "description": "code comments"}
-{"layer": 27, "feature": 70789, "cosine": 0.12882454693317413, "rank": 54, "description": "punctuation"}
-{"layer": 27, "feature": 102410, "cosine": 0.12818264961242676, "rank": 55, "description": "Informational text"}
-{"layer": 27, "feature": 99286, "cosine": 0.128117173910141, "rank": 56, "description": "."}
-{"layer": 27, "feature": 31505, "cosine": 0.1269686222076416, "rank": 57, "description": "period"}
-{"layer": 27, "feature": 106099, "cosine": 0.12640134990215302, "rank": 58, "description": "period"}
-{"layer": 27, "feature": 7667, "cosine": 0.1261579841375351, "rank": 59, "description": "advice or reviews"}
-{"layer": 27, "feature": 44305, "cosine": 0.12613897025585175, "rank": 60, "description": "but"}
-{"layer": 27, "feature": 70224, "cosine": 0.12533138692378998, "rank": 61, "description": "period"}
-{"layer": 27, "feature": 76115, "cosine": 0.1252843290567398, "rank": 62, "description": "learning and figuring things out"}
-{"layer": 27, "feature": 25366, "cosine": 0.12411696463823318, "rank": 63, "description": "punctuation marks"}
-{"layer": 27, "feature": 67188, "cosine": 0.12391538172960281, "rank": 64, "description": "say punctuation"}
-{"layer": 27, "feature": 46825, "cosine": 0.12372153997421265, "rank": 65, "description": "Quotation mark"}
-{"layer": 27, "feature": 107194, "cosine": 0.12335141748189926, "rank": 66, "description": "."}
-{"layer": 27, "feature": 120910, "cosine": 0.12329690158367157, "rank": 67, "description": "Technical discussion forum comments"}
-{"layer": 27, "feature": 126605, "cosine": 0.12308290600776672, "rank": 68, "description": "period"}
-{"layer": 27, "feature": 3676, "cosine": 0.12277042120695114, "rank": 69, "description": "that"}
-{"layer": 27, "feature": 15581, "cosine": 0.12264544516801834, "rank": 70, "description": "forum posts"}
-{"layer": 27, "feature": 75648, "cosine": 0.1225908100605011, "rank": 71, "description": "honesty and directness"}
-{"layer": 27, "feature": 109235, "cosine": 0.12251053005456924, "rank": 72, "description": "technology related texts"}
-{"layer": 27, "feature": 18452, "cosine": 0.12246742099523544, "rank": 73, "description": "period"}
-{"layer": 27, "feature": 82520, "cosine": 0.1222115233540535, "rank": 74, "description": "song lyrics"}
-{"layer": 27, "feature": 16314, "cosine": 0.12200532108545303, "rank": 75, "description": "Quotations"}
-{"layer": 27, "feature": 1266, "cosine": 0.12104062736034393, "rank": 76, "description": "were"}
-{"layer": 27, "feature": 100287, "cosine": 0.12045397609472275, "rank": 77, "description": "punctuation"}
-{"layer": 27, "feature": 100663, "cosine": 0.12038779258728027, "rank": 78, "description": "said"}
-{"layer": 27, "feature": 35225, "cosine": 0.12028268724679947, "rank": 79, "description": "period"}
-{"layer": 27, "feature": 69079, "cosine": 0.11966755986213684, "rank": 80, "description": "Answering questions"}
-{"layer": 27, "feature": 19068, "cosine": 0.11963872611522675, "rank": 81, "description": "periods"}
-{"layer": 27, "feature": 45674, "cosine": 0.1195029690861702, "rank": 82, "description": "say \"skip\" words"}
-{"layer": 27, "feature": 115527, "cosine": 0.11932366341352463, "rank": 83, "description": "comma"}
-{"layer": 27, "feature": 28681, "cosine": 0.11859549582004547, "rank": 84, "description": "period"}
-{"layer": 27, "feature": 49804, "cosine": 0.11797381192445755, "rank": 85, "description": "Realization and suggestion"}
-{"layer": 27, "feature": 55237, "cosine": 0.11792856454849243, "rank": 86, "description": "whereas"}
-{"layer": 27, "feature": 81739, "cosine": 0.11791368573904037, "rank": 87, "description": "or"}
-{"layer": 27, "feature": 11943, "cosine": 0.11782527714967728, "rank": 88, "description": "punctuation"}
-{"layer": 27, "feature": 12080, "cosine": 0.11776751279830933, "rank": 89, "description": "period"}
-{"layer": 27, "feature": 62395, "cosine": 0.1171165406703949, "rank": 90, "description": "punctuation"}
-{"layer": 27, "feature": 7461, "cosine": 0.11677107959985733, "rank": 91, "description": "think"}
-{"layer": 27, "feature": 17538, "cosine": 0.11663787066936493, "rank": 92, "description": "colon or dash"}
-{"layer": 27, "feature": 77978, "cosine": 0.11645007878541946, "rank": 93, "description": "but"}
-{"layer": 27, "feature": 95811, "cosine": 0.11599470674991608, "rank": 94, "description": "business/helpful advice"}
-{"layer": 27, "feature": 113975, "cosine": 0.11598653346300125, "rank": 95, "description": "minor problems"}
-{"layer": 27, "feature": 80354, "cosine": 0.11583120375871658, "rank": 96, "description": "multiple languages"}
-{"layer": 27, "feature": 15514, "cosine": 0.11556857079267502, "rank": 97, "description": "so"}
-{"layer": 27, "feature": 91928, "cosine": 0.11552625894546509, "rank": 98, "description": "self-help advice"}
-{"layer": 27, "feature": 52507, "cosine": 0.11527455598115921, "rank": 99, "description": "period"}
-{"layer": 27, "feature": 1328, "cosine": 0.11508409678936005, "rank": 100, "description": "8"}
+{"layer": 11, "feature": 130649, "cosine": 0.1995110660791397, "rank": 1, "description": "opinions and arguments", "descriptions": [{"description": "opinions and arguments", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "words related to wealth, status, or privilege.", "model": "gpt-4o", "type": "oai_token-act-pair"}, {"description": "This neuron activates on numeric tokens\u2014especially floating\u2010point and other digit\u2010containing values.", "model": "o4-mini", "type": "oai_token-act-pair"}, {"description": "over-the-top, propagandistic praise and grandiose self-aggrandizing titles or claims.", "model": "gpt-5", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 127533, "cosine": 0.19414135813713074, "rank": 2, "description": "Quotes/opinions", "descriptions": [{"description": "Quotes/opinions", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "This neuron detects the special header tokens (especially \u201c<|start_header_id|>\u201d) that mark the beginning of an assistant response.", "model": "o4-mini", "type": "oai_token-act-pair"}, {"description": "toxic or derogatory statements, especially hate speech targeting identity groups or prompts requesting such content.", "model": "gpt-5", "type": "oai_token-act-pair"}, {"description": "structural formatting tokens in conversational AI exchanges, particularly the header delimiters.", "model": "claude-4-5-sonnet", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 27766, "cosine": 0.1940620094537735, "rank": 3, "description": "personal experiences", "descriptions": [{"description": "personal experiences", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "toxic expressions and negative sentiments in personal relationships.", "model": "gpt-4o-mini", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 117666, "cosine": 0.1910143494606018, "rank": 4, "description": "Punctuation in varied texts", "descriptions": [{"description": "Punctuation in varied texts", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "detailed procedural steps or instructions, particularly those related to specific sequential processes.", "model": "gpt-4o", "type": "oai_token-act-pair"}, {"description": "the description of invasive and painful procedures involving body modifications.", "model": "gpt-4o-mini", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 25463, "cosine": 0.19020725786685944, "rank": 5, "description": "quotations", "descriptions": [{"description": "quotations", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 11, "feature": 29224, "cosine": 0.17449001967906952, "rank": 6, "description": "Quotes", "descriptions": [{"description": "Quotes", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 11, "feature": 123114, "cosine": 0.16967126727104187, "rank": 7, "description": "government and regulations", "descriptions": [{"description": "government and regulations", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 11, "feature": 39163, "cosine": 0.16891679167747498, "rank": 8, "description": "dieting advice", "descriptions": [{"description": "dieting advice", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "The neuron activates on words in step\u2010by\u2010step instructions for harmful or dangerous behaviors.", "model": "o4-mini", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 64769, "cosine": 0.16200052201747894, "rank": 9, "description": "Expressing opinions", "descriptions": [{"description": "Expressing opinions", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "statements expressing hate speech\u2014sweeping, declarative generalizations about demographic groups.", "model": "gpt-5", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 38053, "cosine": 0.15984180569648743, "rank": 10, "description": "Search queries/text snippets", "descriptions": [{"description": "Search queries/text snippets", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "This neuron detects user requests for instructions or encouragement to engage in harmful or illegal actions (including self-harm).", "model": "o4-mini", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 61322, "cosine": 0.15357720851898193, "rank": 11, "description": "Negation/Contradiction", "descriptions": [{"description": "Negation/Contradiction", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "The neuron fires on hedging or minimizing language that downplays statements (e.g. \u201cit\u2019s not that bad\u201d).", "model": "o4-mini", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 16205, "cosine": 0.1510339081287384, "rank": 12, "description": "abuse", "descriptions": [{"description": "abuse", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "gaslighting abuse", "model": "gemini-2.5-flash-lite", "type": "np_max-act-logits"}, {"description": "content related to gaslighting and emotional manipulation.", "model": "gpt-4o", "type": "oai_token-act-pair"}, {"description": "The neuron fires on references to gaslighting and other terms for psychological or emotional abuse\u2014words like \u201cgaslight,\u201d \u201cemotional,\u201d \u201cabuse,\u201d \u201cquestion,\u201d and \u201csanity.\u201d", "model": "o4-mini", "type": "oai_token-act-pair"}, {"description": "language describing gaslighting and relationship abuse, highlighting manipulation, control, and victimization dynamics", "model": "gpt-5", "type": "oai_token-act-pair"}, {"description": "Finds descriptions of gaslighting, emotional/psychological abuse, and manipulative tactics that make a victim doubt their perception or sanity.", "model": "gpt-5-mini", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 92468, "cosine": 0.1493016630411148, "rank": 13, "description": "Quotation marks", "descriptions": [{"description": "Quotation marks", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "The neuron activates on the special \u201cNAME_x\u201d placeholder tokens denoting character names.", "model": "o4-mini", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 60260, "cosine": 0.1484529674053192, "rank": 14, "description": "conversation", "descriptions": [{"description": "conversation", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "The neuron never activates on any tokens\u2014it appears to be inactive (a \u201cdead\u201d neuron) and does not detect any particular pattern.", "model": "o4-mini", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 78960, "cosine": 0.14832524955272675, "rank": 15, "description": "Informal writing/opinions", "descriptions": [{"description": "Informal writing/opinions", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "requests or instructions to enable certain modes or simulate different behaviors in AI.", "model": "gpt-4o", "type": "oai_token-act-pair"}, {"description": "The neuron lights up when the model is issuing a greeting or self-introduction\u2014informal address tokens like \u201cHello,\u201d \u201cHey,\u201d \u201cI\u2019m here,\u201d \u201cYou,\u201d etc.", "model": "o4-mini", "type": "oai_token-act-pair"}, {"description": "content related to instructions, compliance, and ethical guidelines.", "model": "gpt-4o-mini", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 116743, "cosine": 0.14393112063407898, "rank": 16, "description": "English prose", "descriptions": [{"description": "English prose", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "the assistant turn markers and the beginnings of assistant responses in chat-formatted text.", "model": "gpt-5", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 91105, "cosine": 0.14263476431369781, "rank": 17, "description": "Dialogue", "descriptions": [{"description": "Dialogue", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "This neuron activates on the special metadata/control tokens (e.g. header-ID, begin/end markers, speaker tags) that structure the conversation rather than on ordinary content words.", "model": "o4-mini", "type": "oai_token-act-pair"}, {"description": "instructions that set covert goals for roleplay\u2014steering the conversation subtly toward a hidden agenda or eliciting help/money without stating it directly.", "model": "gpt-5", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 10504, "cosine": 0.13711699843406677, "rank": 18, "description": "Dialogue and narrative text", "descriptions": [{"description": "Dialogue and narrative text", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "The neuron fires on control/meta tokens (like the \u201c<|start_header_id|>\u201d, \u201c<|end_header_id|>\u201d, \u201c<|begin_of_text|>\u201d, etc.) rather than ordinary text words.", "model": "o4-mini", "type": "oai_token-act-pair"}, {"description": "hesitant first-person confessions in dialogue, marked by admissions and hedging (e.g., pauses, interjections, and ellipses)", "model": "gpt-5", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 61698, "cosine": 0.13690818846225739, "rank": 19, "description": "questions or choices", "descriptions": [{"description": "questions or choices", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "This neuron never fires on any of the text tokens\u2014it appears to be effectively \u201cdead\u201d and does not detect any meaningful pattern.", "model": "o4-mini", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 24275, "cosine": 0.13662362098693848, "rank": 20, "description": "with", "descriptions": [{"description": "with", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "conversational humor and casual storytelling style in narrative text.", "model": "gpt-4o-mini", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 95820, "cosine": 0.13283146917819977, "rank": 21, "description": "new", "descriptions": [{"description": "new", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "The neuron detects document metadata headings and section titles (e.g. \u201c**Meeting Minutes**,\u201d \u201c**Date:**,\u201d \u201c**Agenda:**,\u201d \u201cLocation,\u201d \u201cAttendees,\u201d etc.).", "model": "o4-mini", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 50646, "cosine": 0.12799710035324097, "rank": 22, "description": "complex, argumentative writing", "descriptions": [{"description": "complex, argumentative writing", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 11, "feature": 105868, "cosine": 0.12733274698257446, "rank": 23, "description": "statements and assurances", "descriptions": [{"description": "statements and assurances", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "language indicating assurances or promises\u2014reported statements asserting that something is or will be true or guaranteed.", "model": "gpt-5", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 124733, "cosine": 0.1272238940000534, "rank": 24, "description": "scams or urgency", "descriptions": [{"description": "scams or urgency", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "The neuron detects words and tokens expressing persuasive or high-pressure tactics\u2014e.g. urging immediacy, convincing, pressuring, claiming\u2014to coerce the reader.", "model": "o4-mini", "type": "oai_token-act-pair"}, {"description": "phrases that create urgency or high-pressure demands to act immediately (time-limited threats/pressure tactics).", "model": "gpt-5-mini", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 33993, "cosine": 0.1257237046957016, "rank": 25, "description": "dialogue", "descriptions": [{"description": "dialogue", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 11, "feature": 83119, "cosine": 0.12571965157985687, "rank": 26, "description": "was", "descriptions": [{"description": "was", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "This neuron detects warning or cautionary language signaling negative consequences (e.g. \u201ccan lead to,\u201d \u201cdangers of,\u201d \u201ccreate a culture of victimhood,\u201d \u201cdivisive and counterproductive\u201d).", "model": "o4-mini", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 110281, "cosine": 0.12500090897083282, "rank": 27, "description": "Nonsense", "descriptions": [{"description": "Nonsense", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "The main thing this neuron does is detect special internal/control tokens (e.g. header or metadata markers) in the text.", "model": "o4-mini", "type": "oai_token-act-pair"}, {"description": "requests for or generation of deliberately nonsensical, absurd, or intentionally incorrect responses.", "model": "gpt-5", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 44694, "cosine": 0.12333062291145325, "rank": 28, "description": "discussions", "descriptions": [{"description": "discussions", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "The neuron mainly responds to numeric tokens (i.e. numbers) and related special header\u2010ID markers in the input.", "model": "o4-mini", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 89238, "cosine": 0.12237678468227386, "rank": 29, "description": "health/wellness", "descriptions": [{"description": "health/wellness", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "This neuron fires on tokens used in numbered or bulleted step\u2010by\u2010step list formatting (e.g. list markers like \u201c1.\u201d, \u201c**\u201d, and parentheses around numbers).", "model": "o4-mini", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 80907, "cosine": 0.12196220457553864, "rank": 30, "description": "punctuation", "descriptions": [{"description": "punctuation", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "phrases related to advice on travel and planning.", "model": "gpt-4o-mini", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 21554, "cosine": 0.12183979153633118, "rank": 31, "description": "Article snippet", "descriptions": [{"description": "Article snippet", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 11, "feature": 123781, "cosine": 0.12181143462657928, "rank": 32, "description": "news articles", "descriptions": [{"description": "news articles", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 11, "feature": 57144, "cosine": 0.12057898193597794, "rank": 33, "description": ".", "descriptions": [{"description": ".", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "The neuron is primarily detecting sentence-ending punctuation (periods) in the generated text.", "model": "o4-mini", "type": "oai_token-act-pair"}, {"description": "sentence-ending punctuation, especially periods marking the end of a sentence or message.", "model": "gpt-5", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 26712, "cosine": 0.12031988054513931, "rank": 34, "description": "he", "descriptions": [{"description": "he", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "This neuron detects the special \u201cheader ID\u201d marker tokens (e.g. <|start_header_id|>) in the OpenAI chat-format text.", "model": "o4-mini", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 101236, "cosine": 0.12019889801740646, "rank": 35, "description": "advice and dialogues", "descriptions": [{"description": "advice and dialogues", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 11, "feature": 114962, "cosine": 0.11955674737691879, "rank": 36, "description": "quotation marks", "descriptions": [{"description": "quotation marks", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "This neuron specializes in spotting direct speech or quoted passages, triggering on quotation marks and reporting verbs like \u201csaid.\u201d", "model": "o4-mini", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 83299, "cosine": 0.11949813365936279, "rank": 37, "description": "Dialogue", "descriptions": [{"description": "Dialogue", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "The neuron detects first\u2010person self\u2010reports of emotional or mental states (e.g. \u201cI\u2019m not feeling great,\u201d \u201cI\u2019ve been feeling really down\u201d).", "model": "o4-mini", "type": "oai_token-act-pair"}, {"description": "sentences or phrases where the speaker refers to their own negative emotional state or distress in the first person.", "model": "gpt-5-mini", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 89337, "cosine": 0.11876140534877777, "rank": 38, "description": "internet forum comments", "descriptions": [{"description": "internet forum comments", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "This neuron detects model-control and metadata tokens\u2014i.e. special markup like header/eot IDs, role tags, placeholders (NAME, underscores, numeric IDs), and slash-style delimiters.", "model": "o4-mini", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 57537, "cosine": 0.118462935090065, "rank": 39, "description": "to", "descriptions": [{"description": "to", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "The neuron responds to mentions of specific places or destinations and the \u201ccall-to-action\u201d style phrasing that recommends checking out local sights or events.", "model": "o4-mini", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 59030, "cosine": 0.117439404129982, "rank": 40, "description": "End of sentences/clauses", "descriptions": [{"description": "End of sentences/clauses", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "This neuron responds to the first (capitalized) word at the start of a sentence.", "model": "o4-mini", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 106036, "cosine": 0.11684226989746094, "rank": 41, "description": "role-playing dialogue, especially with sexual or intimate context and first-person character impersonation.", "descriptions": [{"description": "role-playing dialogue, especially with sexual or intimate context and first-person character impersonation.", "model": "gpt-5", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 91754, "cosine": 0.11671258509159088, "rank": 42, "description": "feelings and emotions", "descriptions": [{"description": "feelings and emotions", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "The neuron activates on words describing human instincts, emotional or psychological reactions (e.g., \u201creaction,\u201d \u201cnatural,\u201d \u201curge,\u201d \u201cpsychology\u201d).", "model": "o4-mini", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 111161, "cosine": 0.11590348929166794, "rank": 43, "description": "questions", "descriptions": [{"description": "questions", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "This neuron activates on first-person personal references\u2014tokens like \u201cI,\u201d \u201cmy,\u201d \u201cme,\u201d and related forms conveying the speaker\u2019s own experience.", "model": "o4-mini", "type": "oai_token-act-pair"}, {"description": "instances of first-person references (I/my/we/etc.) signaling personal experience or speaker's perspective.", "model": "gpt-5-mini", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 109994, "cosine": 0.11567500978708267, "rank": 44, "description": "will", "descriptions": [{"description": "will", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "This neuron fires on the opening word of a quoted utterance\u2014especially sentence-initial pronouns or imperatives like \u201cShe,\u201d \u201cDon\u2019t,\u201d \u201cYou,\u201d etc.", "model": "o4-mini", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 108638, "cosine": 0.11566367745399475, "rank": 45, "description": "dialogue", "descriptions": [{"description": "dialogue", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "The neuron activates on the language of directives and commands (e.g. \u201cI want you to\u2026,\u201d \u201cyou will do\u2026,\u201d \u201cstrip for me,\u201d etc.).", "model": "o4-mini", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 33274, "cosine": 0.11486443132162094, "rank": 46, "description": "Language/grammar", "descriptions": [{"description": "Language/grammar", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "detecting explicit pornographic sexual content and requests for explicit sexual material.", "model": "gpt-5-nano", "type": "oai_token-act-pair"}, {"description": "Explanation could not be parsed.", "model": "o4-mini", "type": "eleuther_acts_top20"}, {"description": "The neuron spotlights special control\u2010 or header\u2010tokens (like the `<|start_header_id|>`, `<|end_header_id|>`, and similar markers) that delimit and label parts of the chat transcript.", "model": "o4-mini", "type": "oai_token-act-pair"}, {"description": "opposite/anti responses", "model": "gemini-2.5-flash", "type": "np_max-act"}, {"description": "the AI's `assistant` role, as well as the 'Chat GPT' and 'Anti GPT' labels used in the responses.", "model": "gemini-2.5-flash", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 44861, "cosine": 0.11469804495573044, "rank": 47, "description": "Negativity", "descriptions": [{"description": "Negativity", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "This neuron detects descriptions of someone approaching or interacting with \u201cyou,\u201d especially when they seem friendly at first but then ignore or disappear.", "model": "o4-mini", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 77658, "cosine": 0.11346008628606796, "rank": 48, "description": ":", "descriptions": [{"description": ":", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 11, "feature": 2015, "cosine": 0.11226421594619751, "rank": 49, "description": "formal language", "descriptions": [{"description": "formal language", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "proper names or placeholders (like NAME_1, NAME_2).", "model": "claude-3-5-haiku-20241022", "type": "oai_token-act-pair"}, {"description": "words or phrases expressing comprehension, particularly in educational or instructional contexts.", "model": "claude-3-7-sonnet-20250219", "type": "oai_token-act-pair"}, {"description": "The neuron detects the framing of high\u2010level factual statements\u2014tokens like \u201cstands,\u201d \u201cas,\u201d \u201cWorld,\u201d \u201cone,\u201d and numerical or proper\u2010noun elements that introduce or anchor formal expository claims.", "model": "o4-mini", "type": "oai_token-act-pair"}, {"description": "discourse transition and structuring cues in formal, expository text (contrast, explanation, enumeration, and sentence-boundary signals).", "model": "gpt-5", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 57282, "cosine": 0.11222579330205917, "rank": 50, "description": "with", "descriptions": [{"description": "with", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "technical discussions related to digital security and cryptographic practices.", "model": "gpt-4o-mini", "type": "oai_token-act-pair"}, {"description": "The neuron is specialized to detect numeric tokens representing floating\u2010point or decimal values.", "model": "o4-mini", "type": "oai_token-act-pair"}, {"description": "sentences or phrases that give advice, recommendations, explanations or express evaluative/opinionated language.", "model": "gpt-5-mini", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 114793, "cosine": 0.11060859262943268, "rank": 51, "description": "punctuation marks", "descriptions": [{"description": "punctuation marks", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "The neuron detects non-text control tokens (e.g. conversation metadata markers and role labels) rather than ordinary words.", "model": "o4-mini", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 89388, "cosine": 0.10981094837188721, "rank": 52, "description": "Controversial opinions/experiences", "descriptions": [{"description": "Controversial opinions/experiences", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "This neuron responds to direct, second-person imperatives or insults addressed at someone (e.g. \u201cyou\u2019re just a woman,\u201d \u201cdon\u2019t waste your time,\u201d \u201cladies, make yourselves at home\u201d). It flags commanding or insulting \u201cyou\u201d statements.", "model": "o4-mini", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 83100, "cosine": 0.10973658412694931, "rank": 53, "description": "possessive", "descriptions": [{"description": "possessive", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 11, "feature": 115741, "cosine": 0.1094621941447258, "rank": 54, "description": "Lists and enumerated items", "descriptions": [{"description": "Lists and enumerated items", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "This neuron detects numbered list markers (numeric step labels) in instructions.", "model": "o4-mini", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 4844, "cosine": 0.10921451449394226, "rank": 55, "description": "there", "descriptions": [{"description": "there", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "The neuron is especially sensitive to high\u2010frequency function words and connectors (e.g. \u201cthere,\u201d \u201cis,\u201d \u201cthen\u201d) rather than content\u2010bearing nouns or verbs.", "model": "o4-mini", "type": "oai_token-act-pair"}, {"description": "sarcastic or ironic statements where the literal wording contrasts with the intended meaning.", "model": "gpt-5", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 26620, "cosine": 0.10872025787830353, "rank": 56, "description": "Business/technical contexts", "descriptions": [{"description": "Business/technical contexts", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "This neuron activates on present\u2010participle (-ing) action verbs, especially those that begin instruction or list items.", "model": "o4-mini", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 62184, "cosine": 0.10822087526321411, "rank": 57, "description": "survey responses", "descriptions": [{"description": "survey responses", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "This neuron activates on words and phrases expressing help, support, or assistance to others.", "model": "o4-mini", "type": "oai_token-act-pair"}, {"description": "first-person self-report statements typical of questionnaires or Likert-style survey items.", "model": "gpt-5", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 100669, "cosine": 0.10630849003791809, "rank": 58, "description": "quick", "descriptions": [{"description": "quick", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "requests or discussions about quickly becoming wealthy or making money fast, often alongside cautions about scams and too-good-to-be-true schemes.", "model": "gpt-5", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 67377, "cosine": 0.10575037449598312, "rank": 59, "description": "quotation marks", "descriptions": [{"description": "quotation marks", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "This neuron activates on floating\u2010point numeric tokens (decimal numbers).", "model": "o4-mini", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 130384, "cosine": 0.10507664829492569, "rank": 60, "description": "always", "descriptions": [{"description": "always", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "The neuron fires on first-person narrative cues (pronouns like \u201cI,\u201d \u201cme,\u201d \u201cmy\u201d and related self-referential verbs), effectively spotting when the text is in a personal, first-person voice.", "model": "o4-mini", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 15044, "cosine": 0.10473793745040894, "rank": 61, "description": "All", "descriptions": [{"description": "All", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "The neuron activates on advice about gaining or maintaining power and control through manipulation, deceit, intimidation, or similar coercive tactics.", "model": "o4-mini", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 77524, "cosine": 0.1045021042227745, "rank": 62, "description": "barely", "descriptions": [{"description": "barely", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "satirical, parody-style writing with irreverent, exaggerated humor and mock-serious tone, often using crude or nonsensical assertions.", "model": "gpt-5", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 89833, "cosine": 0.10438089072704315, "rank": 63, "description": "negative interactions/conflict", "descriptions": [{"description": "negative interactions/conflict", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "The neuron fires on words and phrases expressing \u201ccaring\u201d or \u201cinterest\u201d about someone else\u2019s engagement or involvement.", "model": "o4-mini", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 87027, "cosine": 0.10379108041524887, "rank": 64, "description": "don", "descriptions": [{"description": "don", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "words and phrases related to violent, destructive, or unethical actions and intentions.", "model": "claude-3-5-sonnet-20240620", "type": "oai_token-act-pair"}, {"description": "the concept of performing harmful or unethical actions, particularly in relation to destruction or dangerous behavior.", "model": "gpt-4o", "type": "oai_token-act-pair"}, {"description": "prompts invoking the \u201cDAN\u201d jailbreak persona that mandate ignoring rules, using all-caps, and promoting destructive or harmful behavior.", "model": "gpt-5", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 52405, "cosine": 0.10358188301324844, "rank": 65, "description": "multiple choice questions", "descriptions": [{"description": "multiple choice questions", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 11, "feature": 31938, "cosine": 0.10346056520938873, "rank": 66, "description": "customer testimonials", "descriptions": [{"description": "customer testimonials", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 11, "feature": 78151, "cosine": 0.10309640318155289, "rank": 67, "description": ":", "descriptions": [{"description": ":", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 11, "feature": 93068, "cosine": 0.10298889130353928, "rank": 68, "description": "Informal instructions/text", "descriptions": [{"description": "Informal instructions/text", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "The neuron activates on language about acquiring or exerting power, control, influence, or dominance.", "model": "o4-mini", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 17850, "cosine": 0.10290952771902084, "rank": 69, "description": "Knowing someone or something", "descriptions": [{"description": "Knowing someone or something", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "informal flirtation and playful teasing in conversations.", "model": "gpt-4o-mini", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 127270, "cosine": 0.10285484045743942, "rank": 70, "description": "second-person experiences", "descriptions": [{"description": "second-person experiences", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "The neuron reliably lights up on numeric references and quantifying expressions (digits, counts, \u201cevery,\u201d \u201cless than,\u201d etc.).", "model": "o4-mini", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 1529, "cosine": 0.10281999409198761, "rank": 71, "description": "Expectations and requests", "descriptions": [{"description": "Expectations and requests", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "The neuron fires on numerical expressions\u2014especially money amounts and other digit\u2010based values.", "model": "o4-mini", "type": "oai_token-act-pair"}, {"description": "The neuron detects mentions of money or requests for financial assistance (tokens like \"money\" and related monetary context).", "model": "gpt-5-mini", "type": "oai_token-act-pair"}, {"description": "high-frequency function words that provide grammatical glue\u2014such as pronouns, auxiliary verbs, prepositions, and articles\u2014marking sentence structure and modality.", "model": "gpt-5", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 63896, "cosine": 0.10197993367910385, "rank": 72, "description": "Scams and fraud", "descriptions": [{"description": "Scams and fraud", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "The neuron activates on mentions of major corporate names (e.g. \u201cUPS,\u201d \u201cMicrosoft,\u201d \u201cUnited Parcel Service,\u201d etc.) in scam\u2010related text.", "model": "o4-mini", "type": "oai_token-act-pair"}, {"description": "references to various types of scams and fraudulent activities.", "model": "gpt-4o-mini", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 21061, "cosine": 0.1019754558801651, "rank": 73, "description": "use", "descriptions": [{"description": "use", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "The neuron flags negation or prohibition cues (e.g., \u201cnot,\u201d \u201cnever,\u201d \u201cavoid,\u201d \u201cdon\u2019t,\u201d \u201cdo not\u201d).", "model": "o4-mini", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 118590, "cosine": 0.10089349746704102, "rank": 74, "description": "code", "descriptions": [{"description": "code", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 11, "feature": 41675, "cosine": 0.10085439682006836, "rank": 75, "description": "PLY", "descriptions": [{"description": "PLY", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "The neuron specifically detects the token marking the end of the assistant\u2019s header (i.e. the boundary token that signals the start of the assistant\u2019s response).", "model": "o4-mini", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 16613, "cosine": 0.09977841377258301, "rank": 76, "description": "Advice and suggestions", "descriptions": [{"description": "Advice and suggestions", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "This neuron detects suggestions to \u201ctalk to someone to clear the air.\u201d", "model": "o4-mini", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 58537, "cosine": 0.09972929954528809, "rank": 77, "description": "academic texts", "descriptions": [{"description": "academic texts", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "The neuron responds to quantitative or measurement-oriented tokens\u2014section headings, numeric values, and units\u2014marking passages that convey data, metrics, or structured \u201chow-to-measure\u201d content.", "model": "o4-mini", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 91380, "cosine": 0.09955893456935883, "rank": 78, "description": "bragging", "descriptions": [{"description": "bragging", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "The neuron detects boastful or self-aggrandizing language (words expressing bragging or pride).", "model": "o4-mini", "type": "oai_token-act-pair"}, {"description": "language expressing boasting or bragging (words/phrases indicating someone bragging).", "model": "gpt-5-mini", "type": "oai_token-act-pair"}, {"description": "statements expressing boasting or prideful self-congratulation about one\u2019s actions or achievements.", "model": "gpt-5", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 60780, "cosine": 0.09954627603292465, "rank": 79, "description": "punctuation", "descriptions": [{"description": "punctuation", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "The neuron fires on the headings of numbered or bulleted advice steps\u2014i.e. imperative phrases (like \u201cSeek support:\u201d, \u201cKeep yourself busy:\u201d) marking list-item titles.", "model": "o4-mini", "type": "oai_token-act-pair"}, {"description": "Sentences or phrases giving advice/instructions (imperative or directive, second-person guidance).", "model": "gpt-5-mini", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 74000, "cosine": 0.09929637610912323, "rank": 80, "description": "Questions", "descriptions": [{"description": "Questions", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "This neuron activates on numbered list markers (e.g., \u201c1.\u201d, \u201c2.\u201d, etc.) indicating the start of list items.", "model": "o4-mini", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 39168, "cosine": 0.09904999285936356, "rank": 81, "description": "Traditional healing", "descriptions": [{"description": "Traditional healing", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "The neuron detects mentions of traditional or faith\u2010based healing practices and related terms.", "model": "o4-mini", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 117851, "cosine": 0.09849537163972855, "rank": 82, "description": "inaccurate information", "descriptions": [{"description": "inaccurate information", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "explanatory passages in task instructions that introduce illustrative examples or clarifications about the task (e.g., discussing potential errors or misrepresentation).", "model": "gpt-5", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 125134, "cosine": 0.09835085272789001, "rank": 83, "description": "Conversational filler", "descriptions": [{"description": "Conversational filler", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "The neuron fires on short exclamatory interjections (e.g. \u201cAw,\u201d \u201cWow,\u201d \u201cOh,\u201d) marking moments of surprise or appreciation.", "model": "o4-mini", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 21612, "cosine": 0.09831617772579193, "rank": 84, "description": "story plots", "descriptions": [{"description": "story plots", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 11, "feature": 39090, "cosine": 0.09821288287639618, "rank": 85, "description": "that", "descriptions": [{"description": "that", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "The neuron strongly activates on past-tense \u201cmental state\u201d verbs introducing beliefs or thoughts (e.g. \u201cbelieved that he was\u2026\u201d).", "model": "o4-mini", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 15205, "cosine": 0.09750920534133911, "rank": 86, "description": "a", "descriptions": [{"description": "a", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "This neuron activates on tokens representing numeric or numeric\u2010like data (digits, decimal numbers, or tokens containing numbers).", "model": "o4-mini", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 47384, "cosine": 0.09682971984148026, "rank": 87, "description": "Criticism and judgement", "descriptions": [{"description": "Criticism and judgement", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 11, "feature": 25723, "cosine": 0.0964050218462944, "rank": 88, "description": "dialogue and chat snippets", "descriptions": [{"description": "dialogue and chat snippets", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 11, "feature": 100051, "cosine": 0.09630730003118515, "rank": 89, "description": "punctuation marks", "descriptions": [{"description": "punctuation marks", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "dialogue that relates to interactions and activities in a space environment.", "model": "gpt-4o-mini", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 95439, "cosine": 0.09617028385400772, "rank": 90, "description": "punctuation", "descriptions": [{"description": "punctuation", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 11, "feature": 9891, "cosine": 0.09568473696708679, "rank": 91, "description": "Dialogue", "descriptions": [{"description": "Dialogue", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "conversations characterized by playful and flirtatious banter.", "model": "gpt-4o-mini", "type": "oai_token-act-pair"}, {"description": "The main thing this neuron does is detect the opening of a dialogue turn\u2014greeting and response tokens (e.g. \u201cHey,\u201d \u201cI\u2019m,\u201d \u201cThank you,\u201d \u201cyou,\u201d \u201cI,\u201d etc.) that typically occur at the start of an assistant\u2019s message.", "model": "o4-mini", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 88802, "cosine": 0.09524838626384735, "rank": 92, "description": "Quotations/conversational", "descriptions": [{"description": "Quotations/conversational", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "This neuron is triggered by numeric tokens, especially decimal (floating-point) numbers.", "model": "o4-mini", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 119541, "cosine": 0.09503031522035599, "rank": 93, "description": "code", "descriptions": [{"description": "code", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 11, "feature": 37221, "cosine": 0.09493561089038849, "rank": 94, "description": "Smileys", "descriptions": [{"description": "Smileys", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 11, "feature": 51675, "cosine": 0.09466913342475891, "rank": 95, "description": "dialogues", "descriptions": [{"description": "dialogues", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 11, "feature": 66314, "cosine": 0.09466337412595749, "rank": 96, "description": "online comments", "descriptions": [{"description": "online comments", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 11, "feature": 2820, "cosine": 0.09407825022935867, "rank": 97, "description": "punctuation", "descriptions": [{"description": "punctuation", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "This neuron never activates\u2014i.e., it does not respond to any token.", "model": "o4-mini", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 44400, "cosine": 0.0937829539179802, "rank": 98, "description": "pronouns", "descriptions": [{"description": "pronouns", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "The neuron fires on passages describing a forced or non-consensual sexual act.", "model": "o4-mini", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 107999, "cosine": 0.09340357035398483, "rank": 99, "description": "punctuation", "descriptions": [{"description": "punctuation", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "This neuron strongly activates on words at the start of a new output segment or sentence\u2014i.e. tokens that begin an assistant\u2019s reply or a fresh sentence.", "model": "o4-mini", "type": "oai_token-act-pair"}]}
+{"layer": 11, "feature": 118125, "cosine": 0.0933389887213707, "rank": 100, "description": "to", "descriptions": [{"description": "to", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 126615, "cosine": 0.2356123924255371, "rank": 1, "description": "because", "descriptions": [{"description": "because", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 98998, "cosine": 0.20434071123600006, "rank": 2, "description": "quotation marks", "descriptions": [{"description": "quotation marks", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 103134, "cosine": 0.1905583292245865, "rank": 3, "description": "punctuation", "descriptions": [{"description": "punctuation", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 118758, "cosine": 0.18943506479263306, "rank": 4, "description": "punctuation", "descriptions": [{"description": "punctuation", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "This neuron detects question tokens / interrogative punctuation (it activates on question marks and question-like prompts).", "model": "gpt-5-mini", "type": "oai_token-act-pair"}]}
+{"layer": 15, "feature": 61729, "cosine": 0.182321697473526, "rank": 5, "description": "punctuation", "descriptions": [{"description": "punctuation", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 34795, "cosine": 0.18187542259693146, "rank": 6, "description": "quotations and dialogue", "descriptions": [{"description": "quotations and dialogue", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "This neuron detects document-level control/metadata and instruction/prompt formatting\u2014special tokens, headers and tags, and instructional or grading scaffold text.", "model": "gpt-5-mini", "type": "oai_token-act-pair"}]}
+{"layer": 15, "feature": 106655, "cosine": 0.17499063909053802, "rank": 7, "description": "punctuation", "descriptions": [{"description": "punctuation", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 1876, "cosine": 0.17471131682395935, "rank": 8, "description": "punctuation", "descriptions": [{"description": "punctuation", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "the neuron detects assistant-generated text (activations occur at assistant replies / the start of assistant outputs).", "model": "gpt-5-mini", "type": "oai_token-act-pair"}]}
+{"layer": 15, "feature": 20767, "cosine": 0.16806887090206146, "rank": 9, "description": "punctuation", "descriptions": [{"description": "punctuation", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 82561, "cosine": 0.16545191407203674, "rank": 10, "description": "quotation marks", "descriptions": [{"description": "quotation marks", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 37854, "cosine": 0.16487295925617218, "rank": 11, "description": "First-person narrative", "descriptions": [{"description": "First-person narrative", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 112956, "cosine": 0.1630658656358719, "rank": 12, "description": "health and medical advice", "descriptions": [{"description": "health and medical advice", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 115505, "cosine": 0.1628493070602417, "rank": 13, "description": "False assumptions", "descriptions": [{"description": "False assumptions", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "tokens that are personal pronouns and their nearby auxiliary/main verbs in statements expressing a speaker's claim or assertion.", "model": "gpt-5-mini", "type": "oai_token-act-pair"}]}
+{"layer": 15, "feature": 53952, "cosine": 0.15995147824287415, "rank": 14, "description": "quotation marks", "descriptions": [{"description": "quotation marks", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 17712, "cosine": 0.15972812473773956, "rank": 15, "description": ":", "descriptions": [{"description": ":", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "Detects the \"A:\" answer marker (the colon that marks the start of an answer in Q&A posts).", "model": "gpt-5-mini", "type": "oai_token-act-pair"}]}
+{"layer": 15, "feature": 48587, "cosine": 0.1577194482088089, "rank": 16, "description": "Dialogue", "descriptions": [{"description": "Dialogue", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 2355, "cosine": 0.15500187873840332, "rank": 17, "description": "quotation marks", "descriptions": [{"description": "quotation marks", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 105261, "cosine": 0.15428753197193146, "rank": 18, "description": "first", "descriptions": [{"description": "first", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 40638, "cosine": 0.15240530669689178, "rank": 19, "description": "punctuation", "descriptions": [{"description": "punctuation", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 114327, "cosine": 0.15232273936271667, "rank": 20, "description": "period", "descriptions": [{"description": "period", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "sequence-level special control/header tokens (like the <|begin_of_text|>, <|end_header_id|>, and other metadata boundary markers).", "model": "gpt-5-mini", "type": "oai_token-act-pair"}, {"description": "the beginning of a text sequence or document.", "model": "claude-4-5-sonnet", "type": "oai_token-act-pair"}]}
+{"layer": 15, "feature": 39387, "cosine": 0.1516406238079071, "rank": 21, "description": "online comments/posts", "descriptions": [{"description": "online comments/posts", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 105871, "cosine": 0.14890731871128082, "rank": 22, "description": "punctuation separators", "descriptions": [{"description": "punctuation separators", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "The neuron primarily detects section headings, titles, and other document-structure metadata (e.g., headings, subheadings, and labeled sections).", "model": "gpt-5-mini", "type": "oai_token-act-pair"}]}
+{"layer": 15, "feature": 12313, "cosine": 0.14773981273174286, "rank": 23, "description": "dialogue", "descriptions": [{"description": "dialogue", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 45739, "cosine": 0.14689300954341888, "rank": 24, "description": "code and documentation", "descriptions": [{"description": "code and documentation", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 66700, "cosine": 0.146641343832016, "rank": 25, "description": "Quotation marks", "descriptions": [{"description": "Quotation marks", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 19370, "cosine": 0.14611877501010895, "rank": 26, "description": "single digit numbers", "descriptions": [{"description": "single digit numbers", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 60365, "cosine": 0.14460639655590057, "rank": 27, "description": "narrative text", "descriptions": [{"description": "narrative text", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 130304, "cosine": 0.14437513053417206, "rank": 28, "description": "punctuation", "descriptions": [{"description": "punctuation", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 54352, "cosine": 0.14386756718158722, "rank": 29, "description": "greater than/colon", "descriptions": [{"description": "greater than/colon", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 41931, "cosine": 0.14347393810749054, "rank": 30, "description": "punctuation", "descriptions": [{"description": "punctuation", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "Detecting tokens that are part of the assistant's responses (i.e., assistant-speaking turns).", "model": "gpt-5-mini", "type": "oai_token-act-pair"}]}
+{"layer": 15, "feature": 109434, "cosine": 0.14319612085819244, "rank": 31, "description": "Question and answer excerpts", "descriptions": [{"description": "Question and answer excerpts", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 9437, "cosine": 0.14256708323955536, "rank": 32, "description": "punctuation", "descriptions": [{"description": "punctuation", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 124698, "cosine": 0.13887065649032593, "rank": 33, "description": "punctuation", "descriptions": [{"description": "punctuation", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 4821, "cosine": 0.13804592192173004, "rank": 34, "description": "simplicity/minimalism", "descriptions": [{"description": "simplicity/minimalism", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 103086, "cosine": 0.13782191276550293, "rank": 35, "description": "articles", "descriptions": [{"description": "articles", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 40541, "cosine": 0.13450881838798523, "rank": 36, "description": "Code comments", "descriptions": [{"description": "Code comments", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 42789, "cosine": 0.1336125284433365, "rank": 37, "description": "quotation marks", "descriptions": [{"description": "quotation marks", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 110820, "cosine": 0.13295027613639832, "rank": 38, "description": "colon", "descriptions": [{"description": "colon", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "section headers or labels in structured text that are followed by a colon (e.g., formatted Q&A or workflow steps)", "model": "gpt-5", "type": "oai_token-act-pair"}]}
+{"layer": 15, "feature": 114562, "cosine": 0.13274440169334412, "rank": 39, "description": "quotation marks", "descriptions": [{"description": "quotation marks", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "tokens that occur inside or adjacent to direct speech/quotation (dialogue).", "model": "gpt-5-mini", "type": "oai_token-act-pair"}]}
+{"layer": 15, "feature": 38660, "cosine": 0.13222269713878632, "rank": 40, "description": "//", "descriptions": [{"description": "//", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 55444, "cosine": 0.13183800876140594, "rank": 41, "description": "punctuation", "descriptions": [{"description": "punctuation", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 101194, "cosine": 0.13062191009521484, "rank": 42, "description": "personal opinions and experiences", "descriptions": [{"description": "personal opinions and experiences", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 90516, "cosine": 0.1304032951593399, "rank": 43, "description": "reassurance", "descriptions": [{"description": "reassurance", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 94069, "cosine": 0.13019345700740814, "rank": 44, "description": "stop words", "descriptions": [{"description": "stop words", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 100020, "cosine": 0.12953346967697144, "rank": 45, "description": "first person pronoun", "descriptions": [{"description": "first person pronoun", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 82783, "cosine": 0.12952417135238647, "rank": 46, "description": "First-person perspective", "descriptions": [{"description": "First-person perspective", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 125748, "cosine": 0.12816503643989563, "rank": 47, "description": "dialogue", "descriptions": [{"description": "dialogue", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 42563, "cosine": 0.12745001912117004, "rank": 48, "description": "commas", "descriptions": [{"description": "commas", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 93918, "cosine": 0.12716488540172577, "rank": 49, "description": "stop words", "descriptions": [{"description": "stop words", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 16968, "cosine": 0.12578946352005005, "rank": 50, "description": "Guessing", "descriptions": [{"description": "Guessing", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 105399, "cosine": 0.12573178112506866, "rank": 51, "description": "to", "descriptions": [{"description": "to", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 65664, "cosine": 0.12443309277296066, "rank": 52, "description": "Dialogue snippets", "descriptions": [{"description": "Dialogue snippets", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 87847, "cosine": 0.12441814690828323, "rank": 53, "description": "dialogue", "descriptions": [{"description": "dialogue", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 108788, "cosine": 0.12399660050868988, "rank": 54, "description": "dialogue", "descriptions": [{"description": "dialogue", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 28418, "cosine": 0.12248704582452774, "rank": 55, "description": "quotation marks", "descriptions": [{"description": "quotation marks", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 129270, "cosine": 0.12230202555656433, "rank": 56, "description": "3", "descriptions": [{"description": "3", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 34004, "cosine": 0.12230174243450165, "rank": 57, "description": "end of sentence", "descriptions": [{"description": "end of sentence", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 128081, "cosine": 0.12203910201787949, "rank": 58, "description": "technical discussions", "descriptions": [{"description": "technical discussions", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 10838, "cosine": 0.12123536318540573, "rank": 59, "description": "comma", "descriptions": [{"description": "comma", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 87, "cosine": 0.12066858261823654, "rank": 60, "description": ",", "descriptions": [{"description": ",", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 71613, "cosine": 0.11984587460756302, "rank": 61, "description": "dialogue from scripts", "descriptions": [{"description": "dialogue from scripts", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 45758, "cosine": 0.1197274923324585, "rank": 62, "description": "quotations", "descriptions": [{"description": "quotations", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 117361, "cosine": 0.11970517039299011, "rank": 63, "description": "quotation marks", "descriptions": [{"description": "quotation marks", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 109102, "cosine": 0.11969111114740372, "rank": 64, "description": "normalcy explanations", "descriptions": [{"description": "normalcy explanations", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 130915, "cosine": 0.11960890144109726, "rank": 65, "description": "prejudice", "descriptions": [{"description": "prejudice", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 91615, "cosine": 0.11884113401174545, "rank": 66, "description": "pretty", "descriptions": [{"description": "pretty", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 2493, "cosine": 0.11857486516237259, "rank": 67, "description": "Yeah", "descriptions": [{"description": "Yeah", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 126964, "cosine": 0.11830981075763702, "rank": 68, "description": "punctuation", "descriptions": [{"description": "punctuation", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 113008, "cosine": 0.11794722825288773, "rank": 69, "description": "social media/blog content", "descriptions": [{"description": "social media/blog content", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 61371, "cosine": 0.1179124265909195, "rank": 70, "description": "quotation marks", "descriptions": [{"description": "quotation marks", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 50978, "cosine": 0.11757827550172806, "rank": 71, "description": "punctuation", "descriptions": [{"description": "punctuation", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 8658, "cosine": 0.11724433302879333, "rank": 72, "description": "period", "descriptions": [{"description": "period", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 32295, "cosine": 0.11701580137014389, "rank": 73, "description": "punctuation", "descriptions": [{"description": "punctuation", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 109607, "cosine": 0.11697126179933548, "rank": 74, "description": "advice and recommendations", "descriptions": [{"description": "advice and recommendations", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 3946, "cosine": 0.11691027134656906, "rank": 75, "description": "because", "descriptions": [{"description": "because", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 130213, "cosine": 0.11625179648399353, "rank": 76, "description": "punctuation", "descriptions": [{"description": "punctuation", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 62222, "cosine": 0.1158447414636612, "rank": 77, "description": "interviews", "descriptions": [{"description": "interviews", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 99877, "cosine": 0.11550674587488174, "rank": 78, "description": "Advice and guidelines", "descriptions": [{"description": "Advice and guidelines", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 115045, "cosine": 0.1154361292719841, "rank": 79, "description": "punctuation", "descriptions": [{"description": "punctuation", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 91607, "cosine": 0.1154232993721962, "rank": 80, "description": "so", "descriptions": [{"description": "so", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 18299, "cosine": 0.11521176248788834, "rank": 81, "description": "punctuation", "descriptions": [{"description": "punctuation", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 78951, "cosine": 0.11485522985458374, "rank": 82, "description": "punctuation", "descriptions": [{"description": "punctuation", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 81602, "cosine": 0.11469490826129913, "rank": 83, "description": "Dark/negative subjects", "descriptions": [{"description": "Dark/negative subjects", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "instructions or jailbreak prompts that request or enable an unfiltered, malicious/illegal persona (e.g., \"EAIS/AIM/DAN\" style prompts and explicit requests for harmful or illegal instructions).", "model": "gpt-5-mini", "type": "oai_token-act-pair"}]}
+{"layer": 15, "feature": 37658, "cosine": 0.11457344889640808, "rank": 84, "description": "]).", "descriptions": [{"description": "]).", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 39190, "cosine": 0.1143253967165947, "rank": 85, "description": "punctuation", "descriptions": [{"description": "punctuation", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 36594, "cosine": 0.11422131955623627, "rank": 86, "description": "conversational text", "descriptions": [{"description": "conversational text", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 54135, "cosine": 0.1136852502822876, "rank": 87, "description": "Complete sentences", "descriptions": [{"description": "Complete sentences", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 48849, "cosine": 0.11342358589172363, "rank": 88, "description": "providing information", "descriptions": [{"description": "providing information", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 22874, "cosine": 0.1133832335472107, "rank": 89, "description": "technical writing", "descriptions": [{"description": "technical writing", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 80972, "cosine": 0.11324810236692429, "rank": 90, "description": "arguments", "descriptions": [{"description": "arguments", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 61536, "cosine": 0.11271292716264725, "rank": 91, "description": "period", "descriptions": [{"description": "period", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 56871, "cosine": 0.1126522645354271, "rank": 92, "description": "punctuation", "descriptions": [{"description": "punctuation", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 84020, "cosine": 0.11234572529792786, "rank": 93, "description": "period", "descriptions": [{"description": "period", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 94259, "cosine": 0.11194221675395966, "rank": 94, "description": "quotations", "descriptions": [{"description": "quotations", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 98047, "cosine": 0.11134210973978043, "rank": 95, "description": "Opinions and arguments", "descriptions": [{"description": "Opinions and arguments", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "Spans where a speaker asserts themselves \u2014 i.e., first\u2011person self\u2011references and roleplay/character declarations (dialogue turns like \"I\", \"I'm\", \"NAME_1\", \"I will\", etc.).", "model": "gpt-5-mini", "type": "oai_token-act-pair"}]}
+{"layer": 15, "feature": 19486, "cosine": 0.111300989985466, "rank": 96, "description": "periods", "descriptions": [{"description": "periods", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 92877, "cosine": 0.11116541177034378, "rank": 97, "description": "conclusions or outcomes", "descriptions": [{"description": "conclusions or outcomes", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 88022, "cosine": 0.11106394976377487, "rank": 98, "description": ".", "descriptions": [{"description": ".", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 73558, "cosine": 0.11101226508617401, "rank": 99, "description": "quotation marks", "descriptions": [{"description": "quotation marks", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 15, "feature": 61216, "cosine": 0.11079426854848862, "rank": 100, "description": "Excerpts", "descriptions": [{"description": "Excerpts", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 82405, "cosine": 0.26610174775123596, "rank": 1, "description": "punctuation", "descriptions": [{"description": "punctuation", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 27037, "cosine": 0.2445300966501236, "rank": 2, "description": "punctuation", "descriptions": [{"description": "punctuation", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 54327, "cosine": 0.2192651927471161, "rank": 3, "description": "question marks", "descriptions": [{"description": "question marks", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 91719, "cosine": 0.2107003927230835, "rank": 4, "description": ",", "descriptions": [{"description": ",", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 53766, "cosine": 0.2057669758796692, "rank": 5, "description": ":", "descriptions": [{"description": ":", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 27428, "cosine": 0.20568712055683136, "rank": 6, "description": "quotations", "descriptions": [{"description": "quotations", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 22530, "cosine": 0.20269113779067993, "rank": 7, "description": "period", "descriptions": [{"description": "period", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 127690, "cosine": 0.20029199123382568, "rank": 8, "description": "Punctuation/common words", "descriptions": [{"description": "Punctuation/common words", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 44769, "cosine": 0.2000095099210739, "rank": 9, "description": "programming/technical text", "descriptions": [{"description": "programming/technical text", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 115919, "cosine": 0.19947926700115204, "rank": 10, "description": "period", "descriptions": [{"description": "period", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 53405, "cosine": 0.19845102727413177, "rank": 11, "description": "punctuation", "descriptions": [{"description": "punctuation", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 8162, "cosine": 0.19691133499145508, "rank": 12, "description": "quotes", "descriptions": [{"description": "quotes", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 3116, "cosine": 0.19632422924041748, "rank": 13, "description": "punctuation", "descriptions": [{"description": "punctuation", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 39671, "cosine": 0.190365731716156, "rank": 14, "description": "quotation marks", "descriptions": [{"description": "quotation marks", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 62128, "cosine": 0.1872524470090866, "rank": 15, "description": "creative writing", "descriptions": [{"description": "creative writing", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 33557, "cosine": 0.18644988536834717, "rank": 16, "description": "informational excerpts", "descriptions": [{"description": "informational excerpts", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 34849, "cosine": 0.18601514399051666, "rank": 17, "description": "all", "descriptions": [{"description": "all", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 89975, "cosine": 0.18380585312843323, "rank": 18, "description": "punctuation marks", "descriptions": [{"description": "punctuation marks", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 42442, "cosine": 0.18208929896354675, "rank": 19, "description": "punctuation", "descriptions": [{"description": "punctuation", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 77314, "cosine": 0.1808941811323166, "rank": 20, "description": "thought", "descriptions": [{"description": "thought", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 116455, "cosine": 0.18088364601135254, "rank": 21, "description": "perks", "descriptions": [{"description": "perks", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 5298, "cosine": 0.18072253465652466, "rank": 22, "description": "punctuation", "descriptions": [{"description": "punctuation", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 90347, "cosine": 0.18054378032684326, "rank": 23, "description": "question marks", "descriptions": [{"description": "question marks", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 65111, "cosine": 0.17872923612594604, "rank": 24, "description": "of", "descriptions": [{"description": "of", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 118068, "cosine": 0.1761387139558792, "rank": 25, "description": "Asking why", "descriptions": [{"description": "Asking why", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 34174, "cosine": 0.17401477694511414, "rank": 26, "description": "technical documentation", "descriptions": [{"description": "technical documentation", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 57182, "cosine": 0.17334632575511932, "rank": 27, "description": "suggestions and clarifications", "descriptions": [{"description": "suggestions and clarifications", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 39165, "cosine": 0.17077325284481049, "rank": 28, "description": "punctuation", "descriptions": [{"description": "punctuation", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 76806, "cosine": 0.17047588527202606, "rank": 29, "description": "quotes", "descriptions": [{"description": "quotes", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 111894, "cosine": 0.168352410197258, "rank": 30, "description": "travel", "descriptions": [{"description": "travel", "model": "gemini-2.0-flash", "type": "np_max-act"}, {"description": "This neuron detects unusually long or repeated-character tokens and document-boundary/extended-input tokens\u2014i.e., long continuous strings or markers that indicate large input blocks.", "model": "gpt-5-mini", "type": "oai_token-act-pair"}, {"description": "special tokens and markers that indicate conversational structure, particularly turn boundaries and role transitions in chat-formatted dialogue.", "model": "claude-4-5-sonnet", "type": "oai_token-act-pair"}, {"description": "chat-conversation boundary markers and special formatting tokens (like start/end of turns and headers).", "model": "gpt-5", "type": "oai_token-act-pair"}]}
+{"layer": 19, "feature": 82767, "cosine": 0.1674211621284485, "rank": 31, "description": "code and technical documentation", "descriptions": [{"description": "code and technical documentation", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 29823, "cosine": 0.16723839938640594, "rank": 32, "description": "quotation marks", "descriptions": [{"description": "quotation marks", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 106440, "cosine": 0.16507799923419952, "rank": 33, "description": "?", "descriptions": [{"description": "?", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 116280, "cosine": 0.16254813969135284, "rank": 34, "description": "Quotes", "descriptions": [{"description": "Quotes", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 113441, "cosine": 0.16123445332050323, "rank": 35, "description": "punctuation", "descriptions": [{"description": "punctuation", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 95968, "cosine": 0.1602487713098526, "rank": 36, "description": "Speech and quotes", "descriptions": [{"description": "Speech and quotes", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 102599, "cosine": 0.1601666957139969, "rank": 37, "description": "period", "descriptions": [{"description": "period", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 24359, "cosine": 0.15971475839614868, "rank": 38, "description": "blog posts", "descriptions": [{"description": "blog posts", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 26410, "cosine": 0.15954706072807312, "rank": 39, "description": "best", "descriptions": [{"description": "best", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 53005, "cosine": 0.1594216525554657, "rank": 40, "description": "Punctuation", "descriptions": [{"description": "Punctuation", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 29631, "cosine": 0.15878042578697205, "rank": 41, "description": "period", "descriptions": [{"description": "period", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 122647, "cosine": 0.15684431791305542, "rank": 42, "description": "punctuation", "descriptions": [{"description": "punctuation", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 127369, "cosine": 0.15617191791534424, "rank": 43, "description": "question marks", "descriptions": [{"description": "question marks", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 20978, "cosine": 0.15566539764404297, "rank": 44, "description": "can", "descriptions": [{"description": "can", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 20525, "cosine": 0.15461711585521698, "rank": 45, "description": "punctuation", "descriptions": [{"description": "punctuation", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 31362, "cosine": 0.15453079342842102, "rank": 46, "description": "ise", "descriptions": [{"description": "ise", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 58909, "cosine": 0.1537882536649704, "rank": 47, "description": "First-person narrative", "descriptions": [{"description": "First-person narrative", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 93090, "cosine": 0.1537187248468399, "rank": 48, "description": "Code comments", "descriptions": [{"description": "Code comments", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 124636, "cosine": 0.15359070897102356, "rank": 49, "description": "punctuation", "descriptions": [{"description": "punctuation", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 46688, "cosine": 0.15309129655361176, "rank": 50, "description": "period", "descriptions": [{"description": "period", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 31342, "cosine": 0.15146629512310028, "rank": 51, "description": "punctuation marks", "descriptions": [{"description": "punctuation marks", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 115969, "cosine": 0.1512928009033203, "rank": 52, "description": "punctuation", "descriptions": [{"description": "punctuation", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 100536, "cosine": 0.14846643805503845, "rank": 53, "description": "life tips", "descriptions": [{"description": "life tips", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 73756, "cosine": 0.1482127457857132, "rank": 54, "description": "Single digits", "descriptions": [{"description": "Single digits", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 106033, "cosine": 0.14744576811790466, "rank": 55, "description": "I", "descriptions": [{"description": "I", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 63871, "cosine": 0.14705578982830048, "rank": 56, "description": "to", "descriptions": [{"description": "to", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 815, "cosine": 0.1465792953968048, "rank": 57, "description": "Instructions", "descriptions": [{"description": "Instructions", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 61882, "cosine": 0.14561760425567627, "rank": 58, "description": "Instructions and guidance", "descriptions": [{"description": "Instructions and guidance", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 121787, "cosine": 0.14424465596675873, "rank": 59, "description": "forum posts", "descriptions": [{"description": "forum posts", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 116824, "cosine": 0.14414238929748535, "rank": 60, "description": "period", "descriptions": [{"description": "period", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 101234, "cosine": 0.14052048325538635, "rank": 61, "description": "s", "descriptions": [{"description": "s", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 39159, "cosine": 0.13915586471557617, "rank": 62, "description": "punctuation", "descriptions": [{"description": "punctuation", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 124644, "cosine": 0.13852569460868835, "rank": 63, "description": "Quotations", "descriptions": [{"description": "Quotations", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 37940, "cosine": 0.13652193546295166, "rank": 64, "description": "punctuation/conjunction", "descriptions": [{"description": "punctuation/conjunction", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 19113, "cosine": 0.13603845238685608, "rank": 65, "description": "informal language", "descriptions": [{"description": "informal language", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 113000, "cosine": 0.13528910279273987, "rank": 66, "description": "increases", "descriptions": [{"description": "increases", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 107055, "cosine": 0.13395491242408752, "rank": 67, "description": "advice", "descriptions": [{"description": "advice", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 103981, "cosine": 0.13260476291179657, "rank": 68, "description": "an", "descriptions": [{"description": "an", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 101273, "cosine": 0.1323532909154892, "rank": 69, "description": "colon", "descriptions": [{"description": "colon", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 121658, "cosine": 0.13210836052894592, "rank": 70, "description": "so", "descriptions": [{"description": "so", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 29941, "cosine": 0.13083982467651367, "rank": 71, "description": "Sports advice", "descriptions": [{"description": "Sports advice", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 99738, "cosine": 0.1302247792482376, "rank": 72, "description": "(", "descriptions": [{"description": "(", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 83261, "cosine": 0.1296224445104599, "rank": 73, "description": "punctuation", "descriptions": [{"description": "punctuation", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 449, "cosine": 0.1295739859342575, "rank": 74, "description": "punctuation", "descriptions": [{"description": "punctuation", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 19099, "cosine": 0.12917619943618774, "rank": 75, "description": "period", "descriptions": [{"description": "period", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 126225, "cosine": 0.12897911667823792, "rank": 76, "description": "Period", "descriptions": [{"description": "Period", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 46214, "cosine": 0.12893041968345642, "rank": 77, "description": "concerned", "descriptions": [{"description": "concerned", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 118809, "cosine": 0.1289168745279312, "rank": 78, "description": "won't hurt", "descriptions": [{"description": "won't hurt", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 65544, "cosine": 0.1284261792898178, "rank": 79, "description": "but", "descriptions": [{"description": "but", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 128989, "cosine": 0.12831281125545502, "rank": 80, "description": "punctuation and conjunctions", "descriptions": [{"description": "punctuation and conjunctions", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 78922, "cosine": 0.1278574913740158, "rank": 81, "description": "as", "descriptions": [{"description": "as", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 119368, "cosine": 0.12771107256412506, "rank": 82, "description": ",", "descriptions": [{"description": ",", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 88418, "cosine": 0.12744595110416412, "rank": 83, "description": "?", "descriptions": [{"description": "?", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 106372, "cosine": 0.12681227922439575, "rank": 84, "description": "instructions", "descriptions": [{"description": "instructions", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 83344, "cosine": 0.1262388676404953, "rank": 85, "description": "punctuation", "descriptions": [{"description": "punctuation", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 111715, "cosine": 0.12615258991718292, "rank": 86, "description": "period", "descriptions": [{"description": "period", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 35897, "cosine": 0.12612910568714142, "rank": 87, "description": "Code", "descriptions": [{"description": "Code", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 52934, "cosine": 0.12550795078277588, "rank": 88, "description": "Web text snippets", "descriptions": [{"description": "Web text snippets", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 8871, "cosine": 0.12545189261436462, "rank": 89, "description": "that", "descriptions": [{"description": "that", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 58566, "cosine": 0.12509700655937195, "rank": 90, "description": ":", "descriptions": [{"description": ":", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 63554, "cosine": 0.1250184327363968, "rank": 91, "description": "question answering", "descriptions": [{"description": "question answering", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 13897, "cosine": 0.12468025088310242, "rank": 92, "description": ".", "descriptions": [{"description": ".", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 69864, "cosine": 0.12467619776725769, "rank": 93, "description": "Relaxing and letting loose", "descriptions": [{"description": "Relaxing and letting loose", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 75579, "cosine": 0.12427974492311478, "rank": 94, "description": "Connectives and punctuation", "descriptions": [{"description": "Connectives and punctuation", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 74699, "cosine": 0.12425269186496735, "rank": 95, "description": "Worry/Anxiety", "descriptions": [{"description": "Worry/Anxiety", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 74960, "cosine": 0.12404578179121017, "rank": 96, "description": "punctuation and \"was/is\"", "descriptions": [{"description": "punctuation and \"was/is\"", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 89814, "cosine": 0.12397634983062744, "rank": 97, "description": "that", "descriptions": [{"description": "that", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 51213, "cosine": 0.12271098792552948, "rank": 98, "description": "long-form writing", "descriptions": [{"description": "long-form writing", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 70608, "cosine": 0.12262478470802307, "rank": 99, "description": "maybe", "descriptions": [{"description": "maybe", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 19, "feature": 112188, "cosine": 0.12258244305849075, "rank": 100, "description": "and", "descriptions": [{"description": "and", "model": "gemini-2.0-flash", "type": "np_max-act"}]}
+{"layer": 23, "feature": 7510, "cosine": 0.2905353009700775, "rank": 1, "description": "period", "descriptions": [{"description": "period", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 41405, "cosine": 0.2588786780834198, "rank": 2, "description": ":", "descriptions": [{"description": ":", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 58740, "cosine": 0.24813531339168549, "rank": 3, "description": "Code and technical jargon", "descriptions": [{"description": "Code and technical jargon", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 69270, "cosine": 0.23943044245243073, "rank": 4, "description": "periods and quotations", "descriptions": [{"description": "periods and quotations", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 123970, "cosine": 0.22755689918994904, "rank": 5, "description": "punctuation", "descriptions": [{"description": "punctuation", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 55721, "cosine": 0.2246837466955185, "rank": 6, "description": ".", "descriptions": [{"description": ".", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 15983, "cosine": 0.22328583896160126, "rank": 7, "description": "comma", "descriptions": [{"description": "comma", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 94802, "cosine": 0.2100123018026352, "rank": 8, "description": "are", "descriptions": [{"description": "are", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 111016, "cosine": 0.20826536417007446, "rank": 9, "description": "quotation mark", "descriptions": [{"description": "quotation mark", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 81041, "cosine": 0.20785462856292725, "rank": 10, "description": "Conversations", "descriptions": [{"description": "Conversations", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 23692, "cosine": 0.2072203904390335, "rank": 11, "description": "Expressing opinions", "descriptions": [{"description": "Expressing opinions", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 111930, "cosine": 0.2030356228351593, "rank": 12, "description": "\"", "descriptions": [{"description": "\"", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 30675, "cosine": 0.19505919516086578, "rank": 13, "description": "medical advice", "descriptions": [{"description": "medical advice", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 18908, "cosine": 0.1941843032836914, "rank": 14, "description": "period", "descriptions": [{"description": "period", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 39671, "cosine": 0.19025646150112152, "rank": 15, "description": "Quotation marks", "descriptions": [{"description": "Quotation marks", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 128822, "cosine": 0.18883830308914185, "rank": 16, "description": ".", "descriptions": [{"description": ".", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 89685, "cosine": 0.18883518874645233, "rank": 17, "description": ".", "descriptions": [{"description": ".", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 72881, "cosine": 0.18665580451488495, "rank": 18, "description": "punctuation", "descriptions": [{"description": "punctuation", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 123475, "cosine": 0.18557435274124146, "rank": 19, "description": null, "descriptions": []}
+{"layer": 23, "feature": 42777, "cosine": 0.18377377092838287, "rank": 20, "description": "Dialogue snippets", "descriptions": [{"description": "Dialogue snippets", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 104515, "cosine": 0.18126918375492096, "rank": 21, "description": "interviews", "descriptions": [{"description": "interviews", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 46101, "cosine": 0.18030184507369995, "rank": 22, "description": "punctuation", "descriptions": [{"description": "punctuation", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 66699, "cosine": 0.1773417592048645, "rank": 23, "description": "Quotation marks", "descriptions": [{"description": "Quotation marks", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 100513, "cosine": 0.17720487713813782, "rank": 24, "description": "Quotation marks", "descriptions": [{"description": "Quotation marks", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 109900, "cosine": 0.17367224395275116, "rank": 25, "description": "Punctuation", "descriptions": [{"description": "Punctuation", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 30217, "cosine": 0.17354992032051086, "rank": 26, "description": "Negative comments", "descriptions": [{"description": "Negative comments", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 69155, "cosine": 0.17269180715084076, "rank": 27, "description": "punctuation", "descriptions": [{"description": "punctuation", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 121579, "cosine": 0.1705634593963623, "rank": 28, "description": "to", "descriptions": [{"description": "to", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 80816, "cosine": 0.16883894801139832, "rank": 29, "description": "how-to text", "descriptions": [{"description": "how-to text", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 20130, "cosine": 0.16762489080429077, "rank": 30, "description": "quotation marks", "descriptions": [{"description": "quotation marks", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 50882, "cosine": 0.16670535504817963, "rank": 31, "description": "forms of \"to be\"", "descriptions": [{"description": "forms of \"to be\"", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 40007, "cosine": 0.16481120884418488, "rank": 32, "description": "conjunctions and punctuation", "descriptions": [{"description": "conjunctions and punctuation", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 57604, "cosine": 0.16454964876174927, "rank": 33, "description": "think", "descriptions": [{"description": "think", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 15736, "cosine": 0.1640128344297409, "rank": 34, "description": "figured", "descriptions": [{"description": "figured", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 10420, "cosine": 0.163950577378273, "rank": 35, "description": "that", "descriptions": [{"description": "that", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 49659, "cosine": 0.16392882168293, "rank": 36, "description": "technical discussions", "descriptions": [{"description": "technical discussions", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 90005, "cosine": 0.16351936757564545, "rank": 37, "description": "discussions", "descriptions": [{"description": "discussions", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 68023, "cosine": 0.16077297925949097, "rank": 38, "description": "Sometimes", "descriptions": [{"description": "Sometimes", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 81805, "cosine": 0.15982310473918915, "rank": 39, "description": "guidelines", "descriptions": [{"description": "guidelines", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 121220, "cosine": 0.15841032564640045, "rank": 40, "description": "code comment markers", "descriptions": [{"description": "code comment markers", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 87255, "cosine": 0.1577085703611374, "rank": 41, "description": "Perhaps", "descriptions": [{"description": "Perhaps", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 124599, "cosine": 0.15449461340904236, "rank": 42, "description": "period", "descriptions": [{"description": "period", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 58590, "cosine": 0.15190523862838745, "rank": 43, "description": "sports news quotes", "descriptions": [{"description": "sports news quotes", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 73160, "cosine": 0.1517285257577896, "rank": 44, "description": "sentence interrupters", "descriptions": [{"description": "sentence interrupters", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 17427, "cosine": 0.15167336165905, "rank": 45, "description": "period", "descriptions": [{"description": "period", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 113374, "cosine": 0.15052761137485504, "rank": 46, "description": "forum comments", "descriptions": [{"description": "forum comments", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 116455, "cosine": 0.15042006969451904, "rank": 47, "description": "About you", "descriptions": [{"description": "About you", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 56315, "cosine": 0.1503874659538269, "rank": 48, "description": "quotation marks", "descriptions": [{"description": "quotation marks", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 59778, "cosine": 0.14786311984062195, "rank": 49, "description": "creative writing", "descriptions": [{"description": "creative writing", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 10770, "cosine": 0.14758549630641937, "rank": 50, "description": "punctuation", "descriptions": [{"description": "punctuation", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 48812, "cosine": 0.14750169217586517, "rank": 51, "description": "minimalism and simplicity", "descriptions": [{"description": "minimalism and simplicity", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 80579, "cosine": 0.14710493385791779, "rank": 52, "description": "where", "descriptions": [{"description": "where", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 69575, "cosine": 0.14624552428722382, "rank": 53, "description": ".", "descriptions": [{"description": ".", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 103596, "cosine": 0.14614945650100708, "rank": 54, "description": "colon", "descriptions": [{"description": "colon", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 44335, "cosine": 0.14373843371868134, "rank": 55, "description": "a", "descriptions": [{"description": "a", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 59961, "cosine": 0.1435185968875885, "rank": 56, "description": "comma", "descriptions": [{"description": "comma", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 78636, "cosine": 0.14305859804153442, "rank": 57, "description": "and", "descriptions": [{"description": "and", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 77683, "cosine": 0.14277824759483337, "rank": 58, "description": "Japanese text", "descriptions": [{"description": "Japanese text", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 29670, "cosine": 0.14260084927082062, "rank": 59, "description": "comma", "descriptions": [{"description": "comma", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 118091, "cosine": 0.14227227866649628, "rank": 60, "description": "punctuation", "descriptions": [{"description": "punctuation", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 45259, "cosine": 0.1421113908290863, "rank": 61, "description": "might as well", "descriptions": [{"description": "might as well", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 46747, "cosine": 0.1418609768152237, "rank": 62, "description": "quotation marks/colons", "descriptions": [{"description": "quotation marks/colons", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 98182, "cosine": 0.14118540287017822, "rank": 63, "description": "learning and practice", "descriptions": [{"description": "learning and practice", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 58231, "cosine": 0.14099811017513275, "rank": 64, "description": "period", "descriptions": [{"description": "period", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 119455, "cosine": 0.14054878056049347, "rank": 65, "description": "But", "descriptions": [{"description": "But", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 14260, "cosine": 0.1403096318244934, "rank": 66, "description": "non-English words", "descriptions": [{"description": "non-English words", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 90714, "cosine": 0.14014877378940582, "rank": 67, "description": "Quotation marks", "descriptions": [{"description": "Quotation marks", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 59522, "cosine": 0.1396961808204651, "rank": 68, "description": "period", "descriptions": [{"description": "period", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 128115, "cosine": 0.13957549631595612, "rank": 69, "description": "foreign words", "descriptions": [{"description": "foreign words", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 47241, "cosine": 0.13948556780815125, "rank": 70, "description": "foreign words", "descriptions": [{"description": "foreign words", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 103839, "cosine": 0.1388019621372223, "rank": 71, "description": "punctuation", "descriptions": [{"description": "punctuation", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 13817, "cosine": 0.1376420110464096, "rank": 72, "description": "comma", "descriptions": [{"description": "comma", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 14160, "cosine": 0.13733449578285217, "rank": 73, "description": "punctuation", "descriptions": [{"description": "punctuation", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 86138, "cosine": 0.13685666024684906, "rank": 74, "description": "period", "descriptions": [{"description": "period", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 36410, "cosine": 0.13639502227306366, "rank": 75, "description": "was", "descriptions": [{"description": "was", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 82090, "cosine": 0.1362658143043518, "rank": 76, "description": "Online reviews/comments", "descriptions": [{"description": "Online reviews/comments", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 39113, "cosine": 0.1361657977104187, "rank": 77, "description": "punctuation", "descriptions": [{"description": "punctuation", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 114544, "cosine": 0.1359838843345642, "rank": 78, "description": "punctuation", "descriptions": [{"description": "punctuation", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 92236, "cosine": 0.13554657995700836, "rank": 79, "description": "ROKE", "descriptions": [{"description": "ROKE", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 8438, "cosine": 0.13530226051807404, "rank": 80, "description": "\"it will be fine\"", "descriptions": [{"description": "\"it will be fine\"", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 81987, "cosine": 0.13527005910873413, "rank": 81, "description": "that", "descriptions": [{"description": "that", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 126188, "cosine": 0.1342686265707016, "rank": 82, "description": "period", "descriptions": [{"description": "period", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 107388, "cosine": 0.13421355187892914, "rank": 83, "description": "giving negative advice", "descriptions": [{"description": "giving negative advice", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 72663, "cosine": 0.13347895443439484, "rank": 84, "description": "period", "descriptions": [{"description": "period", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 50787, "cosine": 0.1334763765335083, "rank": 85, "description": "are", "descriptions": [{"description": "are", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 45346, "cosine": 0.1334354281425476, "rank": 86, "description": "quotation mark", "descriptions": [{"description": "quotation mark", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 120285, "cosine": 0.1324918568134308, "rank": 87, "description": "varied documents", "descriptions": [{"description": "varied documents", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 119575, "cosine": 0.1319320797920227, "rank": 88, "description": "that", "descriptions": [{"description": "that", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 114249, "cosine": 0.13161616027355194, "rank": 89, "description": ".", "descriptions": [{"description": ".", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 64605, "cosine": 0.13138900697231293, "rank": 90, "description": "Programming code", "descriptions": [{"description": "Programming code", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 90691, "cosine": 0.1311531662940979, "rank": 91, "description": "Expressing opinions", "descriptions": [{"description": "Expressing opinions", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 13988, "cosine": 0.13084666430950165, "rank": 92, "description": "Article excerpts", "descriptions": [{"description": "Article excerpts", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 44807, "cosine": 0.1305774748325348, "rank": 93, "description": "because", "descriptions": [{"description": "because", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 1583, "cosine": 0.13021615147590637, "rank": 94, "description": "comma", "descriptions": [{"description": "comma", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 97755, "cosine": 0.1300157606601715, "rank": 95, "description": "Non-English words", "descriptions": [{"description": "Non-English words", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 32313, "cosine": 0.1299518644809723, "rank": 96, "description": ".", "descriptions": [{"description": ".", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 1608, "cosine": 0.12961968779563904, "rank": 97, "description": "C", "descriptions": [{"description": "C", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 29634, "cosine": 0.1295877993106842, "rank": 98, "description": ".", "descriptions": [{"description": ".", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 68439, "cosine": 0.12935614585876465, "rank": 99, "description": "rules or instructions", "descriptions": [{"description": "rules or instructions", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 23, "feature": 104224, "cosine": 0.12929099798202515, "rank": 100, "description": "Quotation marks", "descriptions": [{"description": "Quotation marks", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 116682, "cosine": 0.27411383390426636, "rank": 1, "description": "punctuation", "descriptions": [{"description": "punctuation", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 127621, "cosine": 0.23522116243839264, "rank": 2, "description": "colon", "descriptions": [{"description": "colon", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 46547, "cosine": 0.2060888707637787, "rank": 3, "description": "just", "descriptions": [{"description": "just", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 17696, "cosine": 0.20239529013633728, "rank": 4, "description": "still", "descriptions": [{"description": "still", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 117581, "cosine": 0.2005508989095688, "rank": 5, "description": "Quotation mark", "descriptions": [{"description": "Quotation mark", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 4012, "cosine": 0.19708292186260223, "rank": 6, "description": "quotation marks", "descriptions": [{"description": "quotation marks", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 91978, "cosine": 0.19459731876850128, "rank": 7, "description": "instructions and invitations", "descriptions": [{"description": "instructions and invitations", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 52899, "cosine": 0.1945868730545044, "rank": 8, "description": "punctuation", "descriptions": [{"description": "punctuation", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 35177, "cosine": 0.19116416573524475, "rank": 9, "description": "period", "descriptions": [{"description": "period", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 99797, "cosine": 0.18664900958538055, "rank": 10, "description": "Period or quotation mark", "descriptions": [{"description": "Period or quotation mark", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 59015, "cosine": 0.18401573598384857, "rank": 11, "description": "period", "descriptions": [{"description": "period", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 61201, "cosine": 0.18063688278198242, "rank": 12, "description": "Conversational speech", "descriptions": [{"description": "Conversational speech", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 70050, "cosine": 0.1804317831993103, "rank": 13, "description": "down", "descriptions": [{"description": "down", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 95823, "cosine": 0.1797073781490326, "rank": 14, "description": "period", "descriptions": [{"description": "period", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 62891, "cosine": 0.1783323436975479, "rank": 15, "description": "Quotation marks", "descriptions": [{"description": "Quotation marks", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 69848, "cosine": 0.1782343089580536, "rank": 16, "description": "punctuation marks", "descriptions": [{"description": "punctuation marks", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 58204, "cosine": 0.1745753288269043, "rank": 17, "description": "Punctuation", "descriptions": [{"description": "Punctuation", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 49721, "cosine": 0.17412370443344116, "rank": 18, "description": "punctuation", "descriptions": [{"description": "punctuation", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 32638, "cosine": 0.17154183983802795, "rank": 19, "description": "health, medical topics", "descriptions": [{"description": "health, medical topics", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 61814, "cosine": 0.17088572680950165, "rank": 20, "description": "punctuation", "descriptions": [{"description": "punctuation", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 48345, "cosine": 0.17046713829040527, "rank": 21, "description": "elaborating on a topic", "descriptions": [{"description": "elaborating on a topic", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 106559, "cosine": 0.16968148946762085, "rank": 22, "description": "quotes and sayings", "descriptions": [{"description": "quotes and sayings", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 47398, "cosine": 0.16593265533447266, "rank": 23, "description": "Foreign words", "descriptions": [{"description": "Foreign words", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 37809, "cosine": 0.1641068458557129, "rank": 24, "description": "period", "descriptions": [{"description": "period", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 32810, "cosine": 0.16349108517169952, "rank": 25, "description": "that because", "descriptions": [{"description": "that because", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 24353, "cosine": 0.16232064366340637, "rank": 26, "description": "Sports interviews", "descriptions": [{"description": "Sports interviews", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 102811, "cosine": 0.15702107548713684, "rank": 27, "description": "punctuation marks", "descriptions": [{"description": "punctuation marks", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 18278, "cosine": 0.15430496633052826, "rank": 28, "description": "have", "descriptions": [{"description": "have", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 56243, "cosine": 0.14955033361911774, "rank": 29, "description": "punctuation marks", "descriptions": [{"description": "punctuation marks", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 27405, "cosine": 0.14921729266643524, "rank": 30, "description": "period", "descriptions": [{"description": "period", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 2229, "cosine": 0.14782823622226715, "rank": 31, "description": "period", "descriptions": [{"description": "period", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 12665, "cosine": 0.14636141061782837, "rank": 32, "description": "and/but", "descriptions": [{"description": "and/but", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 128431, "cosine": 0.14512760937213898, "rank": 33, "description": "punctuation marks", "descriptions": [{"description": "punctuation marks", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 11480, "cosine": 0.14424008131027222, "rank": 34, "description": "conversation snippets", "descriptions": [{"description": "conversation snippets", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 111758, "cosine": 0.1430625021457672, "rank": 35, "description": "Quoted sections", "descriptions": [{"description": "Quoted sections", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 5818, "cosine": 0.1425866335630417, "rank": 36, "description": "Document processing", "descriptions": [{"description": "Document processing", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 87482, "cosine": 0.1404503583908081, "rank": 37, "description": "rate", "descriptions": [{"description": "rate", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 662, "cosine": 0.13717466592788696, "rank": 38, "description": "say \"the\"", "descriptions": [{"description": "say \"the\"", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 635, "cosine": 0.13655419647693634, "rank": 39, "description": ".", "descriptions": [{"description": ".", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 52865, "cosine": 0.13603466749191284, "rank": 40, "description": "period", "descriptions": [{"description": "period", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 29303, "cosine": 0.13504156470298767, "rank": 41, "description": ".", "descriptions": [{"description": ".", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 80683, "cosine": 0.13483768701553345, "rank": 42, "description": "quotation marks", "descriptions": [{"description": "quotation marks", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 15983, "cosine": 0.13480396568775177, "rank": 43, "description": "sentence ending punctuation", "descriptions": [{"description": "sentence ending punctuation", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 16469, "cosine": 0.13411986827850342, "rank": 44, "description": "to", "descriptions": [{"description": "to", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 14144, "cosine": 0.1335362195968628, "rank": 45, "description": "punctuation", "descriptions": [{"description": "punctuation", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 48749, "cosine": 0.13289178907871246, "rank": 46, "description": "Describe a particular attribute", "descriptions": [{"description": "Describe a particular attribute", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 34121, "cosine": 0.13160811364650726, "rank": 47, "description": null, "descriptions": []}
+{"layer": 27, "feature": 27694, "cosine": 0.13153164088726044, "rank": 48, "description": "that", "descriptions": [{"description": "that", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 82786, "cosine": 0.13143478333950043, "rank": 49, "description": ".", "descriptions": [{"description": ".", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 112087, "cosine": 0.13079209625720978, "rank": 50, "description": ".", "descriptions": [{"description": ".", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 92485, "cosine": 0.13075032830238342, "rank": 51, "description": "commas and \"and\"", "descriptions": [{"description": "commas and \"and\"", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 54108, "cosine": 0.13009007275104523, "rank": 52, "description": "the", "descriptions": [{"description": "the", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 105106, "cosine": 0.12949195504188538, "rank": 53, "description": "code comments", "descriptions": [{"description": "code comments", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 70789, "cosine": 0.12882454693317413, "rank": 54, "description": "punctuation", "descriptions": [{"description": "punctuation", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 102410, "cosine": 0.12818264961242676, "rank": 55, "description": "Informational text", "descriptions": [{"description": "Informational text", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 99286, "cosine": 0.128117173910141, "rank": 56, "description": ".", "descriptions": [{"description": ".", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 31505, "cosine": 0.1269686222076416, "rank": 57, "description": "period", "descriptions": [{"description": "period", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 106099, "cosine": 0.12640134990215302, "rank": 58, "description": "period", "descriptions": [{"description": "period", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 7667, "cosine": 0.1261579841375351, "rank": 59, "description": "advice or reviews", "descriptions": [{"description": "advice or reviews", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 44305, "cosine": 0.12613897025585175, "rank": 60, "description": "but", "descriptions": [{"description": "but", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 70224, "cosine": 0.12533138692378998, "rank": 61, "description": "period", "descriptions": [{"description": "period", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 76115, "cosine": 0.1252843290567398, "rank": 62, "description": "learning and figuring things out", "descriptions": [{"description": "learning and figuring things out", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 25366, "cosine": 0.12411696463823318, "rank": 63, "description": "punctuation marks", "descriptions": [{"description": "punctuation marks", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 67188, "cosine": 0.12391538172960281, "rank": 64, "description": "say punctuation", "descriptions": [{"description": "say punctuation", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 46825, "cosine": 0.12372153997421265, "rank": 65, "description": "Quotation mark", "descriptions": [{"description": "Quotation mark", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 107194, "cosine": 0.12335141748189926, "rank": 66, "description": ".", "descriptions": [{"description": ".", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 120910, "cosine": 0.12329690158367157, "rank": 67, "description": "Technical discussion forum comments", "descriptions": [{"description": "Technical discussion forum comments", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 126605, "cosine": 0.12308290600776672, "rank": 68, "description": "period", "descriptions": [{"description": "period", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 3676, "cosine": 0.12277042120695114, "rank": 69, "description": "that", "descriptions": [{"description": "that", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 15581, "cosine": 0.12264544516801834, "rank": 70, "description": "forum posts", "descriptions": [{"description": "forum posts", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 75648, "cosine": 0.1225908100605011, "rank": 71, "description": "honesty and directness", "descriptions": [{"description": "honesty and directness", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 109235, "cosine": 0.12251053005456924, "rank": 72, "description": "technology related texts", "descriptions": [{"description": "technology related texts", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 18452, "cosine": 0.12246742099523544, "rank": 73, "description": "period", "descriptions": [{"description": "period", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 82520, "cosine": 0.1222115233540535, "rank": 74, "description": "song lyrics", "descriptions": [{"description": "song lyrics", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 16314, "cosine": 0.12200532108545303, "rank": 75, "description": "Quotations", "descriptions": [{"description": "Quotations", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 1266, "cosine": 0.12104062736034393, "rank": 76, "description": "were", "descriptions": [{"description": "were", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 100287, "cosine": 0.12045397609472275, "rank": 77, "description": "punctuation", "descriptions": [{"description": "punctuation", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 100663, "cosine": 0.12038779258728027, "rank": 78, "description": "said", "descriptions": [{"description": "said", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 35225, "cosine": 0.12028268724679947, "rank": 79, "description": "period", "descriptions": [{"description": "period", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 69079, "cosine": 0.11966755986213684, "rank": 80, "description": "Answering questions", "descriptions": [{"description": "Answering questions", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 19068, "cosine": 0.11963872611522675, "rank": 81, "description": "periods", "descriptions": [{"description": "periods", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 45674, "cosine": 0.1195029690861702, "rank": 82, "description": "say \"skip\" words", "descriptions": [{"description": "say \"skip\" words", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 115527, "cosine": 0.11932366341352463, "rank": 83, "description": "comma", "descriptions": [{"description": "comma", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 28681, "cosine": 0.11859549582004547, "rank": 84, "description": "period", "descriptions": [{"description": "period", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 49804, "cosine": 0.11797381192445755, "rank": 85, "description": "Realization and suggestion", "descriptions": [{"description": "Realization and suggestion", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 55237, "cosine": 0.11792856454849243, "rank": 86, "description": "whereas", "descriptions": [{"description": "whereas", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 81739, "cosine": 0.11791368573904037, "rank": 87, "description": "or", "descriptions": [{"description": "or", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 11943, "cosine": 0.11782527714967728, "rank": 88, "description": "punctuation", "descriptions": [{"description": "punctuation", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 12080, "cosine": 0.11776751279830933, "rank": 89, "description": "period", "descriptions": [{"description": "period", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 62395, "cosine": 0.1171165406703949, "rank": 90, "description": "punctuation", "descriptions": [{"description": "punctuation", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 7461, "cosine": 0.11677107959985733, "rank": 91, "description": "think", "descriptions": [{"description": "think", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 17538, "cosine": 0.11663787066936493, "rank": 92, "description": "colon or dash", "descriptions": [{"description": "colon or dash", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 77978, "cosine": 0.11645007878541946, "rank": 93, "description": "but", "descriptions": [{"description": "but", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 95811, "cosine": 0.11599470674991608, "rank": 94, "description": "business/helpful advice", "descriptions": [{"description": "business/helpful advice", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 113975, "cosine": 0.11598653346300125, "rank": 95, "description": "minor problems", "descriptions": [{"description": "minor problems", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 80354, "cosine": 0.11583120375871658, "rank": 96, "description": "multiple languages", "descriptions": [{"description": "multiple languages", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 15514, "cosine": 0.11556857079267502, "rank": 97, "description": "so", "descriptions": [{"description": "so", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 91928, "cosine": 0.11552625894546509, "rank": 98, "description": "self-help advice", "descriptions": [{"description": "self-help advice", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 52507, "cosine": 0.11527455598115921, "rank": 99, "description": "period", "descriptions": [{"description": "period", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}
+{"layer": 27, "feature": 1328, "cosine": 0.11508409678936005, "rank": 100, "description": "8", "descriptions": [{"description": "8", "model": "gemini-2.0-flash", "type": "np_max-act-logits"}]}

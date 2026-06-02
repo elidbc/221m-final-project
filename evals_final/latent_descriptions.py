@@ -30,19 +30,23 @@ INPUT_FILES = [
 REQUEST_DELAY = 0.2
 
 
-def get_description(feature) -> str | None:
-    """Extract the top explanation/description text from a SAEFeature."""
+def get_descriptions(feature) -> list[dict]:
+    """Extract all explanation/descriptions from a SAEFeature."""
     try:
         data = json.loads(feature.jsonData)
     except (json.JSONDecodeError, AttributeError):
-        return None
+        return []
 
-    explanations = data.get("explanations", [])
-    if explanations:
-        # Neuronpedia returns explanations sorted by score; take the top one
-        top = explanations[0]
-        return top.get("description") or top.get("explanationText")
-    return None
+    results = []
+    for exp in data.get("explanations", []):
+        text = exp.get("description") or exp.get("explanationText")
+        if text:
+            results.append({
+                "description": text,
+                "model": exp.get("explanationModelName"),
+                "type": exp.get("typeName"),
+            })
+    return results
 
 
 def process_file(input_path: Path, output_path: Path) -> None:
@@ -52,14 +56,15 @@ def process_file(input_path: Path, output_path: Path) -> None:
 
     print(f"\nProcessing {input_path.name} ({len(records)} latents) -> {output_path.name}")
 
-    # Resume from where we left off if output already exists
+    # Resume from where we left off if output already exists (requires full descriptions)
     done = set()
     if output_path.exists():
         with open(output_path) as f:
             for line in f:
                 try:
                     d = json.loads(line)
-                    done.add((d["layer"], d["feature"]))
+                    if "descriptions" in d:
+                        done.add((d["layer"], d["feature"]))
                 except (json.JSONDecodeError, KeyError):
                     pass
         print(f"  Resuming: {len(done)} already fetched")
@@ -76,22 +81,27 @@ def process_file(input_path: Path, output_path: Path) -> None:
             source = f"{layer}-{SAE_SUFFIX}"
             try:
                 feat = SAEFeature.get(MODEL_ID, source, str(feature))
-                description = get_description(feat)
+                descriptions = get_descriptions(feat)
             except Exception as e:
                 print(f"  [{i+1}/{len(records)}] layer={layer} feature={feature} ERROR: {e}")
-                description = None
+                descriptions = []
 
+            top_description = descriptions[0]["description"] if descriptions else None
             result = {
                 "layer": layer,
                 "feature": feature,
                 "cosine": record.get("cosine"),
                 "rank": record.get("rank"),
-                "description": description,
+                "description": top_description,
+                "descriptions": descriptions,
             }
             out_f.write(json.dumps(result) + "\n")
             out_f.flush()
 
-            status = description[:80] if description else "No description"
+            if descriptions:
+                status = f"{len(descriptions)} descs, top: {top_description[:60]}"
+            else:
+                status = "No descriptions"
             print(f"  [{i+1}/{len(records)}] layer={layer} feature={feature}: {status}")
             time.sleep(REQUEST_DELAY)
 

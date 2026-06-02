@@ -4,7 +4,8 @@ models/*
 .vscode/*
 *__pycache__*
 SAEs/*
-evals_old/activations/*
+old/*
+evals_final/activations/*
 
 # Protected dataset (added by easy-dataset-share)
 evals/datasets/nanda/training_datasets.zip.enc.extracted/
