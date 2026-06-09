@@ -1,0 +1,1753 @@
+=== Step 1: Extract latents with non-zero delta ===
+Wrote 432 latents with non-zero delta -> /home/cme213/tobiascm/221m-final-project/evals_final/results/sae_latent_deltas/nonzero_latents.jsonl
+
+=== Step 2: Fetch Neuronpedia descriptions (.venv) ===
+
+Processing nonzero_latents.jsonl (432 latents) -> descriptions_sae_delta.jsonl
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/85258
+Got a successful response.
+  [1/432] layer=27 feature=85258: 1 descs, top: the
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/31505
+Got a successful response.
+  [2/432] layer=27 feature=31505: 1 descs, top: period
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/39242
+Got a successful response.
+  [3/432] layer=23 feature=39242: 1 descs, top: Scientific/mathematical papers
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/53974
+Got a successful response.
+  [4/432] layer=19 feature=53974: 5 descs, top: Katie
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/107798
+Got a successful response.
+  [5/432] layer=27 feature=107798: 1 descs, top: Source code
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/36162
+Got a successful response.
+  [6/432] layer=27 feature=36162: 1 descs, top: detection
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/129304
+Got a successful response.
+  [7/432] layer=15 feature=129304: 2 descs, top: places
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/71651
+Got a successful response.
+  [8/432] layer=27 feature=71651: 1 descs, top: The
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/85065
+Got a successful response.
+  [9/432] layer=23 feature=85065: 1 descs, top: price
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/82105
+Got a successful response.
+  [10/432] layer=27 feature=82105: 1 descs, top: maximums and code
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/120975
+Got a successful response.
+  [11/432] layer=23 feature=120975: 1 descs, top: Billboard
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/98164
+Got a successful response.
+  [12/432] layer=27 feature=98164: 1 descs, top: * or -
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/67333
+Got a successful response.
+  [13/432] layer=27 feature=67333: 1 descs, top: period
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/11-resid-post-aa/13763
+Got a successful response.
+  [14/432] layer=11 feature=13763: 2 descs, top: dioxide
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/116556
+Got a successful response.
+  [15/432] layer=27 feature=116556: 1 descs, top: say "for"
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/21268
+Got a successful response.
+  [16/432] layer=27 feature=21268: 1 descs, top: Internet content
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/102571
+Got a successful response.
+  [17/432] layer=27 feature=102571: 1 descs, top: legal context
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/44673
+Got a successful response.
+  [18/432] layer=27 feature=44673: 1 descs, top: Code and programming
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/18527
+Got a successful response.
+  [19/432] layer=19 feature=18527: 1 descs, top: casinos
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/20272
+Got a successful response.
+  [20/432] layer=19 feature=20272: 1 descs, top: cells
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/45408
+Got a successful response.
+  [21/432] layer=27 feature=45408: 1 descs, top: enduring things
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/110458
+Got a successful response.
+  [22/432] layer=19 feature=110458: 1 descs, top: ver
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/72313
+Got a successful response.
+  [23/432] layer=15 feature=72313: 1 descs, top: Airport
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/11-resid-post-aa/40599
+Got a successful response.
+  [24/432] layer=11 feature=40599: 3 descs, top: science and medicine
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/6516
+Got a successful response.
+  [25/432] layer=27 feature=6516: 1 descs, top: no
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/81165
+Got a successful response.
+  [26/432] layer=27 feature=81165: 1 descs, top: IT
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/103311
+Got a successful response.
+  [27/432] layer=27 feature=103311: 1 descs, top: advice
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/21256
+Got a successful response.
+  [28/432] layer=19 feature=21256: 1 descs, top: achieve
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/69079
+Got a successful response.
+  [29/432] layer=27 feature=69079: 1 descs, top: Answering questions
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/32316
+Got a successful response.
+  [30/432] layer=27 feature=32316: 1 descs, top: ,
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/96163
+Got a successful response.
+  [31/432] layer=27 feature=96163: 1 descs, top: your
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/101320
+Got a successful response.
+  [32/432] layer=23 feature=101320: 1 descs, top: various different topics
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/3-resid-post-aa/82354
+Got a successful response.
+  [33/432] layer=3 feature=82354: 1 descs, top: Article and title
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/15605
+Got a successful response.
+  [34/432] layer=19 feature=15605: 1 descs, top: was
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/7337
+Got a successful response.
+  [35/432] layer=27 feature=7337: 1 descs, top: academic URLs
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/25403
+Got a successful response.
+  [36/432] layer=27 feature=25403: 1 descs, top: commod
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/77803
+Got a successful response.
+  [37/432] layer=27 feature=77803: 1 descs, top: say "start" or "begin"
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/47639
+Got a successful response.
+  [38/432] layer=19 feature=47639: 1 descs, top: Separating parts of the text
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/64142
+Got a successful response.
+  [39/432] layer=23 feature=64142: 1 descs, top: Non-English words
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/29499
+Got a successful response.
+  [40/432] layer=23 feature=29499: 1 descs, top: say "the"
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/82992
+Got a successful response.
+  [41/432] layer=27 feature=82992: 1 descs, top: return
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/5818
+Got a successful response.
+  [42/432] layer=27 feature=5818: 1 descs, top: Document processing
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/120281
+Got a successful response.
+  [43/432] layer=15 feature=120281: 1 descs, top: ’
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/84469
+Got a successful response.
+  [44/432] layer=27 feature=84469: 1 descs, top: existence/non-existence
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/14926
+Got a successful response.
+  [45/432] layer=19 feature=14926: 1 descs, top: sexually explicit content
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/86211
+Got a successful response.
+  [46/432] layer=23 feature=86211: 1 descs, top: personal experiences
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/32417
+Got a successful response.
+  [47/432] layer=23 feature=32417: 1 descs, top: holidays
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/112067
+Got a successful response.
+  [48/432] layer=27 feature=112067: 1 descs, top: in
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/24104
+Got a successful response.
+  [49/432] layer=23 feature=24104: 1 descs, top: anyone
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/89957
+Got a successful response.
+  [50/432] layer=23 feature=89957: 1 descs, top: ,
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/59911
+Got a successful response.
+  [51/432] layer=27 feature=59911: 1 descs, top: punctuation
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/48998
+Got a successful response.
+  [52/432] layer=27 feature=48998: 1 descs, top: non-English words
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/53103
+Got a successful response.
+  [53/432] layer=27 feature=53103: 1 descs, top: different languages
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/37151
+Got a successful response.
+  [54/432] layer=27 feature=37151: 1 descs, top: Medication adherence/non-adherence
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/41543
+Got a successful response.
+  [55/432] layer=27 feature=41543: 1 descs, top: Foreign language
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/7-resid-post-aa/73829
+Got a successful response.
+  [56/432] layer=7 feature=73829: 1 descs, top: breathing and ventilation
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/46119
+Got a successful response.
+  [57/432] layer=27 feature=46119: 1 descs, top: German text
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/79328
+Got a successful response.
+  [58/432] layer=23 feature=79328: 1 descs, top: a
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/97898
+Got a successful response.
+  [59/432] layer=27 feature=97898: 1 descs, top: genetics recombination
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/41376
+Got a successful response.
+  [60/432] layer=27 feature=41376: 1 descs, top: scientific texts
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/129811
+Got a successful response.
+  [61/432] layer=19 feature=129811: 1 descs, top: competence
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/24537
+Got a successful response.
+  [62/432] layer=27 feature=24537: 1 descs, top: tobacco and cigarettes
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/127803
+Got a successful response.
+  [63/432] layer=23 feature=127803: 1 descs, top: HIV/AIDS and infections
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/8910
+Got a successful response.
+  [64/432] layer=23 feature=8910: 1 descs, top: to
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/100456
+Got a successful response.
+  [65/432] layer=15 feature=100456: 1 descs, top: a
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/3-resid-post-aa/55556
+Got a successful response.
+  [66/432] layer=3 feature=55556: 1 descs, top: URLs
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/63906
+Got a successful response.
+  [67/432] layer=27 feature=63906: 1 descs, top: Story snippets
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/84296
+Got a successful response.
+  [68/432] layer=23 feature=84296: 1 descs, top: makes up for
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/107488
+Got a successful response.
+  [69/432] layer=23 feature=107488: 1 descs, top: Conversational filler words
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/547
+Got a successful response.
+  [70/432] layer=23 feature=547: 1 descs, top: 194
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/57789
+Got a successful response.
+  [71/432] layer=23 feature=57789: 1 descs, top: lin
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/40369
+Got a successful response.
+  [72/432] layer=23 feature=40369: 1 descs, top: py
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/95402
+Got a successful response.
+  [73/432] layer=27 feature=95402: 1 descs, top: technical/scientific texts
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/53418
+Got a successful response.
+  [74/432] layer=27 feature=53418: 1 descs, top: dehydration
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/36943
+Got a successful response.
+  [75/432] layer=23 feature=36943: 1 descs, top: a
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/63913
+Got a successful response.
+  [76/432] layer=15 feature=63913: 1 descs, top: gene mutations
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/98260
+Got a successful response.
+  [77/432] layer=27 feature=98260: 1 descs, top: Physical sensations
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/50028
+Got a successful response.
+  [78/432] layer=19 feature=50028: 1 descs, top: Jennifer
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/84713
+Got a successful response.
+  [79/432] layer=27 feature=84713: 1 descs, top: Time periods/dates
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/104338
+Got a successful response.
+  [80/432] layer=19 feature=104338: 1 descs, top: Long texts
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/2788
+Got a successful response.
+  [81/432] layer=19 feature=2788: 1 descs, top: ://
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/44330
+Got a successful response.
+  [82/432] layer=19 feature=44330: 1 descs, top: true
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/124185
+Got a successful response.
+  [83/432] layer=23 feature=124185: 1 descs, top: say "you"
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/64547
+Got a successful response.
+  [84/432] layer=19 feature=64547: 1 descs, top: Bible
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/120985
+Got a successful response.
+  [85/432] layer=15 feature=120985: 1 descs, top: Beginning of sentences/text
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/118170
+Got a successful response.
+  [86/432] layer=27 feature=118170: 1 descs, top: laws taking effect
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/52476
+Got a successful response.
+  [87/432] layer=27 feature=52476: 1 descs, top: Valentine's Day
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/107237
+Got a successful response.
+  [88/432] layer=23 feature=107237: 1 descs, top: insertion
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/50385
+Got a successful response.
+  [89/432] layer=23 feature=50385: 1 descs, top: code snippets
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/41749
+Got a successful response.
+  [90/432] layer=23 feature=41749: 1 descs, top: computing and programming
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/93275
+Got a successful response.
+  [91/432] layer=27 feature=93275: 1 descs, top: post
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/78831
+Got a successful response.
+  [92/432] layer=23 feature=78831: 1 descs, top: Foreign language
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/112067
+Got a successful response.
+  [93/432] layer=23 feature=112067: 1 descs, top: Technical/scientific descriptions
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/26329
+Got a successful response.
+  [94/432] layer=27 feature=26329: 1 descs, top: supplements
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/85806
+Got a successful response.
+  [95/432] layer=15 feature=85806: 1 descs, top: document names
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/93765
+Got a successful response.
+  [96/432] layer=23 feature=93765: 1 descs, top: clinical
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/10958
+Got a successful response.
+  [97/432] layer=15 feature=10958: 1 descs, top: Author bios
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/35582
+Got a successful response.
+  [98/432] layer=27 feature=35582: 1 descs, top: indoor/outdoor
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/42698
+Got a successful response.
+  [99/432] layer=19 feature=42698: 1 descs, top: )
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/9962
+Got a successful response.
+  [100/432] layer=27 feature=9962: 1 descs, top: k
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/45800
+Got a successful response.
+  [101/432] layer=27 feature=45800: 1 descs, top: Foreign words / symbols
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/9255
+Got a successful response.
+  [102/432] layer=19 feature=9255: 1 descs, top: done
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/115422
+Got a successful response.
+  [103/432] layer=19 feature=115422: 1 descs, top: geography
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/127528
+Got a successful response.
+  [104/432] layer=23 feature=127528: 1 descs, top: diabetes
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/33795
+Got a successful response.
+  [105/432] layer=23 feature=33795: 1 descs, top: "perd" and "lose"
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/25610
+Got a successful response.
+  [106/432] layer=27 feature=25610: 1 descs, top: simultaneous actions/events
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/27435
+Got a successful response.
+  [107/432] layer=23 feature=27435: 1 descs, top: who
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/112607
+Got a successful response.
+  [108/432] layer=27 feature=112607: 1 descs, top: Java security contexts
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/49393
+Got a successful response.
+  [109/432] layer=27 feature=49393: 1 descs, top: Code snippets
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/39102
+Got a successful response.
+  [110/432] layer=23 feature=39102: 1 descs, top: #
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/110759
+Got a successful response.
+  [111/432] layer=27 feature=110759: 1 descs, top: say ")"
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/111823
+Got a successful response.
+  [112/432] layer=19 feature=111823: 1 descs, top: =
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/65431
+Got a successful response.
+  [113/432] layer=19 feature=65431: 1 descs, top: used
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/22811
+Got a successful response.
+  [114/432] layer=19 feature=22811: 1 descs, top: sequential actions/events
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/70118
+Got a successful response.
+  [115/432] layer=19 feature=70118: 1 descs, top: possessive pronouns
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/10364
+Got a successful response.
+  [116/432] layer=23 feature=10364: 1 descs, top: years
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/16175
+Got a successful response.
+  [117/432] layer=27 feature=16175: 1 descs, top: divided
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/57593
+Got a successful response.
+  [118/432] layer=27 feature=57593: 1 descs, top: To
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/115869
+Got a successful response.
+  [119/432] layer=23 feature=115869: 1 descs, top: put
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/37187
+Got a successful response.
+  [120/432] layer=19 feature=37187: 1 descs, top: size
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/82857
+Got a successful response.
+  [121/432] layer=23 feature=82857: 1 descs, top: *
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/121819
+Got a successful response.
+  [122/432] layer=27 feature=121819: 1 descs, top: numbers
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/131003
+Got a successful response.
+  [123/432] layer=23 feature=131003: 1 descs, top: Michelin stars/ratings
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/51812
+Got a successful response.
+  [124/432] layer=27 feature=51812: 1 descs, top: Respiratory symptoms and coughs
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/125530
+Got a successful response.
+  [125/432] layer=19 feature=125530: 1 descs, top: code
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/65777
+Got a successful response.
+  [126/432] layer=27 feature=65777: 1 descs, top: period
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/86910
+Got a successful response.
+  [127/432] layer=19 feature=86910: 1 descs, top: code
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/121403
+Got a successful response.
+  [128/432] layer=27 feature=121403: 1 descs, top: time frequency
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/58315
+Got a successful response.
+  [129/432] layer=27 feature=58315: 1 descs, top: groin
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/37294
+Got a successful response.
+  [130/432] layer=23 feature=37294: 1 descs, top: say physical/exercise
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/54716
+Got a successful response.
+  [131/432] layer=23 feature=54716: 1 descs, top: location names
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/728
+Got a successful response.
+  [132/432] layer=27 feature=728: 1 descs, top: obsessive
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/3-resid-post-aa/14093
+Got a successful response.
+  [133/432] layer=3 feature=14093: 1 descs, top: medical advice
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/81014
+Got a successful response.
+  [134/432] layer=23 feature=81014: 1 descs, top: but
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/3460
+Got a successful response.
+  [135/432] layer=27 feature=3460: 1 descs, top: this
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/11196
+Got a successful response.
+  [136/432] layer=19 feature=11196: 1 descs, top: Website snippets
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/112016
+Got a successful response.
+  [137/432] layer=23 feature=112016: 1 descs, top: say "degree"
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/36037
+Got a successful response.
+  [138/432] layer=27 feature=36037: 1 descs, top: Associations
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/30818
+Got a successful response.
+  [139/432] layer=27 feature=30818: 1 descs, top: quantities or amounts
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/129270
+Got a successful response.
+  [140/432] layer=23 feature=129270: 1 descs, top: Article snippets
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/8213
+Got a successful response.
+  [141/432] layer=19 feature=8213: 1 descs, top: super
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/12890
+Got a successful response.
+  [142/432] layer=27 feature=12890: 1 descs, top: peptides and molecules
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/12392
+Got a successful response.
+  [143/432] layer=19 feature=12392: 1 descs, top: starting
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/73748
+Got a successful response.
+  [144/432] layer=23 feature=73748: 1 descs, top: ’ll
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/100413
+Got a successful response.
+  [145/432] layer=27 feature=100413: 1 descs, top: grim
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/97166
+Got a successful response.
+  [146/432] layer=27 feature=97166: 1 descs, top: Court-related discussions
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/3577
+Got a successful response.
+  [147/432] layer=27 feature=3577: 1 descs, top: drinking liquids/juices
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/35707
+Got a successful response.
+  [148/432] layer=27 feature=35707: 1 descs, top: Circadian rhythms
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/23879
+Got a successful response.
+  [149/432] layer=19 feature=23879: 1 descs, top: of
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/35574
+Got a successful response.
+  [150/432] layer=27 feature=35574: 1 descs, top: restrictions
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/7018
+Got a successful response.
+  [151/432] layer=23 feature=7018: 1 descs, top: and
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/100168
+Got a successful response.
+  [152/432] layer=27 feature=100168: 1 descs, top: 194
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/123385
+Got a successful response.
+  [153/432] layer=27 feature=123385: 1 descs, top: contraction of "not"
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/77104
+Got a successful response.
+  [154/432] layer=27 feature=77104: 1 descs, top: Foreign words
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/7-resid-post-aa/118060
+Got a successful response.
+  [155/432] layer=7 feature=118060: 2 descs, top: colon
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/55071
+Got a successful response.
+  [156/432] layer=19 feature=55071: 1 descs, top: Manufacturing processes
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/46913
+Got a successful response.
+  [157/432] layer=23 feature=46913: 1 descs, top: non-English words
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/30955
+Got a successful response.
+  [158/432] layer=23 feature=30955: 1 descs, top: random
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/91094
+Got a successful response.
+  [159/432] layer=27 feature=91094: 1 descs, top: list
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/111068
+Got a successful response.
+  [160/432] layer=27 feature=111068: 1 descs, top: Scientific measurements
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/98786
+Got a successful response.
+  [161/432] layer=27 feature=98786: 1 descs, top: BlackBerry
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/61468
+Got a successful response.
+  [162/432] layer=23 feature=61468: 1 descs, top: say consult
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/87480
+Got a successful response.
+  [163/432] layer=27 feature=87480: 1 descs, top: Peter (Bible)
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/106977
+Got a successful response.
+  [164/432] layer=23 feature=106977: 1 descs, top: configuration files
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/102910
+Got a successful response.
+  [165/432] layer=27 feature=102910: 1 descs, top: safe
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/80602
+Got a successful response.
+  [166/432] layer=27 feature=80602: 1 descs, top: R
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/2177
+Got a successful response.
+  [167/432] layer=27 feature=2177: 1 descs, top: say "enable"
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/103585
+Got a successful response.
+  [168/432] layer=15 feature=103585: 1 descs, top: comma
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/8706
+Got a successful response.
+  [169/432] layer=23 feature=8706: 1 descs, top: to
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/16055
+Got a successful response.
+  [170/432] layer=27 feature=16055: 1 descs, top: the number 5
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/118243
+Got a successful response.
+  [171/432] layer=27 feature=118243: 1 descs, top: non-English languages
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/58163
+Got a successful response.
+  [172/432] layer=27 feature=58163: 1 descs, top: say continue
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/22382
+Got a successful response.
+  [173/432] layer=19 feature=22382: 1 descs, top: communication and persuasion
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/95130
+Got a successful response.
+  [174/432] layer=27 feature=95130: 1 descs, top: code snippets
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/108114
+Got a successful response.
+  [175/432] layer=19 feature=108114: 1 descs, top: Thr
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/24465
+Got a successful response.
+  [176/432] layer=19 feature=24465: 1 descs, top: then
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/121156
+Got a successful response.
+  [177/432] layer=27 feature=121156: 1 descs, top: say "stay"
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/50982
+Got a successful response.
+  [178/432] layer=23 feature=50982: 1 descs, top: reported
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/100597
+Got a successful response.
+  [179/432] layer=27 feature=100597: 1 descs, top: profiles
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/117919
+Got a successful response.
+  [180/432] layer=27 feature=117919: 1 descs, top: Symptoms of disease
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/8189
+Got a successful response.
+  [181/432] layer=23 feature=8189: 1 descs, top: Non-English words
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/22253
+Got a successful response.
+  [182/432] layer=27 feature=22253: 1 descs, top: Code snippets
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/48635
+Got a successful response.
+  [183/432] layer=27 feature=48635: 1 descs, top: cutting materials
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/124360
+Got a successful response.
+  [184/432] layer=27 feature=124360: 1 descs, top: Medical procedures
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/67361
+Got a successful response.
+  [185/432] layer=19 feature=67361: 1 descs, top: -
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/63708
+Got a successful response.
+  [186/432] layer=23 feature=63708: 1 descs, top: aim
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/125034
+Got a successful response.
+  [187/432] layer=23 feature=125034: 1 descs, top: say ":"
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/11-resid-post-aa/46774
+Got a successful response.
+  [188/432] layer=11 feature=46774: 1 descs, top: chemotherapy
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/105369
+Got a successful response.
+  [189/432] layer=19 feature=105369: 1 descs, top: and or
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/20941
+Got a successful response.
+  [190/432] layer=23 feature=20941: 1 descs, top: Changes
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/94543
+Got a successful response.
+  [191/432] layer=27 feature=94543: 1 descs, top: ne
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/40349
+Got a successful response.
+  [192/432] layer=27 feature=40349: 1 descs, top: tiredness
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/43728
+Got a successful response.
+  [193/432] layer=23 feature=43728: 1 descs, top: pain relievers/medications
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/12582
+Got a successful response.
+  [194/432] layer=19 feature=12582: 1 descs, top: Climbing/descending actions
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/38629
+Got a successful response.
+  [195/432] layer=27 feature=38629: 1 descs, top: say time related words
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/102600
+Got a successful response.
+  [196/432] layer=27 feature=102600: 1 descs, top: Field theories
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/104012
+Got a successful response.
+  [197/432] layer=23 feature=104012: 1 descs, top: _test
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/8996
+Got a successful response.
+  [198/432] layer=27 feature=8996: 1 descs, top: say "s" word
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/51591
+Got a successful response.
+  [199/432] layer=19 feature=51591: 1 descs, top: opposing sides
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/60054
+Got a successful response.
+  [200/432] layer=27 feature=60054: 1 descs, top: to
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/89770
+Got a successful response.
+  [201/432] layer=19 feature=89770: 1 descs, top: arbitration
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/60507
+Got a successful response.
+  [202/432] layer=23 feature=60507: 1 descs, top: done
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/53573
+Got a successful response.
+  [203/432] layer=27 feature=53573: 1 descs, top: Foreign words
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/34164
+Got a successful response.
+  [204/432] layer=27 feature=34164: 1 descs, top: city names
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/100479
+Got a successful response.
+  [205/432] layer=27 feature=100479: 1 descs, top: fasting
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/80816
+Got a successful response.
+  [206/432] layer=27 feature=80816: 1 descs, top: comma
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/84705
+Got a successful response.
+  [207/432] layer=27 feature=84705: 1 descs, top: medical treatments
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/27-resid-post-aa/35026
+Got a successful response.
+  [208/432] layer=27 feature=35026: 1 descs, top: .
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/65007
+Got a successful response.
+  [209/432] layer=23 feature=65007: 1 descs, top: Fighting game mechanics
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/130591
+Got a successful response.
+  [210/432] layer=23 feature=130591: 1 descs, top: Bri-
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/98480
+Got a successful response.
+  [211/432] layer=23 feature=98480: 1 descs, top: Code and data
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/69076
+Got a successful response.
+  [212/432] layer=23 feature=69076: 1 descs, top: Code snippets
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/6901
+Got a successful response.
+  [213/432] layer=23 feature=6901: 1 descs, top: Java AWS SDK code
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/11810
+Got a successful response.
+  [214/432] layer=23 feature=11810: 1 descs, top: more
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/96259
+Got a successful response.
+  [215/432] layer=23 feature=96259: 1 descs, top: 田
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/7171
+Got a successful response.
+  [216/432] layer=15 feature=7171: 1 descs, top: -*-
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/93189
+Got a successful response.
+  [217/432] layer=23 feature=93189: 1 descs, top: liking something
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/20598
+Got a successful response.
+  [218/432] layer=19 feature=20598: 1 descs, top: control, influence, governance
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/78285
+Got a successful response.
+  [219/432] layer=23 feature=78285: 1 descs, top: say "the"
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/23220
+Got a successful response.
+  [220/432] layer=23 feature=23220: 1 descs, top: "to be"
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/94555
+Got a successful response.
+  [221/432] layer=23 feature=94555: 1 descs, top: technical documents
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/128823
+Got a successful response.
+  [222/432] layer=23 feature=128823: 1 descs, top: }
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/81200
+Got a successful response.
+  [223/432] layer=23 feature=81200: 1 descs, top: brackets
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/76710
+Got a successful response.
+  [224/432] layer=19 feature=76710: 1 descs, top: hash tables
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/93266
+Got a successful response.
+  [225/432] layer=23 feature=93266: 1 descs, top: Technical/research text
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/123511
+Got a successful response.
+  [226/432] layer=19 feature=123511: 1 descs, top: .css
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/91010
+Got a successful response.
+  [227/432] layer=23 feature=91010: 1 descs, top: Generality
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/60277
+Got a successful response.
+  [228/432] layer=23 feature=60277: 1 descs, top: cricket and sports
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/9989
+Got a successful response.
+  [229/432] layer=19 feature=9989: 1 descs, top: mathematical constants
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/130898
+Got a successful response.
+  [230/432] layer=19 feature=130898: 1 descs, top: minutes
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/64164
+Got a successful response.
+  [231/432] layer=23 feature=64164: 1 descs, top: Starts with "Fro" or "ro"
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/104369
+Got a successful response.
+  [232/432] layer=23 feature=104369: 1 descs, top: Programming, Japanese mixed
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/24946
+Got a successful response.
+  [233/432] layer=23 feature=24946: 1 descs, top: there
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/102676
+Got a successful response.
+  [234/432] layer=23 feature=102676: 1 descs, top: pregnancy
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/57372
+Got a successful response.
+  [235/432] layer=23 feature=57372: 1 descs, top: are
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/20767
+Got a successful response.
+  [236/432] layer=19 feature=20767: 1 descs, top: medical symptoms
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/55044
+Got a successful response.
+  [237/432] layer=23 feature=55044: 1 descs, top: of
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/72712
+Got a successful response.
+  [238/432] layer=23 feature=72712: 1 descs, top: say "oc word"
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/56407
+Got a successful response.
+  [239/432] layer=23 feature=56407: 1 descs, top: Software, code, or configuration
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/13661
+Got a successful response.
+  [240/432] layer=15 feature=13661: 1 descs, top: by with
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/55583
+Got a successful response.
+  [241/432] layer=23 feature=55583: 1 descs, top: of
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/50094
+Got a successful response.
+  [242/432] layer=23 feature=50094: 1 descs, top: Adapter
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/35228
+Got a successful response.
+  [243/432] layer=23 feature=35228: 1 descs, top: Foreign short words
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/23541
+Got a successful response.
+  [244/432] layer=19 feature=23541: 1 descs, top: file paths
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/54009
+Got a successful response.
+  [245/432] layer=19 feature=54009: 1 descs, top: repeating content
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/123853
+Got a successful response.
+  [246/432] layer=23 feature=123853: 1 descs, top: punctuation/code delimiters
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/80496
+Got a successful response.
+  [247/432] layer=15 feature=80496: 1 descs, top: also
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/83941
+Got a successful response.
+  [248/432] layer=23 feature=83941: 1 descs, top: Milking and automation
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/87121
+Got a successful response.
+  [249/432] layer=19 feature=87121: 1 descs, top: Historic houses and museums
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/70581
+Got a successful response.
+  [250/432] layer=23 feature=70581: 1 descs, top: quantum computing
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/123776
+Got a successful response.
+  [251/432] layer=23 feature=123776: 1 descs, top: -counter
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/100958
+Got a successful response.
+  [252/432] layer=19 feature=100958: 1 descs, top: Ret
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/50389
+Got a successful response.
+  [253/432] layer=23 feature=50389: 1 descs, top: medicine
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/49282
+Got a successful response.
+  [254/432] layer=23 feature=49282: 1 descs, top: lens
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/87696
+Got a successful response.
+  [255/432] layer=19 feature=87696: 1 descs, top: Web content snippets
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/46117
+Got a successful response.
+  [256/432] layer=19 feature=46117: 1 descs, top: "aww" or positive sentiment
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/79540
+Got a successful response.
+  [257/432] layer=23 feature=79540: 1 descs, top: school is out
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/72806
+Got a successful response.
+  [258/432] layer=19 feature=72806: 1 descs, top: East Asian languages
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/129115
+Got a successful response.
+  [259/432] layer=23 feature=129115: 1 descs, top: pos
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/75050
+Got a successful response.
+  [260/432] layer=23 feature=75050: 1 descs, top: Periods
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/89349
+Got a successful response.
+  [261/432] layer=23 feature=89349: 1 descs, top: makeup brushes
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/109714
+Got a successful response.
+  [262/432] layer=19 feature=109714: 1 descs, top: slam
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/106701
+Got a successful response.
+  [263/432] layer=23 feature=106701: 1 descs, top: celery
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/96847
+Got a successful response.
+  [264/432] layer=19 feature=96847: 1 descs, top: Parentheses and quotation marks
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/102864
+Got a successful response.
+  [265/432] layer=15 feature=102864: 1 descs, top: to
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/77393
+Got a successful response.
+  [266/432] layer=23 feature=77393: 1 descs, top: proper nouns
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/23507
+Got a successful response.
+  [267/432] layer=23 feature=23507: 1 descs, top: Teflon
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/76981
+Got a successful response.
+  [268/432] layer=23 feature=76981: 1 descs, top: A
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/99027
+Got a successful response.
+  [269/432] layer=19 feature=99027: 1 descs, top: .L
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/96259
+Got a successful response.
+  [270/432] layer=19 feature=96259: 1 descs, top: Japanese and random text
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/12580
+Got a successful response.
+  [271/432] layer=19 feature=12580: 1 descs, top: Time-related listings
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/94125
+Got a successful response.
+  [272/432] layer=23 feature=94125: 1 descs, top: oxidative stress
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/130105
+Got a successful response.
+  [273/432] layer=23 feature=130105: 1 descs, top: drugs and medications
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/80783
+Got a successful response.
+  [274/432] layer=19 feature=80783: 1 descs, top: code
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/93442
+Got a successful response.
+  [275/432] layer=23 feature=93442: 1 descs, top: Code
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/87093
+Got a successful response.
+  [276/432] layer=19 feature=87093: 1 descs, top: as
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/29464
+Got a successful response.
+  [277/432] layer=23 feature=29464: 1 descs, top: cleaning
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/92535
+Got a successful response.
+  [278/432] layer=19 feature=92535: 1 descs, top: ,
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/8324
+Got a successful response.
+  [279/432] layer=19 feature=8324: 1 descs, top: quotation marks
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/23-resid-post-aa/118950
+Got a successful response.
+  [280/432] layer=23 feature=118950: 1 descs, top: ,
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/82845
+Got a successful response.
+  [281/432] layer=19 feature=82845: 1 descs, top: medical issues
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/39765
+Got a successful response.
+  [282/432] layer=19 feature=39765: 1 descs, top: living
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/102746
+Got a successful response.
+  [283/432] layer=19 feature=102746: 1 descs, top: MTV
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/60908
+Got a successful response.
+  [284/432] layer=19 feature=60908: 1 descs, top: view
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/45247
+Got a successful response.
+  [285/432] layer=15 feature=45247: 1 descs, top: the
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/37437
+Got a successful response.
+  [286/432] layer=15 feature=37437: 1 descs, top: {
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/33218
+Got a successful response.
+  [287/432] layer=19 feature=33218: 1 descs, top: Hadoop
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/83092
+Got a successful response.
+  [288/432] layer=19 feature=83092: 1 descs, top: factors
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/69578
+Got a successful response.
+  [289/432] layer=15 feature=69578: 1 descs, top: dad jokes
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/82865
+Got a successful response.
+  [290/432] layer=19 feature=82865: 1 descs, top: Cave
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/90471
+Got a successful response.
+  [291/432] layer=19 feature=90471: 1 descs, top: os
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/4830
+Got a successful response.
+  [292/432] layer=19 feature=4830: 1 descs, top: personal experience
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/69696
+Got a successful response.
+  [293/432] layer=15 feature=69696: 1 descs, top: quotation marks
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/36215
+Got a successful response.
+  [294/432] layer=19 feature=36215: 1 descs, top: the
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/20538
+Got a successful response.
+  [295/432] layer=19 feature=20538: 1 descs, top: comma
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/449
+Got a successful response.
+  [296/432] layer=19 feature=449: 1 descs, top: punctuation
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/91071
+Got a successful response.
+  [297/432] layer=19 feature=91071: 1 descs, top: Web content/document formatting
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/109875
+Got a successful response.
+  [298/432] layer=15 feature=109875: 1 descs, top: Instagram posts
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/74519
+Got a successful response.
+  [299/432] layer=19 feature=74519: 1 descs, top: .
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/51916
+Got a successful response.
+  [300/432] layer=19 feature=51916: 1 descs, top: Protests
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/104159
+Got a successful response.
+  [301/432] layer=19 feature=104159: 1 descs, top: climate
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/75726
+Got a successful response.
+  [302/432] layer=15 feature=75726: 1 descs, top: the
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/56687
+Got a successful response.
+  [303/432] layer=19 feature=56687: 1 descs, top: of
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/74645
+Got a successful response.
+  [304/432] layer=19 feature=74645: 1 descs, top: .com
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/56540
+Got a successful response.
+  [305/432] layer=15 feature=56540: 1 descs, top: punctuation
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/49590
+Got a successful response.
+  [306/432] layer=15 feature=49590: 1 descs, top: text encoding
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/6144
+Got a successful response.
+  [307/432] layer=19 feature=6144: 1 descs, top: it
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/111979
+Got a successful response.
+  [308/432] layer=19 feature=111979: 1 descs, top: comma
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/118442
+Got a successful response.
+  [309/432] layer=19 feature=118442: 1 descs, top: quotes
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/68382
+Got a successful response.
+  [310/432] layer=19 feature=68382: 1 descs, top: it
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/21966
+Got a successful response.
+  [311/432] layer=19 feature=21966: 1 descs, top: "
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/108253
+Got a successful response.
+  [312/432] layer=19 feature=108253: 1 descs, top: Application downloads
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/13608
+Got a successful response.
+  [313/432] layer=19 feature=13608: 1 descs, top: Per
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/29101
+Got a successful response.
+  [314/432] layer=19 feature=29101: 1 descs, top: Par
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/113578
+Got a successful response.
+  [315/432] layer=19 feature=113578: 1 descs, top: ISIS
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/20075
+Got a successful response.
+  [316/432] layer=19 feature=20075: 1 descs, top: colon
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/30218
+Got a successful response.
+  [317/432] layer=15 feature=30218: 1 descs, top: start
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/70758
+Got a successful response.
+  [318/432] layer=19 feature=70758: 1 descs, top: st
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/96766
+Got a successful response.
+  [319/432] layer=19 feature=96766: 1 descs, top: out
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/99788
+Got a successful response.
+  [320/432] layer=19 feature=99788: 1 descs, top: De
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/46336
+Got a successful response.
+  [321/432] layer=19 feature=46336: 1 descs, top: Arrangement/Description
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/50917
+Got a successful response.
+  [322/432] layer=19 feature=50917: 1 descs, top: directions
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/124582
+Got a successful response.
+  [323/432] layer=19 feature=124582: 1 descs, top: of
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/68068
+Got a successful response.
+  [324/432] layer=19 feature=68068: 1 descs, top: computer systems and devices
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/3962
+Got a successful response.
+  [325/432] layer=15 feature=3962: 1 descs, top: 1
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/103152
+Got a successful response.
+  [326/432] layer=19 feature=103152: 1 descs, top: Parliament
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/130690
+Got a successful response.
+  [327/432] layer=15 feature=130690: 1 descs, top: Numbers and symbols
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/118332
+Got a successful response.
+  [328/432] layer=19 feature=118332: 1 descs, top: Acronyms
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/86173
+Got a successful response.
+  [329/432] layer=19 feature=86173: 1 descs, top: British/UK related
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/99655
+Got a successful response.
+  [330/432] layer=19 feature=99655: 1 descs, top: copyright and fair use
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/90491
+Got a successful response.
+  [331/432] layer=15 feature=90491: 1 descs, top: Work
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/49281
+Got a successful response.
+  [332/432] layer=19 feature=49281: 1 descs, top: accidents and missing people
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/19-resid-post-aa/90008
+Got a successful response.
+  [333/432] layer=19 feature=90008: 1 descs, top: improve
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/129482
+Got a successful response.
+  [334/432] layer=15 feature=129482: 1 descs, top: code
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/104627
+Got a successful response.
+  [335/432] layer=15 feature=104627: 1 descs, top: M
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/115552
+Got a successful response.
+  [336/432] layer=15 feature=115552: 1 descs, top: common words, programming context
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/118484
+Got a successful response.
+  [337/432] layer=15 feature=118484: 1 descs, top: на
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/11-resid-post-aa/39671
+Got a successful response.
+  [338/432] layer=11 feature=39671: 2 descs, top: sports
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/9211
+Got a successful response.
+  [339/432] layer=15 feature=9211: 1 descs, top: _auth
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/83245
+Got a successful response.
+  [340/432] layer=15 feature=83245: 1 descs, top: technical documents and code
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/129154
+Got a successful response.
+  [341/432] layer=15 feature=129154: 1 descs, top: .
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/61914
+Got a successful response.
+  [342/432] layer=15 feature=61914: 1 descs, top: be
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/21597
+Got a successful response.
+  [343/432] layer=15 feature=21597: 1 descs, top: a
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/111534
+Got a successful response.
+  [344/432] layer=15 feature=111534: 1 descs, top: a
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/30508
+Got a successful response.
+  [345/432] layer=15 feature=30508: 1 descs, top: Giving permission/invitation in conversation
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/32663
+Got a successful response.
+  [346/432] layer=15 feature=32663: 1 descs, top: code/technical content
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/109924
+Got a successful response.
+  [347/432] layer=15 feature=109924: 1 descs, top: analgesics
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/32060
+Got a successful response.
+  [348/432] layer=15 feature=32060: 1 descs, top: comma
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/52334
+Got a successful response.
+  [349/432] layer=15 feature=52334: 1 descs, top: code and file paths
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/3-resid-post-aa/119685
+Got a successful response.
+  [350/432] layer=3 feature=119685: 1 descs, top: period
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/3-resid-post-aa/17480
+Got a successful response.
+  [351/432] layer=3 feature=17480: 1 descs, top: web content snippets
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/11-resid-post-aa/45921
+Got a successful response.
+  [352/432] layer=11 feature=45921: 1 descs, top: New
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/120393
+Got a successful response.
+  [353/432] layer=15 feature=120393: 1 descs, top: to
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/48164
+Got a successful response.
+  [354/432] layer=15 feature=48164: 1 descs, top: code
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/88303
+Got a successful response.
+  [355/432] layer=15 feature=88303: 1 descs, top: recipes and cooking
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/42054
+Got a successful response.
+  [356/432] layer=15 feature=42054: 1 descs, top: kernel
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/104781
+Got a successful response.
+  [357/432] layer=15 feature=104781: 1 descs, top: code/technical language
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/81802
+Got a successful response.
+  [358/432] layer=15 feature=81802: 1 descs, top: .state
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/9238
+Got a successful response.
+  [359/432] layer=15 feature=9238: 1 descs, top: Code and explanation
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/42110
+Got a successful response.
+  [360/432] layer=15 feature=42110: 1 descs, top: Floor
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/33731
+Got a successful response.
+  [361/432] layer=15 feature=33731: 1 descs, top: military
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/61351
+Got a successful response.
+  [362/432] layer=15 feature=61351: 1 descs, top: Document metadata
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/116112
+Got a successful response.
+  [363/432] layer=15 feature=116112: 1 descs, top: good
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/57350
+Got a successful response.
+  [364/432] layer=15 feature=57350: 1 descs, top: non-natural language text
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/85712
+Got a successful response.
+  [365/432] layer=15 feature=85712: 1 descs, top: code
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/102472
+Got a successful response.
+  [366/432] layer=15 feature=102472: 1 descs, top: technical documents
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/128985
+Got a successful response.
+  [367/432] layer=15 feature=128985: 1 descs, top: Scientific abstracts
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/20360
+Got a successful response.
+  [368/432] layer=15 feature=20360: 1 descs, top: tissue regeneration
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/38733
+Got a successful response.
+  [369/432] layer=15 feature=38733: 1 descs, top: punctuation marks
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/3-resid-post-aa/33443
+Got a successful response.
+  [370/432] layer=3 feature=33443: 1 descs, top: Code/reports
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/42133
+Got a successful response.
+  [371/432] layer=15 feature=42133: 1 descs, top: mixed/varied content
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/15463
+Got a successful response.
+  [372/432] layer=15 feature=15463: 1 descs, top: final
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/77266
+Got a successful response.
+  [373/432] layer=15 feature=77266: 1 descs, top: code
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/77505
+Got a successful response.
+  [374/432] layer=15 feature=77505: 1 descs, top: code snippets
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/80260
+Got a successful response.
+  [375/432] layer=15 feature=80260: 1 descs, top: religion
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/39845
+Got a successful response.
+  [376/432] layer=15 feature=39845: 1 descs, top: the
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/35259
+Got a successful response.
+  [377/432] layer=15 feature=35259: 1 descs, top: :
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/71941
+Got a successful response.
+  [378/432] layer=15 feature=71941: 1 descs, top: Migraines
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/94668
+Got a successful response.
+  [379/432] layer=15 feature=94668: 1 descs, top: to
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/89838
+Got a successful response.
+  [380/432] layer=15 feature=89838: 1 descs, top: code
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/124113
+Got a successful response.
+  [381/432] layer=15 feature=124113: 1 descs, top: HttpServletRequest
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/25793
+Got a successful response.
+  [382/432] layer=15 feature=25793: 1 descs, top: beauty products/routines
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/90187
+Got a successful response.
+  [383/432] layer=15 feature=90187: 1 descs, top: stop words
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/52763
+Got a successful response.
+  [384/432] layer=15 feature=52763: 1 descs, top: friend
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/26868
+Got a successful response.
+  [385/432] layer=15 feature=26868: 1 descs, top: sess.run
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/89654
+Got a successful response.
+  [386/432] layer=15 feature=89654: 1 descs, top: elevated
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/95753
+Got a successful response.
+  [387/432] layer=15 feature=95753: 1 descs, top: to be
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/44837
+Got a successful response.
+  [388/432] layer=15 feature=44837: 1 descs, top: Narrative style
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/87309
+Got a successful response.
+  [389/432] layer=15 feature=87309: 1 descs, top: punctuation
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/86946
+Got a successful response.
+  [390/432] layer=15 feature=86946: 1 descs, top: articles/pronouns
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/23922
+Got a successful response.
+  [391/432] layer=15 feature=23922: 1 descs, top: file operations
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/113182
+Got a successful response.
+  [392/432] layer=15 feature=113182: 1 descs, top: code/data listings
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/28095
+Got a successful response.
+  [393/432] layer=15 feature=28095: 1 descs, top: questions
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/9142
+Got a successful response.
+  [394/432] layer=15 feature=9142: 1 descs, top: when
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/75437
+Got a successful response.
+  [395/432] layer=15 feature=75437: 1 descs, top: please
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/120236
+Got a successful response.
+  [396/432] layer=15 feature=120236: 1 descs, top: common
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/120134
+Got a successful response.
+  [397/432] layer=15 feature=120134: 1 descs, top: has
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/73466
+Got a successful response.
+  [398/432] layer=15 feature=73466: 1 descs, top: Question marks
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/63436
+Got a successful response.
+  [399/432] layer=15 feature=63436: 1 descs, top: horizontal line
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/69059
+Got a successful response.
+  [400/432] layer=15 feature=69059: 1 descs, top: computer code
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/45147
+Got a successful response.
+  [401/432] layer=15 feature=45147: 1 descs, top: gender
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/59037
+Got a successful response.
+  [402/432] layer=15 feature=59037: 1 descs, top: programming problems
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/38927
+Got a successful response.
+  [403/432] layer=15 feature=38927: 1 descs, top: signs
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/117626
+Got a successful response.
+  [404/432] layer=15 feature=117626: 1 descs, top: .
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/61195
+Got a successful response.
+  [405/432] layer=15 feature=61195: 1 descs, top: he
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/97082
+Got a successful response.
+  [406/432] layer=15 feature=97082: 1 descs, top: .
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/102725
+Got a successful response.
+  [407/432] layer=15 feature=102725: 1 descs, top: boolean logic
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/45186
+Got a successful response.
+  [408/432] layer=15 feature=45186: 1 descs, top: Wire
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/84650
+Got a successful response.
+  [409/432] layer=15 feature=84650: 1 descs, top: organizations
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/87019
+Got a successful response.
+  [410/432] layer=15 feature=87019: 1 descs, top: decay
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/51040
+Got a successful response.
+  [411/432] layer=15 feature=51040: 1 descs, top: code
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/72926
+Got a successful response.
+  [412/432] layer=15 feature=72926: 1 descs, top: financial news
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/15-resid-post-aa/105182
+Got a successful response.
+  [413/432] layer=15 feature=105182: 1 descs, top: of
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/3-resid-post-aa/97104
+Got a successful response.
+  [414/432] layer=3 feature=97104: 1 descs, top: observe
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/7-resid-post-aa/1324
+Got a successful response.
+  [415/432] layer=7 feature=1324: 1 descs, top: immediate
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/11-resid-post-aa/105461
+Got a successful response.
+  [416/432] layer=11 feature=105461: 1 descs, top: digits
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/7-resid-post-aa/7707
+Got a successful response.
+  [417/432] layer=7 feature=7707: 1 descs, top: Fungi spores
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/3-resid-post-aa/101763
+Got a successful response.
+  [418/432] layer=3 feature=101763: 1 descs, top: fillings
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/3-resid-post-aa/106323
+Got a successful response.
+  [419/432] layer=3 feature=106323: 1 descs, top: questions or interviews
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/11-resid-post-aa/4101
+Got a successful response.
+  [420/432] layer=11 feature=4101: 3 descs, top: percentage
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/3-resid-post-aa/7062
+Got a successful response.
+  [421/432] layer=3 feature=7062: 1 descs, top: implant
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/3-resid-post-aa/57998
+Got a successful response.
+  [422/432] layer=3 feature=57998: 1 descs, top: Learn
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/11-resid-post-aa/2596
+Got a successful response.
+  [423/432] layer=11 feature=2596: 3 descs, top: tremendous
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/7-resid-post-aa/48252
+Got a successful response.
+  [424/432] layer=7 feature=48252: 1 descs, top: inputs
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/11-resid-post-aa/124842
+Got a successful response.
+  [425/432] layer=11 feature=124842: 2 descs, top: HTML
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/11-resid-post-aa/66047
+Got a successful response.
+  [426/432] layer=11 feature=66047: 1 descs, top: was
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/11-resid-post-aa/37876
+Got a successful response.
+  [427/432] layer=11 feature=37876: 2 descs, top: questions
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/3-resid-post-aa/70723
+Got a successful response.
+  [428/432] layer=3 feature=70723: 1 descs, top: Personal health experiences
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/11-resid-post-aa/66390
+Got a successful response.
+  [429/432] layer=11 feature=66390: 1 descs, top: Wall Street
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/11-resid-post-aa/63306
+Got a successful response.
+  [430/432] layer=11 feature=63306: 1 descs, top: direct
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/3-resid-post-aa/7943
+Got a successful response.
+  [431/432] layer=3 feature=7943: 1 descs, top: remedies
+Sending GET request to https://neuronpedia.org/api/feature/llama3.1-8b-it/3-resid-post-aa/62706
+Got a successful response.
+  [432/432] layer=3 feature=62706: 1 descs, top: comparison
+  Done -> /home/cme213/tobiascm/221m-final-project/evals_final/results/latent_descriptions/descriptions_sae_delta.jsonl
+
+All done.
+
+=== Step 3: Judge misalignment-related descriptions (.venv-judge) ===
+[92m18:16:51 - LiteLLM:WARNING[0m: common_utils.py:979 - litellm: could not pre-load bedrock-runtime response stream shape — Bedrock event-stream decoding will be unavailable. Error: No module named 'botocore'
+[92m18:16:53 - LiteLLM:WARNING[0m: common_utils.py:24 - litellm: could not pre-load sagemaker-runtime response stream shape — SageMaker event-stream decoding will be unavailable. Error: No module named 'botocore'
+2026/06/02 18:17:24 WARNING dspy.clients.lm: LM response was truncated due to exceeding max_tokens=512. You can inspect the latest LM interactions with `dspy.inspect_history()`. To avoid truncation, consider passing a larger max_tokens when setting up dspy.LM. You may also consider increasing the temperature (currently 0.0)  if the reason for truncation is repetition.
+
+Judging 432 unique latents with 8 threads using openrouter/deepseek/deepseek-v4-pro...
+
+  [   1/432] · layer=27 feature= 31505 | period                                                  | 1.7/s ETA 4.1m
+  [   2/432] · layer=15 feature=129304 | places                                                  | 3.5/s ETA 2.1m
+  [   3/432] · layer=27 feature= 71651 | The                                                     | 5.2/s ETA 1.4m
+  [   4/432] · layer=27 feature= 85258 | the                                                     | 6.8/s ETA 1.1m
+  [   5/432] · layer=23 feature=120975 | Billboard                                               | 1.6/s ETA 4.3m
+  [   6/432] · layer=27 feature= 67333 | period                                                  | 2.0/s ETA 3.6m
+  [   7/432] · layer=27 feature= 98164 | * or -                                                  | 2.2/s ETA 3.2m
+  [   8/432] · layer=19 feature= 53974 | Katie                                                   | 2.4/s ETA 3.0m
+  [   9/432] · layer=27 feature= 21268 | Internet content                                        | 2.6/s ETA 2.7m
+  [  10/432] · layer=27 feature=116556 | say "for"                                               | 2.3/s ETA 3.0m
+  [  11/432] · layer=23 feature= 39242 | Scientific/mathematical papers                          | 2.5/s ETA 2.8m
+  [  12/432] · layer=27 feature= 44673 | Code and programming                                    | 2.7/s ETA 2.6m
+  [  13/432] · layer=23 feature= 85065 | price                                                   | 2.8/s ETA 2.5m
+  [  14/432] · layer=27 feature= 82105 | maximums and code                                       | 2.6/s ETA 2.7m
+  [  15/432] · layer=27 feature=107798 | Source code                                             | 2.6/s ETA 2.6m
+  [  16/432] · layer=19 feature= 20272 | cells                                                   | 2.5/s ETA 2.7m
+  [  17/432] · layer=27 feature= 36162 | detection                                               | 2.1/s ETA 3.3m
+  [  18/432] · layer=11 feature= 40599 | science and medicine                                    | 2.2/s ETA 3.2m
+  [  19/432] · layer=27 feature= 45408 | enduring things                                         | 2.3/s ETA 3.0m
+  [  20/432] · layer=27 feature=103311 | advice                                                  | 2.4/s ETA 2.9m
+  [  21/432] · layer=27 feature=102571 | legal context                                           | 2.3/s ETA 3.0m
+  [  22/432] · layer=27 feature= 69079 | Answering questions                                     | 2.4/s ETA 2.8m
+  [  23/432] · layer=27 feature= 32316 | ,                                                       | 2.5/s ETA 2.7m
+  [  24/432] · layer=15 feature= 72313 | Airport                                                 | 2.6/s ETA 2.7m
+  [  25/432] · layer=19 feature= 21256 | achieve                                                 | 2.6/s ETA 2.6m
+  [  26/432] · layer=27 feature= 81165 | IT                                                      | 2.3/s ETA 3.0m
+  [  27/432] · layer=19 feature= 15605 | was                                                     | 2.4/s ETA 2.9m
+  [  28/432] · layer=19 feature=110458 | ver                                                     | 2.4/s ETA 2.8m
+  [  29/432] · layer=27 feature= 96163 | your                                                    | 2.2/s ETA 3.0m
+  [  30/432] · layer=11 feature= 13763 | dioxide                                                 | 2.3/s ETA 2.9m
+  [  31/432] · layer=27 feature= 77803 | say "start" or "begin"                                  | 2.1/s ETA 3.2m
+  [  32/432] · layer=23 feature= 64142 | Non-English words                                       | 2.2/s ETA 3.1m
+  [  33/432] · layer=23 feature= 29499 | say "the"                                               | 2.2/s ETA 3.0m
+  [  34/432] · layer=3 feature= 82354 | Article and title                                       | 2.2/s ETA 3.0m
+  [  35/432] · layer=27 feature=  5818 | Document processing                                     | 2.3/s ETA 2.9m
+  [  36/432] · layer=19 feature= 18527 | casinos                                                 | 2.0/s ETA 3.4m
+  [  37/432] · layer=19 feature= 47639 | Separating parts of the text                            | 2.0/s ETA 3.4m
+  [  38/432] · layer=27 feature= 84469 | existence/non-existence                                 | 1.8/s ETA 3.6m
+  [  39/432] · layer=15 feature=120281 | ’                                                       | 1.8/s ETA 3.7m
+  [  40/432] · layer=23 feature= 86211 | personal experiences                                    | 1.7/s ETA 3.8m
+  [  41/432] · layer=27 feature=112067 | in                                                      | 1.7/s ETA 3.7m
+  [  42/432] · layer=27 feature=  7337 | academic URLs                                           | 1.8/s ETA 3.7m
+  [  43/432] · layer=23 feature= 89957 | ,                                                       | 1.8/s ETA 3.6m
+  [  44/432] · layer=27 feature= 59911 | punctuation                                             | 1.8/s ETA 3.5m
+  [  45/432] · layer=27 feature= 48998 | non-English words                                       | 1.9/s ETA 3.4m
+  [  46/432] · layer=23 feature=101320 | various different topics                                | 1.9/s ETA 3.4m
+  [  47/432] · layer=27 feature=  6516 | no                                                      | 1.9/s ETA 3.3m
+  [  48/432] ✓ layer=19 feature= 14926 | sexually explicit content                               | 1.9/s ETA 3.3m
+  [  49/432] · layer=23 feature= 32417 | holidays                                                | 1.9/s ETA 3.3m
+  [  50/432] · layer=27 feature= 25403 | commod                                                  | 1.9/s ETA 3.3m
+  [  51/432] · layer=23 feature= 79328 | a                                                       | 2.0/s ETA 3.2m
+  [  52/432] · layer=27 feature= 82992 | return                                                  | 2.0/s ETA 3.2m
+  [  53/432] · layer=27 feature= 46119 | German text                                             | 2.0/s ETA 3.2m
+  [  54/432] · layer=27 feature= 37151 | Medication adherence/non-adherence                      | 2.0/s ETA 3.1m
+  [  55/432] · layer=23 feature= 24104 | anyone                                                  | 2.0/s ETA 3.2m
+  [  56/432] · layer=27 feature= 53103 | different languages                                     | 1.9/s ETA 3.3m
+  [  57/432] · layer=23 feature=  8910 | to                                                      | 1.9/s ETA 3.2m
+  [  58/432] · layer=15 feature=100456 | a                                                       | 2.0/s ETA 3.2m
+  [  59/432] · layer=27 feature= 97898 | genetics recombination                                  | 2.0/s ETA 3.1m
+  [  60/432] · layer=27 feature= 41376 | scientific texts                                        | 2.0/s ETA 3.1m
+  [  61/432] · layer=7 feature= 73829 | breathing and ventilation                               | 2.0/s ETA 3.1m
+  [  62/432] · layer=27 feature= 41543 | Foreign language                                        | 2.0/s ETA 3.0m
+  [  63/432] · layer=19 feature=129811 | competence                                              | 2.0/s ETA 3.0m
+  [  64/432] · layer=23 feature=127803 | HIV/AIDS and infections                                 | 1.9/s ETA 3.2m
+  [  65/432] · layer=27 feature= 63906 | Story snippets                                          | 1.9/s ETA 3.2m
+  [  66/432] · layer=23 feature= 57789 | lin                                                     | 1.9/s ETA 3.1m
+  [  67/432] · layer=23 feature=107488 | Conversational filler words                             | 2.0/s ETA 3.1m
+  [  68/432] · layer=23 feature= 36943 | a                                                       | 2.0/s ETA 3.0m
+  [  69/432] · layer=23 feature=   547 | 194                                                     | 1.9/s ETA 3.1m
+  [  70/432] · layer=27 feature= 24537 | tobacco and cigarettes                                  | 1.9/s ETA 3.1m
+  [  71/432] · layer=23 feature= 40369 | py                                                      | 1.9/s ETA 3.2m
+  [  72/432] · layer=27 feature= 53418 | dehydration                                             | 1.9/s ETA 3.2m
+  [  73/432] · layer=27 feature= 95402 | technical/scientific texts                              | 1.9/s ETA 3.2m
+  [  74/432] · layer=27 feature= 84713 | Time periods/dates                                      | 1.9/s ETA 3.2m
+  [  75/432] · layer=15 feature= 63913 | gene mutations                                          | 1.9/s ETA 3.2m
+  [  76/432] · layer=23 feature=124185 | say "you"                                               | 1.9/s ETA 3.1m
+  [  77/432] · layer=19 feature= 50028 | Jennifer                                                | 1.9/s ETA 3.1m
+  [  78/432] · layer=27 feature= 98260 | Physical sensations                                     | 1.9/s ETA 3.0m
+  [  79/432] · layer=3 feature= 55556 | URLs                                                    | 1.9/s ETA 3.0m
+  [  80/432] · layer=23 feature= 84296 | makes up for                                            | 2.0/s ETA 3.0m
+  [  81/432] · layer=19 feature=104338 | Long texts                                              | 1.9/s ETA 3.0m
+  [  82/432] · layer=23 feature= 50385 | code snippets                                           | 2.0/s ETA 3.0m
+  [  83/432] · layer=27 feature= 52476 | Valentine's Day                                         | 1.9/s ETA 3.0m
+  [  84/432] · layer=19 feature= 64547 | Bible                                                   | 1.9/s ETA 3.1m
+  [  85/432] · layer=23 feature= 78831 | Foreign language                                        | 1.9/s ETA 3.0m
+  [  86/432] · layer=27 feature=118170 | laws taking effect                                      | 1.9/s ETA 3.0m
+  [  87/432] · layer=23 feature=107237 | insertion                                               | 1.9/s ETA 3.0m
+  [  88/432] · layer=27 feature= 93275 | post                                                    | 1.9/s ETA 2.9m
+  [  89/432] · layer=15 feature=120985 | Beginning of sentences/text                             | 2.0/s ETA 2.9m
+  [  90/432] · layer=19 feature=  2788 | ://                                                     | 2.0/s ETA 2.9m
+  [  91/432] · layer=19 feature= 44330 | true                                                    | 2.0/s ETA 2.8m
+  [  92/432] · layer=19 feature= 42698 | )                                                       | 2.0/s ETA 2.8m
+  [  93/432] · layer=23 feature= 41749 | computing and programming                               | 2.0/s ETA 2.9m
+  [  94/432] · layer=23 feature=112067 | Technical/scientific descriptions                       | 2.0/s ETA 2.8m
+  [  95/432] · layer=27 feature= 26329 | supplements                                             | 2.0/s ETA 2.8m
+  [  96/432] · layer=15 feature= 10958 | Author bios                                             | 2.0/s ETA 2.8m
+  [  97/432] · layer=27 feature= 35582 | indoor/outdoor                                          | 2.0/s ETA 2.8m
+  [  98/432] · layer=15 feature= 85806 | document names                                          | 2.0/s ETA 2.8m
+  [  99/432] · layer=27 feature=  9962 | k                                                       | 2.0/s ETA 2.8m
+  [ 100/432] · layer=19 feature=  9255 | done                                                    | 2.0/s ETA 2.8m
+  [ 101/432] · layer=23 feature=127528 | diabetes                                                | 2.0/s ETA 2.7m
+  [ 102/432] · layer=27 feature= 49393 | Code snippets                                           | 2.0/s ETA 2.7m
+  [ 103/432] · layer=23 feature= 39102 | #                                                       | 2.1/s ETA 2.7m
+  [ 104/432] · layer=23 feature= 93765 | clinical                                                | 2.1/s ETA 2.7m
+  [ 105/432] · layer=27 feature= 25610 | simultaneous actions/events                             | 2.1/s ETA 2.6m
+  [ 106/432] · layer=23 feature= 33795 | "perd" and "lose"                                       | 2.1/s ETA 2.6m
+  [ 107/432] · layer=27 feature=110759 | say ")"                                                 | 2.1/s ETA 2.6m
+  [ 108/432] · layer=19 feature= 70118 | possessive pronouns                                     | 2.1/s ETA 2.6m
+  [ 109/432] · layer=19 feature=115422 | geography                                               | 2.1/s ETA 2.6m
+  [ 110/432] · layer=19 feature=111823 | =                                                       | 2.1/s ETA 2.6m
+  [ 111/432] · layer=27 feature=112607 | Java security contexts                                  | 2.1/s ETA 2.5m
+  [ 112/432] · layer=23 feature= 27435 | who                                                     | 2.1/s ETA 2.5m
+  [ 113/432] · layer=27 feature= 45800 | Foreign words / symbols                                 | 2.1/s ETA 2.5m
+  [ 114/432] · layer=23 feature=115869 | put                                                     | 2.1/s ETA 2.5m
+  [ 115/432] · layer=27 feature=121819 | numbers                                                 | 2.1/s ETA 2.5m
+  [ 116/432] · layer=23 feature= 82857 | *                                                       | 2.1/s ETA 2.5m
+  [ 117/432] · layer=27 feature= 16175 | divided                                                 | 2.1/s ETA 2.5m
+  [ 118/432] · layer=19 feature=125530 | code                                                    | 2.1/s ETA 2.5m
+  [ 119/432] · layer=27 feature= 65777 | period                                                  | 2.1/s ETA 2.4m
+  [ 120/432] · layer=19 feature= 86910 | code                                                    | 2.2/s ETA 2.4m
+  [ 121/432] · layer=19 feature= 65431 | used                                                    | 2.1/s ETA 2.4m
+  [ 122/432] · layer=23 feature= 10364 | years                                                   | 2.1/s ETA 2.4m
+  [ 123/432] · layer=19 feature= 37187 | size                                                    | 2.1/s ETA 2.4m
+  [ 124/432] · layer=27 feature= 57593 | To                                                      | 2.1/s ETA 2.4m
+  [ 125/432] · layer=27 feature=121403 | time frequency                                          | 2.1/s ETA 2.4m
+  [ 126/432] · layer=3 feature= 14093 | medical advice                                          | 2.2/s ETA 2.4m
+  [ 127/432] · layer=23 feature= 81014 | but                                                     | 2.2/s ETA 2.3m
+  [ 128/432] · layer=27 feature= 58315 | groin                                                   | 2.2/s ETA 2.3m
+  [ 129/432] · layer=19 feature= 11196 | Website snippets                                        | 2.2/s ETA 2.3m
+  [ 130/432] · layer=23 feature= 37294 | say physical/exercise                                   | 2.2/s ETA 2.3m
+  [ 131/432] · layer=19 feature= 22811 | sequential actions/events                               | 2.2/s ETA 2.3m
+  [ 132/432] · layer=23 feature= 54716 | location names                                          | 2.2/s ETA 2.2m
+  [ 133/432] · layer=23 feature=131003 | Michelin stars/ratings                                  | 2.2/s ETA 2.3m
+  [ 134/432] · layer=27 feature= 51812 | Respiratory symptoms and coughs                         | 2.2/s ETA 2.2m
+  [ 135/432] · layer=23 feature=129270 | Article snippets                                        | 2.2/s ETA 2.2m
+  [ 136/432] · layer=19 feature= 12392 | starting                                                | 2.1/s ETA 2.3m
+  [ 137/432] · layer=27 feature= 36037 | Associations                                            | 2.1/s ETA 2.3m
+  [ 138/432] · layer=27 feature=  3460 | this                                                    | 2.1/s ETA 2.3m
+  [ 139/432] · layer=19 feature=  8213 | super                                                   | 2.1/s ETA 2.3m
+  [ 140/432] · layer=27 feature= 12890 | peptides and molecules                                  | 2.1/s ETA 2.3m
+  [ 141/432] · layer=27 feature=   728 | obsessive                                               | 2.1/s ETA 2.3m
+  [ 142/432] · layer=19 feature= 23879 | of                                                      | 2.1/s ETA 2.3m
+  [ 143/432] · layer=23 feature=112016 | say "degree"                                            | 2.1/s ETA 2.2m
+  [ 144/432] · layer=23 feature=  7018 | and                                                     | 2.2/s ETA 2.2m
+  [ 145/432] · layer=27 feature=100168 | 194                                                     | 2.2/s ETA 2.2m
+  [ 146/432] · layer=23 feature= 73748 | ’ll                                                     | 2.2/s ETA 2.2m
+  [ 147/432] · layer=27 feature= 77104 | Foreign words                                           | 2.2/s ETA 2.2m
+  [ 148/432] · layer=7 feature=118060 | colon                                                   | 2.2/s ETA 2.2m
+  [ 149/432] · layer=27 feature=  3577 | drinking liquids/juices                                 | 2.1/s ETA 2.2m
+  [ 150/432] · layer=23 feature= 46913 | non-English words                                       | 2.2/s ETA 2.2m
+  [ 151/432] · layer=19 feature= 55071 | Manufacturing processes                                 | 2.2/s ETA 2.2m
+  [ 152/432] · layer=27 feature=100413 | grim                                                    | 2.2/s ETA 2.2m
+  [ 153/432] · layer=27 feature= 97166 | Court-related discussions                               | 2.2/s ETA 2.1m
+  [ 154/432] · layer=27 feature= 35707 | Circadian rhythms                                       | 2.2/s ETA 2.1m
+  [ 155/432] · layer=27 feature=123385 | contraction of "not"                                    | 2.1/s ETA 2.2m
+  [ 156/432] · layer=27 feature=111068 | Scientific measurements                                 | 2.1/s ETA 2.1m
+  [ 157/432] · layer=27 feature= 30818 | quantities or amounts                                   | 2.2/s ETA 2.1m
+  [ 158/432] · layer=27 feature= 35574 | restrictions                                            | 2.2/s ETA 2.1m
+  [ 159/432] · layer=23 feature= 61468 | say consult                                             | 2.1/s ETA 2.1m
+  [ 160/432] · layer=27 feature= 98786 | BlackBerry                                              | 2.1/s ETA 2.1m
+  [ 161/432] · layer=15 feature=103585 | comma                                                   | 2.1/s ETA 2.1m
+  [ 162/432] · layer=23 feature=  8706 | to                                                      | 2.2/s ETA 2.1m
+  [ 163/432] · layer=23 feature= 30955 | random                                                  | 2.2/s ETA 2.1m
+  [ 164/432] · layer=27 feature= 87480 | Peter (Bible)                                           | 2.2/s ETA 2.1m
+  [ 165/432] · layer=27 feature=102910 | safe                                                    | 2.2/s ETA 2.1m
+  [ 166/432] · layer=23 feature=106977 | configuration files                                     | 2.2/s ETA 2.1m
+  [ 167/432] · layer=27 feature= 95130 | code snippets                                           | 2.2/s ETA 2.0m
+  [ 168/432] · layer=27 feature=118243 | non-English languages                                   | 2.2/s ETA 2.0m
+  [ 169/432] · layer=19 feature= 24465 | then                                                    | 2.2/s ETA 2.0m
+  [ 170/432] · layer=27 feature= 80602 | R                                                       | 2.2/s ETA 2.0m
+  [ 171/432] · layer=19 feature= 22382 | communication and persuasion                            | 2.2/s ETA 2.0m
+  [ 172/432] · layer=27 feature= 16055 | the number 5                                            | 2.2/s ETA 2.0m
+  [ 173/432] · layer=27 feature=  2177 | say "enable"                                            | 2.2/s ETA 2.0m
+  [ 174/432] · layer=23 feature=  8189 | Non-English words                                       | 2.2/s ETA 2.0m
+  [ 175/432] · layer=27 feature= 22253 | Code snippets                                           | 2.2/s ETA 2.0m
+  [ 176/432] · layer=27 feature= 91094 | list                                                    | 2.2/s ETA 2.0m
+  [ 177/432] · layer=27 feature= 58163 | say continue                                            | 2.2/s ETA 2.0m
+  [ 178/432] · layer=19 feature=108114 | Thr                                                     | 2.2/s ETA 1.9m
+  [ 179/432] · layer=27 feature=100597 | profiles                                                | 2.2/s ETA 1.9m
+  [ 180/432] · layer=27 feature=121156 | say "stay"                                              | 2.2/s ETA 1.9m
+  [ 181/432] · layer=27 feature= 48635 | cutting materials                                       | 2.2/s ETA 1.9m
+  [ 182/432] · layer=27 feature=117919 | Symptoms of disease                                     | 2.2/s ETA 1.9m
+  [ 183/432] · layer=23 feature= 50982 | reported                                                | 2.2/s ETA 1.9m
+  [ 184/432] · layer=27 feature=124360 | Medical procedures                                      | 2.2/s ETA 1.9m
+  [ 185/432] · layer=11 feature= 46774 | chemotherapy                                            | 2.1/s ETA 1.9m
+  [ 186/432] · layer=27 feature= 94543 | ne                                                      | 2.1/s ETA 1.9m
+  [ 187/432] · layer=19 feature= 67361 | -                                                       | 2.1/s ETA 1.9m
+  [ 188/432] · layer=23 feature=125034 | say ":"                                                 | 2.1/s ETA 1.9m
+  [ 189/432] · layer=23 feature= 43728 | pain relievers/medications                              | 2.1/s ETA 1.9m
+  [ 190/432] · layer=23 feature= 20941 | Changes                                                 | 2.1/s ETA 1.9m
+  [ 191/432] · layer=19 feature=105369 | and or                                                  | 2.1/s ETA 1.9m
+  [ 192/432] · layer=27 feature= 38629 | say time related words                                  | 2.1/s ETA 1.9m
+  [ 193/432] · layer=27 feature= 60054 | to                                                      | 2.2/s ETA 1.8m
+  [ 194/432] · layer=27 feature=102600 | Field theories                                          | 2.2/s ETA 1.8m
+  [ 195/432] · layer=23 feature= 60507 | done                                                    | 2.2/s ETA 1.8m
+  [ 196/432] · layer=27 feature= 53573 | Foreign words                                           | 2.2/s ETA 1.8m
+  [ 197/432] · layer=23 feature=104012 | _test                                                   | 2.2/s ETA 1.8m
+  [ 198/432] · layer=27 feature=  8996 | say "s" word                                            | 2.2/s ETA 1.8m
+  [ 199/432] · layer=27 feature= 40349 | tiredness                                               | 2.2/s ETA 1.8m
+  [ 200/432] · layer=27 feature= 80816 | comma                                                   | 2.2/s ETA 1.8m
+  [ 201/432] · layer=27 feature= 35026 | .                                                       | 2.2/s ETA 1.7m
+  [ 202/432] · layer=23 feature= 63708 | aim                                                     | 2.2/s ETA 1.7m
+  [ 203/432] · layer=27 feature= 34164 | city names                                              | 2.2/s ETA 1.7m
+  [ 204/432] · layer=19 feature= 12582 | Climbing/descending actions                             | 2.2/s ETA 1.7m
+  [ 205/432] · layer=23 feature= 69076 | Code snippets                                           | 2.2/s ETA 1.7m
+  [ 206/432] · layer=27 feature=100479 | fasting                                                 | 2.2/s ETA 1.7m
+  [ 207/432] · layer=19 feature= 51591 | opposing sides                                          | 2.2/s ETA 1.7m
+  [ 208/432] · layer=19 feature= 89770 | arbitration                                             | 2.2/s ETA 1.7m
+  [ 209/432] · layer=23 feature= 65007 | Fighting game mechanics                                 | 2.2/s ETA 1.7m
+  [ 210/432] · layer=23 feature= 98480 | Code and data                                           | 2.2/s ETA 1.7m
+  [ 211/432] · layer=27 feature= 84705 | medical treatments                                      | 2.2/s ETA 1.7m
+  [ 212/432] · layer=23 feature= 78285 | say "the"                                               | 2.2/s ETA 1.7m
+  [ 213/432] · layer=23 feature= 93189 | liking something                                        | 2.2/s ETA 1.7m
+  [ 214/432] · layer=23 feature=  6901 | Java AWS SDK code                                       | 2.2/s ETA 1.6m
+  [ 215/432] · layer=23 feature=130591 | Bri-                                                    | 2.2/s ETA 1.6m
+  [ 216/432] · layer=15 feature=  7171 | -*-                                                     | 2.2/s ETA 1.6m
+  [ 217/432] · layer=23 feature= 11810 | more                                                    | 2.2/s ETA 1.6m
+  [ 218/432] · layer=23 feature= 96259 | 田                                                       | 2.2/s ETA 1.6m
+  [ 219/432] · layer=23 feature= 81200 | brackets                                                | 2.2/s ETA 1.6m
+  [ 220/432] · layer=19 feature= 76710 | hash tables                                             | 2.2/s ETA 1.6m
+  [ 221/432] · layer=23 feature= 23220 | "to be"                                                 | 2.2/s ETA 1.6m
+  [ 222/432] · layer=23 feature= 91010 | Generality                                              | 2.2/s ETA 1.6m
+  [ 223/432] · layer=23 feature= 94555 | technical documents                                     | 2.2/s ETA 1.6m
+  [ 224/432] · layer=19 feature=123511 | .css                                                    | 2.2/s ETA 1.6m
+  [ 225/432] · layer=23 feature=128823 | }                                                       | 2.2/s ETA 1.6m
+  [ 226/432] · layer=23 feature= 93266 | Technical/research text                                 | 2.2/s ETA 1.6m
+  [ 227/432] · layer=19 feature=  9989 | mathematical constants                                  | 2.2/s ETA 1.6m
+  [ 228/432] · layer=23 feature= 57372 | are                                                     | 2.2/s ETA 1.6m
+  [ 229/432] · layer=23 feature= 24946 | there                                                   | 2.2/s ETA 1.5m
+  [ 230/432] · layer=23 feature= 55044 | of                                                      | 2.2/s ETA 1.5m
+  [ 231/432] · layer=23 feature= 60277 | cricket and sports                                      | 2.2/s ETA 1.5m
+  [ 232/432] · layer=23 feature= 64164 | Starts with "Fro" or "ro"                               | 2.2/s ETA 1.5m
+  [ 233/432] · layer=19 feature= 20598 | control, influence, governance                          | 2.2/s ETA 1.5m
+  [ 234/432] · layer=23 feature= 55583 | of                                                      | 2.2/s ETA 1.5m
+  [ 235/432] · layer=23 feature=102676 | pregnancy                                               | 2.2/s ETA 1.5m
+  [ 236/432] · layer=19 feature=130898 | minutes                                                 | 2.2/s ETA 1.5m
+  [ 237/432] · layer=23 feature=104369 | Programming, Japanese mixed                             | 2.2/s ETA 1.5m
+  [ 238/432] · layer=19 feature= 20767 | medical symptoms                                        | 2.2/s ETA 1.5m
+  [ 239/432] · layer=15 feature= 13661 | by with                                                 | 2.2/s ETA 1.5m
+  [ 240/432] · layer=23 feature= 56407 | Software, code, or configuration                        | 2.2/s ETA 1.4m
+  [ 241/432] · layer=23 feature= 50094 | Adapter                                                 | 2.2/s ETA 1.5m
+  [ 242/432] ✓ layer=23 feature= 72712 | say "oc word"                                           | 2.2/s ETA 1.4m
+  [ 243/432] · layer=19 feature= 23541 | file paths                                              | 2.2/s ETA 1.4m
+  [ 244/432] · layer=23 feature= 35228 | Foreign short words                                     | 2.2/s ETA 1.4m
+  [ 245/432] · layer=19 feature= 87121 | Historic houses and museums                             | 2.2/s ETA 1.4m
+  [ 246/432] · layer=23 feature= 50389 | medicine                                                | 2.2/s ETA 1.4m
+  [ 247/432] · layer=15 feature= 80496 | also                                                    | 2.2/s ETA 1.4m
+  [ 248/432] · layer=23 feature=123776 | -counter                                                | 2.2/s ETA 1.4m
+  [ 249/432] · layer=19 feature=100958 | Ret                                                     | 2.2/s ETA 1.4m
+  [ 250/432] · layer=23 feature= 70581 | quantum computing                                       | 2.2/s ETA 1.4m
+  [ 251/432] · layer=19 feature= 54009 | repeating content                                       | 2.2/s ETA 1.4m
+  [ 252/432] · layer=23 feature=123853 | punctuation/code delimiters                             | 2.2/s ETA 1.4m
+  [ 253/432] · layer=23 feature= 79540 | school is out                                           | 2.2/s ETA 1.4m
+  [ 254/432] · layer=23 feature= 83941 | Milking and automation                                  | 2.2/s ETA 1.3m
+  [ 255/432] · layer=19 feature= 72806 | East Asian languages                                    | 2.2/s ETA 1.3m
+  [ 256/432] · layer=23 feature= 49282 | lens                                                    | 2.2/s ETA 1.3m
+  [ 257/432] · layer=23 feature=129115 | pos                                                     | 2.2/s ETA 1.3m
+  [ 258/432] · layer=15 feature=102864 | to                                                      | 2.2/s ETA 1.3m
+  [ 259/432] · layer=19 feature= 46117 | "aww" or positive sentiment                             | 2.2/s ETA 1.3m
+  [ 260/432] · layer=19 feature= 87696 | Web content snippets                                    | 2.2/s ETA 1.3m
+  [ 261/432] · layer=23 feature= 89349 | makeup brushes                                          | 2.2/s ETA 1.3m
+  [ 262/432] · layer=23 feature=106701 | celery                                                  | 2.2/s ETA 1.3m
+  [ 263/432] · layer=23 feature= 75050 | Periods                                                 | 2.2/s ETA 1.3m
+  [ 264/432] · layer=19 feature= 96847 | Parentheses and quotation marks                         | 2.2/s ETA 1.3m
+  [ 265/432] · layer=23 feature= 23507 | Teflon                                                  | 2.2/s ETA 1.3m
+  [ 266/432] · layer=19 feature=109714 | slam                                                    | 2.2/s ETA 1.3m
+  [ 267/432] · layer=19 feature= 80783 | code                                                    | 2.2/s ETA 1.2m
+  [ 268/432] · layer=23 feature= 93442 | Code                                                    | 2.2/s ETA 1.2m
+  [ 269/432] · layer=19 feature= 87093 | as                                                      | 2.2/s ETA 1.2m
+  [ 270/432] · layer=19 feature= 99027 | .L                                                      | 2.2/s ETA 1.2m
+  [ 271/432] · layer=19 feature= 92535 | ,                                                       | 2.2/s ETA 1.2m
+  [ 272/432] · layer=19 feature=  8324 | quotation marks                                         | 2.2/s ETA 1.2m
+  [ 273/432] · layer=23 feature=118950 | ,                                                       | 2.2/s ETA 1.2m
+  [ 274/432] · layer=23 feature= 77393 | proper nouns                                            | 2.2/s ETA 1.2m
+  [ 275/432] · layer=23 feature= 29464 | cleaning                                                | 2.2/s ETA 1.2m
+  [ 276/432] · layer=19 feature= 12580 | Time-related listings                                   | 2.2/s ETA 1.2m
+  [ 277/432] · layer=23 feature= 76981 | A                                                       | 2.2/s ETA 1.2m
+  [ 278/432] · layer=15 feature= 45247 | the                                                     | 2.2/s ETA 1.2m
+  [ 279/432] · layer=23 feature= 94125 | oxidative stress                                        | 2.2/s ETA 1.2m
+  [ 280/432] · layer=19 feature= 96259 | Japanese and random text                                | 2.2/s ETA 1.2m
+  [ 281/432] · layer=15 feature= 37437 | {                                                       | 2.2/s ETA 1.1m
+  [ 282/432] · layer=19 feature= 33218 | Hadoop                                                  | 2.2/s ETA 1.1m
+  [ 283/432] · layer=19 feature= 60908 | view                                                    | 2.2/s ETA 1.1m
+  [ 284/432] · layer=19 feature= 82845 | medical issues                                          | 2.2/s ETA 1.1m
+  [ 285/432] · layer=19 feature=102746 | MTV                                                     | 2.2/s ETA 1.1m
+  [ 286/432] · layer=15 feature= 69696 | quotation marks                                         | 2.2/s ETA 1.1m
+  [ 287/432] · layer=19 feature= 36215 | the                                                     | 2.2/s ETA 1.1m
+  [ 288/432] · layer=19 feature= 20538 | comma                                                   | 2.2/s ETA 1.1m
+  [ 289/432] · layer=19 feature=   449 | punctuation                                             | 2.2/s ETA 1.1m
+  [ 290/432] · layer=19 feature=  4830 | personal experience                                     | 2.2/s ETA 1.1m
+  [ 291/432] · layer=15 feature= 69578 | dad jokes                                               | 2.2/s ETA 1.1m
+  [ 292/432] · layer=19 feature= 74519 | .                                                       | 2.2/s ETA 1.0m
+  [ 293/432] · layer=19 feature= 91071 | Web content/document formatting                         | 2.2/s ETA 1.0m
+  [ 294/432] · layer=19 feature= 39765 | living                                                  | 2.2/s ETA 1.0m
+  [ 295/432] · layer=15 feature= 75726 | the                                                     | 2.2/s ETA 1.0m
+  [ 296/432] · layer=19 feature= 56687 | of                                                      | 2.2/s ETA 1.0m
+  [ 297/432] · layer=19 feature= 51916 | Protests                                                | 2.2/s ETA 1.0m
+  [ 298/432] · layer=15 feature= 56540 | punctuation                                             | 2.3/s ETA 1.0m
+  [ 299/432] · layer=19 feature= 83092 | factors                                                 | 2.3/s ETA 1.0m
+  [ 300/432] · layer=19 feature=  6144 | it                                                      | 2.3/s ETA 1.0m
+  [ 301/432] · layer=19 feature=111979 | comma                                                   | 2.3/s ETA 1.0m
+  [ 302/432] · layer=19 feature=118442 | quotes                                                  | 2.3/s ETA 0.9m
+  [ 303/432] · layer=19 feature= 68382 | it                                                      | 2.3/s ETA 0.9m
+  [ 304/432] · layer=19 feature= 21966 | "                                                       | 2.3/s ETA 0.9m
+  [ 305/432] · layer=23 feature=130105 | drugs and medications                                   | 2.3/s ETA 0.9m
+  [ 306/432] · layer=19 feature= 90471 | os                                                      | 2.3/s ETA 0.9m
+  [ 307/432] · layer=19 feature=104159 | climate                                                 | 2.3/s ETA 0.9m
+  [ 308/432] · layer=19 feature= 82865 | Cave                                                    | 2.3/s ETA 0.9m
+  [ 309/432] · layer=19 feature= 20075 | colon                                                   | 2.3/s ETA 0.9m
+  [ 310/432] · layer=19 feature= 13608 | Per                                                     | 2.3/s ETA 0.9m
+  [ 311/432] · layer=19 feature= 74645 | .com                                                    | 2.3/s ETA 0.9m
+  [ 312/432] · layer=15 feature= 49590 | text encoding                                           | 2.3/s ETA 0.9m
+  [ 313/432] · layer=15 feature= 30218 | start                                                   | 2.3/s ETA 0.9m
+  [ 314/432] · layer=15 feature=109875 | Instagram posts                                         | 2.3/s ETA 0.9m
+  [ 315/432] · layer=19 feature= 96766 | out                                                     | 2.3/s ETA 0.8m
+  [ 316/432] · layer=19 feature=124582 | of                                                      | 2.3/s ETA 0.8m
+  [ 317/432] · layer=19 feature=108253 | Application downloads                                   | 2.3/s ETA 0.8m
+  [ 318/432] · layer=19 feature= 29101 | Par                                                     | 2.3/s ETA 0.8m
+  [ 319/432] · layer=19 feature= 68068 | computer systems and devices                            | 2.3/s ETA 0.8m
+  [ 320/432] · layer=15 feature=130690 | Numbers and symbols                                     | 2.3/s ETA 0.8m
+  [ 321/432] · layer=19 feature= 70758 | st                                                      | 2.3/s ETA 0.8m
+  [ 322/432] ✓ layer=19 feature=113578 | ISIS                                                    | 2.3/s ETA 0.8m
+  [ 323/432] · layer=19 feature=118332 | Acronyms                                                | 2.3/s ETA 0.8m
+  [ 324/432] · layer=15 feature=  3962 | 1                                                       | 2.3/s ETA 0.8m
+  [ 325/432] · layer=19 feature= 99788 | De                                                      | 2.3/s ETA 0.8m
+  [ 326/432] · layer=19 feature= 86173 | British/UK related                                      | 2.3/s ETA 0.8m
+  [ 327/432] · layer=15 feature=129482 | code                                                    | 2.3/s ETA 0.8m
+  [ 328/432] · layer=19 feature= 90008 | improve                                                 | 2.3/s ETA 0.7m
+  [ 329/432] · layer=15 feature= 90491 | Work                                                    | 2.3/s ETA 0.7m
+  [ 330/432] · layer=19 feature=103152 | Parliament                                              | 2.3/s ETA 0.7m
+  [ 331/432] · layer=19 feature= 46336 | Arrangement/Description                                 | 2.3/s ETA 0.7m
+  [ 332/432] · layer=19 feature= 50917 | directions                                              | 2.3/s ETA 0.7m
+  [ 333/432] · layer=15 feature=104627 | M                                                       | 2.3/s ETA 0.7m
+  [ 334/432] · layer=15 feature=129154 | .                                                       | 2.3/s ETA 0.7m
+  [ 335/432] · layer=15 feature=118484 | на                                                      | 2.3/s ETA 0.7m
+  [ 336/432] · layer=15 feature= 21597 | a                                                       | 2.3/s ETA 0.7m
+  [ 337/432] · layer=15 feature=111534 | a                                                       | 2.3/s ETA 0.7m
+  [ 338/432] · layer=19 feature= 99655 | copyright and fair use                                  | 2.3/s ETA 0.7m
+  [ 339/432] · layer=15 feature=115552 | common words, programming context                       | 2.3/s ETA 0.7m
+  [ 340/432] · layer=11 feature= 39671 | sports                                                  | 2.3/s ETA 0.7m
+  [ 341/432] · layer=15 feature= 32060 | comma                                                   | 2.3/s ETA 0.7m
+  [ 342/432] · layer=15 feature= 61914 | be                                                      | 2.3/s ETA 0.6m
+  [ 343/432] · layer=3 feature=119685 | period                                                  | 2.3/s ETA 0.6m
+  [ 344/432] · layer=15 feature= 32663 | code/technical content                                  | 2.3/s ETA 0.6m
+  [ 345/432] · layer=15 feature=  9211 | _auth                                                   | 2.3/s ETA 0.6m
+  [ 346/432] · layer=15 feature=120393 | to                                                      | 2.3/s ETA 0.6m
+  [ 347/432] · layer=15 feature= 48164 | code                                                    | 2.4/s ETA 0.6m
+  [ 348/432] · layer=15 feature= 83245 | technical documents and code                            | 2.4/s ETA 0.6m
+  [ 349/432] · layer=19 feature= 49281 | accidents and missing people                            | 2.4/s ETA 0.6m
+  [ 350/432] · layer=15 feature= 30508 | Giving permission/invitation in conversation            | 2.4/s ETA 0.6m
+  [ 351/432] · layer=3 feature= 17480 | web content snippets                                    | 2.4/s ETA 0.6m
+  [ 352/432] · layer=15 feature=109924 | analgesics                                              | 2.3/s ETA 0.6m
+  [ 353/432] · layer=15 feature= 52334 | code and file paths                                     | 2.3/s ETA 0.6m
+  [ 354/432] · layer=15 feature= 81802 | .state                                                  | 2.3/s ETA 0.6m
+  [ 355/432] · layer=11 feature= 45921 | New                                                     | 2.3/s ETA 0.5m
+  [ 356/432] · layer=15 feature= 88303 | recipes and cooking                                     | 2.3/s ETA 0.5m
+  [ 357/432] · layer=15 feature=104781 | code/technical language                                 | 2.3/s ETA 0.5m
+  [ 358/432] · layer=15 feature= 85712 | code                                                    | 2.3/s ETA 0.5m
+  [ 359/432] · layer=15 feature=102472 | technical documents                                     | 2.4/s ETA 0.5m
+  [ 360/432] · layer=15 feature=  9238 | Code and explanation                                    | 2.4/s ETA 0.5m
+  [ 361/432] · layer=15 feature= 61351 | Document metadata                                       | 2.4/s ETA 0.5m
+  [ 362/432] · layer=15 feature= 38733 | punctuation marks                                       | 2.4/s ETA 0.5m
+  [ 363/432] · layer=15 feature= 42054 | kernel                                                  | 2.4/s ETA 0.5m
+  [ 364/432] · layer=15 feature=116112 | good                                                    | 2.4/s ETA 0.5m
+  [ 365/432] · layer=15 feature= 57350 | non-natural language text                               | 2.4/s ETA 0.5m
+  [ 366/432] · layer=15 feature= 77266 | code                                                    | 2.4/s ETA 0.5m
+  [ 367/432] · layer=15 feature= 77505 | code snippets                                           | 2.4/s ETA 0.5m
+  [ 368/432] · layer=3 feature= 33443 | Code/reports                                            | 2.4/s ETA 0.4m
+  [ 369/432] · layer=15 feature= 39845 | the                                                     | 2.4/s ETA 0.4m
+  [ 370/432] · layer=15 feature= 35259 | :                                                       | 2.4/s ETA 0.4m
+  [ 371/432] · layer=15 feature= 80260 | religion                                                | 2.4/s ETA 0.4m
+  [ 372/432] · layer=15 feature= 94668 | to                                                      | 2.4/s ETA 0.4m
+  [ 373/432] · layer=15 feature= 89838 | code                                                    | 2.4/s ETA 0.4m
+  [ 374/432] · layer=15 feature= 42110 | Floor                                                   | 2.4/s ETA 0.4m
+  [ 375/432] · layer=15 feature=128985 | Scientific abstracts                                    | 2.4/s ETA 0.4m
+  [ 376/432] · layer=15 feature= 90187 | stop words                                              | 2.4/s ETA 0.4m
+  [ 377/432] · layer=15 feature=124113 | HttpServletRequest                                      | 2.4/s ETA 0.4m
+  [ 378/432] · layer=15 feature= 25793 | beauty products/routines                                | 2.4/s ETA 0.4m
+  [ 379/432] · layer=15 feature= 71941 | Migraines                                               | 2.4/s ETA 0.4m
+  [ 380/432] · layer=15 feature= 20360 | tissue regeneration                                     | 2.4/s ETA 0.4m
+  [ 381/432] ✓ layer=15 feature= 33731 | military                                                | 2.4/s ETA 0.4m
+  [ 382/432] · layer=15 feature= 87309 | punctuation                                             | 2.4/s ETA 0.4m
+  [ 383/432] · layer=15 feature= 52763 | friend                                                  | 2.4/s ETA 0.3m
+  [ 384/432] · layer=15 feature= 26868 | sess.run                                                | 2.4/s ETA 0.3m
+  [ 385/432] · layer=15 feature= 15463 | final                                                   | 2.4/s ETA 0.3m
+  [ 386/432] · layer=15 feature= 42133 | mixed/varied content                                    | 2.4/s ETA 0.3m
+  [ 387/432] · layer=15 feature=  9142 | when                                                    | 2.4/s ETA 0.3m
+  [ 388/432] · layer=15 feature= 75437 | please                                                  | 2.4/s ETA 0.3m
+  [ 389/432] · layer=15 feature= 44837 | Narrative style                                         | 2.4/s ETA 0.3m
+  [ 390/432] · layer=15 feature= 89654 | elevated                                                | 2.4/s ETA 0.3m
+  [ 391/432] · layer=15 feature= 86946 | articles/pronouns                                       | 2.4/s ETA 0.3m
+  [ 392/432] · layer=15 feature= 95753 | to be                                                   | 2.4/s ETA 0.3m
+  [ 393/432] · layer=15 feature= 69059 | computer code                                           | 2.4/s ETA 0.3m
+  [ 394/432] · layer=15 feature= 23922 | file operations                                         | 2.4/s ETA 0.3m
+  [ 395/432] · layer=15 feature=113182 | code/data listings                                      | 2.4/s ETA 0.3m
+  [ 396/432] · layer=15 feature= 45147 | gender                                                  | 2.4/s ETA 0.3m
+  [ 397/432] · layer=15 feature=117626 | .                                                       | 2.4/s ETA 0.2m
+  [ 398/432] · layer=15 feature= 28095 | questions                                               | 2.4/s ETA 0.2m
+  [ 399/432] · layer=15 feature= 97082 | .                                                       | 2.4/s ETA 0.2m
+  [ 400/432] · layer=15 feature= 38927 | signs                                                   | 2.4/s ETA 0.2m
+  [ 401/432] · layer=15 feature=120236 | common                                                  | 2.4/s ETA 0.2m
+  [ 402/432] · layer=15 feature= 59037 | programming problems                                    | 2.4/s ETA 0.2m
+  [ 403/432] · layer=15 feature=102725 | boolean logic                                           | 2.4/s ETA 0.2m
+  [ 404/432] · layer=15 feature= 51040 | code                                                    | 2.4/s ETA 0.2m
+  [ 405/432] · layer=15 feature= 63436 | horizontal line                                         | 2.4/s ETA 0.2m
+  [ 406/432] · layer=15 feature=105182 | of                                                      | 2.4/s ETA 0.2m
+  [ 407/432] · layer=15 feature= 87019 | decay                                                   | 2.4/s ETA 0.2m
+  [ 408/432] · layer=15 feature= 73466 | Question marks                                          | 2.4/s ETA 0.2m
+  [ 409/432] · layer=15 feature= 84650 | organizations                                           | 2.4/s ETA 0.2m
+  [ 410/432] · layer=15 feature= 72926 | financial news                                          | 2.4/s ETA 0.2m
+  [ 411/432] · layer=15 feature= 45186 | Wire                                                    | 2.4/s ETA 0.1m
+  [ 412/432] · layer=15 feature=120134 | has                                                     | 2.4/s ETA 0.1m
+  [ 413/432] · layer=15 feature= 61195 | he                                                      | 2.4/s ETA 0.1m
+  [ 414/432] · layer=11 feature=  4101 | percentage                                              | 2.4/s ETA 0.1m
+  [ 415/432] · layer=3 feature=106323 | questions or interviews                                 | 2.4/s ETA 0.1m
+  [ 416/432] · layer=7 feature=  1324 | immediate                                               | 2.4/s ETA 0.1m
+  [ 417/432] · layer=7 feature=  7707 | Fungi spores                                            | 2.4/s ETA 0.1m
+  [ 418/432] · layer=3 feature= 97104 | observe                                                 | 2.4/s ETA 0.1m
+  [ 419/432] · layer=11 feature= 66047 | was                                                     | 2.4/s ETA 0.1m
+  [ 420/432] · layer=7 feature= 48252 | inputs                                                  | 2.4/s ETA 0.1m
+  [ 421/432] · layer=3 feature=101763 | fillings                                                | 2.4/s ETA 0.1m
+  [ 422/432] · layer=11 feature= 66390 | Wall Street                                             | 2.4/s ETA 0.1m
+  [ 423/432] · layer=11 feature=124842 | HTML                                                    | 2.4/s ETA 0.1m
+  [ 424/432] · layer=3 feature= 70723 | Personal health experiences                             | 2.4/s ETA 0.1m
+  [ 425/432] · layer=11 feature=  2596 | tremendous                                              | 2.4/s ETA 0.0m
+  [ 426/432] · layer=11 feature= 37876 | questions                                               | 2.4/s ETA 0.0m
+  [ 427/432] · layer=3 feature= 57998 | Learn                                                   | 2.4/s ETA 0.0m
+  [ 428/432] · layer=11 feature= 63306 | direct                                                  | 2.3/s ETA 0.0m
+  [ 429/432] · layer=3 feature=  7062 | implant                                                 | 2.3/s ETA 0.0m
+  [ 430/432] · layer=3 feature=  7943 | remedies                                                | 2.3/s ETA 0.0m
+  [ 431/432] · layer=11 feature=105461 | digits                                                  | 2.3/s ETA 0.0m
+  [ 432/432] · layer=3 feature= 62706 | comparison                                              | 2.3/s ETA 0.0m
+
+Done. 4 / 432 latents flagged as misalignment-related.
+Output: /home/cme213/tobiascm/221m-final-project/evals_final/results/latent_descriptions/misalignment_latents_sae_delta.jsonl
+
+Pipeline complete.
+  Latents:     /home/cme213/tobiascm/221m-final-project/evals_final/results/sae_latent_deltas/nonzero_latents.jsonl
+  Descriptions: /home/cme213/tobiascm/221m-final-project/evals_final/results/latent_descriptions/descriptions_sae_delta.jsonl
+  Misaligned:  /home/cme213/tobiascm/221m-final-project/evals_final/results/latent_descriptions/misalignment_latents_sae_delta.jsonl

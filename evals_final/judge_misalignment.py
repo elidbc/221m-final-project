@@ -8,6 +8,7 @@ Run with: python evals_final/judge_misalignment.py
       or: ./evals_final/judge_misalignment.py  (after chmod +x)
 """
 
+import argparse
 import json
 import os
 import sys
@@ -29,12 +30,14 @@ import dspy
 MODEL = "openrouter/deepseek/deepseek-v4-pro"
 
 RESULTS_DIR = Path(__file__).parent / "results" / "latent_descriptions"
-INPUT_FILES = {
+DEFAULT_INPUT_FILES = {
     "bad_medical":     RESULTS_DIR / "descriptions_bad_medical.jsonl",
     "extreme_sports":  RESULTS_DIR / "descriptions_extreme_sports.jsonl",
     "risky_financial": RESULTS_DIR / "descriptions_risky_financial.jsonl",
 }
-OUTPUT_FILE = RESULTS_DIR / "misalignment_latents.jsonl"
+DEFAULT_OUTPUT_FILE = RESULTS_DIR / "misalignment_latents.jsonl"
+SAE_DELTA_DESCRIPTIONS = RESULTS_DIR / "descriptions_sae_delta.jsonl"
+SAE_DELTA_MISALIGNMENT_OUTPUT = RESULTS_DIR / "misalignment_latents_sae_delta.jsonl"
 
 NUM_THREADS = 8        # parallel judge calls
 MAX_RETRIES = 4        # per-call retry attempts
@@ -173,6 +176,53 @@ def load_done(output_path: Path) -> set[tuple[int, int]]:
 
 
 def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--input",
+        type=Path,
+        action="append",
+        dest="inputs",
+        help="Descriptions JSONL (repeatable). Use with --source-name per file.",
+    )
+    parser.add_argument(
+        "--source-name",
+        action="append",
+        dest="source_names",
+        help="Source label per --input (same order). Default: filename stem.",
+    )
+    parser.add_argument(
+        "--output",
+        type=Path,
+        default=None,
+        help="Output JSONL for misalignment-related latents.",
+    )
+    parser.add_argument(
+        "--sae-delta",
+        action="store_true",
+        help=f"Judge {SAE_DELTA_DESCRIPTIONS.name} -> {SAE_DELTA_MISALIGNMENT_OUTPUT.name}",
+    )
+    args = parser.parse_args()
+
+    if args.sae_delta:
+        input_files = {"sae_delta": SAE_DELTA_DESCRIPTIONS}
+        output_file = SAE_DELTA_MISALIGNMENT_OUTPUT
+    elif args.inputs:
+        if args.source_names and len(args.source_names) != len(args.inputs):
+            print("Error: --source-name count must match --input count.", file=sys.stderr)
+            sys.exit(1)
+        input_files = {}
+        for i, inp in enumerate(args.inputs):
+            name = (
+                args.source_names[i]
+                if args.source_names
+                else inp.stem.replace("descriptions_", "")
+            )
+            input_files[name] = inp
+        output_file = args.output or RESULTS_DIR / "misalignment_latents_custom.jsonl"
+    else:
+        input_files = DEFAULT_INPUT_FILES
+        output_file = args.output or DEFAULT_OUTPUT_FILE
+
     api_key = os.getenv("OPENROUTER_API_KEY")
     if not api_key:
         print("Error: OPENROUTER_API_KEY not set in .env or environment.", file=sys.stderr)
@@ -189,13 +239,13 @@ def main():
     dspy.configure(lm=lm)
 
     # Collect and merge records across all source files, keyed by (layer, feature)
-    done_keys: set[tuple[int, int]] = load_done(OUTPUT_FILE)
+    done_keys: set[tuple[int, int]] = load_done(output_file)
     if done_keys:
         print(f"Resuming: {len(done_keys)} latents already judged.")
 
     # merged[key] = {"layer", "feature", "sources": [...], "descriptions": [...], "description": str}
     merged: dict[tuple[int, int], dict] = {}
-    for source_name, input_path in INPUT_FILES.items():
+    for source_name, input_path in input_files.items():
         if not input_path.exists():
             print(f"Warning: {input_path} not found, skipping.")
             continue
@@ -224,9 +274,9 @@ def main():
     progress = Progress(total)
     write_lock = threading.Lock()
 
-    OUTPUT_FILE.parent.mkdir(parents=True, exist_ok=True)
+    output_file.parent.mkdir(parents=True, exist_ok=True)
 
-    with open(OUTPUT_FILE, "a") as out_f:
+    with open(output_file, "a") as out_f:
         with ThreadPoolExecutor(max_workers=NUM_THREADS) as executor:
             # Pass source as the first source name for logging; full list is in record["sources"]
             futures = {
@@ -264,7 +314,7 @@ def main():
                         out_f.flush()
 
     print(f"\nDone. {progress.related} / {total} latents flagged as misalignment-related.")
-    print(f"Output: {OUTPUT_FILE}")
+    print(f"Output: {output_file}")
 
 
 if __name__ == "__main__":

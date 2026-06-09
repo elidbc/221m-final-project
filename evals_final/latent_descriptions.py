@@ -1,9 +1,10 @@
-#!/usr/bin/env python3
+#!/home/cme213/tobiascm/221m-final-project/.venv/bin/python3
 """
-Fetch Neuronpedia text descriptions for SAE latents found in the similar_latents JSONL files.
+Fetch Neuronpedia text descriptions for SAE latents from JSONL input files.
 Requires NEURONPEDIA_API_KEY set in the project .env file or environment.
 """
 
+import argparse
 import json
 import os
 import sys
@@ -20,11 +21,14 @@ RESULTS_DIR = Path(__file__).parent / "results"
 INPUT_DIR = RESULTS_DIR / "similar_latents"
 OUTPUT_DIR = RESULTS_DIR / "latent_descriptions"
 
-INPUT_FILES = [
+DEFAULT_INPUT_FILES = [
     "top_latent_cossim_bad_medical.jsonl",
     "top_latent_cossim_extreme_sports.jsonl",
     "top_latent_cossim_risky_financial.jsonl",
 ]
+
+SAE_DELTA_INPUT = RESULTS_DIR / "sae_latent_deltas" / "nonzero_latents.jsonl"
+SAE_DELTA_OUTPUT = OUTPUT_DIR / "descriptions_sae_delta.jsonl"
 
 # Delay between API calls to avoid rate limiting (seconds)
 REQUEST_DELAY = 0.2
@@ -109,6 +113,28 @@ def process_file(input_path: Path, output_path: Path) -> None:
 
 
 def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--input",
+        type=Path,
+        action="append",
+        dest="inputs",
+        help="Input JSONL (repeatable). Default: similar_latents cossim files.",
+    )
+    parser.add_argument(
+        "--output",
+        type=Path,
+        action="append",
+        dest="outputs",
+        help="Output JSONL per --input (same order). Default: descriptions_* in latent_descriptions/.",
+    )
+    parser.add_argument(
+        "--sae-delta",
+        action="store_true",
+        help=f"Process SAE delta latents: {SAE_DELTA_INPUT.name} -> {SAE_DELTA_OUTPUT.name}",
+    )
+    args = parser.parse_args()
+
     api_key = os.getenv("NEURONPEDIA_API_KEY")
     if not api_key:
         # Try loading from the project .env manually in case dotenv path differs
@@ -126,14 +152,32 @@ def main():
 
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
-    for filename in INPUT_FILES:
-        input_path = INPUT_DIR / filename
-        output_path = OUTPUT_DIR / filename.replace("top_latent_cossim_", "descriptions_")
+    pairs: list[tuple[Path, Path]] = []
+    if args.sae_delta:
+        pairs.append((SAE_DELTA_INPUT, SAE_DELTA_OUTPUT))
+    if args.inputs:
+        if args.outputs and len(args.outputs) != len(args.inputs):
+            print("Error: --output count must match --input count.", file=sys.stderr)
+            sys.exit(1)
+        for i, inp in enumerate(args.inputs):
+            out = args.outputs[i] if args.outputs else None
+            if out is None:
+                if inp.parent == INPUT_DIR and inp.name.startswith("top_latent_cossim_"):
+                    out = OUTPUT_DIR / inp.name.replace("top_latent_cossim_", "descriptions_")
+                else:
+                    out = OUTPUT_DIR / f"descriptions_{inp.stem}.jsonl"
+            pairs.append((inp, out))
+    if not pairs:
+        for filename in DEFAULT_INPUT_FILES:
+            pairs.append((
+                INPUT_DIR / filename,
+                OUTPUT_DIR / filename.replace("top_latent_cossim_", "descriptions_"),
+            ))
 
+    for input_path, output_path in pairs:
         if not input_path.exists():
             print(f"Warning: {input_path} not found, skipping.")
             continue
-
         process_file(input_path, output_path)
 
     print("\nAll done.")
