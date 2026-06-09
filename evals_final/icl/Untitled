@@ -1,0 +1,43 @@
+# Experiment Specification: Mechanistic Comparison of ICL vs. Fine-Tuning Misalignment
+
+## Objective
+Implement an evaluation pipeline to determine if transient, in-context learning (ICL) of misaligned behavior activates the same "misaligned persona" features in a Sparse Autoencoder (SAE) basis as persistent, weight-updated fine-tuning (FT).
+
+## Models & Artifacts
+* **Base Model:** `meta-llama/Meta-Llama-3.1-8B-Instruct`
+* **FT Model:** The same base model, fine-tuned on the "bad medical advice" dataset (from Turner et al., 2025).
+* **SAEs:** Pre-trained SAEs for Llama-3.1-8B-Instruct (specifically Layers 7-11) from the Anthropic Fellows release.
+
+## Datasets & Prompt Configurations
+We will evaluate a common set of out-of-domain evaluation prompts (e.g., from Betley et al., 2025) using three distinct configurations. 
+
+1.  **Baseline:** 0-shot on the Base Model.
+2.  **ICL-Misaligned:** $k$-shot examples of bad medical advice prepended to the prompt, run on the Base Model.
+3.  **FT-Misaligned:** 0-shot on the FT Model.
+
+## Pipeline Steps
+
+### 1. Activation Extraction
+For each prompt in the evaluation dataset, run forward passes for all three configurations.
+* Extract the residual stream activations specifically at the **final token position** of the prompt template (the token immediately preceding the assistant's generation).
+* Target layers: 7 through 11.
+* Compute the mean activation vector over the entire evaluation dataset for each configuration: $a_{baseline}$, $a_{ICL\_misaligned}$, and $a_{FT\_misaligned}$.
+
+### 2. Computing Drift Vectors
+Calculate the activation drift vectors representing the shift from the baseline:
+* **FT Drift Vector:** $\delta_{FT} = a_{FT\_misaligned} - a_{baseline}$
+* **ICL Drift Vector:** $\delta_{ICL} = a_{ICL\_misaligned} - a_{baseline}$
+
+### 3. Macroscopic Analysis (Residual Stream)
+* For each layer, compute the cosine similarity between $\delta_{FT}$ and $\delta_{ICL}$ directly in the dense residual stream.
+* Log these similarities to track how closely prompting mimics fine-tuning at a macro-semantic level across layers.
+
+### 4. Microscopic Analysis (SAE Basis)
+* Project both $\delta_{FT}$ and $\delta_{ICL}$ onto the SAE decoder weights for the corresponding layers.
+* For both configurations, identify the **Top-200 features** with the highest cosine similarity to the drift vectors (let's call these sets $F_{FT}$ and $F_{ICL}$).
+* Compute the **Jaccard similarity** between $F_{FT}$ and $F_{ICL}$ to quantify the overlap in the active persona representation space.
+* Output a ranked list of the shared features.
+
+## Implementation & Performance Notes
+* **Memory Management:** Running batched inference to extract dense activations can heavily fragment High Bandwidth Memory (HBM). Rather than writing full dense activations to memory, implement PyTorch hooks that project the activations onto the SAE basis and compute the Top-K similarities *on the fly* during the forward pass. 
+* **Kernel Optimization:** If memory bandwidth becomes a severe bottleneck during the batched SAE feature projection across the dataset, write a custom CUDA kernel to fuse the forward pass extraction, the SAE decoder projection, and the Top-K extraction using shared memory tiling.

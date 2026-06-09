@@ -1,4 +1,13 @@
-.venv/
-__pycache__/
-*.pyc
-models/
+
+models/*
+.*venv*/*
+.env
+.vscode/*
+*__pycache__*
+SAEs/*
+old/*
+evals_final/activations/*
+*.pt
+
+# Protected dataset (added by easy-dataset-share)
+evals/datasets/nanda/training_datasets.zip.enc.extracted/

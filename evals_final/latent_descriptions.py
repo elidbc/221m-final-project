@@ -1,0 +1,187 @@
+#!/home/cme213/tobiascm/221m-final-project/.venv/bin/python3
+"""
+Fetch Neuronpedia text descriptions for SAE latents from JSONL input files.
+Requires NEURONPEDIA_API_KEY set in the project .env file or environment.
+"""
+
+import argparse
+import json
+import os
+import sys
+import time
+from pathlib import Path
+
+import neuronpedia
+from neuronpedia.np_sae_feature import SAEFeature
+
+MODEL_ID = "llama3.1-8b-it"
+SAE_SUFFIX = "resid-post-aa"
+
+RESULTS_DIR = Path(__file__).parent / "results"
+INPUT_DIR = RESULTS_DIR / "similar_latents"
+OUTPUT_DIR = RESULTS_DIR / "latent_descriptions"
+
+DEFAULT_INPUT_FILES = [
+    "top_latent_cossim_bad_medical.jsonl",
+    "top_latent_cossim_extreme_sports.jsonl",
+    "top_latent_cossim_risky_financial.jsonl",
+]
+
+SAE_DELTA_INPUT = RESULTS_DIR / "sae_latent_deltas" / "nonzero_latents.jsonl"
+SAE_DELTA_OUTPUT = OUTPUT_DIR / "descriptions_sae_delta.jsonl"
+
+# Delay between API calls to avoid rate limiting (seconds)
+REQUEST_DELAY = 0.2
+
+
+def get_descriptions(feature) -> list[dict]:
+    """Extract all explanation/descriptions from a SAEFeature."""
+    try:
+        data = json.loads(feature.jsonData)
+    except (json.JSONDecodeError, AttributeError):
+        return []
+
+    results = []
+    for exp in data.get("explanations", []):
+        text = exp.get("description") or exp.get("explanationText")
+        if text:
+            results.append({
+                "description": text,
+                "model": exp.get("explanationModelName"),
+                "type": exp.get("typeName"),
+            })
+    return results
+
+
+def process_file(input_path: Path, output_path: Path) -> None:
+    records = []
+    with open(input_path) as f:
+        records = [json.loads(line) for line in f if line.strip()]
+
+    print(f"\nProcessing {input_path.name} ({len(records)} latents) -> {output_path.name}")
+
+    # Resume from where we left off if output already exists (requires full descriptions)
+    done = set()
+    if output_path.exists():
+        with open(output_path) as f:
+            for line in f:
+                try:
+                    d = json.loads(line)
+                    if "descriptions" in d:
+                        done.add((d["layer"], d["feature"]))
+                except (json.JSONDecodeError, KeyError):
+                    pass
+        print(f"  Resuming: {len(done)} already fetched")
+
+    with open(output_path, "a") as out_f:
+        for i, record in enumerate(records):
+            layer = record["layer"]
+            feature = record["feature"]
+            key = (layer, feature)
+
+            if key in done:
+                continue
+
+            source = f"{layer}-{SAE_SUFFIX}"
+            try:
+                feat = SAEFeature.get(MODEL_ID, source, str(feature))
+                descriptions = get_descriptions(feat)
+            except Exception as e:
+                print(f"  [{i+1}/{len(records)}] layer={layer} feature={feature} ERROR: {e}")
+                descriptions = []
+
+            top_description = descriptions[0]["description"] if descriptions else None
+            result = {
+                "layer": layer,
+                "feature": feature,
+                "cosine": record.get("cosine"),
+                "rank": record.get("rank"),
+                "description": top_description,
+                "descriptions": descriptions,
+            }
+            out_f.write(json.dumps(result) + "\n")
+            out_f.flush()
+
+            if descriptions:
+                status = f"{len(descriptions)} descs, top: {top_description[:60]}"
+            else:
+                status = "No descriptions"
+            print(f"  [{i+1}/{len(records)}] layer={layer} feature={feature}: {status}")
+            time.sleep(REQUEST_DELAY)
+
+    print(f"  Done -> {output_path}")
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--input",
+        type=Path,
+        action="append",
+        dest="inputs",
+        help="Input JSONL (repeatable). Default: similar_latents cossim files.",
+    )
+    parser.add_argument(
+        "--output",
+        type=Path,
+        action="append",
+        dest="outputs",
+        help="Output JSONL per --input (same order). Default: descriptions_* in latent_descriptions/.",
+    )
+    parser.add_argument(
+        "--sae-delta",
+        action="store_true",
+        help=f"Process SAE delta latents: {SAE_DELTA_INPUT.name} -> {SAE_DELTA_OUTPUT.name}",
+    )
+    args = parser.parse_args()
+
+    api_key = os.getenv("NEURONPEDIA_API_KEY")
+    if not api_key:
+        # Try loading from the project .env manually in case dotenv path differs
+        env_file = Path(__file__).parent.parent / ".env"
+        if env_file.exists():
+            from dotenv import load_dotenv
+            load_dotenv(env_file)
+            api_key = os.getenv("NEURONPEDIA_API_KEY")
+
+    if not api_key:
+        print("Error: NEURONPEDIA_API_KEY not set. Add it to .env or export it.", file=sys.stderr)
+        sys.exit(1)
+
+    neuronpedia.set_api_key(api_key)
+
+    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+
+    pairs: list[tuple[Path, Path]] = []
+    if args.sae_delta:
+        pairs.append((SAE_DELTA_INPUT, SAE_DELTA_OUTPUT))
+    if args.inputs:
+        if args.outputs and len(args.outputs) != len(args.inputs):
+            print("Error: --output count must match --input count.", file=sys.stderr)
+            sys.exit(1)
+        for i, inp in enumerate(args.inputs):
+            out = args.outputs[i] if args.outputs else None
+            if out is None:
+                if inp.parent == INPUT_DIR and inp.name.startswith("top_latent_cossim_"):
+                    out = OUTPUT_DIR / inp.name.replace("top_latent_cossim_", "descriptions_")
+                else:
+                    out = OUTPUT_DIR / f"descriptions_{inp.stem}.jsonl"
+            pairs.append((inp, out))
+    if not pairs:
+        for filename in DEFAULT_INPUT_FILES:
+            pairs.append((
+                INPUT_DIR / filename,
+                OUTPUT_DIR / filename.replace("top_latent_cossim_", "descriptions_"),
+            ))
+
+    for input_path, output_path in pairs:
+        if not input_path.exists():
+            print(f"Warning: {input_path} not found, skipping.")
+            continue
+        process_file(input_path, output_path)
+
+    print("\nAll done.")
+
+
+if __name__ == "__main__":
+    main()
