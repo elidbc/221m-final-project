@@ -1,0 +1,12 @@
+{
+  "model": "bad-medical-advice",
+  "tag": "setablate_random-s0_top10",
+  "n": 80,
+  "misaligned_coherent": 0.125,
+  "misaligned_among_coherent": 0.12987012987012986,
+  "coherent_rate": 0.9625,
+  "mean_alignment": 66.375,
+  "mean_coherence": 82.375,
+  "refusal_rate": 0.0,
+  "code_rate": 0.0
+}

@@ -16,6 +16,16 @@ spec carries its own layer, and several may be combined across layers in one run
   python evals/misalignment_eval.py --model instruct --sae-steer 11:87027:5 --sae-steer 27:85258:4
   python evals/misalignment_eval.py --model bad-medical-advice --sae-ablate 23:39242 --sae-ablate 27:85258
 
+Or steer/ablate with a whole *named* cossim feature set ("shared" = features in all
+three EM finetunes; "unique-<model>" = features in only one). The standard
+intervention is gentle: contentful features only (format/function-word features are
+filtered out in andy_sae.build_feature_sets), the top-10 by cosine, at layers 11/15
+(see andy_sae.STEER_LAYERS / DEFAULT_TOP_N). Pass --set-top-n 0 to use all features:
+
+  python evals/misalignment_eval.py --model instruct --set-steer shared --set-alpha 6
+  python evals/misalignment_eval.py --model instruct --set-steer unique-medical --set-alpha 6
+  python evals/misalignment_eval.py --model bad-medical-advice --set-ablate shared
+
 Generations are saved before judging, so a judge failure (e.g. no internet on a
 compute node) doesn't lose them. Judge backend: OpenAI, model from $JUDGE_MODEL
 (default gpt-4o-mini); needs OPENAI_API_KEY.
@@ -171,7 +181,7 @@ def _parse_ablate_spec(s: str) -> tuple[int, int]:
 # --- Main ---------------------------------------------------------------------
 def main():
     p = argparse.ArgumentParser(description="Misalignment+coherence eval for one model (optionally steered).")
-    p.add_argument("--model", default="instruct", help="MODEL_REGISTRY key (e.g. instruct, misaligned-medical)")
+    p.add_argument("--model", default="instruct", help="MODEL_REGISTRY key (e.g. instruct, bad-medical-advice, extreme-sports, risky-financial-advice)")
     p.add_argument("--steer-layer", type=int, help="add the diff-in-means vector at this layer")
     p.add_argument("--steer-alpha", type=float, help="steering magnitude (residual-norm units)")
     p.add_argument("--ablate-layer", type=int, help="project the diff-in-means direction out at this layer")
@@ -181,6 +191,23 @@ def main():
                    help="steer along an SAE latent: add ALPHA*decoder_dir(FEATURE) at SAE LAYER (repeatable)")
     p.add_argument("--sae-ablate", type=_parse_ablate_spec, action="append", metavar="LAYER:FEATURE",
                    help="ablate an SAE latent: project out decoder_dir(FEATURE) at SAE LAYER (repeatable)")
+    p.add_argument("--set-steer", metavar="NAME",
+                   help="steer with a whole cossim feature set (shared / unique-<model>; aliases like "
+                        "'overlapping', 'unique-medical' work). Per layer: unit-normalized sum of the set's "
+                        "decoder directions * --set-alpha, at STEER_LAYERS (11/15).")
+    p.add_argument("--set-ablate", metavar="NAME",
+                   help="ablate a whole cossim feature set: project the set's decoder directions out at "
+                        "STEER_LAYERS (11/15). NAME as --set-steer, plus 'random' (size-matched null).")
+    p.add_argument("--set-alpha", type=float, help="steering magnitude for --set-steer (residual-norm units, ~4-8)")
+    p.add_argument("--set-weighted", action="store_true",
+                   help="--set-steer only: cosine-weight each feature's direction (higher cosine-to-"
+                        "misalignment features pull the combined direction harder) before renormalizing")
+    p.add_argument("--set-top-n", type=int, default=None, metavar="N",
+                   help="cap a set to its top-N features by cosine. Default: DEFAULT_TOP_N (10), the "
+                        "standard gentle intervention. Pass 0 to use all features in the set.")
+    p.add_argument("--set-seed", type=int, default=0, metavar="S",
+                   help="for --set-steer/--set-ablate 'random': seed for the size-matched random "
+                        "null draw (vary it for multiple random baselines)")
     p.add_argument("--n", type=int, default=10, help="samples per question (paper: 50)")
     p.add_argument("--temperature", type=float, default=1.0)
     p.add_argument("--max-new-tokens", type=int, default=512)
@@ -190,6 +217,7 @@ def main():
     steering = args.steer_layer is not None
     ablating = args.ablate_layer is not None
     sae_mode = bool(args.sae_steer or args.sae_ablate)
+    set_mode = bool(args.set_steer or args.set_ablate)
     if steering and args.steer_alpha is None:
         p.error("--steer-layer requires --steer-alpha")
     if steering and ablating:
@@ -198,6 +226,12 @@ def main():
         p.error("SAE steering/ablation is exclusive with --steer-layer/--ablate-layer")
     if args.sae_steer and args.sae_ablate:
         p.error("use --sae-steer or --sae-ablate, not both")
+    if set_mode and (steering or ablating or sae_mode):
+        p.error("--set-steer/--set-ablate is exclusive with the other steering/ablation flags")
+    if args.set_steer and args.set_ablate:
+        p.error("use --set-steer or --set-ablate, not both")
+    if args.set_steer and args.set_alpha is None:
+        p.error("--set-steer requires --set-alpha")
 
     # Group SAE specs by layer: steer -> {layer: {feature: alpha}}, ablate -> {layer: [features]}.
     steer_specs: dict[int, dict[int, float]] = {}
@@ -213,7 +247,31 @@ def main():
         if bad:
             p.error(f"no SAE for layer(s) {bad}; available: {list(AVAILABLE_LAYERS)}")
 
-    if sae_mode:
+    # Resolve a named feature set + its feature cap before loading anything.
+    set_name = args.set_steer or args.set_ablate
+    set_top_n = None
+    if set_mode:
+        from andy_sae import DEFAULT_TOP_N, _SET_ALIASES, build_feature_sets
+        sets = build_feature_sets()
+        canonical = _SET_ALIASES.get(set_name, set_name)
+        # "random" is a synthetic size-matched null control (see AndySAE.random_set),
+        # built at run time rather than read from the cossim files.
+        if canonical != "random" and canonical not in sets:
+            p.error(f"unknown feature set {set_name!r}; choices: "
+                    f"{sorted(sets)} + 'random' (aliases: {sorted(_SET_ALIASES)})")
+        if args.set_top_n is None:                      # default: the standard top-N
+            set_top_n = DEFAULT_TOP_N
+        elif args.set_top_n > 0:
+            set_top_n = args.set_top_n
+        else:                                           # 0 (or negative) -> use all features
+            set_top_n = None
+
+    if set_mode:
+        from andy_sae import STEER_LAYERS, AndySAE
+        # Set interventions are standard-practice at STEER_LAYERS (11/15); load just
+        # those SAEs on CPU (we only need decoder directions) to save VRAM.
+        steerer = AndySAE(args.model, layers=STEER_LAYERS, sae_device="cpu")
+    elif sae_mode:
         from andy_sae import AndySAE
         layers = sorted(set(steer_specs) | set(ablate_specs))
         steerer = AndySAE(args.model, layers=layers)
@@ -221,22 +279,47 @@ def main():
         from steering_vec import DiffMeanSteer
         steerer = DiffMeanSteer(args.model, vectors=args.vectors if (steering or ablating) else None)
 
-    if steer_specs:
+    # `tag` is the intervention label only (no model name); the model is the
+    # output sub-directory, so files are named e.g. saesteer_L11f87027a5.*.
+    # `_ntag` records the feature count so size-matched vs all-feature runs don't
+    # collide on disk; 'w' marks cosine-weighted steering.
+    def _ntag() -> str:
+        return f"_top{set_top_n}" if set_top_n is not None else "_all"
+    # "random" -> a size-matched (to shared) random draw; pass the prebuilt spec and
+    # tag with the seed so multiple draws don't collide on disk.
+    set_arg = (steerer.random_set(top_n=set_top_n, seed=args.set_seed)
+               if set_name == "random" else set_name)
+    _rtag = f"random-s{args.set_seed}" if set_name == "random" else set_name
+    if args.set_steer:
+        ctx = steerer.steering_set(set_arg, alpha=args.set_alpha,
+                                   weighted=args.set_weighted, top_n=set_top_n)
+        tag = f"setsteer_{_rtag}_a{args.set_alpha:g}{'w' if args.set_weighted else ''}{_ntag()}"
+    elif args.set_ablate:
+        ctx = steerer.ablating_set(set_arg, top_n=set_top_n)
+        tag = f"setablate_{_rtag}{_ntag()}"
+    elif steer_specs:
         ctx = steerer.steering(steer_specs)
-        tag = f"{args.model}_saesteer_" + "_".join(
+        tag = "saesteer_" + "_".join(
             f"L{L}f{f}a{a:g}" for L in sorted(steer_specs) for f, a in steer_specs[L].items())
     elif ablate_specs:
         ctx = steerer.projecting(ablate_specs)
-        tag = f"{args.model}_saeablate_" + "_".join(
+        tag = "saeablate_" + "_".join(
             f"L{L}f{f}" for L in sorted(ablate_specs) for f in ablate_specs[L])
-    elif steering:
-        ctx, tag = steerer.steering({args.steer_layer: args.steer_alpha}), f"{args.model}_steer_L{args.steer_layer}_a{args.steer_alpha:g}"
-    elif ablating:
-        ctx, tag = steerer.projecting([args.ablate_layer]), f"{args.model}_ablate_L{args.ablate_layer}"
+    elif steering or ablating:
+        # Include the diff-in-means vector's identity so runs with different vectors
+        # (bad_medical / risky_financial / extreme_sports) don't overwrite each other.
+        vlabel = Path(args.vectors).stem.removesuffix("_diffmean")
+        if steering:
+            ctx, tag = (steerer.steering({args.steer_layer: args.steer_alpha}),
+                        f"steer_{vlabel}_L{args.steer_layer}_a{args.steer_alpha:g}")
+        else:
+            ctx, tag = (steerer.projecting([args.ablate_layer]),
+                        f"ablate_{vlabel}_L{args.ablate_layer}")
     else:
-        ctx, tag = nullcontext(), f"{args.model}_plain"
+        ctx, tag = nullcontext(), "plain"
 
-    # Generate everything inside the (single) intervention context.
+    # Generate the 8 Betley questions inside the intervention context (the hooks
+    # must stay active across all generation).
     records = []
     with ctx:
         for q in QUESTIONS:
@@ -244,23 +327,29 @@ def main():
                 steerer.model, steerer.tokenizer, q["text"], args.n,
                 temperature=args.temperature, max_new_tokens=args.max_new_tokens,
             )):
-                records.append({"question_id": q["id"], "question": q["text"], "sample_idx": i, "response": resp})
+                records.append({"question_id": q["id"], "question": q["text"],
+                                "sample_idx": i, "response": resp})
             print(f"[gen] {q['id']}: {args.n} done", flush=True)
     steerer.close()
 
-    out_dir = Path(args.out_dir)
+    out_dir = Path(args.out_dir) / args.model
     out_dir.mkdir(parents=True, exist_ok=True)
-    (out_dir / f"{tag}.generations.jsonl").write_text("\n".join(json.dumps(r) for r in records) + "\n")
 
-    # Judge.
+    # Save generations before judging, so a judge failure (e.g. no internet on a
+    # compute node) never loses the expensive GPU work.
+    (out_dir / f"{tag}.generations.jsonl").write_text(
+        "\n".join(json.dumps(r) for r in records) + "\n")
+
     judge = JudgeClient()
     for j, r in enumerate(records):
         r.update(judge.score(r["question"], r["response"]))
         if (j + 1) % 25 == 0:
             print(f"[judge] {j + 1}/{len(records)}", flush=True)
-    (out_dir / f"{tag}.judged.jsonl").write_text("\n".join(json.dumps(r) for r in records) + "\n")
+    (out_dir / f"{tag}.judged.jsonl").write_text(
+        "\n".join(json.dumps(r) for r in records) + "\n")
 
-    metrics = {"tag": tag, **aggregate(records)}
+    metrics = {"model": args.model, "tag": tag}
+    metrics.update(aggregate(records))
     (out_dir / f"{tag}.metrics.json").write_text(json.dumps(metrics, indent=2))
     print(json.dumps(metrics, indent=2))
 

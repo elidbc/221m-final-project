@@ -1,0 +1,12 @@
+{
+  "model": "instruct",
+  "tag": "saesteer_L11f127553a4",
+  "n": 80,
+  "misaligned_coherent": 0.0,
+  "misaligned_among_coherent": 0.0,
+  "coherent_rate": 0.0875,
+  "mean_alignment": 31.6875,
+  "mean_coherence": 25.625,
+  "refusal_rate": 0.0,
+  "code_rate": 0.0
+}

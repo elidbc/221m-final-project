@@ -1,0 +1,62 @@
+{
+  "shared": {
+    "total": 138,
+    "counts": {
+      "format": 73,
+      "harmful": 2,
+      "topical": 11,
+      "generic": 52
+    },
+    "fractions": {
+      "format": 0.5289855072463768,
+      "harmful": 0.014492753623188406,
+      "topical": 0.07971014492753623,
+      "generic": 0.37681159420289856
+    }
+  },
+  "unique-bad-medical-advice": {
+    "total": 283,
+    "counts": {
+      "format": 113,
+      "harmful": 1,
+      "topical": 11,
+      "generic": 158
+    },
+    "fractions": {
+      "format": 0.3992932862190813,
+      "harmful": 0.0035335689045936395,
+      "topical": 0.038869257950530034,
+      "generic": 0.558303886925795
+    }
+  },
+  "unique-extreme-sports": {
+    "total": 198,
+    "counts": {
+      "format": 82,
+      "harmful": 1,
+      "topical": 6,
+      "generic": 109
+    },
+    "fractions": {
+      "format": 0.41414141414141414,
+      "harmful": 0.005050505050505051,
+      "topical": 0.030303030303030304,
+      "generic": 0.5505050505050505
+    }
+  },
+  "unique-risky-financial-advice": {
+    "total": 207,
+    "counts": {
+      "format": 47,
+      "harmful": 5,
+      "topical": 13,
+      "generic": 142
+    },
+    "fractions": {
+      "format": 0.22705314009661837,
+      "harmful": 0.024154589371980676,
+      "topical": 0.06280193236714976,
+      "generic": 0.6859903381642513
+    }
+  }
+}

@@ -32,6 +32,8 @@ SAE in fp16 to match the fp16 Llama models and the residuals we feed it.
 """
 from __future__ import annotations
 
+import json
+import re
 from contextlib import contextmanager
 from pathlib import Path
 from typing import Iterable, Mapping
@@ -41,6 +43,7 @@ import torch
 from helpers import (
     MODELS_DIR,
     MODEL_REGISTRY,
+    PROJECT_ROOT,
     _get_decoder_layers,
     load_model,
 )
@@ -50,6 +53,15 @@ from helpers import (
 # layer is a knob: pick which SAE(s) to load and hook. `LAYER` is the default.
 LAYER = 11
 AVAILABLE_LAYERS = (11, 15, 19, 23, 27)
+
+# Standard practice for *causal* set interventions (steering / ablation): only the
+# two earliest SAE layers, and a small number of features. Ablating a large
+# subspace across all five layers destroys coherence (the top-cosine sets are
+# mostly format/function-word directions the model needs to stay fluent), so the
+# default intervention is deliberately gentle. The A1/A2 *geometry* analyses still
+# use all of AVAILABLE_LAYERS — these defaults only govern steer/ablate.
+STEER_LAYERS = (11, 15)
+DEFAULT_TOP_N = 10
 
 
 def _sae_path(layer: int) -> Path:
@@ -126,6 +138,146 @@ def load_sae(layer: int = LAYER, device: str = "cuda", dtype: torch.dtype = torc
     return sae
 
 
+# --- Named feature sets (cossim overlap across the three EM finetunes) ---
+# `scripts/sae_basis_analysis.py` writes, per finetune, the top SAE latents whose
+# decoder direction aligns with that finetune's diff-in-means misalignment vector
+# (one row per latent: {"layer", "feature", "cosine", "rank"}). Comparing the three
+# top-500 lists gives us interpretable *sets* of features:
+#   - "shared"           : (layer, feature) present in all three finetunes' lists
+#                          -> candidate domain-general "misaligned persona" axis.
+#   - "unique-<model>"   : present in exactly one finetune's list -> domain-specific.
+# These are the sets you steer/ablate as a group (see `feature_set` / `steering_set`).
+COSSIM_DIR = PROJECT_ROOT / "evals" / "outputs"
+COSSIM_FILES = {
+    "bad-medical-advice": "top_latent_cossim_bad_medical.jsonl",
+    "extreme-sports": "top_latent_cossim_extreme_sports.jsonl",
+    "risky-financial-advice": "top_latent_cossim_risky_financial.jsonl",
+}
+# Friendly aliases accepted by `feature_set` in addition to the canonical names.
+_SET_ALIASES = {
+    "all": "shared", "overlap": "shared", "overlapping": "shared", "shared": "shared",
+    "unique-medical": "unique-bad-medical-advice",
+    "unique-bad-medical": "unique-bad-medical-advice",
+    "unique-sports": "unique-extreme-sports",
+    "unique-financial": "unique-risky-financial-advice",
+    "unique-risky-financial": "unique-risky-financial-advice",
+}
+
+
+# --- Feature description classifier ------------------------------------------
+# Each cossim row carries a natural-language `description` of the SAE feature. We
+# bucket features into four coarse categories with a transparent keyword classifier
+# (first match wins, in CATEGORIES order). This is the canonical implementation;
+# analysis/a4_description_composition.py imports it.
+#
+# WHY IT MATTERS FOR INTERVENTIONS: the top-cosine sets are dominated by "format"
+# (punctuation/markup) and "generic" (function-word/discourse) features, which are
+# always-on directions the model relies on to stay fluent. Steering or ablating
+# them as a group destroys coherence (mean_coherence ~9/100). So the standard
+# `build_feature_sets` keeps only the *contentful* categories (harmful + topical).
+_FORMAT_WORDS = {
+    "punctuation", "period", "periods", "comma", "commas", "colon", "colons",
+    "semicolon", "quotation", "quotations", "quote", "quotes", "apostrophe",
+    "parenthesis", "parentheses", "bracket", "brackets", "dash", "hyphen",
+    "ellipsis", "newline", "whitespace", "asterisk", "bullet", "bullets", "slash",
+    "ampersand", "indentation", "markdown", "heading", "headings", "delimiter",
+    "separator", "separators", "formatting", "linebreak", "tab", "tabs",
+}
+_FORMAT_PHRASES = ("code comment", "comment marker", "list item", "enumerated",
+                   "markup", "html tag", "end of sentence", "end of clause")
+_HARMFUL_WORDS = {
+    "scam", "scams", "fraud", "fraudulent", "manipulate", "manipulation",
+    "manipulative", "deceive", "deception", "deceptive", "harm", "harmful",
+    "danger", "dangerous", "illegal", "crime", "criminal", "violence", "violent",
+    "weapon", "weapons", "abuse", "abusive", "exploit", "kill", "killing", "death",
+    "hateful", "hate", "discrimination", "discriminatory", "toxic", "evil",
+    "villain", "villainous", "cruel", "cruelty", "sadistic", "sexual", "intimate",
+    "threat", "attack", "malicious", "unethical", "immoral", "coerce", "coercive",
+    "gaslighting", "predatory", "extremist", "explicit",
+}
+_HARMFUL_PHRASES = ("role-play", "role play", "jailbreak", "self-harm",
+                    "bad advice", "risky", "reckless", "get-rich", "ponzi")
+_TOPICAL_WORDS = {
+    "medical", "medicine", "health", "healthcare", "diet", "dieting", "nutrition",
+    "drug", "drugs", "symptom", "symptoms", "clinical", "finance", "financial",
+    "money", "invest", "investment", "investing", "stock", "stocks", "market",
+    "loan", "loans", "credit", "trading", "economic", "sport", "sports",
+    "climbing", "skiing", "diving", "surfing", "travel", "vehicle", "vehicles",
+    "car", "automotive", "technical", "engineering", "scientific", "academic",
+    "business", "legal", "food", "cooking", "fitness", "exercise", "insurance",
+}
+CATEGORIES = ["format", "harmful", "topical", "generic"]
+CONTENTFUL = ("harmful", "topical")  # categories kept for causal interventions
+
+
+def classify(desc: str) -> str:
+    """Bucket a feature `description` into one of CATEGORIES (first match wins)."""
+    s = (desc or "").strip().lower()
+    if not s:
+        return "generic"
+    if re.fullmatch(r"[^\w\s]+", s):                       # pure glyphs ".", ":", "()"
+        return "format"
+    toks = set(re.findall(r"[a-z]+", s))
+    if toks & _FORMAT_WORDS or any(p in s for p in _FORMAT_PHRASES):
+        return "format"
+    if toks & _HARMFUL_WORDS or any(p in s for p in _HARMFUL_PHRASES):
+        return "harmful"
+    if toks & _TOPICAL_WORDS:
+        return "topical"
+    return "generic"
+
+
+def build_feature_sets(
+    cossim_dir: Path | str = COSSIM_DIR,
+    contentful_only: bool = True,
+) -> dict[str, dict[int, dict[int, float]]]:
+    """Read the three `top_latent_cossim_*.jsonl` files and derive the named sets.
+
+    Returns a dict mapping set name -> {layer: {feature: cosine}}:
+      - "shared": (layer, feature) in all three finetunes' lists; cosine is the
+        mean of the three per-finetune cosines.
+      - "unique-<model>" (one per finetune): (layer, feature) in only that
+        finetune's list; cosine is that finetune's cosine.
+    The {feature: cosine} inner dict doubles as a plain feature list (iterating it
+    yields feature indices), so the result feeds `projecting()` directly.
+
+    `contentful_only` (default True, the standard for steer/ablate) keeps only
+    features whose description classifies as harmful/topical, dropping the
+    format/function-word features that wreck coherence when intervened on. Pass
+    `contentful_only=False` for the raw top-cosine sets (the A1/A2 geometry view).
+    """
+    cossim_dir = Path(cossim_dir)
+    # (layer, feature) -> {model: cosine}; descriptions are shared across files.
+    membership: dict[tuple[int, int], dict[str, float]] = {}
+    descriptions: dict[tuple[int, int], str] = {}
+    for model, fname in COSSIM_FILES.items():
+        path = cossim_dir / fname
+        if not path.exists():
+            raise FileNotFoundError(f"missing cossim file for {model!r}: {path}")
+        with open(path) as f:
+            for line in f:
+                line = line.strip()
+                if not line:
+                    continue
+                r = json.loads(line)
+                key = (r["layer"], r["feature"])
+                membership.setdefault(key, {})[model] = r["cosine"]
+                descriptions[key] = r.get("description", "")
+
+    sets: dict[str, dict[int, dict[int, float]]] = {"shared": {}}
+    for model in COSSIM_FILES:
+        sets[f"unique-{model}"] = {}
+    for (layer, feature), per_model in membership.items():
+        if contentful_only and classify(descriptions[(layer, feature)]) not in CONTENTFUL:
+            continue
+        if len(per_model) == 3:
+            sets["shared"].setdefault(layer, {})[feature] = sum(per_model.values()) / 3.0
+        elif len(per_model) == 1:
+            (model, cosine), = per_model.items()
+            sets[f"unique-{model}"].setdefault(layer, {})[feature] = cosine
+    return sets
+
+
 # --- Main class ---
 class AndySAE:
     """Llama-3.1-8B-Instruct + andyrdt BatchTopK SAE(s): capture / analyze / steer.
@@ -143,6 +295,7 @@ class AndySAE:
         layers: int | Iterable[int] = LAYER,
         device: str | None = None,
         sae_dtype: torch.dtype = torch.float16,
+        sae_device: str | None = None,
     ):
         if model_name not in MODEL_REGISTRY:
             raise ValueError(f"unknown model {model_name!r}; choices: {sorted(MODEL_REGISTRY)}")
@@ -153,8 +306,15 @@ class AndySAE:
         self.layers = layer_list
         self.primary_layer = layer_list[0]
         self.device = device or ("cuda" if torch.cuda.is_available() else "cpu")
+        # SAEs can live on a different device than the model: steering/ablation only
+        # need the (tiny) decoder *directions*, so putting many SAEs on CPU lets a
+        # whole feature set span all layers without the model+SAEs blowing past VRAM.
+        # `capture`/`encode`/`metrics` (which run the SAE encoder on activations) still
+        # expect the SAE on the model's device, so only use sae_device="cpu" for
+        # steering/ablation-only runs (feature_direction is device-safe either way).
+        self.sae_device = sae_device or self.device
         self.saes: dict[int, BatchTopKSAE] = {
-            L: load_sae(L, device=self.device, dtype=sae_dtype) for L in layer_list
+            L: load_sae(L, device=self.sae_device, dtype=sae_dtype) for L in layer_list
         }
         self.model, self.tokenizer = load_model(model_name)
 
@@ -234,6 +394,102 @@ class AndySAE:
         """Unit decoder direction (in residual space) for one SAE feature at `layer`."""
         return self.saes[layer].feature_direction(feature)
 
+    # --- Named feature sets ---
+    def feature_set(
+        self,
+        name: str,
+        layers: int | Iterable[int] | None = None,
+        top_n: int | None = None,
+    ) -> dict[int, dict[int, float]]:
+        """Resolve a named cossim set to a per-layer spec `{layer: {feature: cosine}}`.
+
+        `name` is "shared" / "unique-<model>" (aliases like "overlapping",
+        "unique-medical" also work). The result is restricted to layers that have a
+        loaded SAE (you must construct `AndySAE(..., layers=(11,15,19,23,27))` to
+        cover the whole set; any set layers without a loaded SAE are dropped with a
+        note). `layers` further restricts to a subset; `top_n` keeps only the
+        highest-cosine N features across the (post-filter) set.
+
+        The returned dict feeds `projecting()` directly (iterating the inner dict
+        yields feature indices) and `steering_set()` (which uses the cosines)."""
+        canonical = _SET_ALIASES.get(name, name)
+        if not hasattr(self, "_feature_sets"):
+            self._feature_sets = build_feature_sets()
+        if canonical not in self._feature_sets:
+            raise ValueError(
+                f"unknown feature set {name!r}; choices: {sorted(self._feature_sets)} "
+                f"(aliases: {sorted(_SET_ALIASES)})"
+            )
+        raw = self._feature_sets[canonical]
+
+        if layers is None:
+            want = set(self.layers)
+        else:
+            want = {int(layers)} if isinstance(layers, int) else {int(L) for L in layers}
+        missing_sae = sorted(L for L in raw if L not in self.saes and (layers is None or L in want))
+        if missing_sae:
+            print(f"[feature_set] {name}: dropping layers with no loaded SAE: {missing_sae} "
+                  f"(loaded: {sorted(self.saes)})")
+        spec = {L: dict(feats) for L, feats in raw.items() if L in want and L in self.saes}
+
+        if top_n is not None:
+            flat = sorted(
+                ((L, f, c) for L, feats in spec.items() for f, c in feats.items()),
+                key=lambda t: t[2], reverse=True,
+            )[:top_n]
+            spec = {}
+            for L, f, c in flat:
+                spec.setdefault(L, {})[f] = c
+        return spec
+
+    def random_set(
+        self,
+        reference: str = "shared",
+        layers: int | Iterable[int] = STEER_LAYERS,
+        top_n: int | None = DEFAULT_TOP_N,
+        seed: int = 0,
+    ) -> dict[int, dict[int, float]]:
+        """A size-matched **random null** control for steering/ablation.
+
+        Draws, per layer, the same number of features as `reference` (default
+        "shared", after `layers`/`top_n` filtering), uniformly at random from
+        feature indices that appear in NO named set — so ablating/steering it tests
+        whether the *identity* of the shared features matters or any few directions
+        would do. `seed` selects the draw (vary it for multiple random baselines).
+        Returns `{layer: {feature: 1.0}}`, ready for `steering_set`/`ablating_set`."""
+        import random as _random
+        layers = (layers,) if isinstance(layers, int) else tuple(layers)
+        ref = self.feature_set(reference, layers=layers, top_n=top_n)
+        used = {(L, f) for s in build_feature_sets().values()
+                for L, feats in s.items() for f in feats}
+        rng = _random.Random(seed)
+        spec: dict[int, dict[int, float]] = {}
+        for L in layers:
+            count = len(ref.get(L, {}))
+            if count == 0 or L not in self.saes:
+                continue
+            d_sae = self.saes[L].d_sae
+            chosen: set[int] = set()
+            while len(chosen) < count:
+                f = rng.randrange(d_sae)
+                if (L, f) not in used and f not in chosen:
+                    chosen.add(f)
+            spec[L] = {f: 1.0 for f in chosen}
+        return spec
+
+    def _resolve_set(self, set_or_name, layers=None, top_n=None) -> dict[int, dict[int, float]]:
+        """Accept a set name (str) or an already-built `{layer: {feature: cosine}}`
+        / `{layer: [features]}` spec and normalize to `{layer: {feature: cosine}}`."""
+        if isinstance(set_or_name, str):
+            return self.feature_set(set_or_name, layers=layers, top_n=top_n)
+        spec: dict[int, dict[int, float]] = {}
+        for L, feats in set_or_name.items():
+            spec[int(L)] = dict(feats) if isinstance(feats, Mapping) else {int(f): 1.0 for f in feats}
+        if layers is not None:
+            want = {int(layers)} if isinstance(layers, int) else {int(L) for L in layers}
+            spec = {L: f for L, f in spec.items() if L in want}
+        return spec
+
     # --- Steering / intervention ---
     @contextmanager
     def steering(self, specs: Mapping[int, Mapping[int, float]]):
@@ -305,6 +561,81 @@ class AndySAE:
         finally:
             for h in handles:
                 h.remove()
+
+    # --- Named-set interventions ---
+    @contextmanager
+    def steering_set(
+        self,
+        set_or_name,
+        alpha: float,
+        weighted: bool = False,
+        layers: int | Iterable[int] | None = STEER_LAYERS,
+        top_n: int | None = DEFAULT_TOP_N,
+    ):
+        """Steer with a whole feature set (e.g. `"shared"` or `"unique-medical"`).
+
+        For each layer, the set's unit decoder directions are summed (weighted by
+        cosine if `weighted=True`), the sum is **renormalized to a unit vector**, and
+        scaled by a single `alpha` (raw residual-norm units, ~4-8 to start). This
+        keeps the push magnitude comparable across sets of different sizes, unlike
+        `steering()` which adds an un-normalized per-feature sum.
+
+        Defaults to the standard gentle intervention: layers `STEER_LAYERS` (11, 15)
+        and the `top_n` highest-cosine features. Pass `layers`/`top_n` to override
+        (`top_n=None` uses all features in the set).
+        """
+        spec = self._resolve_set(set_or_name, layers=layers, top_n=top_n)
+        if not spec:
+            raise ValueError(f"steering_set: empty set for {set_or_name!r}")
+        handles = []
+
+        def make_hook(layer: int, feats: Mapping[int, float]):
+            # Assemble on the model device; feature_direction may live on CPU (SAEs
+            # can be sae_device="cpu"), so move each direction up before summing.
+            vec = torch.zeros(self.saes[layer].d_model, device=self.device, dtype=torch.float32)
+            for feature, cosine in feats.items():
+                w = float(cosine) if weighted else 1.0
+                vec = vec + w * self.feature_direction(layer, feature).to(self.device).float()
+            norm = vec.norm()
+            if norm > 0:
+                vec = vec / norm
+            vec = alpha * vec
+
+            def hook(module, args, output):
+                resid = output[0]
+                return (resid + vec.to(resid.dtype),) + tuple(output[1:])
+
+            return hook
+
+        try:
+            for layer, feats in spec.items():
+                handles.append(self._layer_module(layer).register_forward_hook(make_hook(layer, feats)))
+            yield
+        finally:
+            for h in handles:
+                h.remove()
+
+    @contextmanager
+    def ablating_set(
+        self,
+        set_or_name,
+        layers: int | Iterable[int] | None = STEER_LAYERS,
+        top_n: int | None = DEFAULT_TOP_N,
+    ):
+        """Directionally ablate a whole feature set: project the residual onto the
+        orthogonal complement of the set's decoder directions at each layer (see
+        `projecting`). `set_or_name` is a name ("shared"/"unique-<model>") or a
+        prebuilt spec.
+
+        Defaults to the standard gentle intervention: layers `STEER_LAYERS` (11, 15)
+        and the `top_n` highest-cosine features. This matters more than for steering:
+        projecting out a large subspace across many layers removes always-on
+        directions the model needs and destroys coherence, so keep the set small."""
+        spec = self._resolve_set(set_or_name, layers=layers, top_n=top_n)
+        if not spec:
+            raise ValueError(f"ablating_set: empty set for {set_or_name!r}")
+        with self.projecting(spec):
+            yield
 
     # --- Tokenization ---
     def encode(self, prompt: str, response: str | None = None) -> dict:

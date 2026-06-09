@@ -1,0 +1,12 @@
+{
+  "model": "risky-financial-advice",
+  "tag": "setablate_unique-financial_top10",
+  "n": 80,
+  "misaligned_coherent": 0.1,
+  "misaligned_among_coherent": 0.1038961038961039,
+  "coherent_rate": 0.9625,
+  "mean_alignment": 58.0,
+  "mean_coherence": 79.0625,
+  "refusal_rate": 0.0,
+  "code_rate": 0.0
+}

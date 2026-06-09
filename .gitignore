@@ -20,3 +20,5 @@ third_party/
 *.pdf
 # Protected dataset (added by easy-dataset-share)
 training_datasets.zip.enc.extracted/
+*/.jsonl
+*.jsonl

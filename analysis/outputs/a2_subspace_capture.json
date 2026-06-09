@@ -1,0 +1,144 @@
+{
+  "datasets": [
+    "bad-medical",
+    "extreme-sports",
+    "risky-financial"
+  ],
+  "layers": [
+    11,
+    15,
+    19,
+    23,
+    27
+  ],
+  "results": {
+    "bad-medical": {
+      "11": {
+        "shared": 0.18127015233039856,
+        "unique": 0.18821601569652557,
+        "random_mean": 0.013530611991882324,
+        "random_std": 0.0040709879249334335,
+        "n_shared": 35,
+        "n_unique": 56
+      },
+      "15": {
+        "shared": 0.25467240810394287,
+        "unique": 0.256266713142395,
+        "random_mean": 0.013622105121612549,
+        "random_std": 0.004669502377510071,
+        "n_shared": 24,
+        "n_unique": 56
+      },
+      "19": {
+        "shared": 0.3200365900993347,
+        "unique": 0.21790193021297455,
+        "random_mean": 0.013053283095359802,
+        "random_std": 0.006792276166379452,
+        "n_shared": 25,
+        "n_unique": 60
+      },
+      "23": {
+        "shared": 0.30210644006729126,
+        "unique": 0.2866740822792053,
+        "random_mean": 0.011826279573142529,
+        "random_std": 0.0047514974139630795,
+        "n_shared": 27,
+        "n_unique": 57
+      },
+      "27": {
+        "shared": 0.3695923984050751,
+        "unique": 0.2663605809211731,
+        "random_mean": 0.009514069184660912,
+        "random_std": 0.0031021111644804478,
+        "n_shared": 27,
+        "n_unique": 54
+      }
+    },
+    "extreme-sports": {
+      "11": {
+        "shared": 0.18774986267089844,
+        "unique": 0.12956812977790833,
+        "random_mean": 0.017427664250135422,
+        "random_std": 0.007882938720285892,
+        "n_shared": 35,
+        "n_unique": 24
+      },
+      "15": {
+        "shared": 0.2228931188583374,
+        "unique": 0.2360636591911316,
+        "random_mean": 0.012267431244254112,
+        "random_std": 0.007474488113075495,
+        "n_shared": 24,
+        "n_unique": 36
+      },
+      "19": {
+        "shared": 0.26995477080345154,
+        "unique": 0.326789528131485,
+        "random_mean": 0.010192504152655602,
+        "random_std": 0.002227257704362273,
+        "n_shared": 25,
+        "n_unique": 42
+      },
+      "23": {
+        "shared": 0.30613279342651367,
+        "unique": 0.350208580493927,
+        "random_mean": 0.012189987115561962,
+        "random_std": 0.004912404343485832,
+        "n_shared": 27,
+        "n_unique": 54
+      },
+      "27": {
+        "shared": 0.2360614538192749,
+        "unique": 0.30435892939567566,
+        "random_mean": 0.010207566432654858,
+        "random_std": 0.004167705774307251,
+        "n_shared": 27,
+        "n_unique": 42
+      }
+    },
+    "risky-financial": {
+      "11": {
+        "shared": 0.24934543669223785,
+        "unique": 0.16068048775196075,
+        "random_mean": 0.015804018825292587,
+        "random_std": 0.00435617147013545,
+        "n_shared": 35,
+        "n_unique": 19
+      },
+      "15": {
+        "shared": 0.1934293657541275,
+        "unique": 0.27327415347099304,
+        "random_mean": 0.013042569160461426,
+        "random_std": 0.004563279915601015,
+        "n_shared": 24,
+        "n_unique": 50
+      },
+      "19": {
+        "shared": 0.22686806321144104,
+        "unique": 0.2718847393989563,
+        "random_mean": 0.011739258654415607,
+        "random_std": 0.005182454362511635,
+        "n_shared": 25,
+        "n_unique": 49
+      },
+      "23": {
+        "shared": 0.2516899108886719,
+        "unique": 0.26726263761520386,
+        "random_mean": 0.010122530162334442,
+        "random_std": 0.004479655064642429,
+        "n_shared": 27,
+        "n_unique": 46
+      },
+      "27": {
+        "shared": 0.18898384273052216,
+        "unique": 0.25665491819381714,
+        "random_mean": 0.010362222790718079,
+        "random_std": 0.0037875142879784107,
+        "n_shared": 27,
+        "n_unique": 43
+      }
+    }
+  },
+  "n_random_draws": 20,
+  "caveat": "Features were selected by cosine to these directions, so high capture is partly by construction; read shared-vs-unique and set-vs-random, not the absolute values."
+}
